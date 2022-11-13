@@ -8,5 +8,3 @@ VerySmallFoot is a modern reimplementation of Smallfoot Automated Separation Log
 **Reference Implementation** directory has the original reference OCaml implementation we will use for testing and validation.
 
 **Smallfoot Replica** directory has the new implementation in Haskell.
-
-
