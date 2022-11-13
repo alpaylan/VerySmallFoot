@@ -25,7 +25,11 @@ source-repository head
 
 library
   exposed-modules:
+      CommandLineInterface
       Lib
+      Parser
+      Program
+      VCGen
   other-modules:
       Paths_smallfootreplica
   hs-source-dirs:
