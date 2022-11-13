@@ -1,0 +1,2905 @@
+   0  $accept : %entry% $end
+
+   1  program : program_item_star
+   2          | ident_decl program_item_star
+
+   3  program_item_star :
+   4                    | program_item program_item_star
+
+   5  program_item : fun_decl
+   6               | resource_decl
+
+   7  fun_decl : IDENT LPAREN formal_params RPAREN invariant LBRACE local_decls statement_star RBRACE invariant
+
+   8  resource_decl : RESOURCE IDENT LPAREN ident_seq RPAREN LBRACKET a_proposition RBRACKET
+
+   9  ident_decl : ident_seq SEMI
+
+  10  ident_seq :
+  11            | ident_notempty_seq
+
+  12  ident_notempty_seq : IDENT
+  13                     | IDENT COMMA ident_notempty_seq
+
+  14  local_decls :
+  15              | LOCAL ident_notempty_seq SEMI local_decls
+
+  16  statement_star :
+  17                 | statement statement_star
+
+  18  statement : IDENT EQUAL expression SEMI
+  19            | IDENT EQUAL expression MINUSGREATER IDENT SEMI
+  20            | expression MINUSGREATER IDENT EQUAL expression SEMI
+  21            | IDENT EQUAL NEW LPAREN RPAREN SEMI
+  22            | DISPOSE expression SEMI
+  23            | LBRACE statement_star RBRACE
+  24            | IF LPAREN expression RPAREN statement
+  25            | IF LPAREN expression RPAREN statement ELSE statement
+  26            | WHILE LPAREN expression RPAREN invariant statement
+  27            | WITH IDENT WHEN LPAREN expression RPAREN statement
+  28            | IDENT LPAREN actual_params RPAREN SEMI
+  29            | IDENT LPAREN actual_params RPAREN BARBAR IDENT LPAREN actual_params RPAREN SEMI
+
+  30  invariant :
+  31            | LBRACKET a_proposition RBRACKET
+
+  32  expression : IDENT
+  33             | NAT
+  34             | TT
+  35             | FF
+  36             | LPAREN expression RPAREN
+  37             | INFIXOP2 expression
+  38             | expression AMPERAMPER expression
+  39             | expression STAR expression
+  40             | expression XOR expression
+  41             | expression EQUALEQUAL expression
+  42             | expression BANGEQUAL expression
+  43             | expression INFIXOP1 expression
+  44             | expression INFIXOP2 expression
+  45             | expression INFIXOP3 expression
+
+  46  expression_seq :
+  47                 | expression_notempty_seq
+
+  48  expression_notempty_seq : expression
+  49                          | expression COMMA expression_notempty_seq
+
+  50  formal_params : ident_seq
+  51                | ident_seq SEMI ident_seq
+
+  52  actual_params : expression_seq
+  53                | expression_seq SEMI expression_seq
+
+  54  a_component_expression_seq :
+  55                             | a_component_expression_notempty_seq
+
+  56  a_component_expression_notempty_seq : IDENT COLON a_expression
+  57                                      | IDENT COLON a_expression COMMA a_component_expression_notempty_seq
+
+  58  a_space_pred : LIST LPAREN IDENT SEMI a_expression RPAREN
+  59               | LIST LPAREN a_expression RPAREN
+  60               | LISTSEG LPAREN IDENT SEMI a_expression COMMA a_expression RPAREN
+  61               | LISTSEG LPAREN a_expression COMMA a_expression RPAREN
+  62               | DLSEG LPAREN IDENT SEMI IDENT SEMI a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN
+  63               | DLSEG LPAREN a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN
+  64               | XLSEG LPAREN IDENT SEMI IDENT SEMI a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN
+  65               | XLSEG LPAREN a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN
+  66               | TREE LPAREN IDENT SEMI IDENT SEMI a_expression RPAREN
+  67               | TREE LPAREN a_expression RPAREN
+  68               | EMPTY
+  69               | a_expression POINTSTO a_component_expression_seq
+  70               | a_expression POINTSTO a_expression
+  71               | a_expression POINTSTO a_expression COMMA a_expression
+
+  72  a_proposition : LPAREN a_proposition RPAREN
+  73                | a_expression EQUALEQUAL a_expression
+  74                | a_expression BANGEQUAL a_expression
+  75                | FF
+  76                | a_proposition STAR a_proposition
+  77                | IF a_proposition THEN a_proposition ELSE a_proposition
+  78                | a_space_pred
+
+  79  a_expression : LPAREN a_expression RPAREN
+  80               | a_expression XOR a_expression
+  81               | IDENT
+  82               | QIDENT
+  83               | NAT
+
+  84  %entry% : '\001' program
+  85          | '\002' a_proposition
+
+state 0
+	$accept : . %entry% $end  (0)
+
+	'\001'  shift 1
+	'\002'  shift 2
+	.  error
+
+	%entry%  goto 3
+
+
+state 1
+	%entry% : '\001' . program  (84)
+	program_item_star : .  (3)
+	ident_seq : .  (10)
+
+	IDENT  shift 4
+	RESOURCE  shift 5
+	$end  reduce 3
+	SEMI  reduce 10
+
+	program  goto 6
+	program_item_star  goto 7
+	ident_decl  goto 8
+	program_item  goto 9
+	fun_decl  goto 10
+	resource_decl  goto 11
+	ident_seq  goto 12
+	ident_notempty_seq  goto 13
+
+
+state 2
+	%entry% : '\002' . a_proposition  (85)
+
+	DLSEG  shift 14
+	EMPTY  shift 15
+	FF  shift 16
+	IDENT  shift 17
+	QIDENT  shift 18
+	IF  shift 19
+	LIST  shift 20
+	LISTSEG  shift 21
+	LPAREN  shift 22
+	NAT  shift 23
+	TREE  shift 24
+	XLSEG  shift 25
+	.  error
+
+	a_proposition  goto 26
+	a_expression  goto 27
+	a_space_pred  goto 28
+
+
+state 3
+	$accept : %entry% . $end  (0)
+
+	$end  accept
+
+
+state 4
+	fun_decl : IDENT . LPAREN formal_params RPAREN invariant LBRACE local_decls statement_star RBRACE invariant  (7)
+	ident_notempty_seq : IDENT .  (12)
+	ident_notempty_seq : IDENT . COMMA ident_notempty_seq  (13)
+
+	COMMA  shift 29
+	LPAREN  shift 30
+	SEMI  reduce 12
+
+
+state 5
+	resource_decl : RESOURCE . IDENT LPAREN ident_seq RPAREN LBRACKET a_proposition RBRACKET  (8)
+
+	IDENT  shift 31
+	.  error
+
+
+state 6
+	%entry% : '\001' program .  (84)
+
+	.  reduce 84
+
+
+state 7
+	program : program_item_star .  (1)
+
+	.  reduce 1
+
+
+state 8
+	program : ident_decl . program_item_star  (2)
+	program_item_star : .  (3)
+
+	IDENT  shift 32
+	RESOURCE  shift 5
+	$end  reduce 3
+
+	program_item_star  goto 33
+	program_item  goto 9
+	fun_decl  goto 10
+	resource_decl  goto 11
+
+
+state 9
+	program_item_star : program_item . program_item_star  (4)
+	program_item_star : .  (3)
+
+	IDENT  shift 32
+	RESOURCE  shift 5
+	$end  reduce 3
+
+	program_item_star  goto 34
+	program_item  goto 9
+	fun_decl  goto 10
+	resource_decl  goto 11
+
+
+state 10
+	program_item : fun_decl .  (5)
+
+	.  reduce 5
+
+
+state 11
+	program_item : resource_decl .  (6)
+
+	.  reduce 6
+
+
+state 12
+	ident_decl : ident_seq . SEMI  (9)
+
+	SEMI  shift 35
+	.  error
+
+
+state 13
+	ident_seq : ident_notempty_seq .  (11)
+
+	.  reduce 11
+
+
+state 14
+	a_space_pred : DLSEG . LPAREN IDENT SEMI IDENT SEMI a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (62)
+	a_space_pred : DLSEG . LPAREN a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (63)
+
+	LPAREN  shift 36
+	.  error
+
+
+state 15
+	a_space_pred : EMPTY .  (68)
+
+	.  reduce 68
+
+
+state 16
+	a_proposition : FF .  (75)
+
+	.  reduce 75
+
+
+state 17
+	a_expression : IDENT .  (81)
+
+	.  reduce 81
+
+
+state 18
+	a_expression : QIDENT .  (82)
+
+	.  reduce 82
+
+
+state 19
+	a_proposition : IF . a_proposition THEN a_proposition ELSE a_proposition  (77)
+
+	DLSEG  shift 14
+	EMPTY  shift 15
+	FF  shift 16
+	IDENT  shift 17
+	QIDENT  shift 18
+	IF  shift 19
+	LIST  shift 20
+	LISTSEG  shift 21
+	LPAREN  shift 22
+	NAT  shift 23
+	TREE  shift 24
+	XLSEG  shift 25
+	.  error
+
+	a_proposition  goto 37
+	a_expression  goto 27
+	a_space_pred  goto 28
+
+
+state 20
+	a_space_pred : LIST . LPAREN IDENT SEMI a_expression RPAREN  (58)
+	a_space_pred : LIST . LPAREN a_expression RPAREN  (59)
+
+	LPAREN  shift 38
+	.  error
+
+
+state 21
+	a_space_pred : LISTSEG . LPAREN IDENT SEMI a_expression COMMA a_expression RPAREN  (60)
+	a_space_pred : LISTSEG . LPAREN a_expression COMMA a_expression RPAREN  (61)
+
+	LPAREN  shift 39
+	.  error
+
+
+state 22
+	a_proposition : LPAREN . a_proposition RPAREN  (72)
+	a_expression : LPAREN . a_expression RPAREN  (79)
+
+	DLSEG  shift 14
+	EMPTY  shift 15
+	FF  shift 16
+	IDENT  shift 17
+	QIDENT  shift 18
+	IF  shift 19
+	LIST  shift 20
+	LISTSEG  shift 21
+	LPAREN  shift 22
+	NAT  shift 23
+	TREE  shift 24
+	XLSEG  shift 25
+	.  error
+
+	a_proposition  goto 40
+	a_expression  goto 41
+	a_space_pred  goto 28
+
+
+state 23
+	a_expression : NAT .  (83)
+
+	.  reduce 83
+
+
+state 24
+	a_space_pred : TREE . LPAREN IDENT SEMI IDENT SEMI a_expression RPAREN  (66)
+	a_space_pred : TREE . LPAREN a_expression RPAREN  (67)
+
+	LPAREN  shift 42
+	.  error
+
+
+state 25
+	a_space_pred : XLSEG . LPAREN IDENT SEMI IDENT SEMI a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (64)
+	a_space_pred : XLSEG . LPAREN a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (65)
+
+	LPAREN  shift 43
+	.  error
+
+
+state 26
+	a_proposition : a_proposition . STAR a_proposition  (76)
+	%entry% : '\002' a_proposition .  (85)
+
+	STAR  shift 44
+	$end  reduce 85
+
+
+state 27
+	a_space_pred : a_expression . POINTSTO a_component_expression_seq  (69)
+	a_space_pred : a_expression . POINTSTO a_expression  (70)
+	a_space_pred : a_expression . POINTSTO a_expression COMMA a_expression  (71)
+	a_proposition : a_expression . EQUALEQUAL a_expression  (73)
+	a_proposition : a_expression . BANGEQUAL a_expression  (74)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	BANGEQUAL  shift 45
+	EQUALEQUAL  shift 46
+	POINTSTO  shift 47
+	XOR  shift 48
+	.  error
+
+
+state 28
+	a_proposition : a_space_pred .  (78)
+
+	.  reduce 78
+
+
+state 29
+	ident_notempty_seq : IDENT COMMA . ident_notempty_seq  (13)
+
+	IDENT  shift 49
+	.  error
+
+	ident_notempty_seq  goto 50
+
+
+state 30
+	fun_decl : IDENT LPAREN . formal_params RPAREN invariant LBRACE local_decls statement_star RBRACE invariant  (7)
+	ident_seq : .  (10)
+
+	IDENT  shift 49
+	RPAREN  reduce 10
+	SEMI  reduce 10
+
+	formal_params  goto 51
+	ident_seq  goto 52
+	ident_notempty_seq  goto 13
+
+
+state 31
+	resource_decl : RESOURCE IDENT . LPAREN ident_seq RPAREN LBRACKET a_proposition RBRACKET  (8)
+
+	LPAREN  shift 53
+	.  error
+
+
+state 32
+	fun_decl : IDENT . LPAREN formal_params RPAREN invariant LBRACE local_decls statement_star RBRACE invariant  (7)
+
+	LPAREN  shift 30
+	.  error
+
+
+state 33
+	program : ident_decl program_item_star .  (2)
+
+	.  reduce 2
+
+
+state 34
+	program_item_star : program_item program_item_star .  (4)
+
+	.  reduce 4
+
+
+state 35
+	ident_decl : ident_seq SEMI .  (9)
+
+	.  reduce 9
+
+
+state 36
+	a_space_pred : DLSEG LPAREN . IDENT SEMI IDENT SEMI a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (62)
+	a_space_pred : DLSEG LPAREN . a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (63)
+
+	IDENT  shift 54
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 56
+
+
+state 37
+	a_proposition : a_proposition . STAR a_proposition  (76)
+	a_proposition : IF a_proposition . THEN a_proposition ELSE a_proposition  (77)
+
+	STAR  shift 44
+	THEN  shift 57
+	.  error
+
+
+state 38
+	a_space_pred : LIST LPAREN . IDENT SEMI a_expression RPAREN  (58)
+	a_space_pred : LIST LPAREN . a_expression RPAREN  (59)
+
+	IDENT  shift 58
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 59
+
+
+state 39
+	a_space_pred : LISTSEG LPAREN . IDENT SEMI a_expression COMMA a_expression RPAREN  (60)
+	a_space_pred : LISTSEG LPAREN . a_expression COMMA a_expression RPAREN  (61)
+
+	IDENT  shift 60
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 61
+
+
+state 40
+	a_proposition : LPAREN a_proposition . RPAREN  (72)
+	a_proposition : a_proposition . STAR a_proposition  (76)
+
+	RPAREN  shift 62
+	STAR  shift 44
+	.  error
+
+
+state 41
+	a_space_pred : a_expression . POINTSTO a_component_expression_seq  (69)
+	a_space_pred : a_expression . POINTSTO a_expression  (70)
+	a_space_pred : a_expression . POINTSTO a_expression COMMA a_expression  (71)
+	a_proposition : a_expression . EQUALEQUAL a_expression  (73)
+	a_proposition : a_expression . BANGEQUAL a_expression  (74)
+	a_expression : LPAREN a_expression . RPAREN  (79)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	BANGEQUAL  shift 45
+	EQUALEQUAL  shift 46
+	POINTSTO  shift 47
+	RPAREN  shift 63
+	XOR  shift 48
+	.  error
+
+
+state 42
+	a_space_pred : TREE LPAREN . IDENT SEMI IDENT SEMI a_expression RPAREN  (66)
+	a_space_pred : TREE LPAREN . a_expression RPAREN  (67)
+
+	IDENT  shift 64
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 65
+
+
+state 43
+	a_space_pred : XLSEG LPAREN . IDENT SEMI IDENT SEMI a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (64)
+	a_space_pred : XLSEG LPAREN . a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (65)
+
+	IDENT  shift 66
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 67
+
+
+state 44
+	a_proposition : a_proposition STAR . a_proposition  (76)
+
+	DLSEG  shift 14
+	EMPTY  shift 15
+	FF  shift 16
+	IDENT  shift 17
+	QIDENT  shift 18
+	IF  shift 19
+	LIST  shift 20
+	LISTSEG  shift 21
+	LPAREN  shift 22
+	NAT  shift 23
+	TREE  shift 24
+	XLSEG  shift 25
+	.  error
+
+	a_proposition  goto 68
+	a_expression  goto 27
+	a_space_pred  goto 28
+
+
+state 45
+	a_proposition : a_expression BANGEQUAL . a_expression  (74)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 69
+
+
+state 46
+	a_proposition : a_expression EQUALEQUAL . a_expression  (73)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 70
+
+
+state 47
+	a_space_pred : a_expression POINTSTO . a_component_expression_seq  (69)
+	a_space_pred : a_expression POINTSTO . a_expression  (70)
+	a_space_pred : a_expression POINTSTO . a_expression COMMA a_expression  (71)
+	a_component_expression_seq : .  (54)
+
+	IDENT  shift 71
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	$end  reduce 54
+	ELSE  reduce 54
+	RBRACKET  reduce 54
+	RPAREN  reduce 54
+	STAR  reduce 54
+	THEN  reduce 54
+
+	a_component_expression_seq  goto 72
+	a_component_expression_notempty_seq  goto 73
+	a_expression  goto 74
+
+
+state 48
+	a_expression : a_expression XOR . a_expression  (80)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 75
+
+
+state 49
+	ident_notempty_seq : IDENT .  (12)
+	ident_notempty_seq : IDENT . COMMA ident_notempty_seq  (13)
+
+	COMMA  shift 29
+	RPAREN  reduce 12
+	SEMI  reduce 12
+
+
+state 50
+	ident_notempty_seq : IDENT COMMA ident_notempty_seq .  (13)
+
+	.  reduce 13
+
+
+state 51
+	fun_decl : IDENT LPAREN formal_params . RPAREN invariant LBRACE local_decls statement_star RBRACE invariant  (7)
+
+	RPAREN  shift 76
+	.  error
+
+
+state 52
+	formal_params : ident_seq .  (50)
+	formal_params : ident_seq . SEMI ident_seq  (51)
+
+	SEMI  shift 77
+	RPAREN  reduce 50
+
+
+state 53
+	resource_decl : RESOURCE IDENT LPAREN . ident_seq RPAREN LBRACKET a_proposition RBRACKET  (8)
+	ident_seq : .  (10)
+
+	IDENT  shift 49
+	RPAREN  reduce 10
+
+	ident_seq  goto 78
+	ident_notempty_seq  goto 13
+
+
+state 54
+	a_space_pred : DLSEG LPAREN IDENT . SEMI IDENT SEMI a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (62)
+	a_expression : IDENT .  (81)
+
+	SEMI  shift 79
+	COMMA  reduce 81
+	XOR  reduce 81
+
+
+state 55
+	a_expression : LPAREN . a_expression RPAREN  (79)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 80
+
+
+state 56
+	a_space_pred : DLSEG LPAREN a_expression . COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (63)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	COMMA  shift 81
+	XOR  shift 48
+	.  error
+
+
+state 57
+	a_proposition : IF a_proposition THEN . a_proposition ELSE a_proposition  (77)
+
+	DLSEG  shift 14
+	EMPTY  shift 15
+	FF  shift 16
+	IDENT  shift 17
+	QIDENT  shift 18
+	IF  shift 19
+	LIST  shift 20
+	LISTSEG  shift 21
+	LPAREN  shift 22
+	NAT  shift 23
+	TREE  shift 24
+	XLSEG  shift 25
+	.  error
+
+	a_proposition  goto 82
+	a_expression  goto 27
+	a_space_pred  goto 28
+
+
+state 58
+	a_space_pred : LIST LPAREN IDENT . SEMI a_expression RPAREN  (58)
+	a_expression : IDENT .  (81)
+
+	SEMI  shift 83
+	RPAREN  reduce 81
+	XOR  reduce 81
+
+
+state 59
+	a_space_pred : LIST LPAREN a_expression . RPAREN  (59)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	RPAREN  shift 84
+	XOR  shift 48
+	.  error
+
+
+state 60
+	a_space_pred : LISTSEG LPAREN IDENT . SEMI a_expression COMMA a_expression RPAREN  (60)
+	a_expression : IDENT .  (81)
+
+	SEMI  shift 85
+	COMMA  reduce 81
+	XOR  reduce 81
+
+
+state 61
+	a_space_pred : LISTSEG LPAREN a_expression . COMMA a_expression RPAREN  (61)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	COMMA  shift 86
+	XOR  shift 48
+	.  error
+
+
+state 62
+	a_proposition : LPAREN a_proposition RPAREN .  (72)
+
+	.  reduce 72
+
+
+state 63
+	a_expression : LPAREN a_expression RPAREN .  (79)
+
+	.  reduce 79
+
+
+state 64
+	a_space_pred : TREE LPAREN IDENT . SEMI IDENT SEMI a_expression RPAREN  (66)
+	a_expression : IDENT .  (81)
+
+	SEMI  shift 87
+	RPAREN  reduce 81
+	XOR  reduce 81
+
+
+state 65
+	a_space_pred : TREE LPAREN a_expression . RPAREN  (67)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	RPAREN  shift 88
+	XOR  shift 48
+	.  error
+
+
+state 66
+	a_space_pred : XLSEG LPAREN IDENT . SEMI IDENT SEMI a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (64)
+	a_expression : IDENT .  (81)
+
+	SEMI  shift 89
+	COMMA  reduce 81
+	XOR  reduce 81
+
+
+state 67
+	a_space_pred : XLSEG LPAREN a_expression . COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (65)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	COMMA  shift 90
+	XOR  shift 48
+	.  error
+
+
+state 68
+	a_proposition : a_proposition . STAR a_proposition  (76)
+	a_proposition : a_proposition STAR a_proposition .  (76)
+
+	.  reduce 76
+
+
+state 69
+	a_proposition : a_expression BANGEQUAL a_expression .  (74)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	XOR  shift 48
+	$end  reduce 74
+	ELSE  reduce 74
+	RBRACKET  reduce 74
+	RPAREN  reduce 74
+	STAR  reduce 74
+	THEN  reduce 74
+
+
+state 70
+	a_proposition : a_expression EQUALEQUAL a_expression .  (73)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	XOR  shift 48
+	$end  reduce 73
+	ELSE  reduce 73
+	RBRACKET  reduce 73
+	RPAREN  reduce 73
+	STAR  reduce 73
+	THEN  reduce 73
+
+
+state 71
+	a_component_expression_notempty_seq : IDENT . COLON a_expression  (56)
+	a_component_expression_notempty_seq : IDENT . COLON a_expression COMMA a_component_expression_notempty_seq  (57)
+	a_expression : IDENT .  (81)
+
+	COLON  shift 91
+	$end  reduce 81
+	COMMA  reduce 81
+	ELSE  reduce 81
+	RBRACKET  reduce 81
+	RPAREN  reduce 81
+	STAR  reduce 81
+	THEN  reduce 81
+	XOR  reduce 81
+
+
+state 72
+	a_space_pred : a_expression POINTSTO a_component_expression_seq .  (69)
+
+	.  reduce 69
+
+
+state 73
+	a_component_expression_seq : a_component_expression_notempty_seq .  (55)
+
+	.  reduce 55
+
+
+state 74
+	a_space_pred : a_expression POINTSTO a_expression .  (70)
+	a_space_pred : a_expression POINTSTO a_expression . COMMA a_expression  (71)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	COMMA  shift 92
+	XOR  shift 48
+	$end  reduce 70
+	ELSE  reduce 70
+	RBRACKET  reduce 70
+	RPAREN  reduce 70
+	STAR  reduce 70
+	THEN  reduce 70
+
+
+state 75
+	a_expression : a_expression . XOR a_expression  (80)
+	a_expression : a_expression XOR a_expression .  (80)
+
+	.  reduce 80
+
+
+state 76
+	fun_decl : IDENT LPAREN formal_params RPAREN . invariant LBRACE local_decls statement_star RBRACE invariant  (7)
+	invariant : .  (30)
+
+	LBRACKET  shift 93
+	LBRACE  reduce 30
+
+	invariant  goto 94
+
+
+state 77
+	formal_params : ident_seq SEMI . ident_seq  (51)
+	ident_seq : .  (10)
+
+	IDENT  shift 49
+	RPAREN  reduce 10
+
+	ident_seq  goto 95
+	ident_notempty_seq  goto 13
+
+
+state 78
+	resource_decl : RESOURCE IDENT LPAREN ident_seq . RPAREN LBRACKET a_proposition RBRACKET  (8)
+
+	RPAREN  shift 96
+	.  error
+
+
+state 79
+	a_space_pred : DLSEG LPAREN IDENT SEMI . IDENT SEMI a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (62)
+
+	IDENT  shift 97
+	.  error
+
+
+state 80
+	a_expression : LPAREN a_expression . RPAREN  (79)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	RPAREN  shift 63
+	XOR  shift 48
+	.  error
+
+
+state 81
+	a_space_pred : DLSEG LPAREN a_expression COMMA . a_expression COMMA a_expression COMMA a_expression RPAREN  (63)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 98
+
+
+state 82
+	a_proposition : a_proposition . STAR a_proposition  (76)
+	a_proposition : IF a_proposition THEN a_proposition . ELSE a_proposition  (77)
+
+	ELSE  shift 99
+	STAR  shift 44
+	.  error
+
+
+state 83
+	a_space_pred : LIST LPAREN IDENT SEMI . a_expression RPAREN  (58)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 100
+
+
+state 84
+	a_space_pred : LIST LPAREN a_expression RPAREN .  (59)
+
+	.  reduce 59
+
+
+state 85
+	a_space_pred : LISTSEG LPAREN IDENT SEMI . a_expression COMMA a_expression RPAREN  (60)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 101
+
+
+state 86
+	a_space_pred : LISTSEG LPAREN a_expression COMMA . a_expression RPAREN  (61)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 102
+
+
+state 87
+	a_space_pred : TREE LPAREN IDENT SEMI . IDENT SEMI a_expression RPAREN  (66)
+
+	IDENT  shift 103
+	.  error
+
+
+state 88
+	a_space_pred : TREE LPAREN a_expression RPAREN .  (67)
+
+	.  reduce 67
+
+
+state 89
+	a_space_pred : XLSEG LPAREN IDENT SEMI . IDENT SEMI a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (64)
+
+	IDENT  shift 104
+	.  error
+
+
+state 90
+	a_space_pred : XLSEG LPAREN a_expression COMMA . a_expression COMMA a_expression COMMA a_expression RPAREN  (65)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 105
+
+
+state 91
+	a_component_expression_notempty_seq : IDENT COLON . a_expression  (56)
+	a_component_expression_notempty_seq : IDENT COLON . a_expression COMMA a_component_expression_notempty_seq  (57)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 106
+
+
+state 92
+	a_space_pred : a_expression POINTSTO a_expression COMMA . a_expression  (71)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 107
+
+
+state 93
+	invariant : LBRACKET . a_proposition RBRACKET  (31)
+
+	DLSEG  shift 14
+	EMPTY  shift 15
+	FF  shift 16
+	IDENT  shift 17
+	QIDENT  shift 18
+	IF  shift 19
+	LIST  shift 20
+	LISTSEG  shift 21
+	LPAREN  shift 22
+	NAT  shift 23
+	TREE  shift 24
+	XLSEG  shift 25
+	.  error
+
+	a_proposition  goto 108
+	a_expression  goto 27
+	a_space_pred  goto 28
+
+
+state 94
+	fun_decl : IDENT LPAREN formal_params RPAREN invariant . LBRACE local_decls statement_star RBRACE invariant  (7)
+
+	LBRACE  shift 109
+	.  error
+
+
+state 95
+	formal_params : ident_seq SEMI ident_seq .  (51)
+
+	.  reduce 51
+
+
+state 96
+	resource_decl : RESOURCE IDENT LPAREN ident_seq RPAREN . LBRACKET a_proposition RBRACKET  (8)
+
+	LBRACKET  shift 110
+	.  error
+
+
+state 97
+	a_space_pred : DLSEG LPAREN IDENT SEMI IDENT . SEMI a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (62)
+
+	SEMI  shift 111
+	.  error
+
+
+state 98
+	a_space_pred : DLSEG LPAREN a_expression COMMA a_expression . COMMA a_expression COMMA a_expression RPAREN  (63)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	COMMA  shift 112
+	XOR  shift 48
+	.  error
+
+
+state 99
+	a_proposition : IF a_proposition THEN a_proposition ELSE . a_proposition  (77)
+
+	DLSEG  shift 14
+	EMPTY  shift 15
+	FF  shift 16
+	IDENT  shift 17
+	QIDENT  shift 18
+	IF  shift 19
+	LIST  shift 20
+	LISTSEG  shift 21
+	LPAREN  shift 22
+	NAT  shift 23
+	TREE  shift 24
+	XLSEG  shift 25
+	.  error
+
+	a_proposition  goto 113
+	a_expression  goto 27
+	a_space_pred  goto 28
+
+
+state 100
+	a_space_pred : LIST LPAREN IDENT SEMI a_expression . RPAREN  (58)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	RPAREN  shift 114
+	XOR  shift 48
+	.  error
+
+
+state 101
+	a_space_pred : LISTSEG LPAREN IDENT SEMI a_expression . COMMA a_expression RPAREN  (60)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	COMMA  shift 115
+	XOR  shift 48
+	.  error
+
+
+state 102
+	a_space_pred : LISTSEG LPAREN a_expression COMMA a_expression . RPAREN  (61)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	RPAREN  shift 116
+	XOR  shift 48
+	.  error
+
+
+state 103
+	a_space_pred : TREE LPAREN IDENT SEMI IDENT . SEMI a_expression RPAREN  (66)
+
+	SEMI  shift 117
+	.  error
+
+
+state 104
+	a_space_pred : XLSEG LPAREN IDENT SEMI IDENT . SEMI a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (64)
+
+	SEMI  shift 118
+	.  error
+
+
+state 105
+	a_space_pred : XLSEG LPAREN a_expression COMMA a_expression . COMMA a_expression COMMA a_expression RPAREN  (65)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	COMMA  shift 119
+	XOR  shift 48
+	.  error
+
+
+state 106
+	a_component_expression_notempty_seq : IDENT COLON a_expression .  (56)
+	a_component_expression_notempty_seq : IDENT COLON a_expression . COMMA a_component_expression_notempty_seq  (57)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	COMMA  shift 120
+	XOR  shift 48
+	$end  reduce 56
+	ELSE  reduce 56
+	RBRACKET  reduce 56
+	RPAREN  reduce 56
+	STAR  reduce 56
+	THEN  reduce 56
+
+
+state 107
+	a_space_pred : a_expression POINTSTO a_expression COMMA a_expression .  (71)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	XOR  shift 48
+	$end  reduce 71
+	ELSE  reduce 71
+	RBRACKET  reduce 71
+	RPAREN  reduce 71
+	STAR  reduce 71
+	THEN  reduce 71
+
+
+state 108
+	invariant : LBRACKET a_proposition . RBRACKET  (31)
+	a_proposition : a_proposition . STAR a_proposition  (76)
+
+	RBRACKET  shift 121
+	STAR  shift 44
+	.  error
+
+
+state 109
+	fun_decl : IDENT LPAREN formal_params RPAREN invariant LBRACE . local_decls statement_star RBRACE invariant  (7)
+	local_decls : .  (14)
+
+	LOCAL  shift 122
+	DISPOSE  reduce 14
+	FF  reduce 14
+	IDENT  reduce 14
+	IF  reduce 14
+	INFIXOP2  reduce 14
+	LBRACE  reduce 14
+	LPAREN  reduce 14
+	NAT  reduce 14
+	RBRACE  reduce 14
+	TT  reduce 14
+	WHILE  reduce 14
+	WITH  reduce 14
+
+	local_decls  goto 123
+
+
+state 110
+	resource_decl : RESOURCE IDENT LPAREN ident_seq RPAREN LBRACKET . a_proposition RBRACKET  (8)
+
+	DLSEG  shift 14
+	EMPTY  shift 15
+	FF  shift 16
+	IDENT  shift 17
+	QIDENT  shift 18
+	IF  shift 19
+	LIST  shift 20
+	LISTSEG  shift 21
+	LPAREN  shift 22
+	NAT  shift 23
+	TREE  shift 24
+	XLSEG  shift 25
+	.  error
+
+	a_proposition  goto 124
+	a_expression  goto 27
+	a_space_pred  goto 28
+
+
+state 111
+	a_space_pred : DLSEG LPAREN IDENT SEMI IDENT SEMI . a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (62)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 125
+
+
+state 112
+	a_space_pred : DLSEG LPAREN a_expression COMMA a_expression COMMA . a_expression COMMA a_expression RPAREN  (63)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 126
+
+
+state 113
+	a_proposition : a_proposition . STAR a_proposition  (76)
+	a_proposition : IF a_proposition THEN a_proposition ELSE a_proposition .  (77)
+
+	STAR  shift 44
+	$end  reduce 77
+	ELSE  reduce 77
+	RBRACKET  reduce 77
+	RPAREN  reduce 77
+	THEN  reduce 77
+
+
+state 114
+	a_space_pred : LIST LPAREN IDENT SEMI a_expression RPAREN .  (58)
+
+	.  reduce 58
+
+
+state 115
+	a_space_pred : LISTSEG LPAREN IDENT SEMI a_expression COMMA . a_expression RPAREN  (60)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 127
+
+
+state 116
+	a_space_pred : LISTSEG LPAREN a_expression COMMA a_expression RPAREN .  (61)
+
+	.  reduce 61
+
+
+state 117
+	a_space_pred : TREE LPAREN IDENT SEMI IDENT SEMI . a_expression RPAREN  (66)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 128
+
+
+state 118
+	a_space_pred : XLSEG LPAREN IDENT SEMI IDENT SEMI . a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (64)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 129
+
+
+state 119
+	a_space_pred : XLSEG LPAREN a_expression COMMA a_expression COMMA . a_expression COMMA a_expression RPAREN  (65)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 130
+
+
+state 120
+	a_component_expression_notempty_seq : IDENT COLON a_expression COMMA . a_component_expression_notempty_seq  (57)
+
+	IDENT  shift 131
+	.  error
+
+	a_component_expression_notempty_seq  goto 132
+
+
+state 121
+	invariant : LBRACKET a_proposition RBRACKET .  (31)
+
+	.  reduce 31
+
+
+state 122
+	local_decls : LOCAL . ident_notempty_seq SEMI local_decls  (15)
+
+	IDENT  shift 49
+	.  error
+
+	ident_notempty_seq  goto 133
+
+
+state 123
+	fun_decl : IDENT LPAREN formal_params RPAREN invariant LBRACE local_decls . statement_star RBRACE invariant  (7)
+	statement_star : .  (16)
+
+	DISPOSE  shift 134
+	FF  shift 135
+	IDENT  shift 136
+	IF  shift 137
+	INFIXOP2  shift 138
+	LBRACE  shift 139
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	WHILE  shift 143
+	WITH  shift 144
+	RBRACE  reduce 16
+
+	statement_star  goto 145
+	statement  goto 146
+	expression  goto 147
+
+
+state 124
+	resource_decl : RESOURCE IDENT LPAREN ident_seq RPAREN LBRACKET a_proposition . RBRACKET  (8)
+	a_proposition : a_proposition . STAR a_proposition  (76)
+
+	RBRACKET  shift 148
+	STAR  shift 44
+	.  error
+
+
+state 125
+	a_space_pred : DLSEG LPAREN IDENT SEMI IDENT SEMI a_expression . COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (62)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	COMMA  shift 149
+	XOR  shift 48
+	.  error
+
+
+state 126
+	a_space_pred : DLSEG LPAREN a_expression COMMA a_expression COMMA a_expression . COMMA a_expression RPAREN  (63)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	COMMA  shift 150
+	XOR  shift 48
+	.  error
+
+
+state 127
+	a_space_pred : LISTSEG LPAREN IDENT SEMI a_expression COMMA a_expression . RPAREN  (60)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	RPAREN  shift 151
+	XOR  shift 48
+	.  error
+
+
+state 128
+	a_space_pred : TREE LPAREN IDENT SEMI IDENT SEMI a_expression . RPAREN  (66)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	RPAREN  shift 152
+	XOR  shift 48
+	.  error
+
+
+state 129
+	a_space_pred : XLSEG LPAREN IDENT SEMI IDENT SEMI a_expression . COMMA a_expression COMMA a_expression COMMA a_expression RPAREN  (64)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	COMMA  shift 153
+	XOR  shift 48
+	.  error
+
+
+state 130
+	a_space_pred : XLSEG LPAREN a_expression COMMA a_expression COMMA a_expression . COMMA a_expression RPAREN  (65)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	COMMA  shift 154
+	XOR  shift 48
+	.  error
+
+
+state 131
+	a_component_expression_notempty_seq : IDENT . COLON a_expression  (56)
+	a_component_expression_notempty_seq : IDENT . COLON a_expression COMMA a_component_expression_notempty_seq  (57)
+
+	COLON  shift 91
+	.  error
+
+
+state 132
+	a_component_expression_notempty_seq : IDENT COLON a_expression COMMA a_component_expression_notempty_seq .  (57)
+
+	.  reduce 57
+
+
+state 133
+	local_decls : LOCAL ident_notempty_seq . SEMI local_decls  (15)
+
+	SEMI  shift 155
+	.  error
+
+
+state 134
+	statement : DISPOSE . expression SEMI  (22)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	.  error
+
+	expression  goto 157
+
+
+state 135
+	expression : FF .  (35)
+
+	.  reduce 35
+
+
+state 136
+	statement : IDENT . EQUAL expression SEMI  (18)
+	statement : IDENT . EQUAL expression MINUSGREATER IDENT SEMI  (19)
+	statement : IDENT . EQUAL NEW LPAREN RPAREN SEMI  (21)
+	statement : IDENT . LPAREN actual_params RPAREN SEMI  (28)
+	statement : IDENT . LPAREN actual_params RPAREN BARBAR IDENT LPAREN actual_params RPAREN SEMI  (29)
+	expression : IDENT .  (32)
+
+	EQUAL  shift 158
+	LPAREN  shift 159
+	AMPERAMPER  reduce 32
+	BANGEQUAL  reduce 32
+	EQUALEQUAL  reduce 32
+	INFIXOP1  reduce 32
+	INFIXOP2  reduce 32
+	INFIXOP3  reduce 32
+	MINUSGREATER  reduce 32
+	STAR  reduce 32
+	XOR  reduce 32
+
+
+state 137
+	statement : IF . LPAREN expression RPAREN statement  (24)
+	statement : IF . LPAREN expression RPAREN statement ELSE statement  (25)
+
+	LPAREN  shift 160
+	.  error
+
+
+state 138
+	expression : INFIXOP2 . expression  (37)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	.  error
+
+	expression  goto 161
+
+
+state 139
+	statement : LBRACE . statement_star RBRACE  (23)
+	statement_star : .  (16)
+
+	DISPOSE  shift 134
+	FF  shift 135
+	IDENT  shift 136
+	IF  shift 137
+	INFIXOP2  shift 138
+	LBRACE  shift 139
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	WHILE  shift 143
+	WITH  shift 144
+	RBRACE  reduce 16
+
+	statement_star  goto 162
+	statement  goto 146
+	expression  goto 147
+
+
+state 140
+	expression : LPAREN . expression RPAREN  (36)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	.  error
+
+	expression  goto 163
+
+
+state 141
+	expression : NAT .  (33)
+
+	.  reduce 33
+
+
+state 142
+	expression : TT .  (34)
+
+	.  reduce 34
+
+
+state 143
+	statement : WHILE . LPAREN expression RPAREN invariant statement  (26)
+
+	LPAREN  shift 164
+	.  error
+
+
+state 144
+	statement : WITH . IDENT WHEN LPAREN expression RPAREN statement  (27)
+
+	IDENT  shift 165
+	.  error
+
+
+state 145
+	fun_decl : IDENT LPAREN formal_params RPAREN invariant LBRACE local_decls statement_star . RBRACE invariant  (7)
+
+	RBRACE  shift 166
+	.  error
+
+
+state 146
+	statement_star : statement . statement_star  (17)
+	statement_star : .  (16)
+
+	DISPOSE  shift 134
+	FF  shift 135
+	IDENT  shift 136
+	IF  shift 137
+	INFIXOP2  shift 138
+	LBRACE  shift 139
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	WHILE  shift 143
+	WITH  shift 144
+	RBRACE  reduce 16
+
+	statement_star  goto 167
+	statement  goto 146
+	expression  goto 147
+
+
+state 147
+	statement : expression . MINUSGREATER IDENT EQUAL expression SEMI  (20)
+	expression : expression . AMPERAMPER expression  (38)
+	expression : expression . STAR expression  (39)
+	expression : expression . XOR expression  (40)
+	expression : expression . EQUALEQUAL expression  (41)
+	expression : expression . BANGEQUAL expression  (42)
+	expression : expression . INFIXOP1 expression  (43)
+	expression : expression . INFIXOP2 expression  (44)
+	expression : expression . INFIXOP3 expression  (45)
+
+	AMPERAMPER  shift 168
+	BANGEQUAL  shift 169
+	EQUALEQUAL  shift 170
+	INFIXOP1  shift 171
+	INFIXOP2  shift 172
+	INFIXOP3  shift 173
+	MINUSGREATER  shift 174
+	STAR  shift 175
+	XOR  shift 176
+	.  error
+
+
+state 148
+	resource_decl : RESOURCE IDENT LPAREN ident_seq RPAREN LBRACKET a_proposition RBRACKET .  (8)
+
+	.  reduce 8
+
+
+state 149
+	a_space_pred : DLSEG LPAREN IDENT SEMI IDENT SEMI a_expression COMMA . a_expression COMMA a_expression COMMA a_expression RPAREN  (62)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 177
+
+
+state 150
+	a_space_pred : DLSEG LPAREN a_expression COMMA a_expression COMMA a_expression COMMA . a_expression RPAREN  (63)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 178
+
+
+state 151
+	a_space_pred : LISTSEG LPAREN IDENT SEMI a_expression COMMA a_expression RPAREN .  (60)
+
+	.  reduce 60
+
+
+state 152
+	a_space_pred : TREE LPAREN IDENT SEMI IDENT SEMI a_expression RPAREN .  (66)
+
+	.  reduce 66
+
+
+state 153
+	a_space_pred : XLSEG LPAREN IDENT SEMI IDENT SEMI a_expression COMMA . a_expression COMMA a_expression COMMA a_expression RPAREN  (64)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 179
+
+
+state 154
+	a_space_pred : XLSEG LPAREN a_expression COMMA a_expression COMMA a_expression COMMA . a_expression RPAREN  (65)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 180
+
+
+state 155
+	local_decls : LOCAL ident_notempty_seq SEMI . local_decls  (15)
+	local_decls : .  (14)
+
+	LOCAL  shift 122
+	DISPOSE  reduce 14
+	FF  reduce 14
+	IDENT  reduce 14
+	IF  reduce 14
+	INFIXOP2  reduce 14
+	LBRACE  reduce 14
+	LPAREN  reduce 14
+	NAT  reduce 14
+	RBRACE  reduce 14
+	TT  reduce 14
+	WHILE  reduce 14
+	WITH  reduce 14
+
+	local_decls  goto 181
+
+
+state 156
+	expression : IDENT .  (32)
+
+	.  reduce 32
+
+
+state 157
+	statement : DISPOSE expression . SEMI  (22)
+	expression : expression . AMPERAMPER expression  (38)
+	expression : expression . STAR expression  (39)
+	expression : expression . XOR expression  (40)
+	expression : expression . EQUALEQUAL expression  (41)
+	expression : expression . BANGEQUAL expression  (42)
+	expression : expression . INFIXOP1 expression  (43)
+	expression : expression . INFIXOP2 expression  (44)
+	expression : expression . INFIXOP3 expression  (45)
+
+	AMPERAMPER  shift 168
+	BANGEQUAL  shift 169
+	EQUALEQUAL  shift 170
+	INFIXOP1  shift 171
+	INFIXOP2  shift 172
+	INFIXOP3  shift 173
+	SEMI  shift 182
+	STAR  shift 175
+	XOR  shift 176
+	.  error
+
+
+state 158
+	statement : IDENT EQUAL . expression SEMI  (18)
+	statement : IDENT EQUAL . expression MINUSGREATER IDENT SEMI  (19)
+	statement : IDENT EQUAL . NEW LPAREN RPAREN SEMI  (21)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	NEW  shift 183
+	TT  shift 142
+	.  error
+
+	expression  goto 184
+
+
+state 159
+	statement : IDENT LPAREN . actual_params RPAREN SEMI  (28)
+	statement : IDENT LPAREN . actual_params RPAREN BARBAR IDENT LPAREN actual_params RPAREN SEMI  (29)
+	expression_seq : .  (46)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	RPAREN  reduce 46
+	SEMI  reduce 46
+
+	expression  goto 185
+	actual_params  goto 186
+	expression_seq  goto 187
+	expression_notempty_seq  goto 188
+
+
+state 160
+	statement : IF LPAREN . expression RPAREN statement  (24)
+	statement : IF LPAREN . expression RPAREN statement ELSE statement  (25)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	.  error
+
+	expression  goto 189
+
+
+state 161
+	expression : INFIXOP2 expression .  (37)
+	expression : expression . AMPERAMPER expression  (38)
+	expression : expression . STAR expression  (39)
+	expression : expression . XOR expression  (40)
+	expression : expression . EQUALEQUAL expression  (41)
+	expression : expression . BANGEQUAL expression  (42)
+	expression : expression . INFIXOP1 expression  (43)
+	expression : expression . INFIXOP2 expression  (44)
+	expression : expression . INFIXOP3 expression  (45)
+
+	.  reduce 37
+
+
+state 162
+	statement : LBRACE statement_star . RBRACE  (23)
+
+	RBRACE  shift 190
+	.  error
+
+
+state 163
+	expression : LPAREN expression . RPAREN  (36)
+	expression : expression . AMPERAMPER expression  (38)
+	expression : expression . STAR expression  (39)
+	expression : expression . XOR expression  (40)
+	expression : expression . EQUALEQUAL expression  (41)
+	expression : expression . BANGEQUAL expression  (42)
+	expression : expression . INFIXOP1 expression  (43)
+	expression : expression . INFIXOP2 expression  (44)
+	expression : expression . INFIXOP3 expression  (45)
+
+	AMPERAMPER  shift 168
+	BANGEQUAL  shift 169
+	EQUALEQUAL  shift 170
+	INFIXOP1  shift 171
+	INFIXOP2  shift 172
+	INFIXOP3  shift 173
+	RPAREN  shift 191
+	STAR  shift 175
+	XOR  shift 176
+	.  error
+
+
+state 164
+	statement : WHILE LPAREN . expression RPAREN invariant statement  (26)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	.  error
+
+	expression  goto 192
+
+
+state 165
+	statement : WITH IDENT . WHEN LPAREN expression RPAREN statement  (27)
+
+	WHEN  shift 193
+	.  error
+
+
+state 166
+	fun_decl : IDENT LPAREN formal_params RPAREN invariant LBRACE local_decls statement_star RBRACE . invariant  (7)
+	invariant : .  (30)
+
+	LBRACKET  shift 93
+	$end  reduce 30
+	IDENT  reduce 30
+	RESOURCE  reduce 30
+
+	invariant  goto 194
+
+
+state 167
+	statement_star : statement statement_star .  (17)
+
+	.  reduce 17
+
+
+state 168
+	expression : expression AMPERAMPER . expression  (38)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	.  error
+
+	expression  goto 195
+
+
+state 169
+	expression : expression BANGEQUAL . expression  (42)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	.  error
+
+	expression  goto 196
+
+
+state 170
+	expression : expression EQUALEQUAL . expression  (41)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	.  error
+
+	expression  goto 197
+
+
+state 171
+	expression : expression INFIXOP1 . expression  (43)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	.  error
+
+	expression  goto 198
+
+
+state 172
+	expression : expression INFIXOP2 . expression  (44)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	.  error
+
+	expression  goto 199
+
+
+state 173
+	expression : expression INFIXOP3 . expression  (45)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	.  error
+
+	expression  goto 200
+
+
+state 174
+	statement : expression MINUSGREATER . IDENT EQUAL expression SEMI  (20)
+
+	IDENT  shift 201
+	.  error
+
+
+state 175
+	expression : expression STAR . expression  (39)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	.  error
+
+	expression  goto 202
+
+
+state 176
+	expression : expression XOR . expression  (40)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	.  error
+
+	expression  goto 203
+
+
+state 177
+	a_space_pred : DLSEG LPAREN IDENT SEMI IDENT SEMI a_expression COMMA a_expression . COMMA a_expression COMMA a_expression RPAREN  (62)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	COMMA  shift 204
+	XOR  shift 48
+	.  error
+
+
+state 178
+	a_space_pred : DLSEG LPAREN a_expression COMMA a_expression COMMA a_expression COMMA a_expression . RPAREN  (63)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	RPAREN  shift 205
+	XOR  shift 48
+	.  error
+
+
+state 179
+	a_space_pred : XLSEG LPAREN IDENT SEMI IDENT SEMI a_expression COMMA a_expression . COMMA a_expression COMMA a_expression RPAREN  (64)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	COMMA  shift 206
+	XOR  shift 48
+	.  error
+
+
+state 180
+	a_space_pred : XLSEG LPAREN a_expression COMMA a_expression COMMA a_expression COMMA a_expression . RPAREN  (65)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	RPAREN  shift 207
+	XOR  shift 48
+	.  error
+
+
+state 181
+	local_decls : LOCAL ident_notempty_seq SEMI local_decls .  (15)
+
+	.  reduce 15
+
+
+state 182
+	statement : DISPOSE expression SEMI .  (22)
+
+	.  reduce 22
+
+
+state 183
+	statement : IDENT EQUAL NEW . LPAREN RPAREN SEMI  (21)
+
+	LPAREN  shift 208
+	.  error
+
+
+state 184
+	statement : IDENT EQUAL expression . SEMI  (18)
+	statement : IDENT EQUAL expression . MINUSGREATER IDENT SEMI  (19)
+	expression : expression . AMPERAMPER expression  (38)
+	expression : expression . STAR expression  (39)
+	expression : expression . XOR expression  (40)
+	expression : expression . EQUALEQUAL expression  (41)
+	expression : expression . BANGEQUAL expression  (42)
+	expression : expression . INFIXOP1 expression  (43)
+	expression : expression . INFIXOP2 expression  (44)
+	expression : expression . INFIXOP3 expression  (45)
+
+	AMPERAMPER  shift 168
+	BANGEQUAL  shift 169
+	EQUALEQUAL  shift 170
+	INFIXOP1  shift 171
+	INFIXOP2  shift 172
+	INFIXOP3  shift 173
+	MINUSGREATER  shift 209
+	SEMI  shift 210
+	STAR  shift 175
+	XOR  shift 176
+	.  error
+
+
+state 185
+	expression : expression . AMPERAMPER expression  (38)
+	expression : expression . STAR expression  (39)
+	expression : expression . XOR expression  (40)
+	expression : expression . EQUALEQUAL expression  (41)
+	expression : expression . BANGEQUAL expression  (42)
+	expression : expression . INFIXOP1 expression  (43)
+	expression : expression . INFIXOP2 expression  (44)
+	expression : expression . INFIXOP3 expression  (45)
+	expression_notempty_seq : expression .  (48)
+	expression_notempty_seq : expression . COMMA expression_notempty_seq  (49)
+
+	AMPERAMPER  shift 168
+	BANGEQUAL  shift 169
+	COMMA  shift 211
+	EQUALEQUAL  shift 170
+	INFIXOP1  shift 171
+	INFIXOP2  shift 172
+	INFIXOP3  shift 173
+	STAR  shift 175
+	XOR  shift 176
+	RPAREN  reduce 48
+	SEMI  reduce 48
+
+
+state 186
+	statement : IDENT LPAREN actual_params . RPAREN SEMI  (28)
+	statement : IDENT LPAREN actual_params . RPAREN BARBAR IDENT LPAREN actual_params RPAREN SEMI  (29)
+
+	RPAREN  shift 212
+	.  error
+
+
+state 187
+	actual_params : expression_seq .  (52)
+	actual_params : expression_seq . SEMI expression_seq  (53)
+
+	SEMI  shift 213
+	RPAREN  reduce 52
+
+
+state 188
+	expression_seq : expression_notempty_seq .  (47)
+
+	.  reduce 47
+
+
+state 189
+	statement : IF LPAREN expression . RPAREN statement  (24)
+	statement : IF LPAREN expression . RPAREN statement ELSE statement  (25)
+	expression : expression . AMPERAMPER expression  (38)
+	expression : expression . STAR expression  (39)
+	expression : expression . XOR expression  (40)
+	expression : expression . EQUALEQUAL expression  (41)
+	expression : expression . BANGEQUAL expression  (42)
+	expression : expression . INFIXOP1 expression  (43)
+	expression : expression . INFIXOP2 expression  (44)
+	expression : expression . INFIXOP3 expression  (45)
+
+	AMPERAMPER  shift 168
+	BANGEQUAL  shift 169
+	EQUALEQUAL  shift 170
+	INFIXOP1  shift 171
+	INFIXOP2  shift 172
+	INFIXOP3  shift 173
+	RPAREN  shift 214
+	STAR  shift 175
+	XOR  shift 176
+	.  error
+
+
+state 190
+	statement : LBRACE statement_star RBRACE .  (23)
+
+	.  reduce 23
+
+
+state 191
+	expression : LPAREN expression RPAREN .  (36)
+
+	.  reduce 36
+
+
+state 192
+	statement : WHILE LPAREN expression . RPAREN invariant statement  (26)
+	expression : expression . AMPERAMPER expression  (38)
+	expression : expression . STAR expression  (39)
+	expression : expression . XOR expression  (40)
+	expression : expression . EQUALEQUAL expression  (41)
+	expression : expression . BANGEQUAL expression  (42)
+	expression : expression . INFIXOP1 expression  (43)
+	expression : expression . INFIXOP2 expression  (44)
+	expression : expression . INFIXOP3 expression  (45)
+
+	AMPERAMPER  shift 168
+	BANGEQUAL  shift 169
+	EQUALEQUAL  shift 170
+	INFIXOP1  shift 171
+	INFIXOP2  shift 172
+	INFIXOP3  shift 173
+	RPAREN  shift 215
+	STAR  shift 175
+	XOR  shift 176
+	.  error
+
+
+state 193
+	statement : WITH IDENT WHEN . LPAREN expression RPAREN statement  (27)
+
+	LPAREN  shift 216
+	.  error
+
+
+state 194
+	fun_decl : IDENT LPAREN formal_params RPAREN invariant LBRACE local_decls statement_star RBRACE invariant .  (7)
+
+	.  reduce 7
+
+
+state 195
+	expression : expression . AMPERAMPER expression  (38)
+	expression : expression AMPERAMPER expression .  (38)
+	expression : expression . STAR expression  (39)
+	expression : expression . XOR expression  (40)
+	expression : expression . EQUALEQUAL expression  (41)
+	expression : expression . BANGEQUAL expression  (42)
+	expression : expression . INFIXOP1 expression  (43)
+	expression : expression . INFIXOP2 expression  (44)
+	expression : expression . INFIXOP3 expression  (45)
+
+	BANGEQUAL  shift 169
+	EQUALEQUAL  shift 170
+	INFIXOP1  shift 171
+	INFIXOP2  shift 172
+	INFIXOP3  shift 173
+	XOR  shift 176
+	AMPERAMPER  reduce 38
+	COMMA  reduce 38
+	MINUSGREATER  reduce 38
+	RPAREN  reduce 38
+	SEMI  reduce 38
+	STAR  reduce 38
+
+
+state 196
+	expression : expression . AMPERAMPER expression  (38)
+	expression : expression . STAR expression  (39)
+	expression : expression . XOR expression  (40)
+	expression : expression . EQUALEQUAL expression  (41)
+	expression : expression . BANGEQUAL expression  (42)
+	expression : expression BANGEQUAL expression .  (42)
+	expression : expression . INFIXOP1 expression  (43)
+	expression : expression . INFIXOP2 expression  (44)
+	expression : expression . INFIXOP3 expression  (45)
+
+	INFIXOP1  shift 171
+	INFIXOP2  shift 172
+	INFIXOP3  shift 173
+	XOR  shift 176
+	AMPERAMPER  reduce 42
+	BANGEQUAL  reduce 42
+	COMMA  reduce 42
+	EQUALEQUAL  reduce 42
+	MINUSGREATER  reduce 42
+	RPAREN  reduce 42
+	SEMI  reduce 42
+	STAR  reduce 42
+
+
+state 197
+	expression : expression . AMPERAMPER expression  (38)
+	expression : expression . STAR expression  (39)
+	expression : expression . XOR expression  (40)
+	expression : expression . EQUALEQUAL expression  (41)
+	expression : expression EQUALEQUAL expression .  (41)
+	expression : expression . BANGEQUAL expression  (42)
+	expression : expression . INFIXOP1 expression  (43)
+	expression : expression . INFIXOP2 expression  (44)
+	expression : expression . INFIXOP3 expression  (45)
+
+	INFIXOP1  shift 171
+	INFIXOP2  shift 172
+	INFIXOP3  shift 173
+	XOR  shift 176
+	AMPERAMPER  reduce 41
+	BANGEQUAL  reduce 41
+	COMMA  reduce 41
+	EQUALEQUAL  reduce 41
+	MINUSGREATER  reduce 41
+	RPAREN  reduce 41
+	SEMI  reduce 41
+	STAR  reduce 41
+
+
+state 198
+	expression : expression . AMPERAMPER expression  (38)
+	expression : expression . STAR expression  (39)
+	expression : expression . XOR expression  (40)
+	expression : expression . EQUALEQUAL expression  (41)
+	expression : expression . BANGEQUAL expression  (42)
+	expression : expression . INFIXOP1 expression  (43)
+	expression : expression INFIXOP1 expression .  (43)
+	expression : expression . INFIXOP2 expression  (44)
+	expression : expression . INFIXOP3 expression  (45)
+
+	INFIXOP2  shift 172
+	INFIXOP3  shift 173
+	XOR  shift 176
+	AMPERAMPER  reduce 43
+	BANGEQUAL  reduce 43
+	COMMA  reduce 43
+	EQUALEQUAL  reduce 43
+	INFIXOP1  reduce 43
+	MINUSGREATER  reduce 43
+	RPAREN  reduce 43
+	SEMI  reduce 43
+	STAR  reduce 43
+
+
+state 199
+	expression : expression . AMPERAMPER expression  (38)
+	expression : expression . STAR expression  (39)
+	expression : expression . XOR expression  (40)
+	expression : expression . EQUALEQUAL expression  (41)
+	expression : expression . BANGEQUAL expression  (42)
+	expression : expression . INFIXOP1 expression  (43)
+	expression : expression . INFIXOP2 expression  (44)
+	expression : expression INFIXOP2 expression .  (44)
+	expression : expression . INFIXOP3 expression  (45)
+
+	INFIXOP3  shift 173
+	XOR  shift 176
+	AMPERAMPER  reduce 44
+	BANGEQUAL  reduce 44
+	COMMA  reduce 44
+	EQUALEQUAL  reduce 44
+	INFIXOP1  reduce 44
+	INFIXOP2  reduce 44
+	MINUSGREATER  reduce 44
+	RPAREN  reduce 44
+	SEMI  reduce 44
+	STAR  reduce 44
+
+
+state 200
+	expression : expression . AMPERAMPER expression  (38)
+	expression : expression . STAR expression  (39)
+	expression : expression . XOR expression  (40)
+	expression : expression . EQUALEQUAL expression  (41)
+	expression : expression . BANGEQUAL expression  (42)
+	expression : expression . INFIXOP1 expression  (43)
+	expression : expression . INFIXOP2 expression  (44)
+	expression : expression . INFIXOP3 expression  (45)
+	expression : expression INFIXOP3 expression .  (45)
+
+	.  reduce 45
+
+
+state 201
+	statement : expression MINUSGREATER IDENT . EQUAL expression SEMI  (20)
+
+	EQUAL  shift 217
+	.  error
+
+
+state 202
+	expression : expression . AMPERAMPER expression  (38)
+	expression : expression . STAR expression  (39)
+	expression : expression STAR expression .  (39)
+	expression : expression . XOR expression  (40)
+	expression : expression . EQUALEQUAL expression  (41)
+	expression : expression . BANGEQUAL expression  (42)
+	expression : expression . INFIXOP1 expression  (43)
+	expression : expression . INFIXOP2 expression  (44)
+	expression : expression . INFIXOP3 expression  (45)
+
+	BANGEQUAL  shift 169
+	EQUALEQUAL  shift 170
+	INFIXOP1  shift 171
+	INFIXOP2  shift 172
+	INFIXOP3  shift 173
+	XOR  shift 176
+	AMPERAMPER  reduce 39
+	COMMA  reduce 39
+	MINUSGREATER  reduce 39
+	RPAREN  reduce 39
+	SEMI  reduce 39
+	STAR  reduce 39
+
+
+state 203
+	expression : expression . AMPERAMPER expression  (38)
+	expression : expression . STAR expression  (39)
+	expression : expression . XOR expression  (40)
+	expression : expression XOR expression .  (40)
+	expression : expression . EQUALEQUAL expression  (41)
+	expression : expression . BANGEQUAL expression  (42)
+	expression : expression . INFIXOP1 expression  (43)
+	expression : expression . INFIXOP2 expression  (44)
+	expression : expression . INFIXOP3 expression  (45)
+
+	.  reduce 40
+
+
+state 204
+	a_space_pred : DLSEG LPAREN IDENT SEMI IDENT SEMI a_expression COMMA a_expression COMMA . a_expression COMMA a_expression RPAREN  (62)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 218
+
+
+state 205
+	a_space_pred : DLSEG LPAREN a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN .  (63)
+
+	.  reduce 63
+
+
+state 206
+	a_space_pred : XLSEG LPAREN IDENT SEMI IDENT SEMI a_expression COMMA a_expression COMMA . a_expression COMMA a_expression RPAREN  (64)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 219
+
+
+state 207
+	a_space_pred : XLSEG LPAREN a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN .  (65)
+
+	.  reduce 65
+
+
+state 208
+	statement : IDENT EQUAL NEW LPAREN . RPAREN SEMI  (21)
+
+	RPAREN  shift 220
+	.  error
+
+
+state 209
+	statement : IDENT EQUAL expression MINUSGREATER . IDENT SEMI  (19)
+
+	IDENT  shift 221
+	.  error
+
+
+state 210
+	statement : IDENT EQUAL expression SEMI .  (18)
+
+	.  reduce 18
+
+
+state 211
+	expression_notempty_seq : expression COMMA . expression_notempty_seq  (49)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	.  error
+
+	expression  goto 185
+	expression_notempty_seq  goto 222
+
+
+state 212
+	statement : IDENT LPAREN actual_params RPAREN . SEMI  (28)
+	statement : IDENT LPAREN actual_params RPAREN . BARBAR IDENT LPAREN actual_params RPAREN SEMI  (29)
+
+	BARBAR  shift 223
+	SEMI  shift 224
+	.  error
+
+
+state 213
+	actual_params : expression_seq SEMI . expression_seq  (53)
+	expression_seq : .  (46)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	RPAREN  reduce 46
+
+	expression  goto 185
+	expression_seq  goto 225
+	expression_notempty_seq  goto 188
+
+
+state 214
+	statement : IF LPAREN expression RPAREN . statement  (24)
+	statement : IF LPAREN expression RPAREN . statement ELSE statement  (25)
+
+	DISPOSE  shift 134
+	FF  shift 135
+	IDENT  shift 136
+	IF  shift 137
+	INFIXOP2  shift 138
+	LBRACE  shift 139
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	WHILE  shift 143
+	WITH  shift 144
+	.  error
+
+	statement  goto 226
+	expression  goto 147
+
+
+state 215
+	statement : WHILE LPAREN expression RPAREN . invariant statement  (26)
+	invariant : .  (30)
+
+	LBRACKET  shift 93
+	DISPOSE  reduce 30
+	FF  reduce 30
+	IDENT  reduce 30
+	IF  reduce 30
+	INFIXOP2  reduce 30
+	LBRACE  reduce 30
+	LPAREN  reduce 30
+	NAT  reduce 30
+	TT  reduce 30
+	WHILE  reduce 30
+	WITH  reduce 30
+
+	invariant  goto 227
+
+
+state 216
+	statement : WITH IDENT WHEN LPAREN . expression RPAREN statement  (27)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	.  error
+
+	expression  goto 228
+
+
+state 217
+	statement : expression MINUSGREATER IDENT EQUAL . expression SEMI  (20)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	.  error
+
+	expression  goto 229
+
+
+state 218
+	a_space_pred : DLSEG LPAREN IDENT SEMI IDENT SEMI a_expression COMMA a_expression COMMA a_expression . COMMA a_expression RPAREN  (62)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	COMMA  shift 230
+	XOR  shift 48
+	.  error
+
+
+state 219
+	a_space_pred : XLSEG LPAREN IDENT SEMI IDENT SEMI a_expression COMMA a_expression COMMA a_expression . COMMA a_expression RPAREN  (64)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	COMMA  shift 231
+	XOR  shift 48
+	.  error
+
+
+state 220
+	statement : IDENT EQUAL NEW LPAREN RPAREN . SEMI  (21)
+
+	SEMI  shift 232
+	.  error
+
+
+state 221
+	statement : IDENT EQUAL expression MINUSGREATER IDENT . SEMI  (19)
+
+	SEMI  shift 233
+	.  error
+
+
+state 222
+	expression_notempty_seq : expression COMMA expression_notempty_seq .  (49)
+
+	.  reduce 49
+
+
+state 223
+	statement : IDENT LPAREN actual_params RPAREN BARBAR . IDENT LPAREN actual_params RPAREN SEMI  (29)
+
+	IDENT  shift 234
+	.  error
+
+
+state 224
+	statement : IDENT LPAREN actual_params RPAREN SEMI .  (28)
+
+	.  reduce 28
+
+
+state 225
+	actual_params : expression_seq SEMI expression_seq .  (53)
+
+	.  reduce 53
+
+
+state 226
+	statement : IF LPAREN expression RPAREN statement .  (24)
+	statement : IF LPAREN expression RPAREN statement . ELSE statement  (25)
+
+	ELSE  shift 235
+	DISPOSE  reduce 24
+	FF  reduce 24
+	IDENT  reduce 24
+	IF  reduce 24
+	INFIXOP2  reduce 24
+	LBRACE  reduce 24
+	LPAREN  reduce 24
+	NAT  reduce 24
+	RBRACE  reduce 24
+	TT  reduce 24
+	WHILE  reduce 24
+	WITH  reduce 24
+
+
+state 227
+	statement : WHILE LPAREN expression RPAREN invariant . statement  (26)
+
+	DISPOSE  shift 134
+	FF  shift 135
+	IDENT  shift 136
+	IF  shift 137
+	INFIXOP2  shift 138
+	LBRACE  shift 139
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	WHILE  shift 143
+	WITH  shift 144
+	.  error
+
+	statement  goto 236
+	expression  goto 147
+
+
+state 228
+	statement : WITH IDENT WHEN LPAREN expression . RPAREN statement  (27)
+	expression : expression . AMPERAMPER expression  (38)
+	expression : expression . STAR expression  (39)
+	expression : expression . XOR expression  (40)
+	expression : expression . EQUALEQUAL expression  (41)
+	expression : expression . BANGEQUAL expression  (42)
+	expression : expression . INFIXOP1 expression  (43)
+	expression : expression . INFIXOP2 expression  (44)
+	expression : expression . INFIXOP3 expression  (45)
+
+	AMPERAMPER  shift 168
+	BANGEQUAL  shift 169
+	EQUALEQUAL  shift 170
+	INFIXOP1  shift 171
+	INFIXOP2  shift 172
+	INFIXOP3  shift 173
+	RPAREN  shift 237
+	STAR  shift 175
+	XOR  shift 176
+	.  error
+
+
+state 229
+	statement : expression MINUSGREATER IDENT EQUAL expression . SEMI  (20)
+	expression : expression . AMPERAMPER expression  (38)
+	expression : expression . STAR expression  (39)
+	expression : expression . XOR expression  (40)
+	expression : expression . EQUALEQUAL expression  (41)
+	expression : expression . BANGEQUAL expression  (42)
+	expression : expression . INFIXOP1 expression  (43)
+	expression : expression . INFIXOP2 expression  (44)
+	expression : expression . INFIXOP3 expression  (45)
+
+	AMPERAMPER  shift 168
+	BANGEQUAL  shift 169
+	EQUALEQUAL  shift 170
+	INFIXOP1  shift 171
+	INFIXOP2  shift 172
+	INFIXOP3  shift 173
+	SEMI  shift 238
+	STAR  shift 175
+	XOR  shift 176
+	.  error
+
+
+state 230
+	a_space_pred : DLSEG LPAREN IDENT SEMI IDENT SEMI a_expression COMMA a_expression COMMA a_expression COMMA . a_expression RPAREN  (62)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 239
+
+
+state 231
+	a_space_pred : XLSEG LPAREN IDENT SEMI IDENT SEMI a_expression COMMA a_expression COMMA a_expression COMMA . a_expression RPAREN  (64)
+
+	IDENT  shift 17
+	QIDENT  shift 18
+	LPAREN  shift 55
+	NAT  shift 23
+	.  error
+
+	a_expression  goto 240
+
+
+state 232
+	statement : IDENT EQUAL NEW LPAREN RPAREN SEMI .  (21)
+
+	.  reduce 21
+
+
+state 233
+	statement : IDENT EQUAL expression MINUSGREATER IDENT SEMI .  (19)
+
+	.  reduce 19
+
+
+state 234
+	statement : IDENT LPAREN actual_params RPAREN BARBAR IDENT . LPAREN actual_params RPAREN SEMI  (29)
+
+	LPAREN  shift 241
+	.  error
+
+
+state 235
+	statement : IF LPAREN expression RPAREN statement ELSE . statement  (25)
+
+	DISPOSE  shift 134
+	FF  shift 135
+	IDENT  shift 136
+	IF  shift 137
+	INFIXOP2  shift 138
+	LBRACE  shift 139
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	WHILE  shift 143
+	WITH  shift 144
+	.  error
+
+	statement  goto 242
+	expression  goto 147
+
+
+state 236
+	statement : WHILE LPAREN expression RPAREN invariant statement .  (26)
+
+	.  reduce 26
+
+
+state 237
+	statement : WITH IDENT WHEN LPAREN expression RPAREN . statement  (27)
+
+	DISPOSE  shift 134
+	FF  shift 135
+	IDENT  shift 136
+	IF  shift 137
+	INFIXOP2  shift 138
+	LBRACE  shift 139
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	WHILE  shift 143
+	WITH  shift 144
+	.  error
+
+	statement  goto 243
+	expression  goto 147
+
+
+state 238
+	statement : expression MINUSGREATER IDENT EQUAL expression SEMI .  (20)
+
+	.  reduce 20
+
+
+state 239
+	a_space_pred : DLSEG LPAREN IDENT SEMI IDENT SEMI a_expression COMMA a_expression COMMA a_expression COMMA a_expression . RPAREN  (62)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	RPAREN  shift 244
+	XOR  shift 48
+	.  error
+
+
+state 240
+	a_space_pred : XLSEG LPAREN IDENT SEMI IDENT SEMI a_expression COMMA a_expression COMMA a_expression COMMA a_expression . RPAREN  (64)
+	a_expression : a_expression . XOR a_expression  (80)
+
+	RPAREN  shift 245
+	XOR  shift 48
+	.  error
+
+
+state 241
+	statement : IDENT LPAREN actual_params RPAREN BARBAR IDENT LPAREN . actual_params RPAREN SEMI  (29)
+	expression_seq : .  (46)
+
+	FF  shift 135
+	IDENT  shift 156
+	INFIXOP2  shift 138
+	LPAREN  shift 140
+	NAT  shift 141
+	TT  shift 142
+	RPAREN  reduce 46
+	SEMI  reduce 46
+
+	expression  goto 185
+	actual_params  goto 246
+	expression_seq  goto 187
+	expression_notempty_seq  goto 188
+
+
+state 242
+	statement : IF LPAREN expression RPAREN statement ELSE statement .  (25)
+
+	.  reduce 25
+
+
+state 243
+	statement : WITH IDENT WHEN LPAREN expression RPAREN statement .  (27)
+
+	.  reduce 27
+
+
+state 244
+	a_space_pred : DLSEG LPAREN IDENT SEMI IDENT SEMI a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN .  (62)
+
+	.  reduce 62
+
+
+state 245
+	a_space_pred : XLSEG LPAREN IDENT SEMI IDENT SEMI a_expression COMMA a_expression COMMA a_expression COMMA a_expression RPAREN .  (64)
+
+	.  reduce 64
+
+
+state 246
+	statement : IDENT LPAREN actual_params RPAREN BARBAR IDENT LPAREN actual_params . RPAREN SEMI  (29)
+
+	RPAREN  shift 247
+	.  error
+
+
+state 247
+	statement : IDENT LPAREN actual_params RPAREN BARBAR IDENT LPAREN actual_params RPAREN . SEMI  (29)
+
+	SEMI  shift 248
+	.  error
+
+
+state 248
+	statement : IDENT LPAREN actual_params RPAREN BARBAR IDENT LPAREN actual_params RPAREN SEMI .  (29)
+
+	.  reduce 29
+
+
+49 terminals, 24 nonterminals
+86 grammar rules, 249 states

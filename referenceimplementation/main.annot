@@ -1,0 +1,278 @@
+"main.ml" 1 0 4 "main.ml" 1 0 5
+type(
+  unit
+)
+"main.ml" 2 8 14 "main.ml" 2 8 27
+type(
+  string -> unit
+)
+ident(
+  def anon_arg_func "main.ml" 13 352 356 "main.ml" 13 352 412
+)
+"main.ml" 2 8 28 "main.ml" 2 8 33
+type(
+  string
+)
+ident(
+  def fname "main.ml" 3 36 40 "main.ml" 12 339 348
+)
+"main.ml" 3 36 44 "main.ml" 3 36 47
+type(
+  Format.formatter
+)
+ident(
+  def fmt "main.ml" 4 71 75 "main.ml" 12 339 348
+)
+"main.ml" 3 36 50 "main.ml" 3 36 51
+type(
+  Format.formatter ref -> Format.formatter
+)
+ident(
+  int_ref Stdlib.( ! ) "stdlib.mli" 1165 44545 44545 "stdlib.mli" 1165 44545 44586
+)
+"main.ml" 3 36 51 "main.ml" 3 36 67
+type(
+  Format.formatter ref
+)
+ident(
+  int_ref Config.formatter "config.ml" 1 0 4 "config.ml" 1 0 13
+)
+"main.ml" 3 36 50 "main.ml" 3 36 67
+type(
+  Format.formatter
+)
+"main.ml" 4 71 79 "main.ml" 4 71 83
+type(
+  int
+)
+ident(
+  def cols "main.ml" 5 105 111 "main.ml" 12 339 348
+)
+"main.ml" 4 71 86 "main.ml" 4 71 87
+type(
+  int ref -> int
+)
+ident(
+  int_ref Stdlib.( ! ) "stdlib.mli" 1165 44545 44545 "stdlib.mli" 1165 44545 44586
+)
+"main.ml" 4 71 87 "main.ml" 4 71 101
+type(
+  int ref
+)
+ident(
+  int_ref Config.columns "config.ml" 2 41 45 "config.ml" 2 41 52
+)
+"main.ml" 4 71 86 "main.ml" 4 71 101
+type(
+  int
+)
+"main.ml" 6 117 118 "main.ml" 6 117 138
+type(
+  Format.formatter -> int -> unit
+)
+ident(
+  int_ref Stdlib.Format.pp_set_margin "format.mli" 396 15431 15431 "format.mli" 396 15431 15475
+)
+"main.ml" 6 117 139 "main.ml" 6 117 142
+type(
+  Format.formatter
+)
+ident(
+  int_ref fmt "main.ml" 3 36 44 "main.ml" 3 36 47
+)
+"main.ml" 6 117 143 "main.ml" 6 117 147
+type(
+  int
+)
+ident(
+  int_ref cols "main.ml" 4 71 79 "main.ml" 4 71 83
+)
+"main.ml" 6 117 118 "main.ml" 6 117 147
+type(
+  unit
+)
+"main.ml" 7 149 150 "main.ml" 7 149 173
+type(
+  Format.formatter -> int -> unit
+)
+ident(
+  int_ref Stdlib.Format.pp_set_max_boxes "format.mli" 509 19364 19364 "format.mli" 509 19364 19411
+)
+"main.ml" 7 149 174 "main.ml" 7 149 177
+type(
+  Format.formatter
+)
+ident(
+  int_ref fmt "main.ml" 3 36 44 "main.ml" 3 36 47
+)
+"main.ml" 7 149 178 "main.ml" 7 149 185
+type(
+  int
+)
+ident(
+  int_ref Stdlib.max_int "stdlib.mli" 381 14946 14946 "stdlib.mli" 381 14946 14963
+)
+"main.ml" 7 149 150 "main.ml" 7 149 185
+type(
+  unit
+)
+"main.ml" 8 187 191 "main.ml" 8 187 192
+type(
+  bool ref -> bool
+)
+ident(
+  int_ref Stdlib.( ! ) "stdlib.mli" 1165 44545 44545 "stdlib.mli" 1165 44545 44586
+)
+"main.ml" 8 187 192 "main.ml" 8 187 207
+type(
+  bool ref
+)
+ident(
+  int_ref Config.verbose1 "config.ml" 8 116 120 "config.ml" 8 116 128
+)
+"main.ml" 8 187 191 "main.ml" 8 187 207
+type(
+  bool
+)
+"main.ml" 9 208 214 "main.ml" 9 208 228
+type(
+  Format.formatter ->
+  (string -> unit, Format.formatter, unit) format -> string -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"main.ml" 9 208 229 "main.ml" 9 208 232
+type(
+  Format.formatter
+)
+ident(
+  int_ref fmt "main.ml" 3 36 44 "main.ml" 3 36 47
+)
+"main.ml" 9 208 233 "main.ml" 9 208 246
+type(
+  (string -> unit, Format.formatter, unit) format
+)
+"main.ml" 9 208 247 "main.ml" 9 208 252
+type(
+  string
+)
+ident(
+  int_ref fname "main.ml" 2 8 28 "main.ml" 2 8 33
+)
+"main.ml" 9 208 214 "main.ml" 9 208 252
+type(
+  unit
+)
+"main.ml" 8 187 188 "main.ml" 9 208 252
+type(
+  unit
+)
+"main.ml" 10 254 255 "main.ml" 10 254 279
+type(
+  string -> unit
+)
+ident(
+  int_ref Toplevel.verify_wp_fname "toplevel.ml" 29 763 767 "toplevel.ml" 29 763 782
+)
+"main.ml" 10 254 280 "main.ml" 10 254 285
+type(
+  string
+)
+ident(
+  int_ref fname "main.ml" 2 8 28 "main.ml" 2 8 33
+)
+"main.ml" 10 254 255 "main.ml" 10 254 285
+type(
+  unit
+)
+"main.ml" 11 287 291 "main.ml" 11 287 312
+type(
+  bool
+)
+ident(
+  int_ref Config.print_gc_stats "config.ml" 4 63 67 "config.ml" 4 63 81
+)
+"main.ml" 11 287 318 "main.ml" 11 287 331
+type(
+  out_channel -> unit
+)
+ident(
+  int_ref Stdlib.Gc.print_stat "gc.mli" 290 12818 12818 "gc.mli" 290 12818 12854
+)
+"main.ml" 11 287 332 "main.ml" 11 287 338
+type(
+  out_channel
+)
+ident(
+  int_ref Stdlib.stdout "stdlib.mli" 803 29930 29930 "stdlib.mli" 803 29930 29954
+)
+"main.ml" 11 287 318 "main.ml" 11 287 338
+type(
+  unit
+)
+"main.ml" 11 287 288 "main.ml" 11 287 338
+type(
+  unit
+)
+"main.ml" 10 254 255 "main.ml" 11 287 338
+type(
+  unit
+)
+"main.ml" 8 187 188 "main.ml" 11 287 338
+type(
+  unit
+)
+"main.ml" 7 149 150 "main.ml" 11 287 338
+type(
+  unit
+)
+"main.ml" 5 105 111 "main.ml" 12 339 348
+type(
+  unit
+)
+"main.ml" 4 71 75 "main.ml" 12 339 348
+type(
+  unit
+)
+"main.ml" 3 36 40 "main.ml" 12 339 348
+type(
+  unit
+)
+"main.ml" 13 352 356 "main.ml" 13 352 365
+type(
+  (Arg.key * Arg.spec * Arg.doc) list ->
+  Arg.anon_fun -> Arg.usage_msg -> unit
+)
+ident(
+  int_ref Stdlib.Arg.parse "arg.mli" 77 4335 4335 "arg.mli" 78 4347 4405
+)
+"main.ml" 13 352 366 "main.ml" 13 352 381
+type(
+  (Arg.key * Arg.spec * Arg.doc) list
+)
+ident(
+  int_ref Config.speclist "config.ml" 23 498 502 "config.ml" 23 498 510
+)
+"main.ml" 13 352 382 "main.ml" 13 352 395
+type(
+  Arg.anon_fun
+)
+ident(
+  int_ref anon_arg_func "main.ml" 2 8 14 "main.ml" 2 8 27
+)
+"main.ml" 13 352 396 "main.ml" 13 352 412
+type(
+  Arg.usage_msg
+)
+ident(
+  int_ref Config.usage_msg "config.ml" 39 1451 1455 "config.ml" 39 1451 1464
+)
+"main.ml" 13 352 356 "main.ml" 13 352 412
+type(
+  unit
+)
+"main.ml" 2 8 10 "main.ml" 13 352 412
+type(
+  unit
+)

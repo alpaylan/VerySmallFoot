@@ -1,0 +1,1806 @@
+"inductive_preds.ml" 11 212 216 "inductive_preds.ml" 11 212 225
+type(
+  Format.formatter -> string -> unit
+)
+ident(
+  def pp_string "inductive_preds.ml" 13 250 250 "inductive_preds.ml" 0 0 -1
+)
+"inductive_preds.ml" 11 212 226 "inductive_preds.ml" 11 212 227
+type(
+  Format.formatter
+)
+ident(
+  def f "inductive_preds.ml" 11 212 228 "inductive_preds.ml" 11 212 248
+)
+"inductive_preds.ml" 11 212 228 "inductive_preds.ml" 11 212 229
+type(
+  string
+)
+ident(
+  def s "inductive_preds.ml" 11 212 232 "inductive_preds.ml" 11 212 248
+)
+"inductive_preds.ml" 11 212 232 "inductive_preds.ml" 11 212 239
+type(
+  Format.formatter ->
+  (string -> unit, Format.formatter, unit) format -> string -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"inductive_preds.ml" 11 212 240 "inductive_preds.ml" 11 212 241
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "inductive_preds.ml" 11 212 226 "inductive_preds.ml" 11 212 227
+)
+"inductive_preds.ml" 11 212 242 "inductive_preds.ml" 11 212 246
+type(
+  (string -> unit, Format.formatter, unit) format
+)
+"inductive_preds.ml" 11 212 247 "inductive_preds.ml" 11 212 248
+type(
+  string
+)
+ident(
+  int_ref s "inductive_preds.ml" 11 212 228 "inductive_preds.ml" 11 212 229
+)
+"inductive_preds.ml" 11 212 232 "inductive_preds.ml" 11 212 248
+type(
+  unit
+)
+"inductive_preds.ml" 13 250 258 "inductive_preds.ml" 13 250 268
+type(
+  (Format.formatter -> 'a -> unit) ->
+  string -> string -> Format.formatter -> 'a list -> unit
+)
+ident(
+  def pp_listsep "inductive_preds.ml" 13 250 250 "inductive_preds.ml" 0 0 -1
+)
+"inductive_preds.ml" 13 250 269 "inductive_preds.ml" 13 250 271
+type(
+  Format.formatter -> 'a -> unit
+)
+ident(
+  def pp "inductive_preds.ml" 13 250 272 "inductive_preds.ml" 16 350 413
+)
+"inductive_preds.ml" 13 250 272 "inductive_preds.ml" 13 250 274
+type(
+  string
+)
+ident(
+  def s1 "inductive_preds.ml" 13 250 275 "inductive_preds.ml" 16 350 413
+)
+"inductive_preds.ml" 13 250 275 "inductive_preds.ml" 13 250 277
+type(
+  string
+)
+ident(
+  def s2 "inductive_preds.ml" 13 250 278 "inductive_preds.ml" 16 350 413
+)
+"inductive_preds.ml" 13 250 278 "inductive_preds.ml" 13 250 279
+type(
+  Format.formatter
+)
+ident(
+  def f "inductive_preds.ml" 13 250 282 "inductive_preds.ml" 16 350 413
+)
+"inductive_preds.ml" 14 291 295 "inductive_preds.ml" 14 291 297
+type(
+  'a list
+)
+"inductive_preds.ml" 14 291 301 "inductive_preds.ml" 14 291 308
+type(
+  Format.formatter ->
+  (string -> unit, Format.formatter, unit) format -> string -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"inductive_preds.ml" 14 291 309 "inductive_preds.ml" 14 291 310
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "inductive_preds.ml" 13 250 278 "inductive_preds.ml" 13 250 279
+)
+"inductive_preds.ml" 14 291 311 "inductive_preds.ml" 14 291 315
+type(
+  (string -> unit, Format.formatter, unit) format
+)
+"inductive_preds.ml" 14 291 316 "inductive_preds.ml" 14 291 318
+type(
+  string
+)
+ident(
+  int_ref s2 "inductive_preds.ml" 13 250 275 "inductive_preds.ml" 13 250 277
+)
+"inductive_preds.ml" 14 291 301 "inductive_preds.ml" 14 291 318
+type(
+  unit
+)
+"inductive_preds.ml" 15 319 324 "inductive_preds.ml" 15 319 325
+type(
+  'a
+)
+ident(
+  def x "inductive_preds.ml" 15 319 330 "inductive_preds.ml" 15 319 349
+)
+"inductive_preds.ml" 15 319 323 "inductive_preds.ml" 15 319 326
+type(
+  'a list
+)
+"inductive_preds.ml" 15 319 330 "inductive_preds.ml" 15 319 337
+type(
+  Format.formatter ->
+  ((Format.formatter -> 'a -> unit) -> 'a -> unit, Format.formatter, unit)
+  format -> (Format.formatter -> 'a -> unit) -> 'a -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"inductive_preds.ml" 15 319 338 "inductive_preds.ml" 15 319 339
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "inductive_preds.ml" 13 250 278 "inductive_preds.ml" 13 250 279
+)
+"inductive_preds.ml" 15 319 340 "inductive_preds.ml" 15 319 344
+type(
+  ((Format.formatter -> 'a -> unit) -> 'a -> unit, Format.formatter, unit)
+  format
+)
+"inductive_preds.ml" 15 319 345 "inductive_preds.ml" 15 319 347
+type(
+  Format.formatter -> 'a -> unit
+)
+ident(
+  int_ref pp "inductive_preds.ml" 13 250 269 "inductive_preds.ml" 13 250 271
+)
+"inductive_preds.ml" 15 319 348 "inductive_preds.ml" 15 319 349
+type(
+  'a
+)
+ident(
+  int_ref x "inductive_preds.ml" 15 319 324 "inductive_preds.ml" 15 319 325
+)
+"inductive_preds.ml" 15 319 330 "inductive_preds.ml" 15 319 349
+type(
+  unit
+)
+"inductive_preds.ml" 16 350 354 "inductive_preds.ml" 16 350 355
+type(
+  'a
+)
+ident(
+  def x "inductive_preds.ml" 16 350 362 "inductive_preds.ml" 16 350 413
+)
+"inductive_preds.ml" 16 350 357 "inductive_preds.ml" 16 350 358
+type(
+  'a list
+)
+ident(
+  def l "inductive_preds.ml" 16 350 362 "inductive_preds.ml" 16 350 413
+)
+"inductive_preds.ml" 16 350 354 "inductive_preds.ml" 16 350 358
+type(
+  'a list
+)
+"inductive_preds.ml" 16 350 362 "inductive_preds.ml" 16 350 369
+type(
+  Format.formatter ->
+  ((Format.formatter -> 'a -> unit) ->
+   'a -> string -> (Format.formatter -> 'a list -> unit) -> 'a list -> unit,
+   Format.formatter, unit)
+  format ->
+  (Format.formatter -> 'a -> unit) ->
+  'a -> string -> (Format.formatter -> 'a list -> unit) -> 'a list -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"inductive_preds.ml" 16 350 370 "inductive_preds.ml" 16 350 371
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "inductive_preds.ml" 13 250 278 "inductive_preds.ml" 13 250 279
+)
+"inductive_preds.ml" 16 350 372 "inductive_preds.ml" 16 350 381
+type(
+  ((Format.formatter -> 'a -> unit) ->
+   'a -> string -> (Format.formatter -> 'a list -> unit) -> 'a list -> unit,
+   Format.formatter, unit)
+  format
+)
+"inductive_preds.ml" 16 350 382 "inductive_preds.ml" 16 350 384
+type(
+  Format.formatter -> 'a -> unit
+)
+ident(
+  int_ref pp "inductive_preds.ml" 13 250 269 "inductive_preds.ml" 13 250 271
+)
+"inductive_preds.ml" 16 350 385 "inductive_preds.ml" 16 350 386
+type(
+  'a
+)
+ident(
+  int_ref x "inductive_preds.ml" 16 350 354 "inductive_preds.ml" 16 350 355
+)
+"inductive_preds.ml" 16 350 387 "inductive_preds.ml" 16 350 389
+type(
+  string
+)
+ident(
+  int_ref s1 "inductive_preds.ml" 13 250 272 "inductive_preds.ml" 13 250 274
+)
+"inductive_preds.ml" 16 350 391 "inductive_preds.ml" 16 350 401
+type(
+  (Format.formatter -> 'a -> unit) ->
+  string -> string -> Format.formatter -> 'a list -> unit
+)
+ident(
+  int_ref pp_listsep "inductive_preds.ml" 13 250 258 "inductive_preds.ml" 13 250 268
+)
+"inductive_preds.ml" 16 350 402 "inductive_preds.ml" 16 350 404
+type(
+  Format.formatter -> 'a -> unit
+)
+ident(
+  int_ref pp "inductive_preds.ml" 13 250 269 "inductive_preds.ml" 13 250 271
+)
+"inductive_preds.ml" 16 350 405 "inductive_preds.ml" 16 350 407
+type(
+  string
+)
+ident(
+  int_ref s1 "inductive_preds.ml" 13 250 272 "inductive_preds.ml" 13 250 274
+)
+"inductive_preds.ml" 16 350 408 "inductive_preds.ml" 16 350 410
+type(
+  string
+)
+ident(
+  int_ref s2 "inductive_preds.ml" 13 250 275 "inductive_preds.ml" 13 250 277
+)
+"inductive_preds.ml" 16 350 390 "inductive_preds.ml" 16 350 411
+type(
+  Format.formatter -> 'a list -> unit
+)
+"inductive_preds.ml" 16 350 412 "inductive_preds.ml" 16 350 413
+type(
+  'a list
+)
+ident(
+  int_ref l "inductive_preds.ml" 16 350 357 "inductive_preds.ml" 16 350 358
+)
+"inductive_preds.ml" 16 350 362 "inductive_preds.ml" 16 350 413
+type(
+  unit
+)
+"inductive_preds.ml" 13 250 282 "inductive_preds.ml" 16 350 413
+type(
+  'a list -> unit
+)
+"inductive_preds.ml" 18 415 419 "inductive_preds.ml" 18 415 428
+type(
+  Format.formatter -> string list -> unit
+)
+ident(
+  def pp_idlist "inductive_preds.ml" 20 460 460 "inductive_preds.ml" 0 0 -1
+)
+"inductive_preds.ml" 18 415 431 "inductive_preds.ml" 18 415 441
+type(
+  (Format.formatter -> string -> unit) ->
+  string -> string -> Format.formatter -> string list -> unit
+)
+ident(
+  int_ref pp_listsep "inductive_preds.ml" 13 250 258 "inductive_preds.ml" 13 250 268
+)
+"inductive_preds.ml" 18 415 442 "inductive_preds.ml" 18 415 451
+type(
+  Format.formatter -> string -> unit
+)
+ident(
+  int_ref pp_string "inductive_preds.ml" 11 212 216 "inductive_preds.ml" 11 212 225
+)
+"inductive_preds.ml" 18 415 452 "inductive_preds.ml" 18 415 454
+type(
+  string
+)
+"inductive_preds.ml" 18 415 455 "inductive_preds.ml" 18 415 458
+type(
+  string
+)
+"inductive_preds.ml" 18 415 431 "inductive_preds.ml" 18 415 458
+type(
+  Format.formatter -> string list -> unit
+)
+"inductive_preds.ml" 20 460 464 "inductive_preds.ml" 20 460 481
+type(
+  Format.formatter -> ip_description -> unit
+)
+ident(
+  def pp_ip_description "inductive_preds.ml" 27 856 856 "inductive_preds.ml" 0 0 -1
+)
+"inductive_preds.ml" 20 460 482 "inductive_preds.ml" 20 460 483
+type(
+  Format.formatter
+)
+ident(
+  def f "inductive_preds.ml" 20 460 486 "inductive_preds.ml" 24 713 805
+)
+"inductive_preds.ml" 21 495 503 "inductive_preds.ml" 21 495 504
+type(
+  string
+)
+ident(
+  def p "inductive_preds.ml" 22 560 566 "inductive_preds.ml" 24 713 805
+)
+"inductive_preds.ml" 21 495 513 "inductive_preds.ml" 21 495 515
+type(
+  Misc.ident list
+)
+ident(
+  def ia "inductive_preds.ml" 22 560 566 "inductive_preds.ml" 24 713 805
+)
+"inductive_preds.ml" 21 495 525 "inductive_preds.ml" 21 495 527
+type(
+  string list
+)
+ident(
+  def ca "inductive_preds.ml" 22 560 566 "inductive_preds.ml" 24 713 805
+)
+"inductive_preds.ml" 21 495 535 "inductive_preds.ml" 21 495 536
+type(
+  Symbtree.can_atom
+)
+ident(
+  def g "inductive_preds.ml" 22 560 566 "inductive_preds.ml" 24 713 805
+)
+"inductive_preds.ml" 21 495 545 "inductive_preds.ml" 21 495 547
+type(
+  Misc.ident list
+)
+ident(
+  def ni "inductive_preds.ml" 22 560 566 "inductive_preds.ml" 24 713 805
+)
+"inductive_preds.ml" 21 495 554 "inductive_preds.ml" 21 495 555
+type(
+  Symbtree.can_spred list
+)
+ident(
+  def b "inductive_preds.ml" 22 560 566 "inductive_preds.ml" 24 713 805
+)
+"inductive_preds.ml" 21 495 499 "inductive_preds.ml" 21 495 556
+type(
+  ip_description
+)
+"inductive_preds.ml" 22 560 566 "inductive_preds.ml" 22 560 573
+type(
+  Format.formatter ->
+  (string ->
+   (Format.formatter -> string list -> unit) ->
+   string list ->
+   (Format.formatter -> string list -> unit) -> string list -> unit,
+   Format.formatter, unit)
+  format ->
+  string ->
+  (Format.formatter -> string list -> unit) ->
+  string list ->
+  (Format.formatter -> string list -> unit) -> string list -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"inductive_preds.ml" 22 560 574 "inductive_preds.ml" 22 560 575
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "inductive_preds.ml" 20 460 482 "inductive_preds.ml" 20 460 483
+)
+"inductive_preds.ml" 22 560 576 "inductive_preds.ml" 22 560 590
+type(
+  (string ->
+   (Format.formatter -> string list -> unit) ->
+   string list ->
+   (Format.formatter -> string list -> unit) -> string list -> unit,
+   Format.formatter, unit)
+  format
+)
+"inductive_preds.ml" 22 560 591 "inductive_preds.ml" 22 560 592
+type(
+  string
+)
+ident(
+  int_ref p "inductive_preds.ml" 21 495 503 "inductive_preds.ml" 21 495 504
+)
+"inductive_preds.ml" 22 560 593 "inductive_preds.ml" 22 560 602
+type(
+  Format.formatter -> string list -> unit
+)
+ident(
+  int_ref pp_idlist "inductive_preds.ml" 18 415 419 "inductive_preds.ml" 18 415 428
+)
+"inductive_preds.ml" 22 560 604 "inductive_preds.ml" 22 560 612
+type(
+  (Misc.ident -> string) -> Misc.ident list -> string list
+)
+ident(
+  int_ref Stdlib.List.map "list.mli" 120 4625 4625 "list.mli" 120 4625 4667
+)
+"inductive_preds.ml" 22 560 613 "inductive_preds.ml" 22 560 628
+type(
+  Misc.ident -> string
+)
+ident(
+  int_ref Misc.string_of_ident "misc.mli" 20 623 623 "misc.mli" 20 623 660
+)
+"inductive_preds.ml" 22 560 629 "inductive_preds.ml" 22 560 631
+type(
+  Misc.ident list
+)
+ident(
+  int_ref ia "inductive_preds.ml" 21 495 513 "inductive_preds.ml" 21 495 515
+)
+"inductive_preds.ml" 22 560 603 "inductive_preds.ml" 22 560 632
+type(
+  string list
+)
+"inductive_preds.ml" 22 560 633 "inductive_preds.ml" 22 560 642
+type(
+  Format.formatter -> string list -> unit
+)
+ident(
+  int_ref pp_idlist "inductive_preds.ml" 18 415 419 "inductive_preds.ml" 18 415 428
+)
+"inductive_preds.ml" 22 560 643 "inductive_preds.ml" 22 560 645
+type(
+  string list
+)
+ident(
+  int_ref ca "inductive_preds.ml" 21 495 525 "inductive_preds.ml" 21 495 527
+)
+"inductive_preds.ml" 22 560 566 "inductive_preds.ml" 22 560 645
+type(
+  unit
+)
+"inductive_preds.ml" 23 647 653 "inductive_preds.ml" 23 647 660
+type(
+  Format.formatter ->
+  ((Format.formatter -> Symbtree.can_atom -> unit) ->
+   Symbtree.can_atom ->
+   (Format.formatter -> string list -> unit) ->
+   string list ->
+   (Format.formatter -> Symbtree.can_spred list -> unit) ->
+   Symbtree.can_spred list -> unit, Format.formatter, unit)
+  format ->
+  (Format.formatter -> Symbtree.can_atom -> unit) ->
+  Symbtree.can_atom ->
+  (Format.formatter -> string list -> unit) ->
+  string list ->
+  (Format.formatter -> Symbtree.can_spred list -> unit) ->
+  Symbtree.can_spred list -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"inductive_preds.ml" 23 647 661 "inductive_preds.ml" 23 647 662
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "inductive_preds.ml" 20 460 482 "inductive_preds.ml" 20 460 483
+)
+"inductive_preds.ml" 23 647 663 "inductive_preds.ml" 23 647 712
+type(
+  ((Format.formatter -> Symbtree.can_atom -> unit) ->
+   Symbtree.can_atom ->
+   (Format.formatter -> string list -> unit) ->
+   string list ->
+   (Format.formatter -> Symbtree.can_spred list -> unit) ->
+   Symbtree.can_spred list -> unit, Format.formatter, unit)
+  format
+)
+"inductive_preds.ml" 24 713 714 "inductive_preds.ml" 24 713 725
+type(
+  Format.formatter -> Symbtree.can_atom -> unit
+)
+ident(
+  int_ref Symbtree.pp_can_atom "symbtree.mli" 126 4095 4095 "symbtree.mli" 126 4095 4149
+)
+"inductive_preds.ml" 24 713 726 "inductive_preds.ml" 24 713 727
+type(
+  Symbtree.can_atom
+)
+ident(
+  int_ref g "inductive_preds.ml" 21 495 535 "inductive_preds.ml" 21 495 536
+)
+"inductive_preds.ml" 24 713 728 "inductive_preds.ml" 24 713 737
+type(
+  Format.formatter -> string list -> unit
+)
+ident(
+  int_ref pp_idlist "inductive_preds.ml" 18 415 419 "inductive_preds.ml" 18 415 428
+)
+"inductive_preds.ml" 24 713 739 "inductive_preds.ml" 24 713 747
+type(
+  (Misc.ident -> string) -> Misc.ident list -> string list
+)
+ident(
+  int_ref Stdlib.List.map "list.mli" 120 4625 4625 "list.mli" 120 4625 4667
+)
+"inductive_preds.ml" 24 713 748 "inductive_preds.ml" 24 713 763
+type(
+  Misc.ident -> string
+)
+ident(
+  int_ref Misc.string_of_ident "misc.mli" 20 623 623 "misc.mli" 20 623 660
+)
+"inductive_preds.ml" 24 713 764 "inductive_preds.ml" 24 713 766
+type(
+  Misc.ident list
+)
+ident(
+  int_ref ni "inductive_preds.ml" 21 495 545 "inductive_preds.ml" 21 495 547
+)
+"inductive_preds.ml" 24 713 738 "inductive_preds.ml" 24 713 767
+type(
+  string list
+)
+"inductive_preds.ml" 24 713 769 "inductive_preds.ml" 24 713 779
+type(
+  (Format.formatter -> Symbtree.can_spred -> unit) ->
+  string -> string -> Format.formatter -> Symbtree.can_spred list -> unit
+)
+ident(
+  int_ref pp_listsep "inductive_preds.ml" 13 250 258 "inductive_preds.ml" 13 250 268
+)
+"inductive_preds.ml" 24 713 780 "inductive_preds.ml" 24 713 792
+type(
+  Format.formatter -> Symbtree.can_spred -> unit
+)
+ident(
+  int_ref Symbtree.pp_can_spred "symbtree.mli" 127 4150 4150 "symbtree.mli" 127 4150 4206
+)
+"inductive_preds.ml" 24 713 793 "inductive_preds.ml" 24 713 798
+type(
+  string
+)
+"inductive_preds.ml" 24 713 799 "inductive_preds.ml" 24 713 802
+type(
+  string
+)
+"inductive_preds.ml" 24 713 768 "inductive_preds.ml" 24 713 803
+type(
+  Format.formatter -> Symbtree.can_spred list -> unit
+)
+"inductive_preds.ml" 24 713 804 "inductive_preds.ml" 24 713 805
+type(
+  Symbtree.can_spred list
+)
+ident(
+  int_ref b "inductive_preds.ml" 21 495 554 "inductive_preds.ml" 21 495 555
+)
+"inductive_preds.ml" 23 647 653 "inductive_preds.ml" 24 713 805
+type(
+  unit
+)
+"inductive_preds.ml" 22 560 566 "inductive_preds.ml" 24 713 805
+type(
+  unit
+)
+"inductive_preds.ml" 20 460 486 "inductive_preds.ml" 24 713 805
+type(
+  ip_description -> unit
+)
+"inductive_preds.ml" 27 856 860 "inductive_preds.ml" 27 856 866
+type(
+  ip_description list ref
+)
+ident(
+  def ip_env "inductive_preds.ml" 29 901 901 "inductive_preds.ml" 0 0 -1
+)
+"inductive_preds.ml" 27 856 869 "inductive_preds.ml" 27 856 872
+type(
+  ip_description list -> ip_description list ref
+)
+ident(
+  int_ref Stdlib.ref "stdlib.mli" 1162 44439 44439 "stdlib.mli" 1162 44439 44483
+)
+"inductive_preds.ml" 27 856 874 "inductive_preds.ml" 27 856 876
+type(
+  ip_description list
+)
+type(
+  ip_description list
+)
+"inductive_preds.ml" 27 856 869 "inductive_preds.ml" 27 856 899
+type(
+  ip_description list ref
+)
+"inductive_preds.ml" 29 901 905 "inductive_preds.ml" 29 901 922
+type(
+  Format.formatter -> unit
+)
+ident(
+  def pp_ip_environment "inductive_preds.ml" 32 1013 1013 "inductive_preds.ml" 0 0 -1
+)
+"inductive_preds.ml" 29 901 923 "inductive_preds.ml" 29 901 924
+type(
+  Format.formatter
+)
+ident(
+  def f "inductive_preds.ml" 30 927 929 "inductive_preds.ml" 30 927 1011
+)
+"inductive_preds.ml" 30 927 929 "inductive_preds.ml" 30 927 938
+type(
+  (ip_description -> unit) -> ip_description list -> unit
+)
+ident(
+  int_ref Stdlib.List.iter "list.mli" 108 4194 4194 "list.mli" 108 4194 4236
+)
+"inductive_preds.ml" 30 927 944 "inductive_preds.ml" 30 927 946
+type(
+  ip_description
+)
+ident(
+  def ip "inductive_preds.ml" 30 927 950 "inductive_preds.ml" 30 927 1002
+)
+"inductive_preds.ml" 30 927 950 "inductive_preds.ml" 30 927 967
+type(
+  Format.formatter -> ip_description -> unit
+)
+ident(
+  int_ref pp_ip_description "inductive_preds.ml" 20 460 464 "inductive_preds.ml" 20 460 481
+)
+"inductive_preds.ml" 30 927 968 "inductive_preds.ml" 30 927 969
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "inductive_preds.ml" 29 901 923 "inductive_preds.ml" 29 901 924
+)
+"inductive_preds.ml" 30 927 970 "inductive_preds.ml" 30 927 972
+type(
+  ip_description
+)
+ident(
+  int_ref ip "inductive_preds.ml" 30 927 944 "inductive_preds.ml" 30 927 946
+)
+"inductive_preds.ml" 30 927 950 "inductive_preds.ml" 30 927 972
+type(
+  unit
+)
+"inductive_preds.ml" 30 927 974 "inductive_preds.ml" 30 927 997
+type(
+  Format.formatter -> unit -> unit
+)
+ident(
+  int_ref Stdlib.Format.pp_print_newline "format.mli" 380 14923 14923 "format.mli" 380 14923 14971
+)
+"inductive_preds.ml" 30 927 998 "inductive_preds.ml" 30 927 999
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "inductive_preds.ml" 29 901 923 "inductive_preds.ml" 29 901 924
+)
+"inductive_preds.ml" 30 927 1000 "inductive_preds.ml" 30 927 1002
+type(
+  unit
+)
+"inductive_preds.ml" 30 927 974 "inductive_preds.ml" 30 927 1002
+type(
+  unit
+)
+"inductive_preds.ml" 30 927 950 "inductive_preds.ml" 30 927 1002
+type(
+  unit
+)
+"inductive_preds.ml" 30 927 939 "inductive_preds.ml" 30 927 1003
+type(
+  ip_description -> unit
+)
+"inductive_preds.ml" 30 927 1004 "inductive_preds.ml" 30 927 1005
+type(
+  ip_description list ref -> ip_description list
+)
+ident(
+  int_ref Stdlib.( ! ) "stdlib.mli" 1165 44545 44545 "stdlib.mli" 1165 44545 44586
+)
+"inductive_preds.ml" 30 927 1005 "inductive_preds.ml" 30 927 1011
+type(
+  ip_description list ref
+)
+ident(
+  int_ref ip_env "inductive_preds.ml" 27 856 860 "inductive_preds.ml" 27 856 866
+)
+"inductive_preds.ml" 30 927 1004 "inductive_preds.ml" 30 927 1011
+type(
+  ip_description list
+)
+"inductive_preds.ml" 30 927 929 "inductive_preds.ml" 30 927 1011
+type(
+  unit
+)
+"inductive_preds.ml" 32 1013 1017 "inductive_preds.ml" 32 1013 1035
+type(
+  ip_description -> unit
+)
+ident(
+  def add_ip_description "inductive_preds.ml" 34 1066 1066 "inductive_preds.ml" 0 0 -1
+)
+"inductive_preds.ml" 32 1013 1036 "inductive_preds.ml" 32 1013 1038
+type(
+  ip_description
+)
+ident(
+  def ip "inductive_preds.ml" 32 1013 1041 "inductive_preds.ml" 32 1013 1064
+)
+"inductive_preds.ml" 32 1013 1041 "inductive_preds.ml" 32 1013 1047
+type(
+  ip_description list ref
+)
+ident(
+  int_ref ip_env "inductive_preds.ml" 27 856 860 "inductive_preds.ml" 27 856 866
+)
+"inductive_preds.ml" 32 1013 1048 "inductive_preds.ml" 32 1013 1050
+type(
+  ip_description list ref -> ip_description list -> unit
+)
+ident(
+  int_ref Stdlib.( := ) "stdlib.mli" 1171 44751 44751 "stdlib.mli" 1171 44751 44804
+)
+"inductive_preds.ml" 32 1013 1051 "inductive_preds.ml" 32 1013 1053
+type(
+  ip_description
+)
+ident(
+  int_ref ip "inductive_preds.ml" 32 1013 1036 "inductive_preds.ml" 32 1013 1038
+)
+"inductive_preds.ml" 32 1013 1057 "inductive_preds.ml" 32 1013 1058
+type(
+  ip_description list ref -> ip_description list
+)
+ident(
+  int_ref Stdlib.( ! ) "stdlib.mli" 1165 44545 44545 "stdlib.mli" 1165 44545 44586
+)
+"inductive_preds.ml" 32 1013 1058 "inductive_preds.ml" 32 1013 1064
+type(
+  ip_description list ref
+)
+ident(
+  int_ref ip_env "inductive_preds.ml" 27 856 860 "inductive_preds.ml" 27 856 866
+)
+"inductive_preds.ml" 32 1013 1057 "inductive_preds.ml" 32 1013 1064
+type(
+  ip_description list
+)
+"inductive_preds.ml" 32 1013 1051 "inductive_preds.ml" 32 1013 1064
+type(
+  ip_description list
+)
+"inductive_preds.ml" 32 1013 1041 "inductive_preds.ml" 32 1013 1064
+type(
+  unit
+)
+"inductive_preds.ml" 34 1066 1070 "inductive_preds.ml" 34 1066 1079
+type(
+  string -> ip_description
+)
+ident(
+  def lookup_ip "inductive_preds.ml" 36 1132 1132 "inductive_preds.ml" 0 0 -1
+)
+"inductive_preds.ml" 34 1066 1080 "inductive_preds.ml" 34 1066 1082
+type(
+  string
+)
+ident(
+  def id "inductive_preds.ml" 34 1066 1085 "inductive_preds.ml" 34 1066 1130
+)
+"inductive_preds.ml" 34 1066 1085 "inductive_preds.ml" 34 1066 1094
+type(
+  (ip_description -> bool) -> ip_description list -> ip_description
+)
+ident(
+  int_ref Stdlib.List.find "list.mli" 228 8498 8498 "list.mli" 228 8498 8538
+)
+"inductive_preds.ml" 34 1066 1105 "inductive_preds.ml" 34 1066 1108
+type(
+  ip_description
+)
+ident(
+  def ipd "inductive_preds.ml" 34 1066 1112 "inductive_preds.ml" 34 1066 1121
+)
+"inductive_preds.ml" 34 1066 1112 "inductive_preds.ml" 34 1066 1115
+type(
+  ip_description
+)
+ident(
+  int_ref ipd "inductive_preds.ml" 34 1066 1105 "inductive_preds.ml" 34 1066 1108
+)
+"inductive_preds.ml" 34 1066 1112 "inductive_preds.ml" 34 1066 1118
+type(
+  string
+)
+"inductive_preds.ml" 34 1066 1118 "inductive_preds.ml" 34 1066 1119
+type(
+  string -> string -> bool
+)
+ident(
+  int_ref Stdlib.( = ) "stdlib.mli" 121 5051 5051 "stdlib.mli" 121 5051 5095
+)
+"inductive_preds.ml" 34 1066 1119 "inductive_preds.ml" 34 1066 1121
+type(
+  string
+)
+ident(
+  int_ref id "inductive_preds.ml" 34 1066 1080 "inductive_preds.ml" 34 1066 1082
+)
+"inductive_preds.ml" 34 1066 1112 "inductive_preds.ml" 34 1066 1121
+type(
+  bool
+)
+"inductive_preds.ml" 34 1066 1095 "inductive_preds.ml" 34 1066 1122
+type(
+  ip_description -> bool
+)
+"inductive_preds.ml" 34 1066 1123 "inductive_preds.ml" 34 1066 1124
+type(
+  ip_description list ref -> ip_description list
+)
+ident(
+  int_ref Stdlib.( ! ) "stdlib.mli" 1165 44545 44545 "stdlib.mli" 1165 44545 44586
+)
+"inductive_preds.ml" 34 1066 1124 "inductive_preds.ml" 34 1066 1130
+type(
+  ip_description list ref
+)
+ident(
+  int_ref ip_env "inductive_preds.ml" 27 856 860 "inductive_preds.ml" 27 856 866
+)
+"inductive_preds.ml" 34 1066 1123 "inductive_preds.ml" 34 1066 1130
+type(
+  ip_description list
+)
+"inductive_preds.ml" 34 1066 1085 "inductive_preds.ml" 34 1066 1130
+type(
+  ip_description
+)
+"inductive_preds.ml" 36 1132 1136 "inductive_preds.ml" 36 1132 1147
+type(
+  string * Symbtree.can_exp list * Symbtree.component list ->
+  Symbtree.can_atom * Symbtree.can_exp list * Symbtree.can_spred list
+)
+ident(
+  def instance_ip "inductive_preds.ml" 53 1849 1849 "inductive_preds.ml" 0 0 -1
+)
+"inductive_preds.ml" 36 1132 1149 "inductive_preds.ml" 36 1132 1151
+type(
+  string
+)
+ident(
+  def id "inductive_preds.ml" 37 1161 1163 "inductive_preds.ml" 51 1831 1846
+)
+"inductive_preds.ml" 36 1132 1152 "inductive_preds.ml" 36 1132 1154
+type(
+  Symbtree.can_exp list
+)
+ident(
+  def el "inductive_preds.ml" 37 1161 1163 "inductive_preds.ml" 51 1831 1846
+)
+"inductive_preds.ml" 36 1132 1155 "inductive_preds.ml" 36 1132 1157
+type(
+  Symbtree.component list
+)
+ident(
+  def cl "inductive_preds.ml" 37 1161 1163 "inductive_preds.ml" 51 1831 1846
+)
+"inductive_preds.ml" 36 1132 1148 "inductive_preds.ml" 36 1132 1158
+type(
+  string * Symbtree.can_exp list * Symbtree.component list
+)
+"inductive_preds.ml" 37 1161 1167 "inductive_preds.ml" 37 1161 1169
+type(
+  ip_description
+)
+ident(
+  def ip "inductive_preds.ml" 38 1185 1190 "inductive_preds.ml" 51 1831 1846
+)
+"inductive_preds.ml" 37 1161 1172 "inductive_preds.ml" 37 1161 1181
+type(
+  string -> ip_description
+)
+ident(
+  int_ref lookup_ip "inductive_preds.ml" 34 1066 1070 "inductive_preds.ml" 34 1066 1079
+)
+"inductive_preds.ml" 37 1161 1182 "inductive_preds.ml" 37 1161 1184
+type(
+  string
+)
+ident(
+  int_ref id "inductive_preds.ml" 36 1132 1149 "inductive_preds.ml" 36 1132 1151
+)
+"inductive_preds.ml" 37 1161 1172 "inductive_preds.ml" 37 1161 1184
+type(
+  ip_description
+)
+"inductive_preds.ml" 38 1185 1195 "inductive_preds.ml" 38 1185 1198
+type(
+  Misc.ident -> Symbtree.can_exp
+)
+ident(
+  def f_i "inductive_preds.ml" 46 1533 1535 "inductive_preds.ml" 51 1831 1846
+)
+"inductive_preds.ml" 38 1185 1199 "inductive_preds.ml" 38 1185 1203
+type(
+  Misc.ident -> Symbtree.can_exp
+)
+ident(
+  def f_i' "inductive_preds.ml" 46 1533 1535 "inductive_preds.ml" 51 1831 1846
+)
+"inductive_preds.ml" 38 1185 1204 "inductive_preds.ml" 38 1185 1207
+type(
+  Symbtree.can_exp list
+)
+ident(
+  def il' "inductive_preds.ml" 46 1533 1535 "inductive_preds.ml" 51 1831 1846
+)
+"inductive_preds.ml" 38 1185 1194 "inductive_preds.ml" 38 1185 1208
+type(
+  (Misc.ident -> Symbtree.can_exp) * (Misc.ident -> Symbtree.can_exp) *
+  Symbtree.can_exp list
+)
+"inductive_preds.ml" 39 1211 1221 "inductive_preds.ml" 39 1211 1224
+type(
+  (Misc.ident * Symbtree.can_exp) list
+)
+ident(
+  def iil "inductive_preds.ml" 41 1325 1334 "inductive_preds.ml" 42 1391 1436
+)
+"inductive_preds.ml" 39 1211 1227 "inductive_preds.ml" 39 1211 1239
+type(
+  Misc.ident list ->
+  Symbtree.can_exp list -> (Misc.ident * Symbtree.can_exp) list
+)
+ident(
+  int_ref Stdlib.List.combine "list.mli" 319 11800 11800 "list.mli" 319 11800 11850
+)
+"inductive_preds.ml" 39 1211 1240 "inductive_preds.ml" 39 1211 1242
+type(
+  ip_description
+)
+ident(
+  int_ref ip "inductive_preds.ml" 37 1161 1167 "inductive_preds.ml" 37 1161 1169
+)
+"inductive_preds.ml" 39 1211 1240 "inductive_preds.ml" 39 1211 1249
+type(
+  Misc.ident list
+)
+"inductive_preds.ml" 39 1211 1250 "inductive_preds.ml" 39 1211 1252
+type(
+  Symbtree.can_exp list
+)
+ident(
+  int_ref el "inductive_preds.ml" 36 1132 1152 "inductive_preds.ml" 36 1132 1154
+)
+"inductive_preds.ml" 39 1211 1227 "inductive_preds.ml" 39 1211 1252
+type(
+  (Misc.ident * Symbtree.can_exp) list
+)
+"inductive_preds.ml" 40 1253 1263 "inductive_preds.ml" 40 1253 1267
+type(
+  (Misc.ident * Symbtree.can_exp) list
+)
+ident(
+  def iil' "inductive_preds.ml" 41 1325 1334 "inductive_preds.ml" 42 1391 1436
+)
+"inductive_preds.ml" 40 1253 1270 "inductive_preds.ml" 40 1253 1278
+type(
+  (Misc.ident -> Misc.ident * Symbtree.can_exp) ->
+  Misc.ident list -> (Misc.ident * Symbtree.can_exp) list
+)
+ident(
+  int_ref Stdlib.List.map "list.mli" 120 4625 4625 "list.mli" 120 4625 4667
+)
+"inductive_preds.ml" 40 1253 1284 "inductive_preds.ml" 40 1253 1285
+type(
+  Misc.ident
+)
+ident(
+  def i "inductive_preds.ml" 40 1253 1289 "inductive_preds.ml" 40 1253 1313
+)
+"inductive_preds.ml" 40 1253 1290 "inductive_preds.ml" 40 1253 1291
+type(
+  Misc.ident
+)
+ident(
+  int_ref i "inductive_preds.ml" 40 1253 1284 "inductive_preds.ml" 40 1253 1285
+)
+"inductive_preds.ml" 40 1253 1303 "inductive_preds.ml" 40 1253 1309
+type(
+  Misc.ident -> Misc.ident
+)
+ident(
+  int_ref Misc.gensym "misc.mli" 14 426 426 "misc.mli" 14 426 453
+)
+"inductive_preds.ml" 40 1253 1310 "inductive_preds.ml" 40 1253 1311
+type(
+  Misc.ident
+)
+ident(
+  int_ref i "inductive_preds.ml" 40 1253 1284 "inductive_preds.ml" 40 1253 1285
+)
+"inductive_preds.ml" 40 1253 1302 "inductive_preds.ml" 40 1253 1312
+type(
+  Misc.ident
+)
+"inductive_preds.ml" 40 1253 1293 "inductive_preds.ml" 40 1253 1312
+type(
+  Symbtree.can_exp
+)
+"inductive_preds.ml" 40 1253 1289 "inductive_preds.ml" 40 1253 1313
+type(
+  Misc.ident * Symbtree.can_exp
+)
+"inductive_preds.ml" 40 1253 1279 "inductive_preds.ml" 40 1253 1314
+type(
+  Misc.ident -> Misc.ident * Symbtree.can_exp
+)
+"inductive_preds.ml" 40 1253 1315 "inductive_preds.ml" 40 1253 1317
+type(
+  ip_description
+)
+ident(
+  int_ref ip "inductive_preds.ml" 37 1161 1167 "inductive_preds.ml" 37 1161 1169
+)
+"inductive_preds.ml" 40 1253 1315 "inductive_preds.ml" 40 1253 1324
+type(
+  Misc.ident list
+)
+"inductive_preds.ml" 40 1253 1270 "inductive_preds.ml" 40 1253 1324
+type(
+  (Misc.ident * Symbtree.can_exp) list
+)
+"inductive_preds.ml" 41 1325 1338 "inductive_preds.ml" 41 1325 1339
+type(
+  bool -> Misc.ident -> Symbtree.can_exp
+)
+ident(
+  def f "inductive_preds.ml" 42 1391 1400 "inductive_preds.ml" 42 1391 1436
+)
+"inductive_preds.ml" 41 1325 1340 "inductive_preds.ml" 41 1325 1341
+type(
+  bool
+)
+ident(
+  def b "inductive_preds.ml" 41 1325 1342 "inductive_preds.ml" 41 1325 1390
+)
+"inductive_preds.ml" 41 1325 1342 "inductive_preds.ml" 41 1325 1343
+type(
+  Misc.ident
+)
+ident(
+  def i "inductive_preds.ml" 41 1325 1346 "inductive_preds.ml" 41 1325 1390
+)
+"inductive_preds.ml" 41 1325 1346 "inductive_preds.ml" 41 1325 1356
+type(
+  Misc.ident -> (Misc.ident * Symbtree.can_exp) list -> Symbtree.can_exp
+)
+ident(
+  int_ref Stdlib.List.assoc "list.mli" 266 9876 9876 "list.mli" 266 9876 9914
+)
+"inductive_preds.ml" 41 1325 1357 "inductive_preds.ml" 41 1325 1358
+type(
+  Misc.ident
+)
+ident(
+  int_ref i "inductive_preds.ml" 41 1325 1342 "inductive_preds.ml" 41 1325 1343
+)
+"inductive_preds.ml" 41 1325 1363 "inductive_preds.ml" 41 1325 1364
+type(
+  bool
+)
+ident(
+  int_ref b "inductive_preds.ml" 41 1325 1340 "inductive_preds.ml" 41 1325 1341
+)
+"inductive_preds.ml" 41 1325 1370 "inductive_preds.ml" 41 1325 1373
+type(
+  (Misc.ident * Symbtree.can_exp) list
+)
+ident(
+  int_ref iil "inductive_preds.ml" 39 1211 1221 "inductive_preds.ml" 39 1211 1224
+)
+"inductive_preds.ml" 41 1325 1379 "inductive_preds.ml" 41 1325 1383
+type(
+  (Misc.ident * Symbtree.can_exp) list
+)
+ident(
+  int_ref iil' "inductive_preds.ml" 40 1253 1263 "inductive_preds.ml" 40 1253 1267
+)
+"inductive_preds.ml" 41 1325 1384 "inductive_preds.ml" 41 1325 1385
+type(
+  (Misc.ident * Symbtree.can_exp) list ->
+  (Misc.ident * Symbtree.can_exp) list ->
+  (Misc.ident * Symbtree.can_exp) list
+)
+ident(
+  int_ref Stdlib.( @ ) "stdlib.mli" 785 29434 29434 "stdlib.mli" 785 29434 29475
+)
+"inductive_preds.ml" 41 1325 1386 "inductive_preds.ml" 41 1325 1389
+type(
+  (Misc.ident * Symbtree.can_exp) list
+)
+ident(
+  int_ref iil "inductive_preds.ml" 39 1211 1221 "inductive_preds.ml" 39 1211 1224
+)
+"inductive_preds.ml" 41 1325 1379 "inductive_preds.ml" 41 1325 1389
+type(
+  (Misc.ident * Symbtree.can_exp) list
+)
+"inductive_preds.ml" 41 1325 1359 "inductive_preds.ml" 41 1325 1390
+type(
+  (Misc.ident * Symbtree.can_exp) list
+)
+"inductive_preds.ml" 41 1325 1346 "inductive_preds.ml" 41 1325 1390
+type(
+  Symbtree.can_exp
+)
+"inductive_preds.ml" 42 1391 1401 "inductive_preds.ml" 42 1391 1402
+type(
+  bool -> Misc.ident -> Symbtree.can_exp
+)
+ident(
+  int_ref f "inductive_preds.ml" 41 1325 1338 "inductive_preds.ml" 41 1325 1339
+)
+"inductive_preds.ml" 42 1391 1403 "inductive_preds.ml" 42 1391 1407
+type(
+  bool
+)
+"inductive_preds.ml" 42 1391 1401 "inductive_preds.ml" 42 1391 1407
+type(
+  Misc.ident -> Symbtree.can_exp
+)
+"inductive_preds.ml" 42 1391 1409 "inductive_preds.ml" 42 1391 1410
+type(
+  bool -> Misc.ident -> Symbtree.can_exp
+)
+ident(
+  int_ref f "inductive_preds.ml" 41 1325 1338 "inductive_preds.ml" 41 1325 1339
+)
+"inductive_preds.ml" 42 1391 1411 "inductive_preds.ml" 42 1391 1416
+type(
+  bool
+)
+"inductive_preds.ml" 42 1391 1409 "inductive_preds.ml" 42 1391 1416
+type(
+  Misc.ident -> Symbtree.can_exp
+)
+"inductive_preds.ml" 42 1391 1418 "inductive_preds.ml" 42 1391 1426
+type(
+  (Misc.ident * Symbtree.can_exp -> Symbtree.can_exp) ->
+  (Misc.ident * Symbtree.can_exp) list -> Symbtree.can_exp list
+)
+ident(
+  int_ref Stdlib.List.map "list.mli" 120 4625 4625 "list.mli" 120 4625 4667
+)
+"inductive_preds.ml" 42 1391 1427 "inductive_preds.ml" 42 1391 1430
+type(
+  Misc.ident * Symbtree.can_exp -> Symbtree.can_exp
+)
+ident(
+  int_ref Stdlib.snd "stdlib.mli" 776 29260 29260 "stdlib.mli" 776 29260 29300
+)
+"inductive_preds.ml" 42 1391 1431 "inductive_preds.ml" 42 1391 1435
+type(
+  (Misc.ident * Symbtree.can_exp) list
+)
+ident(
+  int_ref iil' "inductive_preds.ml" 40 1253 1263 "inductive_preds.ml" 40 1253 1267
+)
+"inductive_preds.ml" 42 1391 1418 "inductive_preds.ml" 42 1391 1435
+type(
+  Symbtree.can_exp list
+)
+"inductive_preds.ml" 42 1391 1400 "inductive_preds.ml" 42 1391 1436
+type(
+  (Misc.ident -> Symbtree.can_exp) * (Misc.ident -> Symbtree.can_exp) *
+  Symbtree.can_exp list
+)
+"inductive_preds.ml" 41 1325 1334 "inductive_preds.ml" 42 1391 1436
+type(
+  (Misc.ident -> Symbtree.can_exp) * (Misc.ident -> Symbtree.can_exp) *
+  Symbtree.can_exp list
+)
+"inductive_preds.ml" 39 1211 1217 "inductive_preds.ml" 42 1391 1436
+type(
+  (Misc.ident -> Symbtree.can_exp) * (Misc.ident -> Symbtree.can_exp) *
+  Symbtree.can_exp list
+)
+"inductive_preds.ml" 43 1437 1446 "inductive_preds.ml" 43 1437 1449
+type(
+  string -> Symbtree.component
+)
+ident(
+  def f_c "inductive_preds.ml" 46 1533 1535 "inductive_preds.ml" 51 1831 1846
+)
+"inductive_preds.ml" 44 1452 1462 "inductive_preds.ml" 44 1452 1465
+type(
+  (string * Symbtree.component) list
+)
+ident(
+  def ccl "inductive_preds.ml" 45 1495 1504 "inductive_preds.ml" 45 1495 1529
+)
+"inductive_preds.ml" 44 1452 1468 "inductive_preds.ml" 44 1452 1480
+type(
+  string list ->
+  Symbtree.component list -> (string * Symbtree.component) list
+)
+ident(
+  int_ref Stdlib.List.combine "list.mli" 319 11800 11800 "list.mli" 319 11800 11850
+)
+"inductive_preds.ml" 44 1452 1481 "inductive_preds.ml" 44 1452 1483
+type(
+  ip_description
+)
+ident(
+  int_ref ip "inductive_preds.ml" 37 1161 1167 "inductive_preds.ml" 37 1161 1169
+)
+"inductive_preds.ml" 44 1452 1481 "inductive_preds.ml" 44 1452 1491
+type(
+  string list
+)
+"inductive_preds.ml" 44 1452 1492 "inductive_preds.ml" 44 1452 1494
+type(
+  Symbtree.component list
+)
+ident(
+  int_ref cl "inductive_preds.ml" 36 1132 1155 "inductive_preds.ml" 36 1132 1157
+)
+"inductive_preds.ml" 44 1452 1468 "inductive_preds.ml" 44 1452 1494
+type(
+  (string * Symbtree.component) list
+)
+"inductive_preds.ml" 45 1495 1508 "inductive_preds.ml" 45 1495 1509
+type(
+  string
+)
+ident(
+  def c "inductive_preds.ml" 45 1495 1513 "inductive_preds.ml" 45 1495 1529
+)
+"inductive_preds.ml" 45 1495 1513 "inductive_preds.ml" 45 1495 1523
+type(
+  string -> (string * Symbtree.component) list -> Symbtree.component
+)
+ident(
+  int_ref Stdlib.List.assoc "list.mli" 266 9876 9876 "list.mli" 266 9876 9914
+)
+"inductive_preds.ml" 45 1495 1524 "inductive_preds.ml" 45 1495 1525
+type(
+  string
+)
+ident(
+  int_ref c "inductive_preds.ml" 45 1495 1508 "inductive_preds.ml" 45 1495 1509
+)
+"inductive_preds.ml" 45 1495 1526 "inductive_preds.ml" 45 1495 1529
+type(
+  (string * Symbtree.component) list
+)
+ident(
+  int_ref ccl "inductive_preds.ml" 44 1452 1462 "inductive_preds.ml" 44 1452 1465
+)
+"inductive_preds.ml" 45 1495 1513 "inductive_preds.ml" 45 1495 1529
+type(
+  Symbtree.component
+)
+"inductive_preds.ml" 45 1495 1504 "inductive_preds.ml" 45 1495 1529
+type(
+  string -> Symbtree.component
+)
+"inductive_preds.ml" 44 1452 1458 "inductive_preds.ml" 45 1495 1529
+type(
+  string -> Symbtree.component
+)
+"inductive_preds.ml" 46 1533 1539 "inductive_preds.ml" 46 1533 1542
+type(
+  Symbtree.subst
+)
+ident(
+  def sub "inductive_preds.ml" 48 1593 1598 "inductive_preds.ml" 51 1831 1846
+)
+"inductive_preds.ml" 46 1533 1545 "inductive_preds.ml" 46 1533 1553
+type(
+  (Misc.ident -> Symbtree.can_exp) ->
+  (Symbtree.component -> Symbtree.component) -> Symbtree.subst
+)
+ident(
+  int_ref Symbtree.mk_subst "symbtree.mli" 83 2348 2348 "symbtree.mli" 83 2348 2416
+)
+"inductive_preds.ml" 46 1533 1554 "inductive_preds.ml" 46 1533 1557
+type(
+  Misc.ident -> Symbtree.can_exp
+)
+ident(
+  int_ref f_i "inductive_preds.ml" 38 1185 1195 "inductive_preds.ml" 38 1185 1198
+)
+"inductive_preds.ml" 46 1533 1558 "inductive_preds.ml" 46 1533 1561
+type(
+  Symbtree.component -> Symbtree.component
+)
+ident(
+  int_ref f_c "inductive_preds.ml" 43 1437 1446 "inductive_preds.ml" 43 1437 1449
+)
+"inductive_preds.ml" 46 1533 1545 "inductive_preds.ml" 46 1533 1561
+type(
+  Symbtree.subst
+)
+"inductive_preds.ml" 47 1562 1568 "inductive_preds.ml" 47 1562 1572
+type(
+  Symbtree.subst
+)
+ident(
+  def sub' "inductive_preds.ml" 48 1593 1598 "inductive_preds.ml" 51 1831 1846
+)
+"inductive_preds.ml" 47 1562 1575 "inductive_preds.ml" 47 1562 1583
+type(
+  (Misc.ident -> Symbtree.can_exp) ->
+  (Symbtree.component -> Symbtree.component) -> Symbtree.subst
+)
+ident(
+  int_ref Symbtree.mk_subst "symbtree.mli" 83 2348 2348 "symbtree.mli" 83 2348 2416
+)
+"inductive_preds.ml" 47 1562 1584 "inductive_preds.ml" 47 1562 1588
+type(
+  Misc.ident -> Symbtree.can_exp
+)
+ident(
+  int_ref f_i' "inductive_preds.ml" 38 1185 1199 "inductive_preds.ml" 38 1185 1203
+)
+"inductive_preds.ml" 47 1562 1589 "inductive_preds.ml" 47 1562 1592
+type(
+  Symbtree.component -> Symbtree.component
+)
+ident(
+  int_ref f_c "inductive_preds.ml" 43 1437 1446 "inductive_preds.ml" 43 1437 1449
+)
+"inductive_preds.ml" 47 1562 1575 "inductive_preds.ml" 47 1562 1592
+type(
+  Symbtree.subst
+)
+"inductive_preds.ml" 48 1593 1603 "inductive_preds.ml" 48 1593 1605
+type(
+  Symbtree.can_atom
+)
+ident(
+  def ca "inductive_preds.ml" 51 1831 1835 "inductive_preds.ml" 51 1831 1846
+)
+"inductive_preds.ml" 48 1593 1606 "inductive_preds.ml" 48 1593 1608
+type(
+  Symbtree.can_exp list
+)
+ident(
+  def vl "inductive_preds.ml" 51 1831 1835 "inductive_preds.ml" 51 1831 1846
+)
+"inductive_preds.ml" 48 1593 1609 "inductive_preds.ml" 48 1593 1612
+type(
+  Symbtree.can_spred list
+)
+ident(
+  def spl "inductive_preds.ml" 51 1831 1835 "inductive_preds.ml" 51 1831 1846
+)
+"inductive_preds.ml" 48 1593 1602 "inductive_preds.ml" 48 1593 1613
+type(
+  Symbtree.can_atom * Symbtree.can_exp list * Symbtree.can_spred list
+)
+"inductive_preds.ml" 48 1593 1617 "inductive_preds.ml" 48 1593 1629
+type(
+  Symbtree.subst -> Symbtree.can_atom -> Symbtree.can_atom
+)
+ident(
+  int_ref Symbtree.sub_can_atom "symbtree.mli" 90 2706 2706 "symbtree.mli" 90 2706 2754
+)
+"inductive_preds.ml" 48 1593 1630 "inductive_preds.ml" 48 1593 1633
+type(
+  Symbtree.subst
+)
+ident(
+  int_ref sub "inductive_preds.ml" 46 1533 1539 "inductive_preds.ml" 46 1533 1542
+)
+"inductive_preds.ml" 48 1593 1634 "inductive_preds.ml" 48 1593 1636
+type(
+  ip_description
+)
+ident(
+  int_ref ip "inductive_preds.ml" 37 1161 1167 "inductive_preds.ml" 37 1161 1169
+)
+"inductive_preds.ml" 48 1593 1634 "inductive_preds.ml" 48 1593 1642
+type(
+  Symbtree.can_atom
+)
+"inductive_preds.ml" 48 1593 1617 "inductive_preds.ml" 48 1593 1642
+type(
+  Symbtree.can_atom
+)
+"inductive_preds.ml" 48 1593 1644 "inductive_preds.ml" 48 1593 1647
+type(
+  Symbtree.can_exp list
+)
+ident(
+  int_ref il' "inductive_preds.ml" 38 1185 1204 "inductive_preds.ml" 38 1185 1207
+)
+"inductive_preds.ml" 48 1593 1649 "inductive_preds.ml" 48 1593 1657
+type(
+  (Symbtree.can_spred -> Symbtree.can_spred) ->
+  Symbtree.can_spred list -> Symbtree.can_spred list
+)
+ident(
+  int_ref Stdlib.List.map "list.mli" 120 4625 4625 "list.mli" 120 4625 4667
+)
+"inductive_preds.ml" 48 1593 1659 "inductive_preds.ml" 48 1593 1672
+type(
+  Symbtree.subst -> Symbtree.can_spred -> Symbtree.can_spred
+)
+ident(
+  int_ref Symbtree.sub_can_spred "symbtree.mli" 91 2755 2755 "symbtree.mli" 91 2755 2806
+)
+"inductive_preds.ml" 48 1593 1673 "inductive_preds.ml" 48 1593 1677
+type(
+  Symbtree.subst
+)
+ident(
+  int_ref sub' "inductive_preds.ml" 47 1562 1568 "inductive_preds.ml" 47 1562 1572
+)
+"inductive_preds.ml" 48 1593 1658 "inductive_preds.ml" 48 1593 1678
+type(
+  Symbtree.can_spred -> Symbtree.can_spred
+)
+"inductive_preds.ml" 48 1593 1679 "inductive_preds.ml" 48 1593 1681
+type(
+  ip_description
+)
+ident(
+  int_ref ip "inductive_preds.ml" 37 1161 1167 "inductive_preds.ml" 37 1161 1169
+)
+"inductive_preds.ml" 48 1593 1679 "inductive_preds.ml" 48 1593 1686
+type(
+  Symbtree.can_spred list
+)
+"inductive_preds.ml" 48 1593 1649 "inductive_preds.ml" 48 1593 1686
+type(
+  Symbtree.can_spred list
+)
+"inductive_preds.ml" 48 1593 1616 "inductive_preds.ml" 48 1593 1687
+type(
+  Symbtree.can_atom * Symbtree.can_exp list * Symbtree.can_spred list
+)
+"inductive_preds.ml" 51 1831 1836 "inductive_preds.ml" 51 1831 1838
+type(
+  Symbtree.can_atom
+)
+ident(
+  int_ref ca "inductive_preds.ml" 48 1593 1603 "inductive_preds.ml" 48 1593 1605
+)
+"inductive_preds.ml" 51 1831 1839 "inductive_preds.ml" 51 1831 1841
+type(
+  Symbtree.can_exp list
+)
+ident(
+  int_ref vl "inductive_preds.ml" 48 1593 1606 "inductive_preds.ml" 48 1593 1608
+)
+"inductive_preds.ml" 51 1831 1842 "inductive_preds.ml" 51 1831 1845
+type(
+  Symbtree.can_spred list
+)
+ident(
+  int_ref spl "inductive_preds.ml" 48 1593 1609 "inductive_preds.ml" 48 1593 1612
+)
+"inductive_preds.ml" 51 1831 1835 "inductive_preds.ml" 51 1831 1846
+type(
+  Symbtree.can_atom * Symbtree.can_exp list * Symbtree.can_spred list
+)
+"inductive_preds.ml" 48 1593 1598 "inductive_preds.ml" 51 1831 1846
+type(
+  Symbtree.can_atom * Symbtree.can_exp list * Symbtree.can_spred list
+)
+"inductive_preds.ml" 46 1533 1535 "inductive_preds.ml" 51 1831 1846
+type(
+  Symbtree.can_atom * Symbtree.can_exp list * Symbtree.can_spred list
+)
+"inductive_preds.ml" 38 1185 1190 "inductive_preds.ml" 51 1831 1846
+type(
+  Symbtree.can_atom * Symbtree.can_exp list * Symbtree.can_spred list
+)
+"inductive_preds.ml" 37 1161 1163 "inductive_preds.ml" 51 1831 1846
+type(
+  Symbtree.can_atom * Symbtree.can_exp list * Symbtree.can_spred list
+)
+"inductive_preds.ml" 53 1849 1853 "inductive_preds.ml" 53 1849 1854
+type(
+  unit
+)
+"inductive_preds.ml" 54 1857 1863 "inductive_preds.ml" 54 1857 1867
+type(
+  string
+)
+ident(
+  def list "inductive_preds.ml" 58 1950 1952 "inductive_preds.ml" 66 2192 2223
+)
+"inductive_preds.ml" 54 1857 1870 "inductive_preds.ml" 54 1857 1876
+type(
+  string
+)
+"inductive_preds.ml" 55 1877 1883 "inductive_preds.ml" 55 1877 1884
+type(
+  Misc.ident
+)
+ident(
+  def x "inductive_preds.ml" 58 1950 1952 "inductive_preds.ml" 66 2192 2223
+)
+"inductive_preds.ml" 55 1877 1887 "inductive_preds.ml" 55 1877 1899
+type(
+  string -> Misc.ident
+)
+ident(
+  int_ref Misc.create_ident "misc.mli" 16 486 486 "misc.mli" 16 486 520
+)
+"inductive_preds.ml" 55 1877 1900 "inductive_preds.ml" 55 1877 1903
+type(
+  string
+)
+"inductive_preds.ml" 55 1877 1887 "inductive_preds.ml" 55 1877 1903
+type(
+  Misc.ident
+)
+"inductive_preds.ml" 56 1904 1910 "inductive_preds.ml" 56 1904 1911
+type(
+  Misc.ident
+)
+ident(
+  def y "inductive_preds.ml" 58 1950 1952 "inductive_preds.ml" 66 2192 2223
+)
+"inductive_preds.ml" 56 1904 1914 "inductive_preds.ml" 56 1904 1926
+type(
+  string -> Misc.ident
+)
+ident(
+  int_ref Misc.create_ident "misc.mli" 16 486 486 "misc.mli" 16 486 520
+)
+"inductive_preds.ml" 56 1904 1927 "inductive_preds.ml" 56 1904 1930
+type(
+  string
+)
+"inductive_preds.ml" 56 1904 1914 "inductive_preds.ml" 56 1904 1930
+type(
+  Misc.ident
+)
+"inductive_preds.ml" 57 1931 1937 "inductive_preds.ml" 57 1931 1939
+type(
+  string
+)
+ident(
+  def tl "inductive_preds.ml" 58 1950 1952 "inductive_preds.ml" 66 2192 2223
+)
+"inductive_preds.ml" 57 1931 1942 "inductive_preds.ml" 57 1931 1946
+type(
+  string
+)
+"inductive_preds.ml" 58 1950 1956 "inductive_preds.ml" 58 1950 1958
+type(
+  Symbtree.can_exp
+)
+ident(
+  def ex "inductive_preds.ml" 60 1997 1999 "inductive_preds.ml" 66 2192 2223
+)
+"inductive_preds.ml" 58 1950 1970 "inductive_preds.ml" 58 1950 1971
+type(
+  Misc.ident
+)
+ident(
+  int_ref x "inductive_preds.ml" 55 1877 1883 "inductive_preds.ml" 55 1877 1884
+)
+"inductive_preds.ml" 58 1950 1961 "inductive_preds.ml" 58 1950 1971
+type(
+  Symbtree.can_exp
+)
+"inductive_preds.ml" 59 1972 1978 "inductive_preds.ml" 59 1972 1980
+type(
+  Symbtree.can_exp
+)
+ident(
+  def ey "inductive_preds.ml" 60 1997 1999 "inductive_preds.ml" 66 2192 2223
+)
+"inductive_preds.ml" 59 1972 1992 "inductive_preds.ml" 59 1972 1993
+type(
+  Misc.ident
+)
+ident(
+  int_ref y "inductive_preds.ml" 56 1904 1910 "inductive_preds.ml" 56 1904 1911
+)
+"inductive_preds.ml" 59 1972 1983 "inductive_preds.ml" 59 1972 1993
+type(
+  Symbtree.can_exp
+)
+"inductive_preds.ml" 60 1997 2003 "inductive_preds.ml" 60 1997 2010
+type(
+  ip_description
+)
+ident(
+  def list_ip "inductive_preds.ml" 66 2192 2197 "inductive_preds.ml" 66 2192 2223
+)
+"inductive_preds.ml" 61 2013 2023 "inductive_preds.ml" 61 2013 2027
+type(
+  string
+)
+ident(
+  int_ref list "inductive_preds.ml" 54 1857 1863 "inductive_preds.ml" 54 1857 1867
+)
+"inductive_preds.ml" 61 2013 2039 "inductive_preds.ml" 61 2013 2040
+type(
+  Misc.ident
+)
+ident(
+  int_ref x "inductive_preds.ml" 55 1877 1883 "inductive_preds.ml" 55 1877 1884
+)
+"inductive_preds.ml" 61 2013 2038 "inductive_preds.ml" 61 2013 2041
+type(
+  Misc.ident list
+)
+"inductive_preds.ml" 61 2013 2054 "inductive_preds.ml" 61 2013 2056
+type(
+  string
+)
+ident(
+  int_ref tl "inductive_preds.ml" 57 1931 1937 "inductive_preds.ml" 57 1931 1939
+)
+"inductive_preds.ml" 61 2013 2053 "inductive_preds.ml" 61 2013 2057
+type(
+  string list
+)
+"inductive_preds.ml" 62 2059 2072 "inductive_preds.ml" 62 2059 2077
+type(
+  Symbtree.can_exp * Symbtree.can_exp -> Symbtree.can_atom
+)
+ident(
+  int_ref Symbtree.mk_EQ "symbtree.mli" 68 1815 1815 "symbtree.mli" 68 1815 1856
+)
+"inductive_preds.ml" 62 2059 2078 "inductive_preds.ml" 62 2059 2080
+type(
+  Symbtree.can_exp
+)
+ident(
+  int_ref ex "inductive_preds.ml" 58 1950 1956 "inductive_preds.ml" 58 1950 1958
+)
+"inductive_preds.ml" 62 2059 2089 "inductive_preds.ml" 62 2059 2090
+type(
+  int
+)
+"inductive_preds.ml" 62 2059 2082 "inductive_preds.ml" 62 2059 2090
+type(
+  Symbtree.can_exp
+)
+"inductive_preds.ml" 62 2059 2077 "inductive_preds.ml" 62 2059 2091
+type(
+  Symbtree.can_exp * Symbtree.can_exp
+)
+"inductive_preds.ml" 62 2059 2072 "inductive_preds.ml" 62 2059 2091
+type(
+  Symbtree.can_atom
+)
+"inductive_preds.ml" 63 2093 2108 "inductive_preds.ml" 63 2093 2109
+type(
+  Misc.ident
+)
+ident(
+  int_ref y "inductive_preds.ml" 56 1904 1910 "inductive_preds.ml" 56 1904 1911
+)
+"inductive_preds.ml" 63 2093 2107 "inductive_preds.ml" 63 2093 2110
+type(
+  Misc.ident list
+)
+"inductive_preds.ml" 64 2112 2139 "inductive_preds.ml" 64 2112 2141
+type(
+  Symbtree.can_exp
+)
+ident(
+  int_ref ex "inductive_preds.ml" 58 1950 1956 "inductive_preds.ml" 58 1950 1958
+)
+"inductive_preds.ml" 64 2112 2145 "inductive_preds.ml" 64 2112 2147
+type(
+  Symbtree.component
+)
+ident(
+  int_ref tl "inductive_preds.ml" 57 1931 1937 "inductive_preds.ml" 57 1931 1939
+)
+"inductive_preds.ml" 64 2112 2148 "inductive_preds.ml" 64 2112 2150
+type(
+  Symbtree.can_exp
+)
+ident(
+  int_ref ey "inductive_preds.ml" 59 1972 1978 "inductive_preds.ml" 59 1972 1980
+)
+"inductive_preds.ml" 64 2112 2144 "inductive_preds.ml" 64 2112 2151
+type(
+  Symbtree.component * Symbtree.can_exp
+)
+"inductive_preds.ml" 64 2112 2143 "inductive_preds.ml" 64 2112 2152
+type(
+  (Symbtree.component * Symbtree.can_exp) list
+)
+"inductive_preds.ml" 64 2112 2125 "inductive_preds.ml" 64 2112 2153
+type(
+  Symbtree.can_spred
+)
+"inductive_preds.ml" 65 2155 2174 "inductive_preds.ml" 65 2155 2178
+type(
+  string
+)
+ident(
+  int_ref list "inductive_preds.ml" 54 1857 1863 "inductive_preds.ml" 54 1857 1867
+)
+"inductive_preds.ml" 65 2155 2180 "inductive_preds.ml" 65 2155 2182
+type(
+  Symbtree.can_exp
+)
+ident(
+  int_ref ey "inductive_preds.ml" 59 1972 1978 "inductive_preds.ml" 59 1972 1980
+)
+"inductive_preds.ml" 65 2155 2179 "inductive_preds.ml" 65 2155 2183
+type(
+  Symbtree.can_exp list
+)
+"inductive_preds.ml" 65 2155 2185 "inductive_preds.ml" 65 2155 2187
+type(
+  Symbtree.component
+)
+ident(
+  int_ref tl "inductive_preds.ml" 57 1931 1937 "inductive_preds.ml" 57 1931 1939
+)
+"inductive_preds.ml" 65 2155 2184 "inductive_preds.ml" 65 2155 2188
+type(
+  Symbtree.component list
+)
+"inductive_preds.ml" 65 2155 2161 "inductive_preds.ml" 65 2155 2189
+type(
+  Symbtree.can_spred
+)
+"inductive_preds.ml" 64 2112 2124 "inductive_preds.ml" 65 2155 2190
+type(
+  Symbtree.can_spred list
+)
+"inductive_preds.ml" 61 2013 2017 "inductive_preds.ml" 65 2155 2191
+type(
+  ip_description
+)
+"inductive_preds.ml" 66 2192 2197 "inductive_preds.ml" 66 2192 2215
+type(
+  ip_description -> unit
+)
+ident(
+  int_ref add_ip_description "inductive_preds.ml" 32 1013 1017 "inductive_preds.ml" 32 1013 1035
+)
+"inductive_preds.ml" 66 2192 2216 "inductive_preds.ml" 66 2192 2223
+type(
+  ip_description
+)
+ident(
+  int_ref list_ip "inductive_preds.ml" 60 1997 2003 "inductive_preds.ml" 60 1997 2010
+)
+"inductive_preds.ml" 66 2192 2197 "inductive_preds.ml" 66 2192 2223
+type(
+  unit
+)
+"inductive_preds.ml" 60 1997 1999 "inductive_preds.ml" 66 2192 2223
+type(
+  unit
+)
+"inductive_preds.ml" 58 1950 1952 "inductive_preds.ml" 66 2192 2223
+type(
+  unit
+)
+"inductive_preds.ml" 54 1857 1859 "inductive_preds.ml" 66 2192 2223
+type(
+  unit
+)

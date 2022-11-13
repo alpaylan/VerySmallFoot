@@ -1,0 +1,834 @@
+"toplevel.ml" 4 26 30 "toplevel.ml" 4 26 32
+type(
+  Lexing.lexbuf ->
+  (string * Symbtree.can_entailment list) list * Parsetree.a_component list
+)
+ident(
+  def wp "toplevel.ml" 11 186 186 "toplevel.ml" 0 0 -1
+)
+"toplevel.ml" 4 26 33 "toplevel.ml" 4 26 36
+type(
+  Lexing.lexbuf
+)
+ident(
+  def lex "toplevel.ml" 5 39 41 "toplevel.ml" 9 157 184
+)
+"toplevel.ml" 5 39 56 "toplevel.ml" 5 39 58
+type(
+  Parsetree.a_component list
+)
+ident(
+  def cl "toplevel.ml" 9 157 162 "toplevel.ml" 9 157 184
+)
+"toplevel.ml" 5 39 59 "toplevel.ml" 5 39 64
+type(
+  Parsetree.p_item list
+)
+ident(
+  def iteml "toplevel.ml" 9 157 162 "toplevel.ml" 9 157 184
+)
+"toplevel.ml" 5 39 45 "toplevel.ml" 5 39 66
+type(
+  Parsetree.p_program
+)
+"toplevel.ml" 6 69 77 "toplevel.ml" 6 69 80
+type(
+  Parsetree.p_program
+)
+ident(
+  def ast "toplevel.ml" 7 117 123 "toplevel.ml" 8 147 156
+)
+"toplevel.ml" 6 69 83 "toplevel.ml" 6 69 97
+type(
+  (Lexing.lexbuf -> Parser.token) -> Lexing.lexbuf -> Parsetree.p_program
+)
+ident(
+  int_ref Parser.program "parser.mli" 46 540 540 "parser.mli" 47 554 621
+)
+"toplevel.ml" 6 69 98 "toplevel.ml" 6 69 109
+type(
+  Lexing.lexbuf -> Parser.token
+)
+ident(
+  int_ref Lexer.token "lexer.ml" 218 11630 11638 "lexer.ml" 218 11630 11643
+)
+"toplevel.ml" 6 69 110 "toplevel.ml" 6 69 113
+type(
+  Lexing.lexbuf
+)
+ident(
+  int_ref lex "toplevel.ml" 4 26 33 "toplevel.ml" 4 26 36
+)
+"toplevel.ml" 6 69 83 "toplevel.ml" 6 69 113
+type(
+  Parsetree.p_program
+)
+"toplevel.ml" 7 117 123 "toplevel.ml" 7 117 143
+type(
+  unit -> unit
+)
+ident(
+  int_ref Stdlib.Parsing.clear_parser "parsing.mli" 50 2448 2448 "parsing.mli" 50 2448 2479
+)
+"toplevel.ml" 7 117 143 "toplevel.ml" 7 117 145
+type(
+  unit
+)
+"toplevel.ml" 7 117 123 "toplevel.ml" 7 117 145
+type(
+  unit
+)
+"toplevel.ml" 8 147 153 "toplevel.ml" 8 147 156
+type(
+  Parsetree.p_program
+)
+ident(
+  int_ref ast "toplevel.ml" 6 69 77 "toplevel.ml" 6 69 80
+)
+"toplevel.ml" 7 117 123 "toplevel.ml" 8 147 156
+type(
+  Parsetree.p_program
+)
+"toplevel.ml" 6 69 73 "toplevel.ml" 8 147 156
+type(
+  Parsetree.p_program
+)
+"toplevel.ml" 9 157 163 "toplevel.ml" 9 157 174
+type(
+  Parsetree.p_item list -> (string * Symbtree.can_entailment list) list
+)
+ident(
+  int_ref Vcgen.vcgen "vcgen.mli" 4 30 30 "vcgen.mli" 4 30 92
+)
+"toplevel.ml" 9 157 175 "toplevel.ml" 9 157 180
+type(
+  Parsetree.p_item list
+)
+ident(
+  int_ref iteml "toplevel.ml" 5 39 59 "toplevel.ml" 5 39 64
+)
+"toplevel.ml" 9 157 163 "toplevel.ml" 9 157 180
+type(
+  (string * Symbtree.can_entailment list) list
+)
+"toplevel.ml" 9 157 181 "toplevel.ml" 9 157 183
+type(
+  Parsetree.a_component list
+)
+ident(
+  int_ref cl "toplevel.ml" 5 39 56 "toplevel.ml" 5 39 58
+)
+"toplevel.ml" 9 157 162 "toplevel.ml" 9 157 184
+type(
+  (string * Symbtree.can_entailment list) list * Parsetree.a_component list
+)
+"toplevel.ml" 5 39 41 "toplevel.ml" 9 157 184
+type(
+  (string * Symbtree.can_entailment list) list * Parsetree.a_component list
+)
+"toplevel.ml" 11 186 190 "toplevel.ml" 11 186 199
+type(
+  Lexing.lexbuf -> unit
+)
+ident(
+  def verify_wp "toplevel.ml" 25 685 685 "toplevel.ml" 0 0 -1
+)
+"toplevel.ml" 11 186 200 "toplevel.ml" 11 186 203
+type(
+  Lexing.lexbuf
+)
+ident(
+  def lex "toplevel.ml" 12 206 208 "toplevel.ml" 23 624 683
+)
+"toplevel.ml" 12 206 212 "toplevel.ml" 12 206 215
+type(
+  Format.formatter
+)
+ident(
+  def fmt "toplevel.ml" 14 259 264 "toplevel.ml" 23 624 683
+)
+"toplevel.ml" 12 206 218 "toplevel.ml" 12 206 219
+type(
+  Format.formatter ref -> Format.formatter
+)
+ident(
+  int_ref Stdlib.( ! ) "stdlib.mli" 1165 44545 44545 "stdlib.mli" 1165 44545 44586
+)
+"toplevel.ml" 12 206 219 "toplevel.ml" 12 206 235
+type(
+  Format.formatter ref
+)
+ident(
+  int_ref Config.formatter "config.ml" 1 0 4 "config.ml" 1 0 13
+)
+"toplevel.ml" 12 206 218 "toplevel.ml" 12 206 235
+type(
+  Format.formatter
+)
+"toplevel.ml" 13 236 242 "toplevel.ml" 13 236 247
+type(
+  bool ref
+)
+ident(
+  def valid "toplevel.ml" 14 259 264 "toplevel.ml" 23 624 683
+)
+"toplevel.ml" 13 236 250 "toplevel.ml" 13 236 253
+type(
+  bool -> bool ref
+)
+ident(
+  int_ref Stdlib.ref "stdlib.mli" 1162 44439 44439 "stdlib.mli" 1162 44439 44483
+)
+"toplevel.ml" 13 236 254 "toplevel.ml" 13 236 258
+type(
+  bool
+)
+"toplevel.ml" 13 236 250 "toplevel.ml" 13 236 258
+type(
+  bool ref
+)
+"toplevel.ml" 14 259 268 "toplevel.ml" 14 259 280
+type(
+  ?nonfatal_thunk:(unit -> unit) -> (unit -> unit) -> unit
+)
+ident(
+  int_ref Error.report "error.ml" 41 1682 1686 "error.ml" 41 1682 1692
+)
+"toplevel.ml" 15 281 292 "toplevel.ml" 15 281 294
+type(
+  unit
+)
+"toplevel.ml" 16 298 305 "toplevel.ml" 16 298 306
+type(
+  (string * Symbtree.can_entailment list) list
+)
+ident(
+  def l "toplevel.ml" 17 323 328 "toplevel.ml" 22 551 622
+)
+"toplevel.ml" 16 298 307 "toplevel.ml" 16 298 312
+type(
+  Parsetree.a_component list
+)
+ident(
+  def compl "toplevel.ml" 17 323 328 "toplevel.ml" 22 551 622
+)
+"toplevel.ml" 16 298 304 "toplevel.ml" 16 298 313
+type(
+  (string * Symbtree.can_entailment list) list * Parsetree.a_component list
+)
+"toplevel.ml" 16 298 316 "toplevel.ml" 16 298 318
+type(
+  Lexing.lexbuf ->
+  (string * Symbtree.can_entailment list) list * Parsetree.a_component list
+)
+ident(
+  int_ref wp "toplevel.ml" 4 26 30 "toplevel.ml" 4 26 32
+)
+"toplevel.ml" 16 298 319 "toplevel.ml" 16 298 322
+type(
+  Lexing.lexbuf
+)
+ident(
+  int_ref lex "toplevel.ml" 11 186 200 "toplevel.ml" 11 186 203
+)
+"toplevel.ml" 16 298 316 "toplevel.ml" 16 298 322
+type(
+  (string * Symbtree.can_entailment list) list * Parsetree.a_component list
+)
+"toplevel.ml" 17 323 332 "toplevel.ml" 17 323 333
+type(
+  Symbtree.can_entailment -> unit
+)
+ident(
+  def g "toplevel.ml" 18 387 392 "toplevel.ml" 22 551 622
+)
+"toplevel.ml" 17 323 334 "toplevel.ml" 17 323 335
+type(
+  Symbtree.can_entailment
+)
+ident(
+  def p "toplevel.ml" 17 323 338 "toplevel.ml" 17 323 385
+)
+"toplevel.ml" 17 323 338 "toplevel.ml" 17 323 343
+type(
+  bool ref
+)
+ident(
+  int_ref valid "toplevel.ml" 13 236 242 "toplevel.ml" 13 236 247
+)
+"toplevel.ml" 17 323 344 "toplevel.ml" 17 323 346
+type(
+  bool ref -> bool -> unit
+)
+ident(
+  int_ref Stdlib.( := ) "stdlib.mli" 1171 44751 44751 "stdlib.mli" 1171 44751 44804
+)
+"toplevel.ml" 17 323 348 "toplevel.ml" 17 323 367
+type(
+  Symbtree.can_entailment -> Parsetree.a_component list -> bool
+)
+ident(
+  int_ref Symbsimp.check_prop "symbsimp.mli" 1 0 0 "symbsimp.mli" 1 0 78
+)
+"toplevel.ml" 17 323 368 "toplevel.ml" 17 323 369
+type(
+  Symbtree.can_entailment
+)
+ident(
+  int_ref p "toplevel.ml" 17 323 334 "toplevel.ml" 17 323 335
+)
+"toplevel.ml" 17 323 370 "toplevel.ml" 17 323 375
+type(
+  Parsetree.a_component list
+)
+ident(
+  int_ref compl "toplevel.ml" 16 298 307 "toplevel.ml" 16 298 312
+)
+"toplevel.ml" 17 323 347 "toplevel.ml" 17 323 376
+type(
+  bool
+)
+"toplevel.ml" 17 323 377 "toplevel.ml" 17 323 378
+type(
+  bool -> bool -> bool
+)
+ident(
+  int_ref Stdlib.( & ) "stdlib.mli" 221 9260 9260 "stdlib.mli" 222 9311 9353
+)
+"toplevel.ml" 17 323 379 "toplevel.ml" 17 323 380
+type(
+  bool ref -> bool
+)
+ident(
+  int_ref Stdlib.( ! ) "stdlib.mli" 1165 44545 44545 "stdlib.mli" 1165 44545 44586
+)
+"toplevel.ml" 17 323 380 "toplevel.ml" 17 323 385
+type(
+  bool ref
+)
+ident(
+  int_ref valid "toplevel.ml" 13 236 242 "toplevel.ml" 13 236 247
+)
+"toplevel.ml" 17 323 379 "toplevel.ml" 17 323 385
+type(
+  bool
+)
+"toplevel.ml" 17 323 347 "toplevel.ml" 17 323 385
+type(
+  bool
+)
+"toplevel.ml" 17 323 338 "toplevel.ml" 17 323 385
+type(
+  unit
+)
+"toplevel.ml" 18 387 396 "toplevel.ml" 18 387 397
+type(
+  string * Symbtree.can_entailment list -> unit
+)
+ident(
+  def f "toplevel.ml" 21 491 496 "toplevel.ml" 22 551 622
+)
+"toplevel.ml" 18 387 399 "toplevel.ml" 18 387 401
+type(
+  string
+)
+ident(
+  def id "toplevel.ml" 19 414 420 "toplevel.ml" 20 462 490
+)
+"toplevel.ml" 18 387 402 "toplevel.ml" 18 387 410
+type(
+  Symbtree.can_entailment list
+)
+ident(
+  def provisos "toplevel.ml" 19 414 420 "toplevel.ml" 20 462 490
+)
+"toplevel.ml" 18 387 398 "toplevel.ml" 18 387 411
+type(
+  string * Symbtree.can_entailment list
+)
+"toplevel.ml" 19 414 421 "toplevel.ml" 19 414 435
+type(
+  Format.formatter ->
+  (string -> unit, Format.formatter, unit) format -> string -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"toplevel.ml" 19 414 436 "toplevel.ml" 19 414 439
+type(
+  Format.formatter
+)
+ident(
+  int_ref fmt "toplevel.ml" 12 206 212 "toplevel.ml" 12 206 215
+)
+"toplevel.ml" 19 414 440 "toplevel.ml" 19 414 457
+type(
+  (string -> unit, Format.formatter, unit) format
+)
+"toplevel.ml" 19 414 458 "toplevel.ml" 19 414 460
+type(
+  string
+)
+ident(
+  int_ref id "toplevel.ml" 18 387 399 "toplevel.ml" 18 387 401
+)
+"toplevel.ml" 19 414 421 "toplevel.ml" 19 414 460
+type(
+  unit
+)
+"toplevel.ml" 20 462 469 "toplevel.ml" 20 462 478
+type(
+  (Symbtree.can_entailment -> unit) -> Symbtree.can_entailment list -> unit
+)
+ident(
+  int_ref Stdlib.List.iter "list.mli" 108 4194 4194 "list.mli" 108 4194 4236
+)
+"toplevel.ml" 20 462 479 "toplevel.ml" 20 462 480
+type(
+  Symbtree.can_entailment -> unit
+)
+ident(
+  int_ref g "toplevel.ml" 17 323 332 "toplevel.ml" 17 323 333
+)
+"toplevel.ml" 20 462 481 "toplevel.ml" 20 462 489
+type(
+  Symbtree.can_entailment list
+)
+ident(
+  int_ref provisos "toplevel.ml" 18 387 402 "toplevel.ml" 18 387 410
+)
+"toplevel.ml" 20 462 469 "toplevel.ml" 20 462 489
+type(
+  unit
+)
+"toplevel.ml" 19 414 420 "toplevel.ml" 20 462 490
+type(
+  unit
+)
+"toplevel.ml" 21 491 503 "toplevel.ml" 21 491 504
+type(
+  int
+)
+"toplevel.ml" 21 491 508 "toplevel.ml" 21 491 509
+type(
+  int ref -> int
+)
+ident(
+  int_ref Stdlib.( ! ) "stdlib.mli" 1165 44545 44545 "stdlib.mli" 1165 44545 44586
+)
+"toplevel.ml" 21 491 509 "toplevel.ml" 21 491 527
+type(
+  int ref
+)
+ident(
+  int_ref Config.repetitions "config.ml" 6 91 95 "config.ml" 6 91 106
+)
+"toplevel.ml" 21 491 508 "toplevel.ml" 21 491 527
+type(
+  int
+)
+"toplevel.ml" 21 491 531 "toplevel.ml" 21 491 540
+type(
+  (string * Symbtree.can_entailment list -> unit) ->
+  (string * Symbtree.can_entailment list) list -> unit
+)
+ident(
+  int_ref Stdlib.List.iter "list.mli" 108 4194 4194 "list.mli" 108 4194 4236
+)
+"toplevel.ml" 21 491 541 "toplevel.ml" 21 491 542
+type(
+  string * Symbtree.can_entailment list -> unit
+)
+ident(
+  int_ref f "toplevel.ml" 18 387 396 "toplevel.ml" 18 387 397
+)
+"toplevel.ml" 21 491 543 "toplevel.ml" 21 491 544
+type(
+  (string * Symbtree.can_entailment list) list
+)
+ident(
+  int_ref l "toplevel.ml" 16 298 305 "toplevel.ml" 16 298 306
+)
+"toplevel.ml" 21 491 531 "toplevel.ml" 21 491 544
+type(
+  unit
+)
+"toplevel.ml" 21 491 497 "toplevel.ml" 21 491 549
+type(
+  unit
+)
+"toplevel.ml" 22 551 557 "toplevel.ml" 22 551 571
+type(
+  Format.formatter ->
+  (string -> unit, Format.formatter, unit) format -> string -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"toplevel.ml" 22 551 572 "toplevel.ml" 22 551 575
+type(
+  Format.formatter
+)
+ident(
+  int_ref fmt "toplevel.ml" 12 206 212 "toplevel.ml" 12 206 215
+)
+"toplevel.ml" 22 551 576 "toplevel.ml" 22 551 589
+type(
+  (string -> unit, Format.formatter, unit) format
+)
+"toplevel.ml" 22 551 594 "toplevel.ml" 22 551 595
+type(
+  bool ref -> bool
+)
+ident(
+  int_ref Stdlib.( ! ) "stdlib.mli" 1165 44545 44545 "stdlib.mli" 1165 44545 44586
+)
+"toplevel.ml" 22 551 595 "toplevel.ml" 22 551 600
+type(
+  bool ref
+)
+ident(
+  int_ref valid "toplevel.ml" 13 236 242 "toplevel.ml" 13 236 247
+)
+"toplevel.ml" 22 551 594 "toplevel.ml" 22 551 600
+type(
+  bool
+)
+"toplevel.ml" 22 551 606 "toplevel.ml" 22 551 608
+type(
+  string
+)
+"toplevel.ml" 22 551 614 "toplevel.ml" 22 551 620
+type(
+  string
+)
+"toplevel.ml" 22 551 590 "toplevel.ml" 22 551 621
+type(
+  string
+)
+"toplevel.ml" 22 551 557 "toplevel.ml" 22 551 621
+type(
+  unit
+)
+"toplevel.ml" 21 491 496 "toplevel.ml" 22 551 622
+type(
+  unit
+)
+"toplevel.ml" 18 387 392 "toplevel.ml" 22 551 622
+type(
+  unit
+)
+"toplevel.ml" 17 323 328 "toplevel.ml" 22 551 622
+type(
+  unit
+)
+"toplevel.ml" 16 298 300 "toplevel.ml" 22 551 622
+type(
+  unit
+)
+"toplevel.ml" 15 281 287 "toplevel.ml" 22 551 623
+type(
+  unit -> unit
+)
+"toplevel.ml" 14 259 268 "toplevel.ml" 22 551 623
+type(
+  unit
+)
+"toplevel.ml" 23 624 650 "toplevel.ml" 23 624 651
+type(
+  string
+)
+ident(
+  def s "toplevel.ml" 23 624 655 "toplevel.ml" 23 624 683
+)
+"toplevel.ml" 23 624 633 "toplevel.ml" 23 624 651
+type(
+  exn
+)
+"toplevel.ml" 23 624 655 "toplevel.ml" 23 624 677
+type(
+  Format.formatter -> string -> unit
+)
+ident(
+  int_ref Stdlib.Format.pp_print_string "format.mli" 216 8984 8984 "format.mli" 216 8984 9033
+)
+"toplevel.ml" 23 624 678 "toplevel.ml" 23 624 681
+type(
+  Format.formatter
+)
+ident(
+  int_ref fmt "toplevel.ml" 12 206 212 "toplevel.ml" 12 206 215
+)
+"toplevel.ml" 23 624 682 "toplevel.ml" 23 624 683
+type(
+  string
+)
+ident(
+  int_ref s "toplevel.ml" 23 624 650 "toplevel.ml" 23 624 651
+)
+"toplevel.ml" 23 624 655 "toplevel.ml" 23 624 683
+type(
+  unit
+)
+"toplevel.ml" 14 259 264 "toplevel.ml" 23 624 683
+type(
+  unit
+)
+"toplevel.ml" 12 206 208 "toplevel.ml" 23 624 683
+type(
+  unit
+)
+"toplevel.ml" 25 685 689 "toplevel.ml" 25 685 705
+type(
+  string -> unit
+)
+ident(
+  def verify_wp_string "toplevel.ml" 29 763 763 "toplevel.ml" 0 0 -1
+)
+"toplevel.ml" 25 685 706 "toplevel.ml" 25 685 707
+type(
+  string
+)
+ident(
+  def s "toplevel.ml" 26 710 712 "toplevel.ml" 27 743 761
+)
+"toplevel.ml" 26 710 716 "toplevel.ml" 26 710 719
+type(
+  Lexing.lexbuf
+)
+ident(
+  def lex "toplevel.ml" 27 743 748 "toplevel.ml" 27 743 761
+)
+"toplevel.ml" 26 710 722 "toplevel.ml" 26 710 740
+type(
+  ?with_positions:bool -> string -> Lexing.lexbuf
+)
+ident(
+  int_ref Stdlib.Lexing.from_string "lexing.mli" 97 4421 4421 "lexing.mli" 97 4421 4479
+)
+"toplevel.ml" 26 710 741 "toplevel.ml" 26 710 742
+type(
+  string
+)
+ident(
+  int_ref s "toplevel.ml" 25 685 706 "toplevel.ml" 25 685 707
+)
+"toplevel.ml" 26 710 722 "toplevel.ml" 26 710 742
+type(
+  Lexing.lexbuf
+)
+"toplevel.ml" 27 743 748 "toplevel.ml" 27 743 757
+type(
+  Lexing.lexbuf -> unit
+)
+ident(
+  int_ref verify_wp "toplevel.ml" 11 186 190 "toplevel.ml" 11 186 199
+)
+"toplevel.ml" 27 743 758 "toplevel.ml" 27 743 761
+type(
+  Lexing.lexbuf
+)
+ident(
+  int_ref lex "toplevel.ml" 26 710 716 "toplevel.ml" 26 710 719
+)
+"toplevel.ml" 27 743 748 "toplevel.ml" 27 743 761
+type(
+  unit
+)
+"toplevel.ml" 26 710 712 "toplevel.ml" 27 743 761
+type(
+  unit
+)
+"toplevel.ml" 29 763 767 "toplevel.ml" 29 763 782
+type(
+  string -> unit
+)
+ident(
+  def verify_wp_fname "toplevel.ml" 35 947 960 "toplevel.ml" 0 0 -1
+)
+"toplevel.ml" 29 763 783 "toplevel.ml" 29 763 788
+type(
+  string
+)
+ident(
+  def fname "toplevel.ml" 30 791 793 "toplevel.ml" 35 947 960
+)
+"toplevel.ml" 30 791 797 "toplevel.ml" 30 791 799
+type(
+  in_channel
+)
+ident(
+  def ic "toplevel.ml" 31 850 852 "toplevel.ml" 35 947 960
+)
+"toplevel.ml" 30 791 805 "toplevel.ml" 30 791 810
+type(
+  string
+)
+ident(
+  int_ref fname "toplevel.ml" 29 763 783 "toplevel.ml" 29 763 788
+)
+"toplevel.ml" 30 791 811 "toplevel.ml" 30 791 812
+type(
+  string -> string -> bool
+)
+ident(
+  int_ref Stdlib.( = ) "stdlib.mli" 121 5051 5051 "stdlib.mli" 121 5051 5095
+)
+"toplevel.ml" 30 791 813 "toplevel.ml" 30 791 816
+type(
+  string
+)
+"toplevel.ml" 30 791 805 "toplevel.ml" 30 791 816
+type(
+  bool
+)
+"toplevel.ml" 30 791 822 "toplevel.ml" 30 791 827
+type(
+  in_channel
+)
+ident(
+  int_ref Stdlib.stdin "stdlib.mli" 800 29863 29863 "stdlib.mli" 800 29863 29885
+)
+"toplevel.ml" 30 791 833 "toplevel.ml" 30 791 840
+type(
+  string -> in_channel
+)
+ident(
+  int_ref Stdlib.open_in "stdlib.mli" 1024 38332 38332 "stdlib.mli" 1024 38332 38366
+)
+"toplevel.ml" 30 791 841 "toplevel.ml" 30 791 846
+type(
+  string
+)
+ident(
+  int_ref fname "toplevel.ml" 29 763 783 "toplevel.ml" 29 763 788
+)
+"toplevel.ml" 30 791 833 "toplevel.ml" 30 791 846
+type(
+  in_channel
+)
+"toplevel.ml" 30 791 802 "toplevel.ml" 30 791 846
+type(
+  in_channel
+)
+"toplevel.ml" 31 850 856 "toplevel.ml" 31 850 859
+type(
+  Lexing.lexbuf
+)
+ident(
+  def lex "toplevel.ml" 32 888 890 "toplevel.ml" 35 947 960
+)
+"toplevel.ml" 31 850 862 "toplevel.ml" 31 850 881
+type(
+  ?with_positions:bool -> in_channel -> Lexing.lexbuf
+)
+ident(
+  int_ref Stdlib.Lexing.from_channel "lexing.mli" 92 4163 4163 "lexing.mli" 92 4163 4226
+)
+"toplevel.ml" 31 850 882 "toplevel.ml" 31 850 884
+type(
+  in_channel
+)
+ident(
+  int_ref ic "toplevel.ml" 30 791 797 "toplevel.ml" 30 791 799
+)
+"toplevel.ml" 31 850 862 "toplevel.ml" 31 850 884
+type(
+  Lexing.lexbuf
+)
+"toplevel.ml" 32 888 890 "toplevel.ml" 32 888 900
+type(
+  Lexing.lexbuf -> string -> unit
+)
+ident(
+  int_ref Lexer.init "lexer.mll" 42 986 990 "lexer.mll" 42 986 994
+)
+"toplevel.ml" 32 888 901 "toplevel.ml" 32 888 904
+type(
+  Lexing.lexbuf
+)
+ident(
+  int_ref lex "toplevel.ml" 31 850 856 "toplevel.ml" 31 850 859
+)
+"toplevel.ml" 32 888 905 "toplevel.ml" 32 888 910
+type(
+  string
+)
+ident(
+  int_ref fname "toplevel.ml" 29 763 783 "toplevel.ml" 29 763 788
+)
+"toplevel.ml" 32 888 890 "toplevel.ml" 32 888 910
+type(
+  unit
+)
+"toplevel.ml" 33 912 914 "toplevel.ml" 33 912 925
+type(
+  unit -> unit
+)
+ident(
+  int_ref Misc.init_gensym "misc.mli" 13 395 395 "misc.mli" 13 395 425
+)
+"toplevel.ml" 33 912 926 "toplevel.ml" 33 912 928
+type(
+  unit
+)
+"toplevel.ml" 33 912 914 "toplevel.ml" 33 912 928
+type(
+  unit
+)
+"toplevel.ml" 34 930 932 "toplevel.ml" 34 930 941
+type(
+  Lexing.lexbuf -> unit
+)
+ident(
+  int_ref verify_wp "toplevel.ml" 11 186 190 "toplevel.ml" 11 186 199
+)
+"toplevel.ml" 34 930 942 "toplevel.ml" 34 930 945
+type(
+  Lexing.lexbuf
+)
+ident(
+  int_ref lex "toplevel.ml" 31 850 856 "toplevel.ml" 31 850 859
+)
+"toplevel.ml" 34 930 932 "toplevel.ml" 34 930 945
+type(
+  unit
+)
+"toplevel.ml" 35 947 949 "toplevel.ml" 35 947 957
+type(
+  in_channel -> unit
+)
+ident(
+  int_ref Stdlib.close_in "stdlib.mli" 1118 42708 42708 "stdlib.mli" 1118 42708 42741
+)
+"toplevel.ml" 35 947 958 "toplevel.ml" 35 947 960
+type(
+  in_channel
+)
+ident(
+  int_ref ic "toplevel.ml" 30 791 797 "toplevel.ml" 30 791 799
+)
+"toplevel.ml" 35 947 949 "toplevel.ml" 35 947 960
+type(
+  unit
+)
+"toplevel.ml" 34 930 932 "toplevel.ml" 35 947 960
+type(
+  unit
+)
+"toplevel.ml" 33 912 914 "toplevel.ml" 35 947 960
+type(
+  unit
+)
+"toplevel.ml" 32 888 890 "toplevel.ml" 35 947 960
+type(
+  unit
+)
+"toplevel.ml" 31 850 852 "toplevel.ml" 35 947 960
+type(
+  unit
+)
+"toplevel.ml" 30 791 793 "toplevel.ml" 35 947 960
+type(
+  unit
+)

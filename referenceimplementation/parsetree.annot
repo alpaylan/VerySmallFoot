@@ -1,0 +1,5097 @@
+"parsetree.ml" 83 2686 2690 "parsetree.ml" 83 2686 2694
+type(
+  (Location.t -> p_statement_desc -> 'a) -> p_statement list -> unit
+)
+ident(
+  def iter "parsetree.ml" 96 3029 3029 "parsetree.ml" 0 0 -1
+)
+"parsetree.ml" 83 2686 2695 "parsetree.ml" 83 2686 2696
+type(
+  Location.t -> p_statement_desc -> 'a
+)
+ident(
+  def f "parsetree.ml" 84 2699 2701 "parsetree.ml" 94 3018 3027
+)
+"parsetree.ml" 84 2699 2709 "parsetree.ml" 84 2699 2713
+type(
+  p_statement list -> unit
+)
+ident(
+  def loop "parsetree.ml" 84 2699 2701 "parsetree.ml" 94 3018 3027
+)
+"parsetree.ml" 85 2725 2731 "parsetree.ml" 85 2725 2733
+type(
+  p_statement list
+)
+"parsetree.ml" 85 2725 2737 "parsetree.ml" 85 2725 2739
+type(
+  unit
+)
+"parsetree.ml" 86 2740 2757 "parsetree.ml" 86 2740 2760
+type(
+  p_statement_desc
+)
+ident(
+  def stm "parsetree.ml" 87 2787 2788 "parsetree.ml" 93 2998 3017
+)
+"parsetree.ml" 86 2740 2771 "parsetree.ml" 86 2740 2774
+type(
+  Location.t
+)
+ident(
+  def loc "parsetree.ml" 87 2787 2788 "parsetree.ml" 93 2998 3017
+)
+"parsetree.ml" 86 2740 2746 "parsetree.ml" 86 2740 2775
+type(
+  p_statement
+)
+"parsetree.ml" 86 2740 2779 "parsetree.ml" 86 2740 2783
+type(
+  p_statement list
+)
+ident(
+  def stms "parsetree.ml" 87 2787 2788 "parsetree.ml" 93 2998 3017
+)
+"parsetree.ml" 86 2740 2746 "parsetree.ml" 86 2740 2783
+type(
+  p_statement list
+)
+"parsetree.ml" 87 2787 2788 "parsetree.ml" 87 2787 2789
+type(
+  Location.t -> p_statement_desc -> 'a
+)
+ident(
+  int_ref f "parsetree.ml" 83 2686 2695 "parsetree.ml" 83 2686 2696
+)
+"parsetree.ml" 87 2787 2790 "parsetree.ml" 87 2787 2793
+type(
+  Location.t
+)
+ident(
+  int_ref loc "parsetree.ml" 86 2740 2771 "parsetree.ml" 86 2740 2774
+)
+"parsetree.ml" 87 2787 2794 "parsetree.ml" 87 2787 2797
+type(
+  p_statement_desc
+)
+ident(
+  int_ref stm "parsetree.ml" 86 2740 2757 "parsetree.ml" 86 2740 2760
+)
+"parsetree.ml" 87 2787 2788 "parsetree.ml" 87 2787 2797
+type(
+  'a
+)
+"parsetree.ml" 88 2799 2806 "parsetree.ml" 88 2799 2809
+type(
+  p_statement_desc
+)
+ident(
+  int_ref stm "parsetree.ml" 86 2740 2757 "parsetree.ml" 86 2740 2760
+)
+"parsetree.ml" 89 2815 2831 "parsetree.ml" 89 2815 2836
+ident(
+  def stm_l "parsetree.ml" 89 2815 2841 "parsetree.ml" 89 2815 2860
+)
+"parsetree.ml" 89 2815 2830 "parsetree.ml" 89 2815 2837
+type(
+  p_statement list
+)
+"parsetree.ml" 89 2815 2820 "parsetree.ml" 89 2815 2837
+type(
+  p_statement_desc
+)
+"parsetree.ml" 89 2815 2841 "parsetree.ml" 89 2815 2845
+type(
+  p_statement list -> unit
+)
+ident(
+  int_ref loop "parsetree.ml" 84 2699 2709 "parsetree.ml" 84 2699 2713
+)
+"parsetree.ml" 89 2815 2847 "parsetree.ml" 89 2815 2852
+type(
+  p_statement list
+)
+ident(
+  int_ref stm_l "parsetree.ml" 89 2815 2830 "parsetree.ml" 89 2815 2837
+)
+"parsetree.ml" 89 2815 2853 "parsetree.ml" 89 2815 2854
+type(
+  p_statement list -> p_statement list -> p_statement list
+)
+ident(
+  int_ref Stdlib.( @ ) "stdlib.mli" 785 29434 29434 "stdlib.mli" 785 29434 29475
+)
+"parsetree.ml" 89 2815 2855 "parsetree.ml" 89 2815 2859
+type(
+  p_statement list
+)
+ident(
+  int_ref stms "parsetree.ml" 86 2740 2779 "parsetree.ml" 86 2740 2783
+)
+"parsetree.ml" 89 2815 2846 "parsetree.ml" 89 2815 2860
+type(
+  p_statement list
+)
+"parsetree.ml" 89 2815 2841 "parsetree.ml" 89 2815 2860
+type(
+  unit
+)
+"parsetree.ml" 90 2861 2874 "parsetree.ml" 90 2861 2875
+type(
+  p_expression
+)
+"parsetree.ml" 90 2861 2876 "parsetree.ml" 90 2861 2878
+type(
+  p_statement
+)
+ident(
+  def s0 "parsetree.ml" 90 2861 2886 "parsetree.ml" 90 2861 2909
+)
+"parsetree.ml" 90 2861 2879 "parsetree.ml" 90 2861 2881
+type(
+  p_statement
+)
+ident(
+  def s1 "parsetree.ml" 90 2861 2886 "parsetree.ml" 90 2861 2909
+)
+"parsetree.ml" 90 2861 2866 "parsetree.ml" 90 2861 2882
+type(
+  p_statement_desc
+)
+"parsetree.ml" 90 2861 2886 "parsetree.ml" 90 2861 2890
+type(
+  p_statement list -> unit
+)
+ident(
+  int_ref loop "parsetree.ml" 84 2699 2709 "parsetree.ml" 84 2699 2713
+)
+"parsetree.ml" 90 2861 2892 "parsetree.ml" 90 2861 2894
+type(
+  p_statement
+)
+ident(
+  int_ref s0 "parsetree.ml" 90 2861 2876 "parsetree.ml" 90 2861 2878
+)
+"parsetree.ml" 90 2861 2898 "parsetree.ml" 90 2861 2900
+type(
+  p_statement
+)
+ident(
+  int_ref s1 "parsetree.ml" 90 2861 2879 "parsetree.ml" 90 2861 2881
+)
+"parsetree.ml" 90 2861 2904 "parsetree.ml" 90 2861 2908
+type(
+  p_statement list
+)
+ident(
+  int_ref stms "parsetree.ml" 86 2740 2779 "parsetree.ml" 86 2740 2783
+)
+"parsetree.ml" 90 2861 2898 "parsetree.ml" 90 2861 2908
+type(
+  p_statement list
+)
+"parsetree.ml" 90 2861 2891 "parsetree.ml" 90 2861 2909
+type(
+  p_statement list
+)
+"parsetree.ml" 90 2861 2886 "parsetree.ml" 90 2861 2909
+type(
+  unit
+)
+"parsetree.ml" 91 2910 2926 "parsetree.ml" 91 2910 2927
+type(
+  a_invariant
+)
+"parsetree.ml" 91 2910 2928 "parsetree.ml" 91 2910 2929
+type(
+  p_expression
+)
+"parsetree.ml" 91 2910 2930 "parsetree.ml" 91 2910 2931
+type(
+  p_statement
+)
+ident(
+  def s "parsetree.ml" 91 2910 2936 "parsetree.ml" 91 2910 2952
+)
+"parsetree.ml" 91 2910 2915 "parsetree.ml" 91 2910 2932
+type(
+  p_statement_desc
+)
+"parsetree.ml" 91 2910 2936 "parsetree.ml" 91 2910 2940
+type(
+  p_statement list -> unit
+)
+ident(
+  int_ref loop "parsetree.ml" 84 2699 2709 "parsetree.ml" 84 2699 2713
+)
+"parsetree.ml" 91 2910 2942 "parsetree.ml" 91 2910 2943
+type(
+  p_statement
+)
+ident(
+  int_ref s "parsetree.ml" 91 2910 2930 "parsetree.ml" 91 2910 2931
+)
+"parsetree.ml" 91 2910 2947 "parsetree.ml" 91 2910 2951
+type(
+  p_statement list
+)
+ident(
+  int_ref stms "parsetree.ml" 86 2740 2779 "parsetree.ml" 86 2740 2783
+)
+"parsetree.ml" 91 2910 2941 "parsetree.ml" 91 2910 2952
+type(
+  p_statement list
+)
+"parsetree.ml" 91 2910 2936 "parsetree.ml" 91 2910 2952
+type(
+  unit
+)
+"parsetree.ml" 92 2953 2971 "parsetree.ml" 92 2953 2972
+type(
+  string
+)
+"parsetree.ml" 92 2953 2973 "parsetree.ml" 92 2953 2974
+type(
+  p_expression
+)
+"parsetree.ml" 92 2953 2975 "parsetree.ml" 92 2953 2976
+type(
+  p_statement
+)
+ident(
+  def s "parsetree.ml" 92 2953 2981 "parsetree.ml" 92 2953 2997
+)
+"parsetree.ml" 92 2953 2958 "parsetree.ml" 92 2953 2977
+type(
+  p_statement_desc
+)
+"parsetree.ml" 92 2953 2981 "parsetree.ml" 92 2953 2985
+type(
+  p_statement list -> unit
+)
+ident(
+  int_ref loop "parsetree.ml" 84 2699 2709 "parsetree.ml" 84 2699 2713
+)
+"parsetree.ml" 92 2953 2987 "parsetree.ml" 92 2953 2988
+type(
+  p_statement
+)
+ident(
+  int_ref s "parsetree.ml" 92 2953 2975 "parsetree.ml" 92 2953 2976
+)
+"parsetree.ml" 92 2953 2992 "parsetree.ml" 92 2953 2996
+type(
+  p_statement list
+)
+ident(
+  int_ref stms "parsetree.ml" 86 2740 2779 "parsetree.ml" 86 2740 2783
+)
+"parsetree.ml" 92 2953 2986 "parsetree.ml" 92 2953 2997
+type(
+  p_statement list
+)
+"parsetree.ml" 92 2953 2981 "parsetree.ml" 92 2953 2997
+type(
+  unit
+)
+"parsetree.ml" 93 2998 3003 "parsetree.ml" 93 2998 3004
+type(
+  p_statement_desc
+)
+"parsetree.ml" 93 2998 3008 "parsetree.ml" 93 2998 3012
+type(
+  p_statement list -> unit
+)
+ident(
+  int_ref loop "parsetree.ml" 84 2699 2709 "parsetree.ml" 84 2699 2713
+)
+"parsetree.ml" 93 2998 3013 "parsetree.ml" 93 2998 3017
+type(
+  p_statement list
+)
+ident(
+  int_ref stms "parsetree.ml" 86 2740 2779 "parsetree.ml" 86 2740 2783
+)
+"parsetree.ml" 93 2998 3008 "parsetree.ml" 93 2998 3017
+type(
+  unit
+)
+"parsetree.ml" 88 2799 2800 "parsetree.ml" 93 2998 3017
+type(
+  unit
+)
+"parsetree.ml" 87 2787 2788 "parsetree.ml" 93 2998 3017
+type(
+  unit
+)
+"parsetree.ml" 84 2699 2716 "parsetree.ml" 93 2998 3017
+type(
+  p_statement list -> unit
+)
+"parsetree.ml" 94 3018 3023 "parsetree.ml" 94 3018 3027
+type(
+  p_statement list -> unit
+)
+ident(
+  int_ref loop "parsetree.ml" 84 2699 2709 "parsetree.ml" 84 2699 2713
+)
+"parsetree.ml" 84 2699 2701 "parsetree.ml" 94 3018 3027
+type(
+  p_statement list -> unit
+)
+"parsetree.ml" 109 3415 3419 "parsetree.ml" 109 3415 3431
+type(
+  'a -> int -> 'a -> int -> bool
+)
+ident(
+  def check_parens "parsetree.ml" 113 3555 3555 "parsetree.ml" 0 0 -1
+)
+"parsetree.ml" 109 3415 3432 "parsetree.ml" 109 3415 3443
+type(
+  'a
+)
+ident(
+  def parent_prec "parsetree.ml" 109 3415 3444 "parsetree.ml" 111 3490 3553
+)
+"parsetree.ml" 109 3415 3444 "parsetree.ml" 109 3415 3455
+type(
+  int
+)
+ident(
+  def parent_posn "parsetree.ml" 109 3415 3456 "parsetree.ml" 111 3490 3553
+)
+"parsetree.ml" 109 3415 3456 "parsetree.ml" 109 3415 3460
+type(
+  'a
+)
+ident(
+  def prec "parsetree.ml" 109 3415 3461 "parsetree.ml" 111 3490 3553
+)
+"parsetree.ml" 109 3415 3461 "parsetree.ml" 109 3415 3466
+type(
+  int
+)
+ident(
+  def assoc "parsetree.ml" 110 3469 3471 "parsetree.ml" 111 3490 3553
+)
+"parsetree.ml" 110 3469 3471 "parsetree.ml" 110 3469 3482
+type(
+  'a
+)
+ident(
+  int_ref parent_prec "parsetree.ml" 109 3415 3432 "parsetree.ml" 109 3415 3443
+)
+"parsetree.ml" 110 3469 3483 "parsetree.ml" 110 3469 3484
+type(
+  'a -> 'a -> bool
+)
+ident(
+  int_ref Stdlib.( > ) "stdlib.mli" 140 5875 5875 "stdlib.mli" 140 5875 5925
+)
+"parsetree.ml" 110 3469 3485 "parsetree.ml" 110 3469 3489
+type(
+  'a
+)
+ident(
+  int_ref prec "parsetree.ml" 109 3415 3456 "parsetree.ml" 109 3415 3460
+)
+"parsetree.ml" 110 3469 3471 "parsetree.ml" 110 3469 3489
+type(
+  bool
+)
+"parsetree.ml" 111 3490 3492 "parsetree.ml" 111 3490 3494
+type(
+  bool -> bool -> bool
+)
+ident(
+  int_ref Stdlib.( or ) "stdlib.mli" 234 9789 9789 "stdlib.mli" 235 9840 9882
+)
+"parsetree.ml" 111 3490 3496 "parsetree.ml" 111 3490 3507
+type(
+  'a
+)
+ident(
+  int_ref parent_prec "parsetree.ml" 109 3415 3432 "parsetree.ml" 109 3415 3443
+)
+"parsetree.ml" 111 3490 3508 "parsetree.ml" 111 3490 3510
+type(
+  'a -> 'a -> bool
+)
+ident(
+  int_ref Stdlib.( <= ) "stdlib.mli" 145 6033 6033 "stdlib.mli" 145 6033 6082
+)
+"parsetree.ml" 111 3490 3511 "parsetree.ml" 111 3490 3515
+type(
+  'a
+)
+ident(
+  int_ref prec "parsetree.ml" 109 3415 3456 "parsetree.ml" 109 3415 3460
+)
+"parsetree.ml" 111 3490 3496 "parsetree.ml" 111 3490 3515
+type(
+  bool
+)
+"parsetree.ml" 111 3490 3516 "parsetree.ml" 111 3490 3517
+type(
+  bool -> bool -> bool
+)
+ident(
+  int_ref Stdlib.( & ) "stdlib.mli" 221 9260 9260 "stdlib.mli" 222 9311 9353
+)
+"parsetree.ml" 111 3490 3518 "parsetree.ml" 111 3490 3529
+type(
+  int
+)
+ident(
+  int_ref parent_posn "parsetree.ml" 109 3415 3444 "parsetree.ml" 109 3415 3455
+)
+"parsetree.ml" 111 3490 3530 "parsetree.ml" 111 3490 3532
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref Stdlib.( == ) "stdlib.mli" 191 8127 8127 "stdlib.mli" 191 8127 8169
+)
+"parsetree.ml" 111 3490 3533 "parsetree.ml" 111 3490 3534
+type(
+  int -> int
+)
+ident(
+  int_ref Stdlib.( ~- ) "stdlib.mli" 323 12928 12928 "stdlib.mli" 323 12928 12968
+)
+"parsetree.ml" 111 3490 3534 "parsetree.ml" 111 3490 3539
+type(
+  int
+)
+ident(
+  int_ref assoc "parsetree.ml" 109 3415 3461 "parsetree.ml" 109 3415 3466
+)
+"parsetree.ml" 111 3490 3533 "parsetree.ml" 111 3490 3539
+type(
+  int
+)
+"parsetree.ml" 111 3490 3518 "parsetree.ml" 111 3490 3539
+type(
+  bool
+)
+"parsetree.ml" 111 3490 3540 "parsetree.ml" 111 3490 3541
+type(
+  bool -> bool -> bool
+)
+ident(
+  int_ref Stdlib.( & ) "stdlib.mli" 221 9260 9260 "stdlib.mli" 222 9311 9353
+)
+"parsetree.ml" 111 3490 3542 "parsetree.ml" 111 3490 3547
+type(
+  int
+)
+ident(
+  int_ref assoc "parsetree.ml" 109 3415 3461 "parsetree.ml" 109 3415 3466
+)
+"parsetree.ml" 111 3490 3548 "parsetree.ml" 111 3490 3550
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref Stdlib.( != ) "stdlib.mli" 203 8696 8696 "stdlib.mli" 203 8696 8741
+)
+"parsetree.ml" 111 3490 3551 "parsetree.ml" 111 3490 3552
+type(
+  int
+)
+"parsetree.ml" 111 3490 3542 "parsetree.ml" 111 3490 3552
+type(
+  bool
+)
+"parsetree.ml" 111 3490 3518 "parsetree.ml" 111 3490 3552
+type(
+  bool
+)
+"parsetree.ml" 111 3490 3495 "parsetree.ml" 111 3490 3553
+type(
+  bool
+)
+"parsetree.ml" 110 3469 3471 "parsetree.ml" 111 3490 3553
+type(
+  bool
+)
+"parsetree.ml" 113 3555 3563 "parsetree.ml" 113 3555 3577
+type(
+  'a -> 'b -> Format.formatter -> string -> unit
+)
+ident(
+  def pp_a_component "parsetree.ml" 113 3555 3555 "parsetree.ml" 0 0 -1
+)
+"parsetree.ml" 113 3555 3578 "parsetree.ml" 113 3555 3589
+type(
+  'a
+)
+ident(
+  def parent_prec "parsetree.ml" 113 3555 3590 "parsetree.ml" 114 3606 3638
+)
+"parsetree.ml" 113 3555 3590 "parsetree.ml" 113 3555 3601
+type(
+  'b
+)
+ident(
+  def parent_posn "parsetree.ml" 113 3555 3602 "parsetree.ml" 114 3606 3638
+)
+"parsetree.ml" 113 3555 3602 "parsetree.ml" 113 3555 3603
+type(
+  Format.formatter
+)
+ident(
+  def f "parsetree.ml" 114 3606 3608 "parsetree.ml" 114 3606 3638
+)
+"parsetree.ml" 114 3606 3617 "parsetree.ml" 114 3606 3618
+type(
+  string
+)
+ident(
+  def t "parsetree.ml" 114 3606 3622 "parsetree.ml" 114 3606 3638
+)
+"parsetree.ml" 114 3606 3622 "parsetree.ml" 114 3606 3629
+type(
+  Format.formatter ->
+  (string -> unit, Format.formatter, unit) format -> string -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 114 3606 3630 "parsetree.ml" 114 3606 3631
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 113 3555 3602 "parsetree.ml" 113 3555 3603
+)
+"parsetree.ml" 114 3606 3632 "parsetree.ml" 114 3606 3636
+type(
+  (string -> unit, Format.formatter, unit) format
+)
+"parsetree.ml" 114 3606 3637 "parsetree.ml" 114 3606 3638
+type(
+  string
+)
+ident(
+  int_ref t "parsetree.ml" 114 3606 3617 "parsetree.ml" 114 3606 3618
+)
+"parsetree.ml" 114 3606 3622 "parsetree.ml" 114 3606 3638
+type(
+  unit
+)
+"parsetree.ml" 114 3606 3608 "parsetree.ml" 114 3606 3638
+type(
+  string -> unit
+)
+"parsetree.ml" 116 3640 3644 "parsetree.ml" 116 3640 3659
+type(
+  'c -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  def pp_a_expression "parsetree.ml" 113 3555 3555 "parsetree.ml" 0 0 -1
+)
+"parsetree.ml" 116 3640 3660 "parsetree.ml" 116 3640 3671
+type(
+  'c
+)
+ident(
+  def parent_prec "parsetree.ml" 116 3640 3672 "parsetree.ml" 123 3909 3959
+)
+"parsetree.ml" 116 3640 3672 "parsetree.ml" 116 3640 3683
+type(
+  int
+)
+ident(
+  def parent_posn "parsetree.ml" 116 3640 3684 "parsetree.ml" 123 3909 3959
+)
+"parsetree.ml" 116 3640 3684 "parsetree.ml" 116 3640 3685
+type(
+  Format.formatter
+)
+ident(
+  def f "parsetree.ml" 117 3688 3690 "parsetree.ml" 123 3909 3959
+)
+"parsetree.ml" 117 3688 3694 "parsetree.ml" 117 3688 3698
+type(
+  Format.formatter -> a_expression -> unit
+)
+ident(
+  def ppae "parsetree.ml" 118 3731 3736 "parsetree.ml" 123 3909 3959
+)
+"parsetree.ml" 117 3688 3701 "parsetree.ml" 117 3688 3716
+type(
+  'c -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref pp_a_expression "parsetree.ml" 116 3640 3644 "parsetree.ml" 116 3640 3659
+)
+"parsetree.ml" 117 3688 3717 "parsetree.ml" 117 3688 3728
+type(
+  'c
+)
+ident(
+  int_ref parent_prec "parsetree.ml" 116 3640 3660 "parsetree.ml" 116 3640 3671
+)
+"parsetree.ml" 117 3688 3729 "parsetree.ml" 117 3688 3730
+type(
+  int
+)
+"parsetree.ml" 117 3688 3701 "parsetree.ml" 117 3688 3730
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 119 3745 3762 "parsetree.ml" 119 3745 3763
+type(
+  string
+)
+ident(
+  def i "parsetree.ml" 119 3745 3767 "parsetree.ml" 119 3745 3783
+)
+"parsetree.ml" 119 3745 3751 "parsetree.ml" 119 3745 3763
+type(
+  a_expression
+)
+"parsetree.ml" 119 3745 3767 "parsetree.ml" 119 3745 3774
+type(
+  Format.formatter ->
+  (string -> unit, Format.formatter, unit) format -> string -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 119 3745 3775 "parsetree.ml" 119 3745 3776
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 116 3640 3684 "parsetree.ml" 116 3640 3685
+)
+"parsetree.ml" 119 3745 3777 "parsetree.ml" 119 3745 3781
+type(
+  (string -> unit, Format.formatter, unit) format
+)
+"parsetree.ml" 119 3745 3782 "parsetree.ml" 119 3745 3783
+type(
+  string
+)
+ident(
+  int_ref i "parsetree.ml" 119 3745 3762 "parsetree.ml" 119 3745 3763
+)
+"parsetree.ml" 119 3745 3767 "parsetree.ml" 119 3745 3783
+type(
+  unit
+)
+"parsetree.ml" 120 3784 3799 "parsetree.ml" 120 3784 3800
+type(
+  int
+)
+ident(
+  def n "parsetree.ml" 120 3784 3804 "parsetree.ml" 120 3784 3820
+)
+"parsetree.ml" 120 3784 3790 "parsetree.ml" 120 3784 3800
+type(
+  a_expression
+)
+"parsetree.ml" 120 3784 3804 "parsetree.ml" 120 3784 3811
+type(
+  Format.formatter ->
+  (int -> unit, Format.formatter, unit) format -> int -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 120 3784 3812 "parsetree.ml" 120 3784 3813
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 116 3640 3684 "parsetree.ml" 116 3640 3685
+)
+"parsetree.ml" 120 3784 3814 "parsetree.ml" 120 3784 3818
+type(
+  (int -> unit, Format.formatter, unit) format
+)
+"parsetree.ml" 120 3784 3819 "parsetree.ml" 120 3784 3820
+type(
+  int
+)
+ident(
+  int_ref n "parsetree.ml" 120 3784 3799 "parsetree.ml" 120 3784 3800
+)
+"parsetree.ml" 120 3784 3804 "parsetree.ml" 120 3784 3820
+type(
+  unit
+)
+"parsetree.ml" 121 3821 3839 "parsetree.ml" 121 3821 3840
+type(
+  a_expression
+)
+ident(
+  def e "parsetree.ml" 121 3821 3844 "parsetree.ml" 121 3821 3876
+)
+"parsetree.ml" 121 3821 3827 "parsetree.ml" 121 3821 3840
+type(
+  a_expression
+)
+"parsetree.ml" 121 3821 3844 "parsetree.ml" 121 3821 3851
+type(
+  Format.formatter ->
+  ((Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format ->
+  (Format.formatter -> a_expression -> unit) -> a_expression -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 121 3821 3852 "parsetree.ml" 121 3821 3853
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 116 3640 3684 "parsetree.ml" 116 3640 3685
+)
+"parsetree.ml" 121 3821 3854 "parsetree.ml" 121 3821 3869
+type(
+  ((Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format
+)
+"parsetree.ml" 121 3821 3870 "parsetree.ml" 121 3821 3874
+type(
+  Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 117 3688 3694 "parsetree.ml" 117 3688 3698
+)
+"parsetree.ml" 121 3821 3875 "parsetree.ml" 121 3821 3876
+type(
+  a_expression
+)
+ident(
+  int_ref e "parsetree.ml" 121 3821 3839 "parsetree.ml" 121 3821 3840
+)
+"parsetree.ml" 121 3821 3844 "parsetree.ml" 121 3821 3876
+type(
+  unit
+)
+"parsetree.ml" 122 3877 3895 "parsetree.ml" 122 3877 3896
+type(
+  string
+)
+ident(
+  def o "parsetree.ml" 123 3909 3910 "parsetree.ml" 123 3909 3959
+)
+"parsetree.ml" 122 3877 3898 "parsetree.ml" 122 3877 3900
+type(
+  a_expression
+)
+ident(
+  def e1 "parsetree.ml" 123 3909 3910 "parsetree.ml" 123 3909 3959
+)
+"parsetree.ml" 122 3877 3902 "parsetree.ml" 122 3877 3904
+type(
+  a_expression
+)
+ident(
+  def e2 "parsetree.ml" 123 3909 3910 "parsetree.ml" 123 3909 3959
+)
+"parsetree.ml" 122 3877 3883 "parsetree.ml" 122 3877 3905
+type(
+  a_expression
+)
+"parsetree.ml" 123 3909 3910 "parsetree.ml" 123 3909 3917
+type(
+  Format.formatter ->
+  ((Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   string ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format ->
+  (Format.formatter -> a_expression -> unit) ->
+  a_expression ->
+  string ->
+  (Format.formatter -> a_expression -> unit) -> a_expression -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 123 3909 3918 "parsetree.ml" 123 3909 3919
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 116 3640 3684 "parsetree.ml" 116 3640 3685
+)
+"parsetree.ml" 123 3909 3920 "parsetree.ml" 123 3909 3941
+type(
+  ((Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   string ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format
+)
+"parsetree.ml" 123 3909 3942 "parsetree.ml" 123 3909 3946
+type(
+  Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 117 3688 3694 "parsetree.ml" 117 3688 3698
+)
+"parsetree.ml" 123 3909 3947 "parsetree.ml" 123 3909 3949
+type(
+  a_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 122 3877 3898 "parsetree.ml" 122 3877 3900
+)
+"parsetree.ml" 123 3909 3950 "parsetree.ml" 123 3909 3951
+type(
+  string
+)
+ident(
+  int_ref o "parsetree.ml" 122 3877 3895 "parsetree.ml" 122 3877 3896
+)
+"parsetree.ml" 123 3909 3952 "parsetree.ml" 123 3909 3956
+type(
+  Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 117 3688 3694 "parsetree.ml" 117 3688 3698
+)
+"parsetree.ml" 123 3909 3957 "parsetree.ml" 123 3909 3959
+type(
+  a_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 122 3877 3902 "parsetree.ml" 122 3877 3904
+)
+"parsetree.ml" 123 3909 3910 "parsetree.ml" 123 3909 3959
+type(
+  unit
+)
+"parsetree.ml" 118 3731 3736 "parsetree.ml" 123 3909 3959
+type(
+  a_expression -> unit
+)
+"parsetree.ml" 117 3688 3690 "parsetree.ml" 123 3909 3959
+type(
+  a_expression -> unit
+)
+"parsetree.ml" 125 3961 3965 "parsetree.ml" 125 3961 3974
+type(
+  Format.formatter -> string -> unit
+)
+ident(
+  def pp_string "parsetree.ml" 127 3999 3999 "parsetree.ml" 0 0 -1
+)
+"parsetree.ml" 125 3961 3975 "parsetree.ml" 125 3961 3976
+type(
+  Format.formatter
+)
+ident(
+  def f "parsetree.ml" 125 3961 3977 "parsetree.ml" 125 3961 3997
+)
+"parsetree.ml" 125 3961 3977 "parsetree.ml" 125 3961 3978
+type(
+  string
+)
+ident(
+  def s "parsetree.ml" 125 3961 3981 "parsetree.ml" 125 3961 3997
+)
+"parsetree.ml" 125 3961 3981 "parsetree.ml" 125 3961 3988
+type(
+  Format.formatter ->
+  (string -> unit, Format.formatter, unit) format -> string -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 125 3961 3989 "parsetree.ml" 125 3961 3990
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 125 3961 3975 "parsetree.ml" 125 3961 3976
+)
+"parsetree.ml" 125 3961 3991 "parsetree.ml" 125 3961 3995
+type(
+  (string -> unit, Format.formatter, unit) format
+)
+"parsetree.ml" 125 3961 3996 "parsetree.ml" 125 3961 3997
+type(
+  string
+)
+ident(
+  int_ref s "parsetree.ml" 125 3961 3977 "parsetree.ml" 125 3961 3978
+)
+"parsetree.ml" 125 3961 3981 "parsetree.ml" 125 3961 3997
+type(
+  unit
+)
+"parsetree.ml" 127 3999 4003 "parsetree.ml" 127 3999 4010
+type(
+  (Format.formatter -> 'a -> unit) -> Format.formatter -> 'a list -> unit
+)
+ident(
+  def pp_list "parsetree.ml" 129 4065 4065 "parsetree.ml" 0 0 -1
+)
+"parsetree.ml" 127 3999 4011 "parsetree.ml" 127 3999 4013
+type(
+  Format.formatter -> 'a -> unit
+)
+ident(
+  def pp "parsetree.ml" 127 3999 4014 "parsetree.ml" 127 3999 4063
+)
+"parsetree.ml" 127 3999 4014 "parsetree.ml" 127 3999 4015
+type(
+  Format.formatter
+)
+ident(
+  def f "parsetree.ml" 127 3999 4016 "parsetree.ml" 127 3999 4063
+)
+"parsetree.ml" 127 3999 4016 "parsetree.ml" 127 3999 4017
+type(
+  'a list
+)
+ident(
+  def l "parsetree.ml" 127 3999 4020 "parsetree.ml" 127 3999 4063
+)
+"parsetree.ml" 127 3999 4020 "parsetree.ml" 127 3999 4029
+type(
+  ('a -> unit) -> 'a list -> unit
+)
+ident(
+  int_ref Stdlib.List.iter "list.mli" 108 4194 4194 "list.mli" 108 4194 4236
+)
+"parsetree.ml" 127 3999 4035 "parsetree.ml" 127 3999 4036
+type(
+  'a
+)
+ident(
+  def x "parsetree.ml" 127 3999 4040 "parsetree.ml" 127 3999 4060
+)
+"parsetree.ml" 127 3999 4040 "parsetree.ml" 127 3999 4047
+type(
+  Format.formatter ->
+  ((Format.formatter -> 'a -> unit) -> 'a -> unit, Format.formatter, unit)
+  format -> (Format.formatter -> 'a -> unit) -> 'a -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 127 3999 4048 "parsetree.ml" 127 3999 4049
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 127 3999 4014 "parsetree.ml" 127 3999 4015
+)
+"parsetree.ml" 127 3999 4050 "parsetree.ml" 127 3999 4055
+type(
+  ((Format.formatter -> 'a -> unit) -> 'a -> unit, Format.formatter, unit)
+  format
+)
+"parsetree.ml" 127 3999 4056 "parsetree.ml" 127 3999 4058
+type(
+  Format.formatter -> 'a -> unit
+)
+ident(
+  int_ref pp "parsetree.ml" 127 3999 4011 "parsetree.ml" 127 3999 4013
+)
+"parsetree.ml" 127 3999 4059 "parsetree.ml" 127 3999 4060
+type(
+  'a
+)
+ident(
+  int_ref x "parsetree.ml" 127 3999 4035 "parsetree.ml" 127 3999 4036
+)
+"parsetree.ml" 127 3999 4040 "parsetree.ml" 127 3999 4060
+type(
+  unit
+)
+"parsetree.ml" 127 3999 4030 "parsetree.ml" 127 3999 4061
+type(
+  'a -> unit
+)
+"parsetree.ml" 127 3999 4062 "parsetree.ml" 127 3999 4063
+type(
+  'a list
+)
+ident(
+  int_ref l "parsetree.ml" 127 3999 4016 "parsetree.ml" 127 3999 4017
+)
+"parsetree.ml" 127 3999 4020 "parsetree.ml" 127 3999 4063
+type(
+  unit
+)
+"parsetree.ml" 129 4065 4073 "parsetree.ml" 129 4065 4083
+type(
+  (Format.formatter -> a_component * a_expression -> unit) ->
+  string -> Format.formatter -> (a_component * a_expression) list -> unit
+)
+ident(
+  def pp_listsep "parsetree.ml" 129 4065 4065 "parsetree.ml" 0 0 -1
+)
+"parsetree.ml" 129 4065 4084 "parsetree.ml" 129 4065 4086
+type(
+  Format.formatter -> a_component * a_expression -> unit
+)
+ident(
+  def pp "parsetree.ml" 129 4065 4087 "parsetree.ml" 132 4146 4203
+)
+"parsetree.ml" 129 4065 4087 "parsetree.ml" 129 4065 4088
+type(
+  string
+)
+ident(
+  def s "parsetree.ml" 129 4065 4089 "parsetree.ml" 132 4146 4203
+)
+"parsetree.ml" 129 4065 4089 "parsetree.ml" 129 4065 4090
+type(
+  Format.formatter
+)
+ident(
+  def f "parsetree.ml" 129 4065 4093 "parsetree.ml" 132 4146 4203
+)
+"parsetree.ml" 130 4102 4106 "parsetree.ml" 130 4102 4108
+type(
+  (a_component * a_expression) list
+)
+"parsetree.ml" 130 4102 4112 "parsetree.ml" 130 4102 4114
+type(
+  unit
+)
+"parsetree.ml" 131 4115 4120 "parsetree.ml" 131 4115 4121
+type(
+  a_component * a_expression
+)
+ident(
+  def x "parsetree.ml" 131 4115 4126 "parsetree.ml" 131 4115 4145
+)
+"parsetree.ml" 131 4115 4119 "parsetree.ml" 131 4115 4122
+type(
+  (a_component * a_expression) list
+)
+"parsetree.ml" 131 4115 4126 "parsetree.ml" 131 4115 4133
+type(
+  Format.formatter ->
+  ((Format.formatter -> a_component * a_expression -> unit) ->
+   a_component * a_expression -> unit, Format.formatter, unit)
+  format ->
+  (Format.formatter -> a_component * a_expression -> unit) ->
+  a_component * a_expression -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 131 4115 4134 "parsetree.ml" 131 4115 4135
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 129 4065 4089 "parsetree.ml" 129 4065 4090
+)
+"parsetree.ml" 131 4115 4136 "parsetree.ml" 131 4115 4140
+type(
+  ((Format.formatter -> a_component * a_expression -> unit) ->
+   a_component * a_expression -> unit, Format.formatter, unit)
+  format
+)
+"parsetree.ml" 131 4115 4141 "parsetree.ml" 131 4115 4143
+type(
+  Format.formatter -> a_component * a_expression -> unit
+)
+ident(
+  int_ref pp "parsetree.ml" 129 4065 4084 "parsetree.ml" 129 4065 4086
+)
+"parsetree.ml" 131 4115 4144 "parsetree.ml" 131 4115 4145
+type(
+  a_component * a_expression
+)
+ident(
+  int_ref x "parsetree.ml" 131 4115 4120 "parsetree.ml" 131 4115 4121
+)
+"parsetree.ml" 131 4115 4126 "parsetree.ml" 131 4115 4145
+type(
+  unit
+)
+"parsetree.ml" 132 4146 4150 "parsetree.ml" 132 4146 4151
+type(
+  a_component * a_expression
+)
+ident(
+  def x "parsetree.ml" 132 4146 4158 "parsetree.ml" 132 4146 4203
+)
+"parsetree.ml" 132 4146 4153 "parsetree.ml" 132 4146 4154
+type(
+  (a_component * a_expression) list
+)
+ident(
+  def l "parsetree.ml" 132 4146 4158 "parsetree.ml" 132 4146 4203
+)
+"parsetree.ml" 132 4146 4150 "parsetree.ml" 132 4146 4154
+type(
+  (a_component * a_expression) list
+)
+"parsetree.ml" 132 4146 4158 "parsetree.ml" 132 4146 4165
+type(
+  Format.formatter ->
+  ((Format.formatter -> a_component * a_expression -> unit) ->
+   a_component * a_expression ->
+   string ->
+   (Format.formatter -> (a_component * a_expression) list -> unit) ->
+   (a_component * a_expression) list -> unit, Format.formatter, unit)
+  format ->
+  (Format.formatter -> a_component * a_expression -> unit) ->
+  a_component * a_expression ->
+  string ->
+  (Format.formatter -> (a_component * a_expression) list -> unit) ->
+  (a_component * a_expression) list -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 132 4146 4166 "parsetree.ml" 132 4146 4167
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 129 4065 4089 "parsetree.ml" 129 4065 4090
+)
+"parsetree.ml" 132 4146 4168 "parsetree.ml" 132 4146 4176
+type(
+  ((Format.formatter -> a_component * a_expression -> unit) ->
+   a_component * a_expression ->
+   string ->
+   (Format.formatter -> (a_component * a_expression) list -> unit) ->
+   (a_component * a_expression) list -> unit, Format.formatter, unit)
+  format
+)
+"parsetree.ml" 132 4146 4177 "parsetree.ml" 132 4146 4179
+type(
+  Format.formatter -> a_component * a_expression -> unit
+)
+ident(
+  int_ref pp "parsetree.ml" 129 4065 4084 "parsetree.ml" 129 4065 4086
+)
+"parsetree.ml" 132 4146 4180 "parsetree.ml" 132 4146 4181
+type(
+  a_component * a_expression
+)
+ident(
+  int_ref x "parsetree.ml" 132 4146 4150 "parsetree.ml" 132 4146 4151
+)
+"parsetree.ml" 132 4146 4182 "parsetree.ml" 132 4146 4183
+type(
+  string
+)
+ident(
+  int_ref s "parsetree.ml" 129 4065 4087 "parsetree.ml" 129 4065 4088
+)
+"parsetree.ml" 132 4146 4185 "parsetree.ml" 132 4146 4195
+type(
+  (Format.formatter -> a_component * a_expression -> unit) ->
+  string -> Format.formatter -> (a_component * a_expression) list -> unit
+)
+ident(
+  int_ref pp_listsep "parsetree.ml" 129 4065 4073 "parsetree.ml" 129 4065 4083
+)
+"parsetree.ml" 132 4146 4196 "parsetree.ml" 132 4146 4198
+type(
+  Format.formatter -> a_component * a_expression -> unit
+)
+ident(
+  int_ref pp "parsetree.ml" 129 4065 4084 "parsetree.ml" 129 4065 4086
+)
+"parsetree.ml" 132 4146 4199 "parsetree.ml" 132 4146 4200
+type(
+  string
+)
+ident(
+  int_ref s "parsetree.ml" 129 4065 4087 "parsetree.ml" 129 4065 4088
+)
+"parsetree.ml" 132 4146 4184 "parsetree.ml" 132 4146 4201
+type(
+  Format.formatter -> (a_component * a_expression) list -> unit
+)
+"parsetree.ml" 132 4146 4202 "parsetree.ml" 132 4146 4203
+type(
+  (a_component * a_expression) list
+)
+ident(
+  int_ref l "parsetree.ml" 132 4146 4153 "parsetree.ml" 132 4146 4154
+)
+"parsetree.ml" 132 4146 4158 "parsetree.ml" 132 4146 4203
+type(
+  unit
+)
+"parsetree.ml" 129 4065 4093 "parsetree.ml" 132 4146 4203
+type(
+  (a_component * a_expression) list -> unit
+)
+"parsetree.ml" 134 4205 4209 "parsetree.ml" 134 4205 4225
+type(
+  int -> int -> Format.formatter -> a_proposition -> unit
+)
+ident(
+  def pp_a_proposition "parsetree.ml" 129 4065 4065 "parsetree.ml" 0 0 -1
+)
+"parsetree.ml" 134 4205 4226 "parsetree.ml" 134 4205 4230
+type(
+  int
+)
+ident(
+  def pprc "parsetree.ml" 134 4205 4231 "parsetree.ml" 182 6260 6354
+)
+"parsetree.ml" 134 4205 4231 "parsetree.ml" 134 4205 4235
+type(
+  int
+)
+ident(
+  def ppsn "parsetree.ml" 134 4205 4236 "parsetree.ml" 182 6260 6354
+)
+"parsetree.ml" 134 4205 4236 "parsetree.ml" 134 4205 4237
+type(
+  Format.formatter
+)
+ident(
+  def f "parsetree.ml" 135 4240 4242 "parsetree.ml" 182 6260 6354
+)
+"parsetree.ml" 135 4240 4246 "parsetree.ml" 135 4240 4248
+type(
+  int -> int -> bool
+)
+ident(
+  def cp "parsetree.ml" 142 4523 4528 "parsetree.ml" 182 6260 6354
+)
+"parsetree.ml" 135 4240 4251 "parsetree.ml" 135 4240 4263
+type(
+  int -> int -> int -> int -> bool
+)
+ident(
+  int_ref check_parens "parsetree.ml" 109 3415 3419 "parsetree.ml" 109 3415 3431
+)
+"parsetree.ml" 135 4240 4264 "parsetree.ml" 135 4240 4268
+type(
+  int
+)
+ident(
+  int_ref pprc "parsetree.ml" 134 4205 4226 "parsetree.ml" 134 4205 4230
+)
+"parsetree.ml" 135 4240 4269 "parsetree.ml" 135 4240 4273
+type(
+  int
+)
+ident(
+  int_ref ppsn "parsetree.ml" 134 4205 4231 "parsetree.ml" 134 4205 4235
+)
+"parsetree.ml" 135 4240 4251 "parsetree.ml" 135 4240 4273
+type(
+  int -> int -> bool
+)
+"parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+type(
+  'a -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  def ppae "parsetree.ml" 142 4523 4528 "parsetree.ml" 182 6260 6354
+)
+"parsetree.ml" 136 4274 4287 "parsetree.ml" 136 4274 4302
+type(
+  'a -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref pp_a_expression "parsetree.ml" 116 3640 3644 "parsetree.ml" 116 3640 3659
+)
+"parsetree.ml" 137 4303 4309 "parsetree.ml" 137 4303 4313
+type(
+  int -> int -> Format.formatter -> a_proposition -> unit
+)
+ident(
+  def ppap "parsetree.ml" 142 4523 4528 "parsetree.ml" 182 6260 6354
+)
+"parsetree.ml" 137 4303 4316 "parsetree.ml" 137 4303 4332
+type(
+  int -> int -> Format.formatter -> a_proposition -> unit
+)
+ident(
+  int_ref pp_a_proposition "parsetree.ml" 134 4205 4209 "parsetree.ml" 134 4205 4225
+)
+"parsetree.ml" 138 4333 4339 "parsetree.ml" 138 4333 4343
+type(
+  'b -> 'c -> Format.formatter -> string -> unit
+)
+ident(
+  def ppac "parsetree.ml" 142 4523 4528 "parsetree.ml" 182 6260 6354
+)
+"parsetree.ml" 138 4333 4346 "parsetree.ml" 138 4333 4360
+type(
+  'b -> 'c -> Format.formatter -> string -> unit
+)
+ident(
+  int_ref pp_a_component "parsetree.ml" 113 3555 3563 "parsetree.ml" 113 3555 3577
+)
+"parsetree.ml" 139 4361 4367 "parsetree.ml" 139 4361 4372
+type(
+  'd -> int -> Format.formatter -> string * a_expression -> unit
+)
+ident(
+  def ppace "parsetree.ml" 142 4523 4528 "parsetree.ml" 182 6260 6354
+)
+"parsetree.ml" 139 4361 4373 "parsetree.ml" 139 4361 4384
+type(
+  'd
+)
+ident(
+  def parent_prec "parsetree.ml" 139 4361 4385 "parsetree.ml" 141 4472 4521
+)
+"parsetree.ml" 139 4361 4385 "parsetree.ml" 139 4361 4396
+type(
+  int
+)
+ident(
+  def parent_posn "parsetree.ml" 139 4361 4397 "parsetree.ml" 141 4472 4521
+)
+"parsetree.ml" 139 4361 4397 "parsetree.ml" 139 4361 4398
+type(
+  Format.formatter
+)
+ident(
+  def f "parsetree.ml" 139 4361 4399 "parsetree.ml" 141 4472 4521
+)
+"parsetree.ml" 139 4361 4400 "parsetree.ml" 139 4361 4401
+type(
+  string
+)
+ident(
+  def c "parsetree.ml" 140 4407 4411 "parsetree.ml" 141 4472 4521
+)
+"parsetree.ml" 139 4361 4402 "parsetree.ml" 139 4361 4403
+type(
+  a_expression
+)
+ident(
+  def e "parsetree.ml" 140 4407 4411 "parsetree.ml" 141 4472 4521
+)
+"parsetree.ml" 139 4361 4399 "parsetree.ml" 139 4361 4404
+type(
+  string * a_expression
+)
+"parsetree.ml" 140 4407 4411 "parsetree.ml" 140 4407 4418
+type(
+  Format.formatter ->
+  ((Format.formatter -> string -> unit) ->
+   string ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format ->
+  (Format.formatter -> string -> unit) ->
+  string ->
+  (Format.formatter -> a_expression -> unit) -> a_expression -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 140 4407 4419 "parsetree.ml" 140 4407 4420
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 139 4361 4397 "parsetree.ml" 139 4361 4398
+)
+"parsetree.ml" 140 4407 4421 "parsetree.ml" 140 4407 4428
+type(
+  ((Format.formatter -> string -> unit) ->
+   string ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format
+)
+"parsetree.ml" 140 4407 4430 "parsetree.ml" 140 4407 4444
+type(
+  'd -> int -> Format.formatter -> string -> unit
+)
+ident(
+  int_ref pp_a_component "parsetree.ml" 113 3555 3563 "parsetree.ml" 113 3555 3577
+)
+"parsetree.ml" 140 4407 4445 "parsetree.ml" 140 4407 4456
+type(
+  'd
+)
+ident(
+  int_ref parent_prec "parsetree.ml" 139 4361 4373 "parsetree.ml" 139 4361 4384
+)
+"parsetree.ml" 140 4407 4457 "parsetree.ml" 140 4407 4468
+type(
+  int
+)
+ident(
+  int_ref parent_posn "parsetree.ml" 139 4361 4385 "parsetree.ml" 139 4361 4396
+)
+"parsetree.ml" 140 4407 4429 "parsetree.ml" 140 4407 4469
+type(
+  Format.formatter -> string -> unit
+)
+"parsetree.ml" 140 4407 4470 "parsetree.ml" 140 4407 4471
+type(
+  string
+)
+ident(
+  int_ref c "parsetree.ml" 139 4361 4400 "parsetree.ml" 139 4361 4401
+)
+"parsetree.ml" 141 4472 4479 "parsetree.ml" 141 4472 4494
+type(
+  'd -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref pp_a_expression "parsetree.ml" 116 3640 3644 "parsetree.ml" 116 3640 3659
+)
+"parsetree.ml" 141 4472 4495 "parsetree.ml" 141 4472 4506
+type(
+  'd
+)
+ident(
+  int_ref parent_prec "parsetree.ml" 139 4361 4373 "parsetree.ml" 139 4361 4384
+)
+"parsetree.ml" 141 4472 4507 "parsetree.ml" 141 4472 4518
+type(
+  int
+)
+ident(
+  int_ref parent_posn "parsetree.ml" 139 4361 4385 "parsetree.ml" 139 4361 4396
+)
+"parsetree.ml" 141 4472 4478 "parsetree.ml" 141 4472 4519
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 141 4472 4520 "parsetree.ml" 141 4472 4521
+type(
+  a_expression
+)
+ident(
+  int_ref e "parsetree.ml" 139 4361 4402 "parsetree.ml" 139 4361 4403
+)
+"parsetree.ml" 140 4407 4411 "parsetree.ml" 141 4472 4521
+type(
+  unit
+)
+"parsetree.ml" 143 4537 4556 "parsetree.ml" 143 4537 4557
+type(
+  string
+)
+ident(
+  def o "parsetree.ml" 144 4570 4571 "parsetree.ml" 146 4657 4727
+)
+"parsetree.ml" 143 4537 4559 "parsetree.ml" 143 4537 4561
+type(
+  a_expression
+)
+ident(
+  def e1 "parsetree.ml" 144 4570 4571 "parsetree.ml" 146 4657 4727
+)
+"parsetree.ml" 143 4537 4563 "parsetree.ml" 143 4537 4565
+type(
+  a_expression
+)
+ident(
+  def e2 "parsetree.ml" 144 4570 4571 "parsetree.ml" 146 4657 4727
+)
+"parsetree.ml" 143 4537 4543 "parsetree.ml" 143 4537 4566
+type(
+  a_proposition
+)
+"parsetree.ml" 144 4570 4574 "parsetree.ml" 144 4570 4576
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref cp "parsetree.ml" 135 4240 4246 "parsetree.ml" 135 4240 4248
+)
+"parsetree.ml" 144 4570 4577 "parsetree.ml" 144 4570 4578
+type(
+  int
+)
+"parsetree.ml" 144 4570 4579 "parsetree.ml" 144 4570 4583
+type(
+  int
+)
+"parsetree.ml" 144 4570 4574 "parsetree.ml" 144 4570 4583
+type(
+  bool
+)
+"parsetree.ml" 145 4584 4590 "parsetree.ml" 145 4584 4597
+type(
+  Format.formatter ->
+  ((Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   string ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format ->
+  (Format.formatter -> a_expression -> unit) ->
+  a_expression ->
+  string ->
+  (Format.formatter -> a_expression -> unit) -> a_expression -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 145 4584 4598 "parsetree.ml" 145 4584 4599
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 134 4205 4236 "parsetree.ml" 134 4205 4237
+)
+"parsetree.ml" 145 4584 4600 "parsetree.ml" 145 4584 4623
+type(
+  ((Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   string ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format
+)
+"parsetree.ml" 145 4584 4625 "parsetree.ml" 145 4584 4629
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 145 4584 4630 "parsetree.ml" 145 4584 4631
+type(
+  int
+)
+"parsetree.ml" 145 4584 4632 "parsetree.ml" 145 4584 4636
+type(
+  int
+)
+"parsetree.ml" 145 4584 4624 "parsetree.ml" 145 4584 4637
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 145 4584 4638 "parsetree.ml" 145 4584 4640
+type(
+  a_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 143 4537 4559 "parsetree.ml" 143 4537 4561
+)
+"parsetree.ml" 145 4584 4641 "parsetree.ml" 145 4584 4642
+type(
+  string
+)
+ident(
+  int_ref o "parsetree.ml" 143 4537 4556 "parsetree.ml" 143 4537 4557
+)
+"parsetree.ml" 145 4584 4644 "parsetree.ml" 145 4584 4648
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 145 4584 4649 "parsetree.ml" 145 4584 4650
+type(
+  int
+)
+"parsetree.ml" 145 4584 4651 "parsetree.ml" 145 4584 4652
+type(
+  int
+)
+"parsetree.ml" 145 4584 4643 "parsetree.ml" 145 4584 4653
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 145 4584 4654 "parsetree.ml" 145 4584 4656
+type(
+  a_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 143 4537 4563 "parsetree.ml" 143 4537 4565
+)
+"parsetree.ml" 145 4584 4590 "parsetree.ml" 145 4584 4656
+type(
+  unit
+)
+"parsetree.ml" 146 4657 4663 "parsetree.ml" 146 4657 4670
+type(
+  Format.formatter ->
+  ((Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   string ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format ->
+  (Format.formatter -> a_expression -> unit) ->
+  a_expression ->
+  string ->
+  (Format.formatter -> a_expression -> unit) -> a_expression -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 146 4657 4671 "parsetree.ml" 146 4657 4672
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 134 4205 4236 "parsetree.ml" 134 4205 4237
+)
+"parsetree.ml" 146 4657 4673 "parsetree.ml" 146 4657 4694
+type(
+  ((Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   string ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format
+)
+"parsetree.ml" 146 4657 4696 "parsetree.ml" 146 4657 4700
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 146 4657 4701 "parsetree.ml" 146 4657 4702
+type(
+  int
+)
+"parsetree.ml" 146 4657 4703 "parsetree.ml" 146 4657 4707
+type(
+  int
+)
+"parsetree.ml" 146 4657 4695 "parsetree.ml" 146 4657 4708
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 146 4657 4709 "parsetree.ml" 146 4657 4711
+type(
+  a_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 143 4537 4559 "parsetree.ml" 143 4537 4561
+)
+"parsetree.ml" 146 4657 4712 "parsetree.ml" 146 4657 4713
+type(
+  string
+)
+ident(
+  int_ref o "parsetree.ml" 143 4537 4556 "parsetree.ml" 143 4537 4557
+)
+"parsetree.ml" 146 4657 4715 "parsetree.ml" 146 4657 4719
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 146 4657 4720 "parsetree.ml" 146 4657 4721
+type(
+  int
+)
+"parsetree.ml" 146 4657 4722 "parsetree.ml" 146 4657 4723
+type(
+  int
+)
+"parsetree.ml" 146 4657 4714 "parsetree.ml" 146 4657 4724
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 146 4657 4725 "parsetree.ml" 146 4657 4727
+type(
+  a_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 143 4537 4563 "parsetree.ml" 143 4537 4565
+)
+"parsetree.ml" 146 4657 4663 "parsetree.ml" 146 4657 4727
+type(
+  unit
+)
+"parsetree.ml" 144 4570 4571 "parsetree.ml" 146 4657 4727
+type(
+  unit
+)
+"parsetree.ml" 147 4728 4747 "parsetree.ml" 147 4728 4749
+type(
+  a_expression
+)
+ident(
+  def e1 "parsetree.ml" 148 4758 4759 "parsetree.ml" 150 4843 4911
+)
+"parsetree.ml" 147 4728 4751 "parsetree.ml" 147 4728 4753
+type(
+  a_expression
+)
+ident(
+  def e2 "parsetree.ml" 148 4758 4759 "parsetree.ml" 150 4843 4911
+)
+"parsetree.ml" 147 4728 4734 "parsetree.ml" 147 4728 4754
+type(
+  a_proposition
+)
+"parsetree.ml" 148 4758 4762 "parsetree.ml" 148 4758 4764
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref cp "parsetree.ml" 135 4240 4246 "parsetree.ml" 135 4240 4248
+)
+"parsetree.ml" 148 4758 4765 "parsetree.ml" 148 4758 4766
+type(
+  int
+)
+"parsetree.ml" 148 4758 4767 "parsetree.ml" 148 4758 4771
+type(
+  int
+)
+"parsetree.ml" 148 4758 4762 "parsetree.ml" 148 4758 4771
+type(
+  bool
+)
+"parsetree.ml" 149 4772 4778 "parsetree.ml" 149 4772 4785
+type(
+  Format.formatter ->
+  ((Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format ->
+  (Format.formatter -> a_expression -> unit) ->
+  a_expression ->
+  (Format.formatter -> a_expression -> unit) -> a_expression -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 149 4772 4786 "parsetree.ml" 149 4772 4787
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 134 4205 4236 "parsetree.ml" 134 4205 4237
+)
+"parsetree.ml" 149 4772 4788 "parsetree.ml" 149 4772 4811
+type(
+  ((Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format
+)
+"parsetree.ml" 149 4772 4813 "parsetree.ml" 149 4772 4817
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 149 4772 4818 "parsetree.ml" 149 4772 4819
+type(
+  int
+)
+"parsetree.ml" 149 4772 4820 "parsetree.ml" 149 4772 4824
+type(
+  int
+)
+"parsetree.ml" 149 4772 4812 "parsetree.ml" 149 4772 4825
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 149 4772 4826 "parsetree.ml" 149 4772 4828
+type(
+  a_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 147 4728 4747 "parsetree.ml" 147 4728 4749
+)
+"parsetree.ml" 149 4772 4830 "parsetree.ml" 149 4772 4834
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 149 4772 4835 "parsetree.ml" 149 4772 4836
+type(
+  int
+)
+"parsetree.ml" 149 4772 4837 "parsetree.ml" 149 4772 4838
+type(
+  int
+)
+"parsetree.ml" 149 4772 4829 "parsetree.ml" 149 4772 4839
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 149 4772 4840 "parsetree.ml" 149 4772 4842
+type(
+  a_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 147 4728 4751 "parsetree.ml" 147 4728 4753
+)
+"parsetree.ml" 149 4772 4778 "parsetree.ml" 149 4772 4842
+type(
+  unit
+)
+"parsetree.ml" 150 4843 4849 "parsetree.ml" 150 4843 4856
+type(
+  Format.formatter ->
+  ((Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format ->
+  (Format.formatter -> a_expression -> unit) ->
+  a_expression ->
+  (Format.formatter -> a_expression -> unit) -> a_expression -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 150 4843 4857 "parsetree.ml" 150 4843 4858
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 134 4205 4236 "parsetree.ml" 134 4205 4237
+)
+"parsetree.ml" 150 4843 4859 "parsetree.ml" 150 4843 4880
+type(
+  ((Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format
+)
+"parsetree.ml" 150 4843 4882 "parsetree.ml" 150 4843 4886
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 150 4843 4887 "parsetree.ml" 150 4843 4888
+type(
+  int
+)
+"parsetree.ml" 150 4843 4889 "parsetree.ml" 150 4843 4893
+type(
+  int
+)
+"parsetree.ml" 150 4843 4881 "parsetree.ml" 150 4843 4894
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 150 4843 4895 "parsetree.ml" 150 4843 4897
+type(
+  a_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 147 4728 4747 "parsetree.ml" 147 4728 4749
+)
+"parsetree.ml" 150 4843 4899 "parsetree.ml" 150 4843 4903
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 150 4843 4904 "parsetree.ml" 150 4843 4905
+type(
+  int
+)
+"parsetree.ml" 150 4843 4906 "parsetree.ml" 150 4843 4907
+type(
+  int
+)
+"parsetree.ml" 150 4843 4898 "parsetree.ml" 150 4843 4908
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 150 4843 4909 "parsetree.ml" 150 4843 4911
+type(
+  a_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 147 4728 4751 "parsetree.ml" 147 4728 4753
+)
+"parsetree.ml" 150 4843 4849 "parsetree.ml" 150 4843 4911
+type(
+  unit
+)
+"parsetree.ml" 148 4758 4759 "parsetree.ml" 150 4843 4911
+type(
+  unit
+)
+"parsetree.ml" 151 4912 4935 "parsetree.ml" 151 4912 4937
+type(
+  a_expression
+)
+ident(
+  def e1 "parsetree.ml" 152 4946 4947 "parsetree.ml" 154 5031 5099
+)
+"parsetree.ml" 151 4912 4939 "parsetree.ml" 151 4912 4941
+type(
+  a_expression
+)
+ident(
+  def e2 "parsetree.ml" 152 4946 4947 "parsetree.ml" 154 5031 5099
+)
+"parsetree.ml" 151 4912 4918 "parsetree.ml" 151 4912 4942
+type(
+  a_proposition
+)
+"parsetree.ml" 152 4946 4950 "parsetree.ml" 152 4946 4952
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref cp "parsetree.ml" 135 4240 4246 "parsetree.ml" 135 4240 4248
+)
+"parsetree.ml" 152 4946 4953 "parsetree.ml" 152 4946 4954
+type(
+  int
+)
+"parsetree.ml" 152 4946 4955 "parsetree.ml" 152 4946 4959
+type(
+  int
+)
+"parsetree.ml" 152 4946 4950 "parsetree.ml" 152 4946 4959
+type(
+  bool
+)
+"parsetree.ml" 153 4960 4966 "parsetree.ml" 153 4960 4973
+type(
+  Format.formatter ->
+  ((Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format ->
+  (Format.formatter -> a_expression -> unit) ->
+  a_expression ->
+  (Format.formatter -> a_expression -> unit) -> a_expression -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 153 4960 4974 "parsetree.ml" 153 4960 4975
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 134 4205 4236 "parsetree.ml" 134 4205 4237
+)
+"parsetree.ml" 153 4960 4976 "parsetree.ml" 153 4960 4999
+type(
+  ((Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format
+)
+"parsetree.ml" 153 4960 5001 "parsetree.ml" 153 4960 5005
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 153 4960 5006 "parsetree.ml" 153 4960 5007
+type(
+  int
+)
+"parsetree.ml" 153 4960 5008 "parsetree.ml" 153 4960 5012
+type(
+  int
+)
+"parsetree.ml" 153 4960 5000 "parsetree.ml" 153 4960 5013
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 153 4960 5014 "parsetree.ml" 153 4960 5016
+type(
+  a_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 151 4912 4935 "parsetree.ml" 151 4912 4937
+)
+"parsetree.ml" 153 4960 5018 "parsetree.ml" 153 4960 5022
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 153 4960 5023 "parsetree.ml" 153 4960 5024
+type(
+  int
+)
+"parsetree.ml" 153 4960 5025 "parsetree.ml" 153 4960 5026
+type(
+  int
+)
+"parsetree.ml" 153 4960 5017 "parsetree.ml" 153 4960 5027
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 153 4960 5028 "parsetree.ml" 153 4960 5030
+type(
+  a_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 151 4912 4939 "parsetree.ml" 151 4912 4941
+)
+"parsetree.ml" 153 4960 4966 "parsetree.ml" 153 4960 5030
+type(
+  unit
+)
+"parsetree.ml" 154 5031 5037 "parsetree.ml" 154 5031 5044
+type(
+  Format.formatter ->
+  ((Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format ->
+  (Format.formatter -> a_expression -> unit) ->
+  a_expression ->
+  (Format.formatter -> a_expression -> unit) -> a_expression -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 154 5031 5045 "parsetree.ml" 154 5031 5046
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 134 4205 4236 "parsetree.ml" 134 4205 4237
+)
+"parsetree.ml" 154 5031 5047 "parsetree.ml" 154 5031 5068
+type(
+  ((Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format
+)
+"parsetree.ml" 154 5031 5070 "parsetree.ml" 154 5031 5074
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 154 5031 5075 "parsetree.ml" 154 5031 5076
+type(
+  int
+)
+"parsetree.ml" 154 5031 5077 "parsetree.ml" 154 5031 5081
+type(
+  int
+)
+"parsetree.ml" 154 5031 5069 "parsetree.ml" 154 5031 5082
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 154 5031 5083 "parsetree.ml" 154 5031 5085
+type(
+  a_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 151 4912 4935 "parsetree.ml" 151 4912 4937
+)
+"parsetree.ml" 154 5031 5087 "parsetree.ml" 154 5031 5091
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 154 5031 5092 "parsetree.ml" 154 5031 5093
+type(
+  int
+)
+"parsetree.ml" 154 5031 5094 "parsetree.ml" 154 5031 5095
+type(
+  int
+)
+"parsetree.ml" 154 5031 5086 "parsetree.ml" 154 5031 5096
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 154 5031 5097 "parsetree.ml" 154 5031 5099
+type(
+  a_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 151 4912 4939 "parsetree.ml" 151 4912 4941
+)
+"parsetree.ml" 154 5031 5037 "parsetree.ml" 154 5031 5099
+type(
+  unit
+)
+"parsetree.ml" 152 4946 4947 "parsetree.ml" 154 5031 5099
+type(
+  unit
+)
+"parsetree.ml" 155 5100 5106 "parsetree.ml" 155 5100 5117
+type(
+  a_proposition
+)
+"parsetree.ml" 156 5121 5122 "parsetree.ml" 156 5121 5129
+type(
+  Format.formatter -> (unit, Format.formatter, unit) format -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 156 5121 5130 "parsetree.ml" 156 5121 5131
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 134 4205 4236 "parsetree.ml" 134 4205 4237
+)
+"parsetree.ml" 156 5121 5132 "parsetree.ml" 156 5121 5136
+type(
+  (unit, Format.formatter, unit) format
+)
+"parsetree.ml" 156 5121 5122 "parsetree.ml" 156 5121 5136
+type(
+  unit
+)
+"parsetree.ml" 157 5137 5161 "parsetree.ml" 157 5137 5162
+type(
+  a_proposition
+)
+ident(
+  def p "parsetree.ml" 158 5173 5174 "parsetree.ml" 158 5173 5259
+)
+"parsetree.ml" 157 5137 5163 "parsetree.ml" 157 5137 5165
+type(
+  a_proposition
+)
+ident(
+  def p1 "parsetree.ml" 158 5173 5174 "parsetree.ml" 158 5173 5259
+)
+"parsetree.ml" 157 5137 5166 "parsetree.ml" 157 5137 5168
+type(
+  a_proposition
+)
+ident(
+  def p2 "parsetree.ml" 158 5173 5174 "parsetree.ml" 158 5173 5259
+)
+"parsetree.ml" 157 5137 5143 "parsetree.ml" 157 5137 5169
+type(
+  a_proposition
+)
+"parsetree.ml" 158 5173 5174 "parsetree.ml" 158 5173 5181
+type(
+  Format.formatter ->
+  ((Format.formatter -> a_proposition -> unit) ->
+   a_proposition ->
+   (Format.formatter -> a_proposition -> unit) ->
+   a_proposition ->
+   (Format.formatter -> a_proposition -> unit) -> a_proposition -> unit,
+   Format.formatter, unit)
+  format ->
+  (Format.formatter -> a_proposition -> unit) ->
+  a_proposition ->
+  (Format.formatter -> a_proposition -> unit) ->
+  a_proposition ->
+  (Format.formatter -> a_proposition -> unit) -> a_proposition -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 158 5173 5182 "parsetree.ml" 158 5173 5183
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 134 4205 4236 "parsetree.ml" 134 4205 4237
+)
+"parsetree.ml" 158 5173 5184 "parsetree.ml" 158 5173 5218
+type(
+  ((Format.formatter -> a_proposition -> unit) ->
+   a_proposition ->
+   (Format.formatter -> a_proposition -> unit) ->
+   a_proposition ->
+   (Format.formatter -> a_proposition -> unit) -> a_proposition -> unit,
+   Format.formatter, unit)
+  format
+)
+"parsetree.ml" 158 5173 5220 "parsetree.ml" 158 5173 5224
+type(
+  int -> int -> Format.formatter -> a_proposition -> unit
+)
+ident(
+  int_ref ppap "parsetree.ml" 137 4303 4309 "parsetree.ml" 137 4303 4313
+)
+"parsetree.ml" 158 5173 5225 "parsetree.ml" 158 5173 5226
+type(
+  int
+)
+"parsetree.ml" 158 5173 5227 "parsetree.ml" 158 5173 5228
+type(
+  int
+)
+"parsetree.ml" 158 5173 5219 "parsetree.ml" 158 5173 5229
+type(
+  Format.formatter -> a_proposition -> unit
+)
+"parsetree.ml" 158 5173 5230 "parsetree.ml" 158 5173 5231
+type(
+  a_proposition
+)
+ident(
+  int_ref p "parsetree.ml" 157 5137 5161 "parsetree.ml" 157 5137 5162
+)
+"parsetree.ml" 158 5173 5233 "parsetree.ml" 158 5173 5237
+type(
+  int -> int -> Format.formatter -> a_proposition -> unit
+)
+ident(
+  int_ref ppap "parsetree.ml" 137 4303 4309 "parsetree.ml" 137 4303 4313
+)
+"parsetree.ml" 158 5173 5238 "parsetree.ml" 158 5173 5239
+type(
+  int
+)
+"parsetree.ml" 158 5173 5240 "parsetree.ml" 158 5173 5241
+type(
+  int
+)
+"parsetree.ml" 158 5173 5232 "parsetree.ml" 158 5173 5242
+type(
+  Format.formatter -> a_proposition -> unit
+)
+"parsetree.ml" 158 5173 5243 "parsetree.ml" 158 5173 5245
+type(
+  a_proposition
+)
+ident(
+  int_ref p1 "parsetree.ml" 157 5137 5163 "parsetree.ml" 157 5137 5165
+)
+"parsetree.ml" 158 5173 5247 "parsetree.ml" 158 5173 5251
+type(
+  int -> int -> Format.formatter -> a_proposition -> unit
+)
+ident(
+  int_ref ppap "parsetree.ml" 137 4303 4309 "parsetree.ml" 137 4303 4313
+)
+"parsetree.ml" 158 5173 5252 "parsetree.ml" 158 5173 5253
+type(
+  int
+)
+"parsetree.ml" 158 5173 5254 "parsetree.ml" 158 5173 5255
+type(
+  int
+)
+"parsetree.ml" 158 5173 5246 "parsetree.ml" 158 5173 5256
+type(
+  Format.formatter -> a_proposition -> unit
+)
+"parsetree.ml" 158 5173 5257 "parsetree.ml" 158 5173 5259
+type(
+  a_proposition
+)
+ident(
+  int_ref p2 "parsetree.ml" 157 5137 5166 "parsetree.ml" 157 5137 5168
+)
+"parsetree.ml" 158 5173 5174 "parsetree.ml" 158 5173 5259
+type(
+  unit
+)
+"parsetree.ml" 159 5260 5278 "parsetree.ml" 159 5260 5280
+type(
+  a_proposition
+)
+ident(
+  def p1 "parsetree.ml" 160 5289 5290 "parsetree.ml" 162 5376 5446
+)
+"parsetree.ml" 159 5260 5282 "parsetree.ml" 159 5260 5284
+type(
+  a_proposition
+)
+ident(
+  def p2 "parsetree.ml" 160 5289 5290 "parsetree.ml" 162 5376 5446
+)
+"parsetree.ml" 159 5260 5266 "parsetree.ml" 159 5260 5285
+type(
+  a_proposition
+)
+"parsetree.ml" 160 5289 5293 "parsetree.ml" 160 5289 5295
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref cp "parsetree.ml" 135 4240 4246 "parsetree.ml" 135 4240 4248
+)
+"parsetree.ml" 160 5289 5296 "parsetree.ml" 160 5289 5297
+type(
+  int
+)
+"parsetree.ml" 160 5289 5298 "parsetree.ml" 160 5289 5302
+type(
+  int
+)
+"parsetree.ml" 160 5289 5293 "parsetree.ml" 160 5289 5302
+type(
+  bool
+)
+"parsetree.ml" 161 5303 5309 "parsetree.ml" 161 5303 5316
+type(
+  Format.formatter ->
+  ((Format.formatter -> a_proposition -> unit) ->
+   a_proposition ->
+   (Format.formatter -> a_proposition -> unit) -> a_proposition -> unit,
+   Format.formatter, unit)
+  format ->
+  (Format.formatter -> a_proposition -> unit) ->
+  a_proposition ->
+  (Format.formatter -> a_proposition -> unit) -> a_proposition -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 161 5303 5317 "parsetree.ml" 161 5303 5318
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 134 4205 4236 "parsetree.ml" 134 4205 4237
+)
+"parsetree.ml" 161 5303 5319 "parsetree.ml" 161 5303 5341
+type(
+  ((Format.formatter -> a_proposition -> unit) ->
+   a_proposition ->
+   (Format.formatter -> a_proposition -> unit) -> a_proposition -> unit,
+   Format.formatter, unit)
+  format
+)
+"parsetree.ml" 161 5303 5343 "parsetree.ml" 161 5303 5347
+type(
+  int -> int -> Format.formatter -> a_proposition -> unit
+)
+ident(
+  int_ref ppap "parsetree.ml" 137 4303 4309 "parsetree.ml" 137 4303 4313
+)
+"parsetree.ml" 161 5303 5348 "parsetree.ml" 161 5303 5349
+type(
+  int
+)
+"parsetree.ml" 161 5303 5350 "parsetree.ml" 161 5303 5354
+type(
+  int
+)
+"parsetree.ml" 161 5303 5342 "parsetree.ml" 161 5303 5355
+type(
+  Format.formatter -> a_proposition -> unit
+)
+"parsetree.ml" 161 5303 5356 "parsetree.ml" 161 5303 5358
+type(
+  a_proposition
+)
+ident(
+  int_ref p1 "parsetree.ml" 159 5260 5278 "parsetree.ml" 159 5260 5280
+)
+"parsetree.ml" 161 5303 5360 "parsetree.ml" 161 5303 5364
+type(
+  int -> int -> Format.formatter -> a_proposition -> unit
+)
+ident(
+  int_ref ppap "parsetree.ml" 137 4303 4309 "parsetree.ml" 137 4303 4313
+)
+"parsetree.ml" 161 5303 5365 "parsetree.ml" 161 5303 5366
+type(
+  int
+)
+"parsetree.ml" 161 5303 5367 "parsetree.ml" 161 5303 5371
+type(
+  int
+)
+"parsetree.ml" 161 5303 5359 "parsetree.ml" 161 5303 5372
+type(
+  Format.formatter -> a_proposition -> unit
+)
+"parsetree.ml" 161 5303 5373 "parsetree.ml" 161 5303 5375
+type(
+  a_proposition
+)
+ident(
+  int_ref p2 "parsetree.ml" 159 5260 5282 "parsetree.ml" 159 5260 5284
+)
+"parsetree.ml" 161 5303 5309 "parsetree.ml" 161 5303 5375
+type(
+  unit
+)
+"parsetree.ml" 162 5376 5382 "parsetree.ml" 162 5376 5389
+type(
+  Format.formatter ->
+  ((Format.formatter -> a_proposition -> unit) ->
+   a_proposition ->
+   (Format.formatter -> a_proposition -> unit) -> a_proposition -> unit,
+   Format.formatter, unit)
+  format ->
+  (Format.formatter -> a_proposition -> unit) ->
+  a_proposition ->
+  (Format.formatter -> a_proposition -> unit) -> a_proposition -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 162 5376 5390 "parsetree.ml" 162 5376 5391
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 134 4205 4236 "parsetree.ml" 134 4205 4237
+)
+"parsetree.ml" 162 5376 5392 "parsetree.ml" 162 5376 5412
+type(
+  ((Format.formatter -> a_proposition -> unit) ->
+   a_proposition ->
+   (Format.formatter -> a_proposition -> unit) -> a_proposition -> unit,
+   Format.formatter, unit)
+  format
+)
+"parsetree.ml" 162 5376 5414 "parsetree.ml" 162 5376 5418
+type(
+  int -> int -> Format.formatter -> a_proposition -> unit
+)
+ident(
+  int_ref ppap "parsetree.ml" 137 4303 4309 "parsetree.ml" 137 4303 4313
+)
+"parsetree.ml" 162 5376 5419 "parsetree.ml" 162 5376 5420
+type(
+  int
+)
+"parsetree.ml" 162 5376 5421 "parsetree.ml" 162 5376 5425
+type(
+  int
+)
+"parsetree.ml" 162 5376 5413 "parsetree.ml" 162 5376 5426
+type(
+  Format.formatter -> a_proposition -> unit
+)
+"parsetree.ml" 162 5376 5427 "parsetree.ml" 162 5376 5429
+type(
+  a_proposition
+)
+ident(
+  int_ref p1 "parsetree.ml" 159 5260 5278 "parsetree.ml" 159 5260 5280
+)
+"parsetree.ml" 162 5376 5431 "parsetree.ml" 162 5376 5435
+type(
+  int -> int -> Format.formatter -> a_proposition -> unit
+)
+ident(
+  int_ref ppap "parsetree.ml" 137 4303 4309 "parsetree.ml" 137 4303 4313
+)
+"parsetree.ml" 162 5376 5436 "parsetree.ml" 162 5376 5437
+type(
+  int
+)
+"parsetree.ml" 162 5376 5438 "parsetree.ml" 162 5376 5442
+type(
+  int
+)
+"parsetree.ml" 162 5376 5430 "parsetree.ml" 162 5376 5443
+type(
+  Format.formatter -> a_proposition -> unit
+)
+"parsetree.ml" 162 5376 5444 "parsetree.ml" 162 5376 5446
+type(
+  a_proposition
+)
+ident(
+  int_ref p2 "parsetree.ml" 159 5260 5282 "parsetree.ml" 159 5260 5284
+)
+"parsetree.ml" 162 5376 5382 "parsetree.ml" 162 5376 5446
+type(
+  unit
+)
+"parsetree.ml" 160 5289 5290 "parsetree.ml" 162 5376 5446
+type(
+  unit
+)
+"parsetree.ml" 163 5447 5479 "parsetree.ml" 163 5447 5480
+type(
+  a_component
+)
+ident(
+  def c "parsetree.ml" 164 5488 5489 "parsetree.ml" 165 5523 5552
+)
+"parsetree.ml" 163 5447 5481 "parsetree.ml" 163 5447 5482
+type(
+  a_expression
+)
+ident(
+  def e "parsetree.ml" 164 5488 5489 "parsetree.ml" 165 5523 5552
+)
+"parsetree.ml" 163 5447 5465 "parsetree.ml" 163 5447 5484
+type(
+  a_space_pred
+)
+"parsetree.ml" 163 5447 5453 "parsetree.ml" 163 5447 5484
+type(
+  a_proposition
+)
+"parsetree.ml" 164 5488 5489 "parsetree.ml" 164 5488 5496
+type(
+  Format.formatter ->
+  ((Format.formatter -> a_component -> unit) ->
+   a_component ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format ->
+  (Format.formatter -> a_component -> unit) ->
+  a_component ->
+  (Format.formatter -> a_expression -> unit) -> a_expression -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 164 5488 5497 "parsetree.ml" 164 5488 5498
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 134 4205 4236 "parsetree.ml" 134 4205 4237
+)
+"parsetree.ml" 164 5488 5499 "parsetree.ml" 164 5488 5522
+type(
+  ((Format.formatter -> a_component -> unit) ->
+   a_component ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format
+)
+"parsetree.ml" 165 5523 5525 "parsetree.ml" 165 5523 5529
+type(
+  int -> int -> Format.formatter -> a_component -> unit
+)
+ident(
+  int_ref ppac "parsetree.ml" 138 4333 4339 "parsetree.ml" 138 4333 4343
+)
+"parsetree.ml" 165 5523 5530 "parsetree.ml" 165 5523 5531
+type(
+  int
+)
+"parsetree.ml" 165 5523 5532 "parsetree.ml" 165 5523 5536
+type(
+  int
+)
+"parsetree.ml" 165 5523 5524 "parsetree.ml" 165 5523 5537
+type(
+  Format.formatter -> a_component -> unit
+)
+"parsetree.ml" 165 5523 5538 "parsetree.ml" 165 5523 5539
+type(
+  a_component
+)
+ident(
+  int_ref c "parsetree.ml" 163 5447 5479 "parsetree.ml" 163 5447 5480
+)
+"parsetree.ml" 165 5523 5541 "parsetree.ml" 165 5523 5545
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 165 5523 5546 "parsetree.ml" 165 5523 5547
+type(
+  int
+)
+"parsetree.ml" 165 5523 5548 "parsetree.ml" 165 5523 5549
+type(
+  int
+)
+"parsetree.ml" 165 5523 5540 "parsetree.ml" 165 5523 5550
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 165 5523 5551 "parsetree.ml" 165 5523 5552
+type(
+  a_expression
+)
+ident(
+  int_ref e "parsetree.ml" 163 5447 5481 "parsetree.ml" 163 5447 5482
+)
+"parsetree.ml" 164 5488 5489 "parsetree.ml" 165 5523 5552
+type(
+  unit
+)
+"parsetree.ml" 166 5553 5588 "parsetree.ml" 166 5553 5589
+type(
+  a_component
+)
+ident(
+  def c "parsetree.ml" 167 5601 5602 "parsetree.ml" 168 5657 5685
+)
+"parsetree.ml" 166 5553 5590 "parsetree.ml" 166 5553 5592
+type(
+  a_expression
+)
+ident(
+  def e1 "parsetree.ml" 167 5601 5602 "parsetree.ml" 168 5657 5685
+)
+"parsetree.ml" 166 5553 5593 "parsetree.ml" 166 5553 5595
+type(
+  a_expression
+)
+ident(
+  def e2 "parsetree.ml" 167 5601 5602 "parsetree.ml" 168 5657 5685
+)
+"parsetree.ml" 166 5553 5571 "parsetree.ml" 166 5553 5597
+type(
+  a_space_pred
+)
+"parsetree.ml" 166 5553 5559 "parsetree.ml" 166 5553 5597
+type(
+  a_proposition
+)
+"parsetree.ml" 167 5601 5602 "parsetree.ml" 167 5601 5609
+type(
+  Format.formatter ->
+  ((Format.formatter -> a_component -> unit) ->
+   a_component ->
+   (Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format ->
+  (Format.formatter -> a_component -> unit) ->
+  a_component ->
+  (Format.formatter -> a_expression -> unit) ->
+  a_expression ->
+  (Format.formatter -> a_expression -> unit) -> a_expression -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 167 5601 5610 "parsetree.ml" 167 5601 5611
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 134 4205 4236 "parsetree.ml" 134 4205 4237
+)
+"parsetree.ml" 167 5601 5612 "parsetree.ml" 167 5601 5643
+type(
+  ((Format.formatter -> a_component -> unit) ->
+   a_component ->
+   (Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format
+)
+"parsetree.ml" 167 5601 5645 "parsetree.ml" 167 5601 5649
+type(
+  int -> int -> Format.formatter -> a_component -> unit
+)
+ident(
+  int_ref ppac "parsetree.ml" 138 4333 4339 "parsetree.ml" 138 4333 4343
+)
+"parsetree.ml" 167 5601 5650 "parsetree.ml" 167 5601 5651
+type(
+  int
+)
+"parsetree.ml" 167 5601 5652 "parsetree.ml" 167 5601 5653
+type(
+  int
+)
+"parsetree.ml" 167 5601 5644 "parsetree.ml" 167 5601 5654
+type(
+  Format.formatter -> a_component -> unit
+)
+"parsetree.ml" 167 5601 5655 "parsetree.ml" 167 5601 5656
+type(
+  a_component
+)
+ident(
+  int_ref c "parsetree.ml" 166 5553 5588 "parsetree.ml" 166 5553 5589
+)
+"parsetree.ml" 168 5657 5659 "parsetree.ml" 168 5657 5663
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 168 5657 5664 "parsetree.ml" 168 5657 5665
+type(
+  int
+)
+"parsetree.ml" 168 5657 5666 "parsetree.ml" 168 5657 5667
+type(
+  int
+)
+"parsetree.ml" 168 5657 5658 "parsetree.ml" 168 5657 5668
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 168 5657 5669 "parsetree.ml" 168 5657 5671
+type(
+  a_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 166 5553 5590 "parsetree.ml" 166 5553 5592
+)
+"parsetree.ml" 168 5657 5673 "parsetree.ml" 168 5657 5677
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 168 5657 5678 "parsetree.ml" 168 5657 5679
+type(
+  int
+)
+"parsetree.ml" 168 5657 5680 "parsetree.ml" 168 5657 5681
+type(
+  int
+)
+"parsetree.ml" 168 5657 5672 "parsetree.ml" 168 5657 5682
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 168 5657 5683 "parsetree.ml" 168 5657 5685
+type(
+  a_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 166 5553 5593 "parsetree.ml" 166 5553 5595
+)
+"parsetree.ml" 167 5601 5602 "parsetree.ml" 168 5657 5685
+type(
+  unit
+)
+"parsetree.ml" 169 5686 5719 "parsetree.ml" 169 5686 5720
+type(
+  dlink_kind
+)
+ident(
+  def k "parsetree.ml" 170 5744 5745 "parsetree.ml" 173 5859 5916
+)
+"parsetree.ml" 169 5686 5721 "parsetree.ml" 169 5686 5723
+type(
+  a_component
+)
+ident(
+  def c1 "parsetree.ml" 170 5744 5745 "parsetree.ml" 173 5859 5916
+)
+"parsetree.ml" 169 5686 5724 "parsetree.ml" 169 5686 5726
+type(
+  a_expression
+)
+ident(
+  def e1 "parsetree.ml" 170 5744 5745 "parsetree.ml" 173 5859 5916
+)
+"parsetree.ml" 169 5686 5727 "parsetree.ml" 169 5686 5729
+type(
+  a_expression
+)
+ident(
+  def f1 "parsetree.ml" 170 5744 5745 "parsetree.ml" 173 5859 5916
+)
+"parsetree.ml" 169 5686 5730 "parsetree.ml" 169 5686 5732
+type(
+  a_component
+)
+ident(
+  def c2 "parsetree.ml" 170 5744 5745 "parsetree.ml" 173 5859 5916
+)
+"parsetree.ml" 169 5686 5733 "parsetree.ml" 169 5686 5735
+type(
+  a_expression
+)
+ident(
+  def e2 "parsetree.ml" 170 5744 5745 "parsetree.ml" 173 5859 5916
+)
+"parsetree.ml" 169 5686 5736 "parsetree.ml" 169 5686 5738
+type(
+  a_expression
+)
+ident(
+  def f2 "parsetree.ml" 170 5744 5745 "parsetree.ml" 173 5859 5916
+)
+"parsetree.ml" 169 5686 5704 "parsetree.ml" 169 5686 5740
+type(
+  a_space_pred
+)
+"parsetree.ml" 169 5686 5692 "parsetree.ml" 169 5686 5740
+type(
+  a_proposition
+)
+"parsetree.ml" 170 5744 5745 "parsetree.ml" 170 5744 5752
+type(
+  Format.formatter ->
+  (string ->
+   (Format.formatter -> a_component -> unit) ->
+   a_component ->
+   (Format.formatter -> a_component -> unit) ->
+   a_component ->
+   (Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format ->
+  string ->
+  (Format.formatter -> a_component -> unit) ->
+  a_component ->
+  (Format.formatter -> a_component -> unit) ->
+  a_component ->
+  (Format.formatter -> a_expression -> unit) ->
+  a_expression ->
+  (Format.formatter -> a_expression -> unit) ->
+  a_expression ->
+  (Format.formatter -> a_expression -> unit) ->
+  a_expression ->
+  (Format.formatter -> a_expression -> unit) -> a_expression -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 170 5744 5753 "parsetree.ml" 170 5744 5754
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 134 4205 4236 "parsetree.ml" 134 4205 4237
+)
+"parsetree.ml" 170 5744 5755 "parsetree.ml" 170 5744 5790
+type(
+  (string ->
+   (Format.formatter -> a_component -> unit) ->
+   a_component ->
+   (Format.formatter -> a_component -> unit) ->
+   a_component ->
+   (Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format
+)
+"parsetree.ml" 171 5791 5797 "parsetree.ml" 171 5791 5798
+type(
+  dlink_kind
+)
+ident(
+  int_ref k "parsetree.ml" 169 5686 5719 "parsetree.ml" 169 5686 5720
+)
+"parsetree.ml" 171 5791 5798 "parsetree.ml" 171 5791 5799
+type(
+  dlink_kind -> dlink_kind -> bool
+)
+ident(
+  int_ref Stdlib.( = ) "stdlib.mli" 121 5051 5051 "stdlib.mli" 121 5051 5095
+)
+"parsetree.ml" 171 5791 5799 "parsetree.ml" 171 5791 5801
+type(
+  dlink_kind
+)
+"parsetree.ml" 171 5791 5797 "parsetree.ml" 171 5791 5801
+type(
+  bool
+)
+"parsetree.ml" 171 5791 5807 "parsetree.ml" 171 5791 5814
+type(
+  string
+)
+"parsetree.ml" 171 5791 5820 "parsetree.ml" 171 5791 5827
+type(
+  string
+)
+"parsetree.ml" 171 5791 5793 "parsetree.ml" 171 5791 5828
+type(
+  string
+)
+"parsetree.ml" 172 5829 5832 "parsetree.ml" 172 5829 5836
+type(
+  int -> int -> Format.formatter -> a_component -> unit
+)
+ident(
+  int_ref ppac "parsetree.ml" 138 4333 4339 "parsetree.ml" 138 4333 4343
+)
+"parsetree.ml" 172 5829 5837 "parsetree.ml" 172 5829 5838
+type(
+  int
+)
+"parsetree.ml" 172 5829 5839 "parsetree.ml" 172 5829 5840
+type(
+  int
+)
+"parsetree.ml" 172 5829 5831 "parsetree.ml" 172 5829 5841
+type(
+  Format.formatter -> a_component -> unit
+)
+"parsetree.ml" 172 5829 5842 "parsetree.ml" 172 5829 5844
+type(
+  a_component
+)
+ident(
+  int_ref c1 "parsetree.ml" 169 5686 5721 "parsetree.ml" 169 5686 5723
+)
+"parsetree.ml" 172 5829 5846 "parsetree.ml" 172 5829 5850
+type(
+  int -> int -> Format.formatter -> a_component -> unit
+)
+ident(
+  int_ref ppac "parsetree.ml" 138 4333 4339 "parsetree.ml" 138 4333 4343
+)
+"parsetree.ml" 172 5829 5851 "parsetree.ml" 172 5829 5852
+type(
+  int
+)
+"parsetree.ml" 172 5829 5853 "parsetree.ml" 172 5829 5854
+type(
+  int
+)
+"parsetree.ml" 172 5829 5845 "parsetree.ml" 172 5829 5855
+type(
+  Format.formatter -> a_component -> unit
+)
+"parsetree.ml" 172 5829 5856 "parsetree.ml" 172 5829 5858
+type(
+  a_component
+)
+ident(
+  int_ref c2 "parsetree.ml" 169 5686 5730 "parsetree.ml" 169 5686 5732
+)
+"parsetree.ml" 173 5859 5862 "parsetree.ml" 173 5859 5866
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 173 5859 5867 "parsetree.ml" 173 5859 5868
+type(
+  int
+)
+"parsetree.ml" 173 5859 5869 "parsetree.ml" 173 5859 5870
+type(
+  int
+)
+"parsetree.ml" 173 5859 5861 "parsetree.ml" 173 5859 5871
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 173 5859 5872 "parsetree.ml" 173 5859 5874
+type(
+  a_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 169 5686 5724 "parsetree.ml" 169 5686 5726
+)
+"parsetree.ml" 173 5859 5876 "parsetree.ml" 173 5859 5880
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 173 5859 5881 "parsetree.ml" 173 5859 5882
+type(
+  int
+)
+"parsetree.ml" 173 5859 5883 "parsetree.ml" 173 5859 5884
+type(
+  int
+)
+"parsetree.ml" 173 5859 5875 "parsetree.ml" 173 5859 5885
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 173 5859 5886 "parsetree.ml" 173 5859 5888
+type(
+  a_expression
+)
+ident(
+  int_ref f1 "parsetree.ml" 169 5686 5727 "parsetree.ml" 169 5686 5729
+)
+"parsetree.ml" 173 5859 5890 "parsetree.ml" 173 5859 5894
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 173 5859 5895 "parsetree.ml" 173 5859 5896
+type(
+  int
+)
+"parsetree.ml" 173 5859 5897 "parsetree.ml" 173 5859 5898
+type(
+  int
+)
+"parsetree.ml" 173 5859 5889 "parsetree.ml" 173 5859 5899
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 173 5859 5900 "parsetree.ml" 173 5859 5902
+type(
+  a_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 169 5686 5733 "parsetree.ml" 169 5686 5735
+)
+"parsetree.ml" 173 5859 5904 "parsetree.ml" 173 5859 5908
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 173 5859 5909 "parsetree.ml" 173 5859 5910
+type(
+  int
+)
+"parsetree.ml" 173 5859 5911 "parsetree.ml" 173 5859 5912
+type(
+  int
+)
+"parsetree.ml" 173 5859 5903 "parsetree.ml" 173 5859 5913
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 173 5859 5914 "parsetree.ml" 173 5859 5916
+type(
+  a_expression
+)
+ident(
+  int_ref f2 "parsetree.ml" 169 5686 5736 "parsetree.ml" 169 5686 5738
+)
+"parsetree.ml" 170 5744 5745 "parsetree.ml" 173 5859 5916
+type(
+  unit
+)
+"parsetree.ml" 174 5917 5949 "parsetree.ml" 174 5917 5951
+type(
+  a_component
+)
+ident(
+  def c1 "parsetree.ml" 175 5963 5964 "parsetree.ml" 176 6017 6045
+)
+"parsetree.ml" 174 5917 5952 "parsetree.ml" 174 5917 5954
+type(
+  a_component
+)
+ident(
+  def c2 "parsetree.ml" 175 5963 5964 "parsetree.ml" 176 6017 6045
+)
+"parsetree.ml" 174 5917 5955 "parsetree.ml" 174 5917 5957
+type(
+  a_expression
+)
+ident(
+  def e1 "parsetree.ml" 175 5963 5964 "parsetree.ml" 176 6017 6045
+)
+"parsetree.ml" 174 5917 5935 "parsetree.ml" 174 5917 5959
+type(
+  a_space_pred
+)
+"parsetree.ml" 174 5917 5923 "parsetree.ml" 174 5917 5959
+type(
+  a_proposition
+)
+"parsetree.ml" 175 5963 5964 "parsetree.ml" 175 5963 5971
+type(
+  Format.formatter ->
+  ((Format.formatter -> a_component -> unit) ->
+   a_component ->
+   (Format.formatter -> a_component -> unit) ->
+   a_component ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format ->
+  (Format.formatter -> a_component -> unit) ->
+  a_component ->
+  (Format.formatter -> a_component -> unit) ->
+  a_component ->
+  (Format.formatter -> a_expression -> unit) -> a_expression -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 175 5963 5972 "parsetree.ml" 175 5963 5973
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 134 4205 4236 "parsetree.ml" 134 4205 4237
+)
+"parsetree.ml" 175 5963 5974 "parsetree.ml" 175 5963 6002
+type(
+  ((Format.formatter -> a_component -> unit) ->
+   a_component ->
+   (Format.formatter -> a_component -> unit) ->
+   a_component ->
+   (Format.formatter -> a_expression -> unit) -> a_expression -> unit,
+   Format.formatter, unit)
+  format
+)
+"parsetree.ml" 175 5963 6004 "parsetree.ml" 175 5963 6008
+type(
+  int -> int -> Format.formatter -> a_component -> unit
+)
+ident(
+  int_ref ppac "parsetree.ml" 138 4333 4339 "parsetree.ml" 138 4333 4343
+)
+"parsetree.ml" 175 5963 6009 "parsetree.ml" 175 5963 6010
+type(
+  int
+)
+"parsetree.ml" 175 5963 6011 "parsetree.ml" 175 5963 6012
+type(
+  int
+)
+"parsetree.ml" 175 5963 6003 "parsetree.ml" 175 5963 6013
+type(
+  Format.formatter -> a_component -> unit
+)
+"parsetree.ml" 175 5963 6014 "parsetree.ml" 175 5963 6016
+type(
+  a_component
+)
+ident(
+  int_ref c1 "parsetree.ml" 174 5917 5949 "parsetree.ml" 174 5917 5951
+)
+"parsetree.ml" 176 6017 6019 "parsetree.ml" 176 6017 6023
+type(
+  int -> int -> Format.formatter -> a_component -> unit
+)
+ident(
+  int_ref ppac "parsetree.ml" 138 4333 4339 "parsetree.ml" 138 4333 4343
+)
+"parsetree.ml" 176 6017 6024 "parsetree.ml" 176 6017 6025
+type(
+  int
+)
+"parsetree.ml" 176 6017 6026 "parsetree.ml" 176 6017 6027
+type(
+  int
+)
+"parsetree.ml" 176 6017 6018 "parsetree.ml" 176 6017 6028
+type(
+  Format.formatter -> a_component -> unit
+)
+"parsetree.ml" 176 6017 6029 "parsetree.ml" 176 6017 6031
+type(
+  a_component
+)
+ident(
+  int_ref c2 "parsetree.ml" 174 5917 5952 "parsetree.ml" 174 5917 5954
+)
+"parsetree.ml" 176 6017 6033 "parsetree.ml" 176 6017 6037
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 176 6017 6038 "parsetree.ml" 176 6017 6039
+type(
+  int
+)
+"parsetree.ml" 176 6017 6040 "parsetree.ml" 176 6017 6041
+type(
+  int
+)
+"parsetree.ml" 176 6017 6032 "parsetree.ml" 176 6017 6042
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 176 6017 6043 "parsetree.ml" 176 6017 6045
+type(
+  a_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 174 5917 5955 "parsetree.ml" 174 5917 5957
+)
+"parsetree.ml" 175 5963 5964 "parsetree.ml" 176 6017 6045
+type(
+  unit
+)
+"parsetree.ml" 177 6046 6064 "parsetree.ml" 177 6046 6078
+type(
+  a_space_pred
+)
+"parsetree.ml" 177 6046 6052 "parsetree.ml" 177 6046 6078
+type(
+  a_proposition
+)
+"parsetree.ml" 178 6082 6083 "parsetree.ml" 178 6082 6090
+type(
+  Format.formatter -> (unit, Format.formatter, unit) format -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 178 6082 6091 "parsetree.ml" 178 6082 6092
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 134 4205 4236 "parsetree.ml" 134 4205 4237
+)
+"parsetree.ml" 178 6082 6093 "parsetree.ml" 178 6082 6100
+type(
+  (unit, Format.formatter, unit) format
+)
+"parsetree.ml" 178 6082 6083 "parsetree.ml" 178 6082 6100
+type(
+  unit
+)
+"parsetree.ml" 179 6101 6137 "parsetree.ml" 179 6101 6139
+type(
+  a_expression
+)
+ident(
+  def e1 "parsetree.ml" 180 6149 6150 "parsetree.ml" 182 6260 6354
+)
+"parsetree.ml" 179 6101 6141 "parsetree.ml" 179 6101 6143
+type(
+  (a_component * a_expression) list
+)
+ident(
+  def el "parsetree.ml" 180 6149 6150 "parsetree.ml" 182 6260 6354
+)
+"parsetree.ml" 179 6101 6119 "parsetree.ml" 179 6101 6145
+type(
+  a_space_pred
+)
+"parsetree.ml" 179 6101 6107 "parsetree.ml" 179 6101 6145
+type(
+  a_proposition
+)
+"parsetree.ml" 180 6149 6153 "parsetree.ml" 180 6149 6155
+type(
+  int -> int -> bool
+)
+ident(
+  int_ref cp "parsetree.ml" 135 4240 4246 "parsetree.ml" 135 4240 4248
+)
+"parsetree.ml" 180 6149 6156 "parsetree.ml" 180 6149 6157
+type(
+  int
+)
+"parsetree.ml" 180 6149 6158 "parsetree.ml" 180 6149 6162
+type(
+  int
+)
+"parsetree.ml" 180 6149 6153 "parsetree.ml" 180 6149 6162
+type(
+  bool
+)
+"parsetree.ml" 181 6163 6176 "parsetree.ml" 181 6163 6183
+type(
+  Format.formatter ->
+  ((Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> (a_component * a_expression) list -> unit) ->
+   (a_component * a_expression) list -> unit, Format.formatter, unit)
+  format ->
+  (Format.formatter -> a_expression -> unit) ->
+  a_expression ->
+  (Format.formatter -> (a_component * a_expression) list -> unit) ->
+  (a_component * a_expression) list -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 181 6163 6184 "parsetree.ml" 181 6163 6185
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 134 4205 4236 "parsetree.ml" 134 4205 4237
+)
+"parsetree.ml" 181 6163 6186 "parsetree.ml" 181 6163 6210
+type(
+  ((Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> (a_component * a_expression) list -> unit) ->
+   (a_component * a_expression) list -> unit, Format.formatter, unit)
+  format
+)
+"parsetree.ml" 181 6163 6212 "parsetree.ml" 181 6163 6216
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 181 6163 6217 "parsetree.ml" 181 6163 6218
+type(
+  int
+)
+"parsetree.ml" 181 6163 6219 "parsetree.ml" 181 6163 6223
+type(
+  int
+)
+"parsetree.ml" 181 6163 6211 "parsetree.ml" 181 6163 6224
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 181 6163 6225 "parsetree.ml" 181 6163 6227
+type(
+  a_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 179 6101 6137 "parsetree.ml" 179 6101 6139
+)
+"parsetree.ml" 181 6163 6229 "parsetree.ml" 181 6163 6239
+type(
+  (Format.formatter -> a_component * a_expression -> unit) ->
+  string -> Format.formatter -> (a_component * a_expression) list -> unit
+)
+ident(
+  int_ref pp_listsep "parsetree.ml" 129 4065 4073 "parsetree.ml" 129 4065 4083
+)
+"parsetree.ml" 181 6163 6241 "parsetree.ml" 181 6163 6246
+type(
+  int -> int -> Format.formatter -> a_component * a_expression -> unit
+)
+ident(
+  int_ref ppace "parsetree.ml" 139 4361 4367 "parsetree.ml" 139 4361 4372
+)
+"parsetree.ml" 181 6163 6247 "parsetree.ml" 181 6163 6248
+type(
+  int
+)
+"parsetree.ml" 181 6163 6249 "parsetree.ml" 181 6163 6250
+type(
+  int
+)
+"parsetree.ml" 181 6163 6240 "parsetree.ml" 181 6163 6251
+type(
+  Format.formatter -> a_component * a_expression -> unit
+)
+"parsetree.ml" 181 6163 6252 "parsetree.ml" 181 6163 6255
+type(
+  string
+)
+"parsetree.ml" 181 6163 6228 "parsetree.ml" 181 6163 6256
+type(
+  Format.formatter -> (a_component * a_expression) list -> unit
+)
+"parsetree.ml" 181 6163 6257 "parsetree.ml" 181 6163 6259
+type(
+  (a_component * a_expression) list
+)
+ident(
+  int_ref el "parsetree.ml" 179 6101 6141 "parsetree.ml" 179 6101 6143
+)
+"parsetree.ml" 181 6163 6176 "parsetree.ml" 181 6163 6259
+type(
+  unit
+)
+"parsetree.ml" 182 6260 6273 "parsetree.ml" 182 6260 6280
+type(
+  Format.formatter ->
+  ((Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> (a_component * a_expression) list -> unit) ->
+   (a_component * a_expression) list -> unit, Format.formatter, unit)
+  format ->
+  (Format.formatter -> a_expression -> unit) ->
+  a_expression ->
+  (Format.formatter -> (a_component * a_expression) list -> unit) ->
+  (a_component * a_expression) list -> unit
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"parsetree.ml" 182 6260 6281 "parsetree.ml" 182 6260 6282
+type(
+  Format.formatter
+)
+ident(
+  int_ref f "parsetree.ml" 134 4205 4236 "parsetree.ml" 134 4205 4237
+)
+"parsetree.ml" 182 6260 6283 "parsetree.ml" 182 6260 6305
+type(
+  ((Format.formatter -> a_expression -> unit) ->
+   a_expression ->
+   (Format.formatter -> (a_component * a_expression) list -> unit) ->
+   (a_component * a_expression) list -> unit, Format.formatter, unit)
+  format
+)
+"parsetree.ml" 182 6260 6307 "parsetree.ml" 182 6260 6311
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref ppae "parsetree.ml" 136 4274 4280 "parsetree.ml" 136 4274 4284
+)
+"parsetree.ml" 182 6260 6312 "parsetree.ml" 182 6260 6313
+type(
+  int
+)
+"parsetree.ml" 182 6260 6314 "parsetree.ml" 182 6260 6318
+type(
+  int
+)
+"parsetree.ml" 182 6260 6306 "parsetree.ml" 182 6260 6319
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 182 6260 6320 "parsetree.ml" 182 6260 6322
+type(
+  a_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 179 6101 6137 "parsetree.ml" 179 6101 6139
+)
+"parsetree.ml" 182 6260 6324 "parsetree.ml" 182 6260 6334
+type(
+  (Format.formatter -> a_component * a_expression -> unit) ->
+  string -> Format.formatter -> (a_component * a_expression) list -> unit
+)
+ident(
+  int_ref pp_listsep "parsetree.ml" 129 4065 4073 "parsetree.ml" 129 4065 4083
+)
+"parsetree.ml" 182 6260 6336 "parsetree.ml" 182 6260 6341
+type(
+  int -> int -> Format.formatter -> a_component * a_expression -> unit
+)
+ident(
+  int_ref ppace "parsetree.ml" 139 4361 4367 "parsetree.ml" 139 4361 4372
+)
+"parsetree.ml" 182 6260 6342 "parsetree.ml" 182 6260 6343
+type(
+  int
+)
+"parsetree.ml" 182 6260 6344 "parsetree.ml" 182 6260 6345
+type(
+  int
+)
+"parsetree.ml" 182 6260 6335 "parsetree.ml" 182 6260 6346
+type(
+  Format.formatter -> a_component * a_expression -> unit
+)
+"parsetree.ml" 182 6260 6347 "parsetree.ml" 182 6260 6350
+type(
+  string
+)
+"parsetree.ml" 182 6260 6323 "parsetree.ml" 182 6260 6351
+type(
+  Format.formatter -> (a_component * a_expression) list -> unit
+)
+"parsetree.ml" 182 6260 6352 "parsetree.ml" 182 6260 6354
+type(
+  (a_component * a_expression) list
+)
+ident(
+  int_ref el "parsetree.ml" 179 6101 6141 "parsetree.ml" 179 6101 6143
+)
+"parsetree.ml" 182 6260 6273 "parsetree.ml" 182 6260 6354
+type(
+  unit
+)
+"parsetree.ml" 180 6149 6150 "parsetree.ml" 182 6260 6354
+type(
+  unit
+)
+"parsetree.ml" 142 4523 4528 "parsetree.ml" 182 6260 6354
+type(
+  a_proposition -> unit
+)
+"parsetree.ml" 135 4240 4242 "parsetree.ml" 182 6260 6354
+type(
+  a_proposition -> unit
+)
+"parsetree.ml" 184 6356 6360 "parsetree.ml" 184 6356 6368
+type(
+  Format.formatter -> a_expression -> unit
+)
+ident(
+  def pp_a_exp "parsetree.ml" 186 6392 6392 "parsetree.ml" 0 0 -1
+)
+"parsetree.ml" 184 6356 6371 "parsetree.ml" 184 6356 6386
+type(
+  int -> int -> Format.formatter -> a_expression -> unit
+)
+ident(
+  int_ref pp_a_expression "parsetree.ml" 116 3640 3644 "parsetree.ml" 116 3640 3659
+)
+"parsetree.ml" 184 6356 6387 "parsetree.ml" 184 6356 6388
+type(
+  int
+)
+"parsetree.ml" 184 6356 6389 "parsetree.ml" 184 6356 6390
+type(
+  int
+)
+"parsetree.ml" 184 6356 6371 "parsetree.ml" 184 6356 6390
+type(
+  Format.formatter -> a_expression -> unit
+)
+"parsetree.ml" 186 6392 6396 "parsetree.ml" 186 6392 6405
+type(
+  Format.formatter -> a_proposition -> unit
+)
+ident(
+  def pp_assert "parsetree.ml" 188 6430 6430 "parsetree.ml" 0 0 -1
+)
+"parsetree.ml" 186 6392 6408 "parsetree.ml" 186 6392 6424
+type(
+  int -> int -> Format.formatter -> a_proposition -> unit
+)
+ident(
+  int_ref pp_a_proposition "parsetree.ml" 134 4205 4209 "parsetree.ml" 134 4205 4225
+)
+"parsetree.ml" 186 6392 6425 "parsetree.ml" 186 6392 6426
+type(
+  int
+)
+"parsetree.ml" 186 6392 6427 "parsetree.ml" 186 6392 6428
+type(
+  int
+)
+"parsetree.ml" 186 6392 6408 "parsetree.ml" 186 6392 6428
+type(
+  Format.formatter -> a_proposition -> unit
+)
+"parsetree.ml" 188 6430 6434 "parsetree.ml" 188 6430 6442
+type(
+  a_expression
+)
+ident(
+  def aexp_nil "parsetree.ml" 192 6572 6572 "parsetree.ml" 0 0 -1
+)
+"parsetree.ml" 188 6430 6454 "parsetree.ml" 188 6430 6455
+type(
+  int
+)
+"parsetree.ml" 188 6430 6445 "parsetree.ml" 188 6430 6455
+type(
+  a_expression
+)
+"parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+type(
+  p_expression -> a_expression
+)
+ident(
+  def a_exp_of_p_exp "parsetree.ml" 195 6673 6673 "parsetree.ml" 0 0 -1
+)
+"parsetree.ml" 195 6673 6709 "parsetree.ml" 195 6673 6710
+type(
+  p_expression_desc
+)
+ident(
+  def d "parsetree.ml" 196 6728 6730 "parsetree.ml" 225 7794 7830
+)
+"parsetree.ml" 195 6673 6723 "parsetree.ml" 195 6673 6724
+type(
+  Location.t
+)
+ident(
+  def l "parsetree.ml" 196 6728 6730 "parsetree.ml" 225 7794 7830
+)
+"parsetree.ml" 195 6673 6696 "parsetree.ml" 195 6673 6725
+type(
+  p_expression
+)
+"parsetree.ml" 196 6728 6737 "parsetree.ml" 196 6728 6738
+type(
+  p_expression_desc
+)
+ident(
+  int_ref d "parsetree.ml" 195 6673 6709 "parsetree.ml" 195 6673 6710
+)
+"parsetree.ml" 197 6744 6762 "parsetree.ml" 197 6744 6763
+type(
+  string
+)
+ident(
+  def i "parsetree.ml" 197 6744 6767 "parsetree.ml" 197 6744 6779
+)
+"parsetree.ml" 197 6744 6751 "parsetree.ml" 197 6744 6763
+type(
+  p_expression_desc
+)
+"parsetree.ml" 197 6744 6778 "parsetree.ml" 197 6744 6779
+type(
+  string
+)
+ident(
+  int_ref i "parsetree.ml" 197 6744 6762 "parsetree.ml" 197 6744 6763
+)
+"parsetree.ml" 197 6744 6767 "parsetree.ml" 197 6744 6779
+type(
+  a_expression
+)
+"parsetree.ml" 199 6781 6797 "parsetree.ml" 199 6781 6798
+type(
+  int
+)
+ident(
+  def n "parsetree.ml" 199 6781 6802 "parsetree.ml" 199 6781 6812
+)
+"parsetree.ml" 199 6781 6788 "parsetree.ml" 199 6781 6798
+type(
+  p_expression_desc
+)
+"parsetree.ml" 199 6781 6811 "parsetree.ml" 199 6781 6812
+type(
+  int
+)
+ident(
+  int_ref n "parsetree.ml" 199 6781 6797 "parsetree.ml" 199 6781 6798
+)
+"parsetree.ml" 199 6781 6802 "parsetree.ml" 199 6781 6812
+type(
+  a_expression
+)
+"parsetree.ml" 201 6814 6834 "parsetree.ml" 201 6814 6837
+type(
+  string
+)
+"parsetree.ml" 201 6814 6839 "parsetree.ml" 201 6814 6840
+type(
+  p_expression
+)
+ident(
+  def e "parsetree.ml" 201 6814 6845 "parsetree.ml" 201 6814 6861
+)
+"parsetree.ml" 201 6814 6821 "parsetree.ml" 201 6814 6841
+type(
+  p_expression_desc
+)
+"parsetree.ml" 201 6814 6845 "parsetree.ml" 201 6814 6859
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 201 6814 6860 "parsetree.ml" 201 6814 6861
+type(
+  p_expression
+)
+ident(
+  int_ref e "parsetree.ml" 201 6814 6839 "parsetree.ml" 201 6814 6840
+)
+"parsetree.ml" 201 6814 6845 "parsetree.ml" 201 6814 6861
+type(
+  a_expression
+)
+"parsetree.ml" 202 6862 6882 "parsetree.ml" 202 6862 6885
+type(
+  string
+)
+"parsetree.ml" 202 6862 6887 "parsetree.ml" 202 6862 6888
+type(
+  p_expression
+)
+ident(
+  def e "parsetree.ml" 202 6862 6893 "parsetree.ml" 202 6862 6923
+)
+"parsetree.ml" 202 6862 6869 "parsetree.ml" 202 6862 6889
+type(
+  p_expression_desc
+)
+"parsetree.ml" 202 6862 6906 "parsetree.ml" 202 6862 6920
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 202 6862 6921 "parsetree.ml" 202 6862 6922
+type(
+  p_expression
+)
+ident(
+  int_ref e "parsetree.ml" 202 6862 6887 "parsetree.ml" 202 6862 6888
+)
+"parsetree.ml" 202 6862 6905 "parsetree.ml" 202 6862 6923
+type(
+  a_expression
+)
+"parsetree.ml" 202 6862 6893 "parsetree.ml" 202 6862 6923
+type(
+  a_expression
+)
+"parsetree.ml" 203 6924 6943 "parsetree.ml" 203 6924 6944
+type(
+  p_expression
+)
+type(
+  string
+)
+"parsetree.ml" 203 6924 6931 "parsetree.ml" 203 6924 6944
+type(
+  p_expression_desc
+)
+"parsetree.ml" 203 6924 6955 "parsetree.ml" 203 6924 6960
+type(
+  bool
+)
+"parsetree.ml" 203 6924 6948 "parsetree.ml" 203 6924 6960
+type(
+  a_expression
+)
+"parsetree.ml" 205 6962 6981 "parsetree.ml" 205 6962 6985
+type(
+  string
+)
+"parsetree.ml" 205 6962 6987 "parsetree.ml" 205 6962 6988
+type(
+  p_expression
+)
+"parsetree.ml" 205 6962 6990 "parsetree.ml" 205 6962 6991
+type(
+  p_expression
+)
+"parsetree.ml" 205 6962 6969 "parsetree.ml" 205 6962 6992
+type(
+  p_expression_desc
+)
+"parsetree.ml" 206 6993 7012 "parsetree.ml" 206 6993 7016
+type(
+  string
+)
+"parsetree.ml" 206 6993 7018 "parsetree.ml" 206 6993 7019
+type(
+  p_expression
+)
+"parsetree.ml" 206 6993 7021 "parsetree.ml" 206 6993 7022
+type(
+  p_expression
+)
+"parsetree.ml" 206 6993 7000 "parsetree.ml" 206 6993 7023
+type(
+  p_expression_desc
+)
+"parsetree.ml" 205 6962 6969 "parsetree.ml" 206 6993 7023
+type(
+  p_expression_desc
+)
+"parsetree.ml" 207 7024 7043 "parsetree.ml" 207 7024 7047
+type(
+  string
+)
+"parsetree.ml" 207 7024 7049 "parsetree.ml" 207 7024 7050
+type(
+  p_expression
+)
+"parsetree.ml" 207 7024 7052 "parsetree.ml" 207 7024 7053
+type(
+  p_expression
+)
+"parsetree.ml" 207 7024 7031 "parsetree.ml" 207 7024 7054
+type(
+  p_expression_desc
+)
+"parsetree.ml" 205 6962 6969 "parsetree.ml" 207 7024 7054
+type(
+  p_expression_desc
+)
+"parsetree.ml" 208 7055 7074 "parsetree.ml" 208 7055 7078
+type(
+  string
+)
+"parsetree.ml" 208 7055 7080 "parsetree.ml" 208 7055 7081
+type(
+  p_expression
+)
+"parsetree.ml" 208 7055 7083 "parsetree.ml" 208 7055 7084
+type(
+  p_expression
+)
+"parsetree.ml" 208 7055 7062 "parsetree.ml" 208 7055 7085
+type(
+  p_expression_desc
+)
+"parsetree.ml" 205 6962 6969 "parsetree.ml" 208 7055 7085
+type(
+  p_expression_desc
+)
+"parsetree.ml" 209 7086 7105 "parsetree.ml" 209 7086 7108
+type(
+  string
+)
+"parsetree.ml" 209 7086 7110 "parsetree.ml" 209 7086 7111
+type(
+  p_expression
+)
+"parsetree.ml" 209 7086 7113 "parsetree.ml" 209 7086 7114
+type(
+  p_expression
+)
+"parsetree.ml" 209 7086 7093 "parsetree.ml" 209 7086 7115
+type(
+  p_expression_desc
+)
+"parsetree.ml" 205 6962 6969 "parsetree.ml" 209 7086 7115
+type(
+  p_expression_desc
+)
+"parsetree.ml" 210 7116 7135 "parsetree.ml" 210 7116 7139
+type(
+  string
+)
+"parsetree.ml" 210 7116 7141 "parsetree.ml" 210 7116 7142
+type(
+  p_expression
+)
+"parsetree.ml" 210 7116 7144 "parsetree.ml" 210 7116 7145
+type(
+  p_expression
+)
+"parsetree.ml" 210 7116 7123 "parsetree.ml" 210 7116 7146
+type(
+  p_expression_desc
+)
+"parsetree.ml" 205 6962 6969 "parsetree.ml" 210 7116 7146
+type(
+  p_expression_desc
+)
+"parsetree.ml" 211 7147 7166 "parsetree.ml" 211 7147 7169
+type(
+  string
+)
+"parsetree.ml" 211 7147 7171 "parsetree.ml" 211 7147 7172
+type(
+  p_expression
+)
+"parsetree.ml" 211 7147 7174 "parsetree.ml" 211 7147 7175
+type(
+  p_expression
+)
+"parsetree.ml" 211 7147 7154 "parsetree.ml" 211 7147 7176
+type(
+  p_expression_desc
+)
+"parsetree.ml" 205 6962 6969 "parsetree.ml" 211 7147 7176
+type(
+  p_expression_desc
+)
+"parsetree.ml" 212 7177 7196 "parsetree.ml" 212 7177 7200
+type(
+  string
+)
+"parsetree.ml" 212 7177 7202 "parsetree.ml" 212 7177 7203
+type(
+  p_expression
+)
+"parsetree.ml" 212 7177 7205 "parsetree.ml" 212 7177 7206
+type(
+  p_expression
+)
+"parsetree.ml" 212 7177 7184 "parsetree.ml" 212 7177 7207
+type(
+  p_expression_desc
+)
+"parsetree.ml" 205 6962 6969 "parsetree.ml" 212 7177 7207
+type(
+  p_expression_desc
+)
+"parsetree.ml" 212 7177 7211 "parsetree.ml" 212 7177 7216
+type(
+  exn -> a_expression
+)
+ident(
+  int_ref Stdlib.raise "stdlib.mli" 30 1602 1602 "stdlib.mli" 30 1602 1639
+)
+"parsetree.ml" 212 7177 7239 "parsetree.ml" 212 7177 7240
+type(
+  Location.t
+)
+ident(
+  int_ref l "parsetree.ml" 195 6673 6723 "parsetree.ml" 195 6673 6724
+)
+"parsetree.ml" 212 7177 7217 "parsetree.ml" 212 7177 7241
+type(
+  exn
+)
+"parsetree.ml" 212 7177 7211 "parsetree.ml" 212 7177 7241
+type(
+  a_expression
+)
+"parsetree.ml" 213 7242 7261 "parsetree.ml" 213 7242 7264
+type(
+  string
+)
+"parsetree.ml" 213 7242 7266 "parsetree.ml" 213 7242 7268
+type(
+  p_expression
+)
+ident(
+  def e1 "parsetree.ml" 214 7277 7279 "parsetree.ml" 214 7277 7333
+)
+"parsetree.ml" 213 7242 7270 "parsetree.ml" 213 7242 7272
+type(
+  p_expression
+)
+ident(
+  def e2 "parsetree.ml" 214 7277 7279 "parsetree.ml" 214 7277 7333
+)
+"parsetree.ml" 213 7242 7249 "parsetree.ml" 213 7242 7273
+type(
+  p_expression_desc
+)
+"parsetree.ml" 214 7277 7291 "parsetree.ml" 214 7277 7294
+type(
+  string
+)
+"parsetree.ml" 214 7277 7296 "parsetree.ml" 214 7277 7310
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 214 7277 7311 "parsetree.ml" 214 7277 7313
+type(
+  p_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 213 7242 7266 "parsetree.ml" 213 7242 7268
+)
+"parsetree.ml" 214 7277 7296 "parsetree.ml" 214 7277 7313
+type(
+  a_expression
+)
+"parsetree.ml" 214 7277 7315 "parsetree.ml" 214 7277 7329
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 214 7277 7330 "parsetree.ml" 214 7277 7332
+type(
+  p_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 213 7242 7270 "parsetree.ml" 213 7242 7272
+)
+"parsetree.ml" 214 7277 7315 "parsetree.ml" 214 7277 7332
+type(
+  a_expression
+)
+"parsetree.ml" 214 7277 7279 "parsetree.ml" 214 7277 7333
+type(
+  a_expression
+)
+"parsetree.ml" 215 7334 7353 "parsetree.ml" 215 7334 7356
+type(
+  string
+)
+"parsetree.ml" 215 7334 7358 "parsetree.ml" 215 7334 7360
+type(
+  p_expression
+)
+ident(
+  def e1 "parsetree.ml" 216 7369 7371 "parsetree.ml" 216 7369 7425
+)
+"parsetree.ml" 215 7334 7362 "parsetree.ml" 215 7334 7364
+type(
+  p_expression
+)
+ident(
+  def e2 "parsetree.ml" 216 7369 7371 "parsetree.ml" 216 7369 7425
+)
+"parsetree.ml" 215 7334 7341 "parsetree.ml" 215 7334 7365
+type(
+  p_expression_desc
+)
+"parsetree.ml" 216 7369 7383 "parsetree.ml" 216 7369 7386
+type(
+  string
+)
+"parsetree.ml" 216 7369 7388 "parsetree.ml" 216 7369 7402
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 216 7369 7403 "parsetree.ml" 216 7369 7405
+type(
+  p_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 215 7334 7358 "parsetree.ml" 215 7334 7360
+)
+"parsetree.ml" 216 7369 7388 "parsetree.ml" 216 7369 7405
+type(
+  a_expression
+)
+"parsetree.ml" 216 7369 7407 "parsetree.ml" 216 7369 7421
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 216 7369 7422 "parsetree.ml" 216 7369 7424
+type(
+  p_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 215 7334 7362 "parsetree.ml" 215 7334 7364
+)
+"parsetree.ml" 216 7369 7407 "parsetree.ml" 216 7369 7424
+type(
+  a_expression
+)
+"parsetree.ml" 216 7369 7371 "parsetree.ml" 216 7369 7425
+type(
+  a_expression
+)
+"parsetree.ml" 217 7426 7445 "parsetree.ml" 217 7426 7448
+type(
+  string
+)
+"parsetree.ml" 217 7426 7450 "parsetree.ml" 217 7426 7452
+type(
+  p_expression
+)
+ident(
+  def e1 "parsetree.ml" 218 7461 7463 "parsetree.ml" 218 7461 7517
+)
+"parsetree.ml" 217 7426 7454 "parsetree.ml" 217 7426 7456
+type(
+  p_expression
+)
+ident(
+  def e2 "parsetree.ml" 218 7461 7463 "parsetree.ml" 218 7461 7517
+)
+"parsetree.ml" 217 7426 7433 "parsetree.ml" 217 7426 7457
+type(
+  p_expression_desc
+)
+"parsetree.ml" 218 7461 7475 "parsetree.ml" 218 7461 7478
+type(
+  string
+)
+"parsetree.ml" 218 7461 7480 "parsetree.ml" 218 7461 7494
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 218 7461 7495 "parsetree.ml" 218 7461 7497
+type(
+  p_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 217 7426 7450 "parsetree.ml" 217 7426 7452
+)
+"parsetree.ml" 218 7461 7480 "parsetree.ml" 218 7461 7497
+type(
+  a_expression
+)
+"parsetree.ml" 218 7461 7499 "parsetree.ml" 218 7461 7513
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 218 7461 7514 "parsetree.ml" 218 7461 7516
+type(
+  p_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 217 7426 7454 "parsetree.ml" 217 7426 7456
+)
+"parsetree.ml" 218 7461 7499 "parsetree.ml" 218 7461 7516
+type(
+  a_expression
+)
+"parsetree.ml" 218 7461 7463 "parsetree.ml" 218 7461 7517
+type(
+  a_expression
+)
+"parsetree.ml" 219 7518 7537 "parsetree.ml" 219 7518 7540
+type(
+  string
+)
+"parsetree.ml" 219 7518 7542 "parsetree.ml" 219 7518 7544
+type(
+  p_expression
+)
+ident(
+  def e1 "parsetree.ml" 220 7553 7555 "parsetree.ml" 220 7553 7609
+)
+"parsetree.ml" 219 7518 7546 "parsetree.ml" 219 7518 7548
+type(
+  p_expression
+)
+ident(
+  def e2 "parsetree.ml" 220 7553 7555 "parsetree.ml" 220 7553 7609
+)
+"parsetree.ml" 219 7518 7525 "parsetree.ml" 219 7518 7549
+type(
+  p_expression_desc
+)
+"parsetree.ml" 220 7553 7567 "parsetree.ml" 220 7553 7570
+type(
+  string
+)
+"parsetree.ml" 220 7553 7572 "parsetree.ml" 220 7553 7586
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 220 7553 7587 "parsetree.ml" 220 7553 7589
+type(
+  p_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 219 7518 7542 "parsetree.ml" 219 7518 7544
+)
+"parsetree.ml" 220 7553 7572 "parsetree.ml" 220 7553 7589
+type(
+  a_expression
+)
+"parsetree.ml" 220 7553 7591 "parsetree.ml" 220 7553 7605
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 220 7553 7606 "parsetree.ml" 220 7553 7608
+type(
+  p_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 219 7518 7546 "parsetree.ml" 219 7518 7548
+)
+"parsetree.ml" 220 7553 7591 "parsetree.ml" 220 7553 7608
+type(
+  a_expression
+)
+"parsetree.ml" 220 7553 7555 "parsetree.ml" 220 7553 7609
+type(
+  a_expression
+)
+"parsetree.ml" 221 7610 7629 "parsetree.ml" 221 7610 7632
+type(
+  string
+)
+"parsetree.ml" 221 7610 7634 "parsetree.ml" 221 7610 7636
+type(
+  p_expression
+)
+ident(
+  def e1 "parsetree.ml" 222 7645 7647 "parsetree.ml" 222 7645 7701
+)
+"parsetree.ml" 221 7610 7638 "parsetree.ml" 221 7610 7640
+type(
+  p_expression
+)
+ident(
+  def e2 "parsetree.ml" 222 7645 7647 "parsetree.ml" 222 7645 7701
+)
+"parsetree.ml" 221 7610 7617 "parsetree.ml" 221 7610 7641
+type(
+  p_expression_desc
+)
+"parsetree.ml" 222 7645 7659 "parsetree.ml" 222 7645 7662
+type(
+  string
+)
+"parsetree.ml" 222 7645 7664 "parsetree.ml" 222 7645 7678
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 222 7645 7679 "parsetree.ml" 222 7645 7681
+type(
+  p_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 221 7610 7634 "parsetree.ml" 221 7610 7636
+)
+"parsetree.ml" 222 7645 7664 "parsetree.ml" 222 7645 7681
+type(
+  a_expression
+)
+"parsetree.ml" 222 7645 7683 "parsetree.ml" 222 7645 7697
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 222 7645 7698 "parsetree.ml" 222 7645 7700
+type(
+  p_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 221 7610 7638 "parsetree.ml" 221 7610 7640
+)
+"parsetree.ml" 222 7645 7683 "parsetree.ml" 222 7645 7700
+type(
+  a_expression
+)
+"parsetree.ml" 222 7645 7647 "parsetree.ml" 222 7645 7701
+type(
+  a_expression
+)
+"parsetree.ml" 223 7702 7721 "parsetree.ml" 223 7702 7724
+type(
+  string
+)
+"parsetree.ml" 223 7702 7726 "parsetree.ml" 223 7702 7728
+type(
+  p_expression
+)
+ident(
+  def e1 "parsetree.ml" 224 7737 7739 "parsetree.ml" 224 7737 7793
+)
+"parsetree.ml" 223 7702 7730 "parsetree.ml" 223 7702 7732
+type(
+  p_expression
+)
+ident(
+  def e2 "parsetree.ml" 224 7737 7739 "parsetree.ml" 224 7737 7793
+)
+"parsetree.ml" 223 7702 7709 "parsetree.ml" 223 7702 7733
+type(
+  p_expression_desc
+)
+"parsetree.ml" 224 7737 7751 "parsetree.ml" 224 7737 7754
+type(
+  string
+)
+"parsetree.ml" 224 7737 7756 "parsetree.ml" 224 7737 7770
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 224 7737 7771 "parsetree.ml" 224 7737 7773
+type(
+  p_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 223 7702 7726 "parsetree.ml" 223 7702 7728
+)
+"parsetree.ml" 224 7737 7756 "parsetree.ml" 224 7737 7773
+type(
+  a_expression
+)
+"parsetree.ml" 224 7737 7775 "parsetree.ml" 224 7737 7789
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 224 7737 7790 "parsetree.ml" 224 7737 7792
+type(
+  p_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 223 7702 7730 "parsetree.ml" 223 7702 7732
+)
+"parsetree.ml" 224 7737 7775 "parsetree.ml" 224 7737 7792
+type(
+  a_expression
+)
+"parsetree.ml" 224 7737 7739 "parsetree.ml" 224 7737 7793
+type(
+  a_expression
+)
+"parsetree.ml" 225 7794 7812 "parsetree.ml" 225 7794 7813
+type(
+  p_expression
+)
+type(
+  p_expression
+)
+type(
+  string
+)
+"parsetree.ml" 225 7794 7801 "parsetree.ml" 225 7794 7813
+type(
+  p_expression_desc
+)
+"parsetree.ml" 225 7794 7824 "parsetree.ml" 225 7794 7829
+type(
+  bool
+)
+"parsetree.ml" 225 7794 7817 "parsetree.ml" 225 7794 7829
+type(
+  a_expression
+)
+"parsetree.ml" 196 6728 6730 "parsetree.ml" 225 7794 7830
+type(
+  a_expression
+)
+"parsetree.ml" 232 8052 8060 "parsetree.ml" 232 8052 8075
+type(
+  p_expression -> a_proposition
+)
+ident(
+  def a_prop_of_p_exp "parsetree.ml" 232 8052 8052 "parsetree.ml" 0 0 -1
+)
+"parsetree.ml" 232 8052 8089 "parsetree.ml" 232 8052 8090
+type(
+  p_expression_desc
+)
+ident(
+  def d "parsetree.ml" 233 8108 8110 "parsetree.ml" 261 9161 9197
+)
+"parsetree.ml" 232 8052 8103 "parsetree.ml" 232 8052 8104
+type(
+  Location.t
+)
+ident(
+  def l "parsetree.ml" 233 8108 8110 "parsetree.ml" 261 9161 9197
+)
+"parsetree.ml" 232 8052 8076 "parsetree.ml" 232 8052 8105
+type(
+  p_expression
+)
+"parsetree.ml" 233 8108 8117 "parsetree.ml" 233 8108 8118
+type(
+  p_expression_desc
+)
+ident(
+  int_ref d "parsetree.ml" 232 8052 8089 "parsetree.ml" 232 8052 8090
+)
+"parsetree.ml" 234 8124 8142 "parsetree.ml" 234 8124 8143
+type(
+  string
+)
+"parsetree.ml" 234 8124 8131 "parsetree.ml" 234 8124 8143
+type(
+  p_expression_desc
+)
+"parsetree.ml" 236 8145 8161 "parsetree.ml" 236 8145 8162
+type(
+  int
+)
+"parsetree.ml" 236 8145 8152 "parsetree.ml" 236 8145 8162
+type(
+  p_expression_desc
+)
+"parsetree.ml" 234 8124 8131 "parsetree.ml" 236 8145 8162
+type(
+  p_expression_desc
+)
+"parsetree.ml" 236 8145 8166 "parsetree.ml" 236 8145 8171
+type(
+  exn -> a_proposition
+)
+ident(
+  int_ref Stdlib.raise "stdlib.mli" 30 1602 1602 "stdlib.mli" 30 1602 1639
+)
+"parsetree.ml" 236 8145 8195 "parsetree.ml" 236 8145 8196
+type(
+  Location.t
+)
+ident(
+  int_ref l "parsetree.ml" 232 8052 8103 "parsetree.ml" 232 8052 8104
+)
+"parsetree.ml" 236 8145 8172 "parsetree.ml" 236 8145 8197
+type(
+  exn
+)
+"parsetree.ml" 236 8145 8166 "parsetree.ml" 236 8145 8197
+type(
+  a_proposition
+)
+"parsetree.ml" 238 8199 8219 "parsetree.ml" 238 8199 8222
+type(
+  string
+)
+"parsetree.ml" 238 8199 8224 "parsetree.ml" 238 8199 8225
+type(
+  p_expression
+)
+"parsetree.ml" 238 8199 8206 "parsetree.ml" 238 8199 8226
+type(
+  p_expression_desc
+)
+"parsetree.ml" 239 8227 8247 "parsetree.ml" 239 8227 8250
+type(
+  string
+)
+"parsetree.ml" 239 8227 8252 "parsetree.ml" 239 8227 8253
+type(
+  p_expression
+)
+"parsetree.ml" 239 8227 8234 "parsetree.ml" 239 8227 8254
+type(
+  p_expression_desc
+)
+"parsetree.ml" 238 8199 8206 "parsetree.ml" 239 8227 8254
+type(
+  p_expression_desc
+)
+"parsetree.ml" 239 8227 8258 "parsetree.ml" 239 8227 8263
+type(
+  exn -> a_proposition
+)
+ident(
+  int_ref Stdlib.raise "stdlib.mli" 30 1602 1602 "stdlib.mli" 30 1602 1639
+)
+"parsetree.ml" 239 8227 8287 "parsetree.ml" 239 8227 8288
+type(
+  Location.t
+)
+ident(
+  int_ref l "parsetree.ml" 232 8052 8103 "parsetree.ml" 232 8052 8104
+)
+"parsetree.ml" 239 8227 8264 "parsetree.ml" 239 8227 8289
+type(
+  exn
+)
+"parsetree.ml" 239 8227 8258 "parsetree.ml" 239 8227 8289
+type(
+  a_proposition
+)
+"parsetree.ml" 240 8290 8309 "parsetree.ml" 240 8290 8310
+type(
+  p_expression
+)
+type(
+  string
+)
+"parsetree.ml" 240 8290 8297 "parsetree.ml" 240 8290 8310
+type(
+  p_expression_desc
+)
+"parsetree.ml" 240 8290 8321 "parsetree.ml" 240 8290 8326
+type(
+  bool
+)
+"parsetree.ml" 240 8290 8314 "parsetree.ml" 240 8290 8326
+type(
+  a_proposition
+)
+"parsetree.ml" 242 8328 8347 "parsetree.ml" 242 8328 8351
+type(
+  string
+)
+"parsetree.ml" 242 8328 8353 "parsetree.ml" 242 8328 8355
+type(
+  p_expression
+)
+ident(
+  def e1 "parsetree.ml" 243 8364 8366 "parsetree.ml" 243 8364 8417
+)
+"parsetree.ml" 242 8328 8357 "parsetree.ml" 242 8328 8359
+type(
+  p_expression
+)
+ident(
+  def e2 "parsetree.ml" 243 8364 8366 "parsetree.ml" 243 8364 8417
+)
+"parsetree.ml" 242 8328 8335 "parsetree.ml" 242 8328 8360
+type(
+  p_expression_desc
+)
+"parsetree.ml" 243 8364 8378 "parsetree.ml" 243 8364 8393
+type(
+  p_expression -> a_proposition
+)
+ident(
+  int_ref a_prop_of_p_exp "parsetree.ml" 232 8052 8060 "parsetree.ml" 232 8052 8075
+)
+"parsetree.ml" 243 8364 8394 "parsetree.ml" 243 8364 8396
+type(
+  p_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 242 8328 8353 "parsetree.ml" 242 8328 8355
+)
+"parsetree.ml" 243 8364 8378 "parsetree.ml" 243 8364 8396
+type(
+  a_proposition
+)
+"parsetree.ml" 243 8364 8398 "parsetree.ml" 243 8364 8413
+type(
+  p_expression -> a_proposition
+)
+ident(
+  int_ref a_prop_of_p_exp "parsetree.ml" 232 8052 8060 "parsetree.ml" 232 8052 8075
+)
+"parsetree.ml" 243 8364 8414 "parsetree.ml" 243 8364 8416
+type(
+  p_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 242 8328 8357 "parsetree.ml" 242 8328 8359
+)
+"parsetree.ml" 243 8364 8398 "parsetree.ml" 243 8364 8416
+type(
+  a_proposition
+)
+"parsetree.ml" 243 8364 8366 "parsetree.ml" 243 8364 8417
+type(
+  a_proposition
+)
+"parsetree.ml" 244 8418 8437 "parsetree.ml" 244 8418 8441
+type(
+  string
+)
+"parsetree.ml" 244 8418 8443 "parsetree.ml" 244 8418 8445
+type(
+  p_expression
+)
+ident(
+  def e1 "parsetree.ml" 245 8454 8456 "parsetree.ml" 245 8454 8506
+)
+"parsetree.ml" 244 8418 8447 "parsetree.ml" 244 8418 8449
+type(
+  p_expression
+)
+ident(
+  def e2 "parsetree.ml" 245 8454 8456 "parsetree.ml" 245 8454 8506
+)
+"parsetree.ml" 244 8418 8425 "parsetree.ml" 244 8418 8450
+type(
+  p_expression_desc
+)
+"parsetree.ml" 245 8454 8469 "parsetree.ml" 245 8454 8483
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 245 8454 8484 "parsetree.ml" 245 8454 8486
+type(
+  p_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 244 8418 8443 "parsetree.ml" 244 8418 8445
+)
+"parsetree.ml" 245 8454 8469 "parsetree.ml" 245 8454 8486
+type(
+  a_expression
+)
+"parsetree.ml" 245 8454 8488 "parsetree.ml" 245 8454 8502
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 245 8454 8503 "parsetree.ml" 245 8454 8505
+type(
+  p_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 244 8418 8447 "parsetree.ml" 244 8418 8449
+)
+"parsetree.ml" 245 8454 8488 "parsetree.ml" 245 8454 8505
+type(
+  a_expression
+)
+"parsetree.ml" 245 8454 8456 "parsetree.ml" 245 8454 8506
+type(
+  a_proposition
+)
+"parsetree.ml" 246 8507 8526 "parsetree.ml" 246 8507 8530
+type(
+  string
+)
+"parsetree.ml" 246 8507 8532 "parsetree.ml" 246 8507 8534
+type(
+  p_expression
+)
+ident(
+  def e1 "parsetree.ml" 247 8543 8545 "parsetree.ml" 247 8543 8599
+)
+"parsetree.ml" 246 8507 8536 "parsetree.ml" 246 8507 8538
+type(
+  p_expression
+)
+ident(
+  def e2 "parsetree.ml" 247 8543 8545 "parsetree.ml" 247 8543 8599
+)
+"parsetree.ml" 246 8507 8514 "parsetree.ml" 246 8507 8539
+type(
+  p_expression_desc
+)
+"parsetree.ml" 247 8543 8562 "parsetree.ml" 247 8543 8576
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 247 8543 8577 "parsetree.ml" 247 8543 8579
+type(
+  p_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 246 8507 8532 "parsetree.ml" 246 8507 8534
+)
+"parsetree.ml" 247 8543 8562 "parsetree.ml" 247 8543 8579
+type(
+  a_expression
+)
+"parsetree.ml" 247 8543 8581 "parsetree.ml" 247 8543 8595
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 247 8543 8596 "parsetree.ml" 247 8543 8598
+type(
+  p_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 246 8507 8536 "parsetree.ml" 246 8507 8538
+)
+"parsetree.ml" 247 8543 8581 "parsetree.ml" 247 8543 8598
+type(
+  a_expression
+)
+"parsetree.ml" 247 8543 8545 "parsetree.ml" 247 8543 8599
+type(
+  a_proposition
+)
+"parsetree.ml" 248 8600 8619 "parsetree.ml" 248 8600 8622
+type(
+  string
+)
+"parsetree.ml" 248 8600 8624 "parsetree.ml" 248 8600 8626
+type(
+  p_expression
+)
+ident(
+  def e1 "parsetree.ml" 249 8635 8637 "parsetree.ml" 249 8635 8692
+)
+"parsetree.ml" 248 8600 8628 "parsetree.ml" 248 8600 8630
+type(
+  p_expression
+)
+ident(
+  def e2 "parsetree.ml" 249 8635 8637 "parsetree.ml" 249 8635 8692
+)
+"parsetree.ml" 248 8600 8607 "parsetree.ml" 248 8600 8631
+type(
+  p_expression_desc
+)
+"parsetree.ml" 249 8635 8650 "parsetree.ml" 249 8635 8653
+type(
+  string
+)
+"parsetree.ml" 249 8635 8655 "parsetree.ml" 249 8635 8669
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 249 8635 8670 "parsetree.ml" 249 8635 8672
+type(
+  p_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 248 8600 8624 "parsetree.ml" 248 8600 8626
+)
+"parsetree.ml" 249 8635 8655 "parsetree.ml" 249 8635 8672
+type(
+  a_expression
+)
+"parsetree.ml" 249 8635 8674 "parsetree.ml" 249 8635 8688
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 249 8635 8689 "parsetree.ml" 249 8635 8691
+type(
+  p_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 248 8600 8628 "parsetree.ml" 248 8600 8630
+)
+"parsetree.ml" 249 8635 8674 "parsetree.ml" 249 8635 8691
+type(
+  a_expression
+)
+"parsetree.ml" 249 8635 8637 "parsetree.ml" 249 8635 8692
+type(
+  a_proposition
+)
+"parsetree.ml" 250 8693 8712 "parsetree.ml" 250 8693 8716
+type(
+  string
+)
+"parsetree.ml" 250 8693 8718 "parsetree.ml" 250 8693 8720
+type(
+  p_expression
+)
+ident(
+  def e1 "parsetree.ml" 251 8729 8731 "parsetree.ml" 251 8729 8787
+)
+"parsetree.ml" 250 8693 8722 "parsetree.ml" 250 8693 8724
+type(
+  p_expression
+)
+ident(
+  def e2 "parsetree.ml" 251 8729 8731 "parsetree.ml" 251 8729 8787
+)
+"parsetree.ml" 250 8693 8700 "parsetree.ml" 250 8693 8725
+type(
+  p_expression_desc
+)
+"parsetree.ml" 251 8729 8744 "parsetree.ml" 251 8729 8748
+type(
+  string
+)
+"parsetree.ml" 251 8729 8750 "parsetree.ml" 251 8729 8764
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 251 8729 8765 "parsetree.ml" 251 8729 8767
+type(
+  p_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 250 8693 8718 "parsetree.ml" 250 8693 8720
+)
+"parsetree.ml" 251 8729 8750 "parsetree.ml" 251 8729 8767
+type(
+  a_expression
+)
+"parsetree.ml" 251 8729 8769 "parsetree.ml" 251 8729 8783
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 251 8729 8784 "parsetree.ml" 251 8729 8786
+type(
+  p_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 250 8693 8722 "parsetree.ml" 250 8693 8724
+)
+"parsetree.ml" 251 8729 8769 "parsetree.ml" 251 8729 8786
+type(
+  a_expression
+)
+"parsetree.ml" 251 8729 8731 "parsetree.ml" 251 8729 8787
+type(
+  a_proposition
+)
+"parsetree.ml" 252 8788 8807 "parsetree.ml" 252 8788 8810
+type(
+  string
+)
+"parsetree.ml" 252 8788 8812 "parsetree.ml" 252 8788 8814
+type(
+  p_expression
+)
+ident(
+  def e1 "parsetree.ml" 253 8823 8825 "parsetree.ml" 253 8823 8880
+)
+"parsetree.ml" 252 8788 8816 "parsetree.ml" 252 8788 8818
+type(
+  p_expression
+)
+ident(
+  def e2 "parsetree.ml" 253 8823 8825 "parsetree.ml" 253 8823 8880
+)
+"parsetree.ml" 252 8788 8795 "parsetree.ml" 252 8788 8819
+type(
+  p_expression_desc
+)
+"parsetree.ml" 253 8823 8838 "parsetree.ml" 253 8823 8841
+type(
+  string
+)
+"parsetree.ml" 253 8823 8843 "parsetree.ml" 253 8823 8857
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 253 8823 8858 "parsetree.ml" 253 8823 8860
+type(
+  p_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 252 8788 8812 "parsetree.ml" 252 8788 8814
+)
+"parsetree.ml" 253 8823 8843 "parsetree.ml" 253 8823 8860
+type(
+  a_expression
+)
+"parsetree.ml" 253 8823 8862 "parsetree.ml" 253 8823 8876
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 253 8823 8877 "parsetree.ml" 253 8823 8879
+type(
+  p_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 252 8788 8816 "parsetree.ml" 252 8788 8818
+)
+"parsetree.ml" 253 8823 8862 "parsetree.ml" 253 8823 8879
+type(
+  a_expression
+)
+"parsetree.ml" 253 8823 8825 "parsetree.ml" 253 8823 8880
+type(
+  a_proposition
+)
+"parsetree.ml" 254 8881 8900 "parsetree.ml" 254 8881 8904
+type(
+  string
+)
+"parsetree.ml" 254 8881 8906 "parsetree.ml" 254 8881 8908
+type(
+  p_expression
+)
+ident(
+  def e1 "parsetree.ml" 255 8917 8919 "parsetree.ml" 255 8917 8975
+)
+"parsetree.ml" 254 8881 8910 "parsetree.ml" 254 8881 8912
+type(
+  p_expression
+)
+ident(
+  def e2 "parsetree.ml" 255 8917 8919 "parsetree.ml" 255 8917 8975
+)
+"parsetree.ml" 254 8881 8888 "parsetree.ml" 254 8881 8913
+type(
+  p_expression_desc
+)
+"parsetree.ml" 255 8917 8932 "parsetree.ml" 255 8917 8936
+type(
+  string
+)
+"parsetree.ml" 255 8917 8938 "parsetree.ml" 255 8917 8952
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 255 8917 8953 "parsetree.ml" 255 8917 8955
+type(
+  p_expression
+)
+ident(
+  int_ref e1 "parsetree.ml" 254 8881 8906 "parsetree.ml" 254 8881 8908
+)
+"parsetree.ml" 255 8917 8938 "parsetree.ml" 255 8917 8955
+type(
+  a_expression
+)
+"parsetree.ml" 255 8917 8957 "parsetree.ml" 255 8917 8971
+type(
+  p_expression -> a_expression
+)
+ident(
+  int_ref a_exp_of_p_exp "parsetree.ml" 195 6673 6681 "parsetree.ml" 195 6673 6695
+)
+"parsetree.ml" 255 8917 8972 "parsetree.ml" 255 8917 8974
+type(
+  p_expression
+)
+ident(
+  int_ref e2 "parsetree.ml" 254 8881 8910 "parsetree.ml" 254 8881 8912
+)
+"parsetree.ml" 255 8917 8957 "parsetree.ml" 255 8917 8974
+type(
+  a_expression
+)
+"parsetree.ml" 255 8917 8919 "parsetree.ml" 255 8917 8975
+type(
+  a_proposition
+)
+"parsetree.ml" 256 8976 8995 "parsetree.ml" 256 8976 8998
+type(
+  string
+)
+"parsetree.ml" 256 8976 9000 "parsetree.ml" 256 8976 9001
+type(
+  p_expression
+)
+"parsetree.ml" 256 8976 9003 "parsetree.ml" 256 8976 9004
+type(
+  p_expression
+)
+"parsetree.ml" 256 8976 8983 "parsetree.ml" 256 8976 9005
+type(
+  p_expression_desc
+)
+"parsetree.ml" 257 9006 9025 "parsetree.ml" 257 9006 9028
+type(
+  string
+)
+"parsetree.ml" 257 9006 9030 "parsetree.ml" 257 9006 9031
+type(
+  p_expression
+)
+"parsetree.ml" 257 9006 9033 "parsetree.ml" 257 9006 9034
+type(
+  p_expression
+)
+"parsetree.ml" 257 9006 9013 "parsetree.ml" 257 9006 9035
+type(
+  p_expression_desc
+)
+"parsetree.ml" 256 8976 8983 "parsetree.ml" 257 9006 9035
+type(
+  p_expression_desc
+)
+"parsetree.ml" 258 9036 9055 "parsetree.ml" 258 9036 9058
+type(
+  string
+)
+"parsetree.ml" 258 9036 9060 "parsetree.ml" 258 9036 9061
+type(
+  p_expression
+)
+"parsetree.ml" 258 9036 9063 "parsetree.ml" 258 9036 9064
+type(
+  p_expression
+)
+"parsetree.ml" 258 9036 9043 "parsetree.ml" 258 9036 9065
+type(
+  p_expression_desc
+)
+"parsetree.ml" 256 8976 8983 "parsetree.ml" 258 9036 9065
+type(
+  p_expression_desc
+)
+"parsetree.ml" 259 9066 9085 "parsetree.ml" 259 9066 9088
+type(
+  string
+)
+"parsetree.ml" 259 9066 9090 "parsetree.ml" 259 9066 9091
+type(
+  p_expression
+)
+"parsetree.ml" 259 9066 9093 "parsetree.ml" 259 9066 9094
+type(
+  p_expression
+)
+"parsetree.ml" 259 9066 9073 "parsetree.ml" 259 9066 9095
+type(
+  p_expression_desc
+)
+"parsetree.ml" 256 8976 8983 "parsetree.ml" 259 9066 9095
+type(
+  p_expression_desc
+)
+"parsetree.ml" 260 9096 9115 "parsetree.ml" 260 9096 9118
+type(
+  string
+)
+"parsetree.ml" 260 9096 9120 "parsetree.ml" 260 9096 9121
+type(
+  p_expression
+)
+"parsetree.ml" 260 9096 9123 "parsetree.ml" 260 9096 9124
+type(
+  p_expression
+)
+"parsetree.ml" 260 9096 9103 "parsetree.ml" 260 9096 9125
+type(
+  p_expression_desc
+)
+"parsetree.ml" 256 8976 8983 "parsetree.ml" 260 9096 9125
+type(
+  p_expression_desc
+)
+"parsetree.ml" 260 9096 9129 "parsetree.ml" 260 9096 9134
+type(
+  exn -> a_proposition
+)
+ident(
+  int_ref Stdlib.raise "stdlib.mli" 30 1602 1602 "stdlib.mli" 30 1602 1639
+)
+"parsetree.ml" 260 9096 9158 "parsetree.ml" 260 9096 9159
+type(
+  Location.t
+)
+ident(
+  int_ref l "parsetree.ml" 232 8052 8103 "parsetree.ml" 232 8052 8104
+)
+"parsetree.ml" 260 9096 9135 "parsetree.ml" 260 9096 9160
+type(
+  exn
+)
+"parsetree.ml" 260 9096 9129 "parsetree.ml" 260 9096 9160
+type(
+  a_proposition
+)
+"parsetree.ml" 261 9161 9179 "parsetree.ml" 261 9161 9180
+type(
+  p_expression
+)
+type(
+  p_expression
+)
+type(
+  string
+)
+"parsetree.ml" 261 9161 9168 "parsetree.ml" 261 9161 9180
+type(
+  p_expression_desc
+)
+"parsetree.ml" 261 9161 9191 "parsetree.ml" 261 9161 9196
+type(
+  bool
+)
+"parsetree.ml" 261 9161 9184 "parsetree.ml" 261 9161 9196
+type(
+  a_proposition
+)
+"parsetree.ml" 233 8108 8110 "parsetree.ml" 261 9161 9197
+type(
+  a_proposition
+)

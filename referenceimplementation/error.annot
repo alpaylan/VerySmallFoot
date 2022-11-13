@@ -1,0 +1,2613 @@
+"error.ml" 34 1534 1538 "error.ml" 34 1534 1543
+type(
+  Location.t_record option -> ('a, Format.formatter, unit) format -> 'a
+)
+ident(
+  def print "error.ml" 39 1635 1635 "error.ml" 0 0 -1
+)
+"error.ml" 34 1534 1544 "error.ml" 34 1534 1547
+type(
+  Location.t_record option
+)
+ident(
+  def loc "error.ml" 35 1550 1552 "error.ml" 37 1611 1633
+)
+"error.ml" 35 1550 1556 "error.ml" 35 1550 1559
+type(
+  Format.formatter
+)
+ident(
+  def fmt "error.ml" 36 1583 1587 "error.ml" 37 1611 1633
+)
+"error.ml" 35 1550 1562 "error.ml" 35 1550 1563
+type(
+  Format.formatter ref -> Format.formatter
+)
+ident(
+  int_ref Stdlib.( ! ) "stdlib.mli" 1165 44545 44545 "stdlib.mli" 1165 44545 44586
+)
+"error.ml" 35 1550 1563 "error.ml" 35 1550 1579
+type(
+  Format.formatter ref
+)
+ident(
+  int_ref Config.formatter "config.ml" 1 0 4 "config.ml" 1 0 13
+)
+"error.ml" 35 1550 1562 "error.ml" 35 1550 1579
+type(
+  Format.formatter
+)
+"error.ml" 36 1583 1587 "error.ml" 36 1583 1601
+type(
+  Format.formatter -> Location.t_record option -> unit
+)
+ident(
+  int_ref Location.print "location.ml" 25 753 757 "location.ml" 25 753 762
+)
+"error.ml" 36 1583 1602 "error.ml" 36 1583 1605
+type(
+  Format.formatter
+)
+ident(
+  int_ref fmt "error.ml" 35 1550 1556 "error.ml" 35 1550 1559
+)
+"error.ml" 36 1583 1606 "error.ml" 36 1583 1609
+type(
+  Location.t_record option
+)
+ident(
+  int_ref loc "error.ml" 34 1534 1544 "error.ml" 34 1534 1547
+)
+"error.ml" 36 1583 1587 "error.ml" 36 1583 1609
+type(
+  unit
+)
+"error.ml" 37 1611 1615 "error.ml" 37 1611 1629
+type(
+  Format.formatter -> ('a, Format.formatter, unit) format -> 'a
+)
+ident(
+  int_ref Stdlib.Format.fprintf "format.mli" 1102 42111 42111 "format.mli" 1102 42111 42172
+)
+"error.ml" 37 1611 1630 "error.ml" 37 1611 1633
+type(
+  Format.formatter
+)
+ident(
+  int_ref fmt "error.ml" 35 1550 1556 "error.ml" 35 1550 1559
+)
+"error.ml" 37 1611 1615 "error.ml" 37 1611 1633
+type(
+  ('a, Format.formatter, unit) format -> 'a
+)
+"error.ml" 36 1583 1587 "error.ml" 37 1611 1633
+type(
+  ('a, Format.formatter, unit) format -> 'a
+)
+"error.ml" 35 1550 1552 "error.ml" 37 1611 1633
+type(
+  ('a, Format.formatter, unit) format -> 'a
+)
+"error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+type(
+  Location.t_record option -> string
+)
+ident(
+  def sprint "error.ml" 41 1682 1682 "error.ml" 0 0 -1
+)
+"error.ml" 39 1635 1646 "error.ml" 39 1635 1649
+type(
+  Location.t_record option
+)
+ident(
+  def loc "error.ml" 39 1635 1652 "error.ml" 39 1635 1680
+)
+"error.ml" 39 1635 1652 "error.ml" 39 1635 1656
+type(
+  string
+)
+"error.ml" 39 1635 1657 "error.ml" 39 1635 1658
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 39 1635 1660 "error.ml" 39 1635 1675
+type(
+  Location.t_record option -> string
+)
+ident(
+  int_ref Location.sprint "location.ml" 20 578 582 "location.ml" 20 578 588
+)
+"error.ml" 39 1635 1676 "error.ml" 39 1635 1679
+type(
+  Location.t_record option
+)
+ident(
+  int_ref loc "error.ml" 39 1635 1646 "error.ml" 39 1635 1649
+)
+"error.ml" 39 1635 1659 "error.ml" 39 1635 1680
+type(
+  string
+)
+"error.ml" 39 1635 1652 "error.ml" 39 1635 1680
+type(
+  string
+)
+"error.ml" 41 1682 1686 "error.ml" 41 1682 1692
+type(
+  ?nonfatal_thunk:(unit -> 'a) -> (unit -> 'a) -> 'a
+)
+ident(
+  def report "error.ml" 101 5529 5574 "error.ml" 0 0 -1
+)
+"error.ml" 41 1682 1695 "error.ml" 41 1682 1709
+type(
+  unit -> 'a
+)
+"error.ml" 41 1682 1716 "error.ml" 41 1682 1718
+type(
+  unit
+)
+"error.ml" 41 1682 1729 "error.ml" 41 1682 1734
+type(
+  bool
+)
+"error.ml" 41 1682 1722 "error.ml" 41 1682 1734
+type(
+  'a
+)
+"error.ml" 41 1682 1712 "error.ml" 41 1682 1734
+type(
+  unit -> 'a
+)
+type(
+  unit -> 'a
+)
+type(
+  (unit -> 'a) option
+)
+type(
+  (unit -> 'a) option
+)
+type(
+  unit -> 'a
+)
+"error.ml" 41 1682 1736 "error.ml" 41 1682 1741
+type(
+  unit -> 'a
+)
+ident(
+  def thunk "error.ml" 42 1744 1746 "error.ml" 101 5529 5574
+)
+"error.ml" 42 1744 1750 "error.ml" 42 1744 1755
+type(
+  unit -> 'a
+)
+ident(
+  int_ref thunk "error.ml" 41 1682 1736 "error.ml" 41 1682 1741
+)
+"error.ml" 42 1744 1756 "error.ml" 42 1744 1758
+type(
+  unit
+)
+"error.ml" 42 1744 1750 "error.ml" 42 1744 1758
+type(
+  'a
+)
+"error.ml" 44 1776 1800 "error.ml" 44 1776 1801
+type(
+  char
+)
+ident(
+  def c "error.ml" 45 1810 1811 "error.ml" 45 1810 1913
+)
+"error.ml" 44 1776 1802 "error.ml" 44 1776 1805
+type(
+  Location.t
+)
+ident(
+  def loc "error.ml" 45 1810 1811 "error.ml" 45 1810 1913
+)
+"error.ml" 44 1776 1782 "error.ml" 44 1776 1806
+type(
+  exn
+)
+"error.ml" 45 1810 1811 "error.ml" 45 1810 1822
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 45 1810 1824 "error.ml" 45 1810 1830
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 45 1810 1831 "error.ml" 45 1810 1834
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 44 1776 1802 "error.ml" 44 1776 1805
+)
+"error.ml" 45 1810 1823 "error.ml" 45 1810 1835
+type(
+  string
+)
+"error.ml" 45 1810 1836 "error.ml" 45 1810 1837
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 45 1810 1839 "error.ml" 45 1810 1853
+type(
+  (string -> string, unit, string) format -> string -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 45 1810 1854 "error.ml" 45 1810 1894
+type(
+  (string -> string, unit, string) format
+)
+"error.ml" 45 1810 1896 "error.ml" 45 1810 1908
+type(
+  char -> string
+)
+ident(
+  int_ref Stdlib.Char.escaped "char.mli" 26 1363 1363 "char.mli" 26 1363 1391
+)
+"error.ml" 45 1810 1909 "error.ml" 45 1810 1910
+type(
+  char
+)
+ident(
+  int_ref c "error.ml" 44 1776 1800 "error.ml" 44 1776 1801
+)
+"error.ml" 45 1810 1895 "error.ml" 45 1810 1911
+type(
+  string
+)
+"error.ml" 45 1810 1838 "error.ml" 45 1810 1912
+type(
+  string
+)
+"error.ml" 45 1810 1822 "error.ml" 45 1810 1913
+type(
+  string
+)
+"error.ml" 45 1810 1811 "error.ml" 45 1810 1913
+type(
+  'a
+)
+"error.ml" 46 1914 1941 "error.ml" 46 1914 1944
+ident(
+  def loc "error.ml" 47 1949 1950 "error.ml" 47 1949 2034
+)
+"error.ml" 46 1914 1940 "error.ml" 46 1914 1945
+type(
+  Location.t
+)
+"error.ml" 46 1914 1920 "error.ml" 46 1914 1945
+type(
+  exn
+)
+"error.ml" 47 1949 1950 "error.ml" 47 1949 1961
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 47 1949 1964 "error.ml" 47 1949 1970
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 47 1949 1971 "error.ml" 47 1949 1974
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 46 1914 1940 "error.ml" 46 1914 1945
+)
+"error.ml" 47 1949 1963 "error.ml" 47 1949 1975
+type(
+  string
+)
+"error.ml" 47 1949 1976 "error.ml" 47 1949 1977
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 47 1949 1979 "error.ml" 47 1949 1993
+type(
+  (string, unit, string) format -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 47 1949 1994 "error.ml" 47 1949 2032
+type(
+  (string, unit, string) format
+)
+"error.ml" 47 1949 1978 "error.ml" 47 1949 2033
+type(
+  string
+)
+"error.ml" 47 1949 1962 "error.ml" 47 1949 2034
+type(
+  string
+)
+"error.ml" 47 1949 1950 "error.ml" 47 1949 2034
+type(
+  'a
+)
+"error.ml" 49 2048 2067 "error.ml" 49 2048 2068
+type(
+  string
+)
+ident(
+  def s "error.ml" 50 2077 2078 "error.ml" 50 2077 2162
+)
+"error.ml" 49 2048 2069 "error.ml" 49 2048 2072
+type(
+  Location.t
+)
+ident(
+  def loc "error.ml" 50 2077 2078 "error.ml" 50 2077 2162
+)
+"error.ml" 49 2048 2054 "error.ml" 49 2048 2073
+type(
+  exn
+)
+"error.ml" 50 2077 2078 "error.ml" 50 2077 2089
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 50 2077 2091 "error.ml" 50 2077 2097
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 50 2077 2098 "error.ml" 50 2077 2101
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 49 2048 2069 "error.ml" 49 2048 2072
+)
+"error.ml" 50 2077 2090 "error.ml" 50 2077 2102
+type(
+  string
+)
+"error.ml" 50 2077 2103 "error.ml" 50 2077 2104
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 50 2077 2106 "error.ml" 50 2077 2120
+type(
+  (string -> string, unit, string) format -> string -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 50 2077 2121 "error.ml" 50 2077 2158
+type(
+  (string -> string, unit, string) format
+)
+"error.ml" 50 2077 2159 "error.ml" 50 2077 2160
+type(
+  string
+)
+ident(
+  int_ref s "error.ml" 49 2048 2067 "error.ml" 49 2048 2068
+)
+"error.ml" 50 2077 2105 "error.ml" 50 2077 2161
+type(
+  string
+)
+"error.ml" 50 2077 2089 "error.ml" 50 2077 2162
+type(
+  string
+)
+"error.ml" 50 2077 2078 "error.ml" 50 2077 2162
+type(
+  'a
+)
+"error.ml" 51 2163 2194 "error.ml" 51 2163 2197
+ident(
+  def loc "error.ml" 52 2202 2203 "error.ml" 52 2202 2304
+)
+"error.ml" 51 2163 2193 "error.ml" 51 2163 2198
+type(
+  Location.t
+)
+"error.ml" 51 2163 2169 "error.ml" 51 2163 2198
+type(
+  exn
+)
+"error.ml" 52 2202 2203 "error.ml" 52 2202 2214
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 52 2202 2216 "error.ml" 52 2202 2222
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 52 2202 2223 "error.ml" 52 2202 2226
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 51 2163 2193 "error.ml" 51 2163 2198
+)
+"error.ml" 52 2202 2215 "error.ml" 52 2202 2227
+type(
+  string
+)
+"error.ml" 52 2202 2228 "error.ml" 52 2202 2229
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 52 2202 2231 "error.ml" 52 2202 2245
+type(
+  (string, unit, string) format -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 52 2202 2246 "error.ml" 52 2202 2302
+type(
+  (string, unit, string) format
+)
+"error.ml" 52 2202 2230 "error.ml" 52 2202 2303
+type(
+  string
+)
+"error.ml" 52 2202 2214 "error.ml" 52 2202 2304
+type(
+  string
+)
+"error.ml" 52 2202 2203 "error.ml" 52 2202 2304
+type(
+  'a
+)
+"error.ml" 53 2305 2323 "error.ml" 53 2305 2326
+ident(
+  def loc "error.ml" 54 2331 2332 "error.ml" 54 2331 2392
+)
+"error.ml" 53 2305 2322 "error.ml" 53 2305 2327
+type(
+  Location.t
+)
+"error.ml" 53 2305 2311 "error.ml" 53 2305 2327
+type(
+  exn
+)
+"error.ml" 54 2331 2332 "error.ml" 54 2331 2343
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 54 2331 2345 "error.ml" 54 2331 2351
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 54 2331 2352 "error.ml" 54 2331 2355
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 53 2305 2322 "error.ml" 53 2305 2327
+)
+"error.ml" 54 2331 2344 "error.ml" 54 2331 2356
+type(
+  string
+)
+"error.ml" 54 2331 2357 "error.ml" 54 2331 2358
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 54 2331 2360 "error.ml" 54 2331 2374
+type(
+  (string, unit, string) format -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 54 2331 2375 "error.ml" 54 2331 2390
+type(
+  (string, unit, string) format
+)
+"error.ml" 54 2331 2359 "error.ml" 54 2331 2391
+type(
+  string
+)
+"error.ml" 54 2331 2343 "error.ml" 54 2331 2392
+type(
+  string
+)
+"error.ml" 54 2331 2332 "error.ml" 54 2331 2392
+type(
+  'a
+)
+"error.ml" 55 2393 2430 "error.ml" 55 2393 2433
+ident(
+  def loc "error.ml" 56 2438 2439 "error.ml" 56 2438 2506
+)
+"error.ml" 55 2393 2429 "error.ml" 55 2393 2434
+type(
+  Location.t
+)
+"error.ml" 55 2393 2399 "error.ml" 55 2393 2434
+type(
+  exn
+)
+"error.ml" 56 2438 2439 "error.ml" 56 2438 2450
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 56 2438 2452 "error.ml" 56 2438 2458
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 56 2438 2459 "error.ml" 56 2438 2462
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 55 2393 2429 "error.ml" 55 2393 2434
+)
+"error.ml" 56 2438 2451 "error.ml" 56 2438 2463
+type(
+  string
+)
+"error.ml" 56 2438 2464 "error.ml" 56 2438 2465
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 56 2438 2467 "error.ml" 56 2438 2481
+type(
+  (string, unit, string) format -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 56 2438 2482 "error.ml" 56 2438 2504
+type(
+  (string, unit, string) format
+)
+"error.ml" 56 2438 2466 "error.ml" 56 2438 2505
+type(
+  string
+)
+"error.ml" 56 2438 2450 "error.ml" 56 2438 2506
+type(
+  string
+)
+"error.ml" 56 2438 2439 "error.ml" 56 2438 2506
+type(
+  'a
+)
+"error.ml" 57 2507 2545 "error.ml" 57 2507 2548
+ident(
+  def loc "error.ml" 58 2553 2554 "error.ml" 58 2553 2622
+)
+"error.ml" 57 2507 2544 "error.ml" 57 2507 2549
+type(
+  Location.t
+)
+"error.ml" 57 2507 2513 "error.ml" 57 2507 2549
+type(
+  exn
+)
+"error.ml" 58 2553 2554 "error.ml" 58 2553 2565
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 58 2553 2567 "error.ml" 58 2553 2573
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 58 2553 2574 "error.ml" 58 2553 2577
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 57 2507 2544 "error.ml" 57 2507 2549
+)
+"error.ml" 58 2553 2566 "error.ml" 58 2553 2578
+type(
+  string
+)
+"error.ml" 58 2553 2579 "error.ml" 58 2553 2580
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 58 2553 2582 "error.ml" 58 2553 2596
+type(
+  (string, unit, string) format -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 58 2553 2597 "error.ml" 58 2553 2620
+type(
+  (string, unit, string) format
+)
+"error.ml" 58 2553 2581 "error.ml" 58 2553 2621
+type(
+  string
+)
+"error.ml" 58 2553 2565 "error.ml" 58 2553 2622
+type(
+  string
+)
+"error.ml" 58 2553 2554 "error.ml" 58 2553 2622
+type(
+  'a
+)
+"error.ml" 59 2623 2661 "error.ml" 59 2623 2662
+ident(
+  def s "error.ml" 60 2667 2668 "error.ml" 60 2667 2730
+)
+"error.ml" 59 2623 2660 "error.ml" 59 2623 2663
+type(
+  string
+)
+"error.ml" 59 2623 2629 "error.ml" 59 2623 2663
+type(
+  exn
+)
+"error.ml" 60 2667 2668 "error.ml" 60 2667 2679
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 60 2667 2680 "error.ml" 60 2667 2696
+type(
+  string
+)
+"error.ml" 60 2667 2697 "error.ml" 60 2667 2698
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 60 2667 2699 "error.ml" 60 2667 2700
+type(
+  string
+)
+ident(
+  int_ref s "error.ml" 59 2623 2660 "error.ml" 59 2623 2663
+)
+"error.ml" 60 2667 2701 "error.ml" 60 2667 2702
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 60 2667 2703 "error.ml" 60 2667 2729
+type(
+  string
+)
+"error.ml" 60 2667 2699 "error.ml" 60 2667 2729
+type(
+  string
+)
+"error.ml" 60 2667 2679 "error.ml" 60 2667 2730
+type(
+  string
+)
+"error.ml" 60 2667 2668 "error.ml" 60 2667 2730
+type(
+  'a
+)
+"error.ml" 62 2743 2768 "error.ml" 62 2743 2771
+type(
+  string
+)
+ident(
+  def fid "error.ml" 63 2780 2781 "error.ml" 63 2780 2860
+)
+"error.ml" 62 2743 2772 "error.ml" 62 2743 2775
+type(
+  Location.t
+)
+ident(
+  def loc "error.ml" 63 2780 2781 "error.ml" 63 2780 2860
+)
+"error.ml" 62 2743 2749 "error.ml" 62 2743 2776
+type(
+  exn
+)
+"error.ml" 63 2780 2781 "error.ml" 63 2780 2792
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 63 2780 2794 "error.ml" 63 2780 2800
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 63 2780 2801 "error.ml" 63 2780 2804
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 62 2743 2772 "error.ml" 62 2743 2775
+)
+"error.ml" 63 2780 2793 "error.ml" 63 2780 2805
+type(
+  string
+)
+"error.ml" 63 2780 2806 "error.ml" 63 2780 2807
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 63 2780 2809 "error.ml" 63 2780 2823
+type(
+  (string -> string, unit, string) format -> string -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 63 2780 2824 "error.ml" 63 2780 2854
+type(
+  (string -> string, unit, string) format
+)
+"error.ml" 63 2780 2855 "error.ml" 63 2780 2858
+type(
+  string
+)
+ident(
+  int_ref fid "error.ml" 62 2743 2768 "error.ml" 62 2743 2771
+)
+"error.ml" 63 2780 2808 "error.ml" 63 2780 2859
+type(
+  string
+)
+"error.ml" 63 2780 2792 "error.ml" 63 2780 2860
+type(
+  string
+)
+"error.ml" 63 2780 2781 "error.ml" 63 2780 2860
+type(
+  'a
+)
+"error.ml" 64 2861 2886 "error.ml" 64 2861 2889
+type(
+  string
+)
+ident(
+  def rid "error.ml" 65 2898 2899 "error.ml" 65 2898 2978
+)
+"error.ml" 64 2861 2890 "error.ml" 64 2861 2893
+type(
+  Location.t
+)
+ident(
+  def loc "error.ml" 65 2898 2899 "error.ml" 65 2898 2978
+)
+"error.ml" 64 2861 2867 "error.ml" 64 2861 2894
+type(
+  exn
+)
+"error.ml" 65 2898 2899 "error.ml" 65 2898 2910
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 65 2898 2912 "error.ml" 65 2898 2918
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 65 2898 2919 "error.ml" 65 2898 2922
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 64 2861 2890 "error.ml" 64 2861 2893
+)
+"error.ml" 65 2898 2911 "error.ml" 65 2898 2923
+type(
+  string
+)
+"error.ml" 65 2898 2924 "error.ml" 65 2898 2925
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 65 2898 2927 "error.ml" 65 2898 2941
+type(
+  (string -> string, unit, string) format -> string -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 65 2898 2942 "error.ml" 65 2898 2972
+type(
+  (string -> string, unit, string) format
+)
+"error.ml" 65 2898 2973 "error.ml" 65 2898 2976
+type(
+  string
+)
+ident(
+  int_ref rid "error.ml" 64 2861 2886 "error.ml" 64 2861 2889
+)
+"error.ml" 65 2898 2926 "error.ml" 65 2898 2977
+type(
+  string
+)
+"error.ml" 65 2898 2910 "error.ml" 65 2898 2978
+type(
+  string
+)
+"error.ml" 65 2898 2899 "error.ml" 65 2898 2978
+type(
+  'a
+)
+"error.ml" 66 2979 3006 "error.ml" 66 2979 3007
+type(
+  string
+)
+ident(
+  def s "error.ml" 67 3022 3023 "error.ml" 67 3022 3157
+)
+"error.ml" 66 2979 3008 "error.ml" 66 2979 3010
+type(
+  string list
+)
+ident(
+  def l1 "error.ml" 67 3022 3023 "error.ml" 67 3022 3157
+)
+"error.ml" 66 2979 3011 "error.ml" 66 2979 3013
+type(
+  Symbtree.can_exp list
+)
+ident(
+  def l2 "error.ml" 67 3022 3023 "error.ml" 67 3022 3157
+)
+"error.ml" 66 2979 3014 "error.ml" 66 2979 3017
+type(
+  Location.t
+)
+ident(
+  def loc "error.ml" 67 3022 3023 "error.ml" 67 3022 3157
+)
+"error.ml" 66 2979 2985 "error.ml" 66 2979 3018
+type(
+  exn
+)
+"error.ml" 67 3022 3023 "error.ml" 67 3022 3034
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 67 3022 3036 "error.ml" 67 3022 3042
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 67 3022 3043 "error.ml" 67 3022 3046
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 66 2979 3014 "error.ml" 66 2979 3017
+)
+"error.ml" 67 3022 3035 "error.ml" 67 3022 3047
+type(
+  string
+)
+"error.ml" 67 3022 3048 "error.ml" 67 3022 3049
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 67 3022 3051 "error.ml" 67 3022 3065
+type(
+  (int -> string -> int -> string, unit, string) format ->
+  int -> string -> int -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 67 3022 3066 "error.ml" 67 3022 3119
+type(
+  (int -> string -> int -> string, unit, string) format
+)
+"error.ml" 67 3022 3121 "error.ml" 67 3022 3132
+type(
+  Symbtree.can_exp list -> int
+)
+ident(
+  int_ref Stdlib.List.length "list.mli" 32 1730 1730 "list.mli" 32 1730 1757
+)
+"error.ml" 67 3022 3133 "error.ml" 67 3022 3135
+type(
+  Symbtree.can_exp list
+)
+ident(
+  int_ref l2 "error.ml" 66 2979 3011 "error.ml" 66 2979 3013
+)
+"error.ml" 67 3022 3120 "error.ml" 67 3022 3136
+type(
+  int
+)
+"error.ml" 67 3022 3137 "error.ml" 67 3022 3138
+type(
+  string
+)
+ident(
+  int_ref s "error.ml" 66 2979 3006 "error.ml" 66 2979 3007
+)
+"error.ml" 67 3022 3140 "error.ml" 67 3022 3151
+type(
+  string list -> int
+)
+ident(
+  int_ref Stdlib.List.length "list.mli" 32 1730 1730 "list.mli" 32 1730 1757
+)
+"error.ml" 67 3022 3152 "error.ml" 67 3022 3154
+type(
+  string list
+)
+ident(
+  int_ref l1 "error.ml" 66 2979 3008 "error.ml" 66 2979 3010
+)
+"error.ml" 67 3022 3139 "error.ml" 67 3022 3155
+type(
+  int
+)
+"error.ml" 67 3022 3050 "error.ml" 67 3022 3156
+type(
+  string
+)
+"error.ml" 67 3022 3034 "error.ml" 67 3022 3157
+type(
+  string
+)
+"error.ml" 67 3022 3023 "error.ml" 67 3022 3157
+type(
+  'a
+)
+"error.ml" 68 3158 3183 "error.ml" 68 3158 3186
+type(
+  string
+)
+ident(
+  def fid "error.ml" 69 3203 3204 "error.ml" 69 3203 3320
+)
+"error.ml" 68 3158 3187 "error.ml" 68 3158 3189
+type(
+  string
+)
+ident(
+  def id "error.ml" 69 3203 3204 "error.ml" 69 3203 3320
+)
+"error.ml" 68 3158 3190 "error.ml" 68 3158 3194
+type(
+  string
+)
+ident(
+  def fid' "error.ml" 69 3203 3204 "error.ml" 69 3203 3320
+)
+"error.ml" 68 3158 3195 "error.ml" 68 3158 3198
+type(
+  Location.t
+)
+ident(
+  def loc "error.ml" 69 3203 3204 "error.ml" 69 3203 3320
+)
+"error.ml" 68 3158 3164 "error.ml" 68 3158 3199
+type(
+  exn
+)
+"error.ml" 69 3203 3204 "error.ml" 69 3203 3215
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 69 3203 3217 "error.ml" 69 3203 3223
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 69 3203 3224 "error.ml" 69 3203 3227
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 68 3158 3195 "error.ml" 68 3158 3198
+)
+"error.ml" 69 3203 3216 "error.ml" 69 3203 3228
+type(
+  string
+)
+"error.ml" 69 3203 3229 "error.ml" 69 3203 3230
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 69 3203 3232 "error.ml" 69 3203 3246
+type(
+  (string -> string -> string -> string, unit, string) format ->
+  string -> string -> string -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 69 3203 3247 "error.ml" 69 3203 3306
+type(
+  (string -> string -> string -> string, unit, string) format
+)
+"error.ml" 69 3203 3307 "error.ml" 69 3203 3310
+type(
+  string
+)
+ident(
+  int_ref fid "error.ml" 68 3158 3183 "error.ml" 68 3158 3186
+)
+"error.ml" 69 3203 3311 "error.ml" 69 3203 3313
+type(
+  string
+)
+ident(
+  int_ref id "error.ml" 68 3158 3187 "error.ml" 68 3158 3189
+)
+"error.ml" 69 3203 3314 "error.ml" 69 3203 3318
+type(
+  string
+)
+ident(
+  int_ref fid' "error.ml" 68 3158 3190 "error.ml" 68 3158 3194
+)
+"error.ml" 69 3203 3231 "error.ml" 69 3203 3319
+type(
+  string
+)
+"error.ml" 69 3203 3215 "error.ml" 69 3203 3320
+type(
+  string
+)
+"error.ml" 69 3203 3204 "error.ml" 69 3203 3320
+type(
+  'a
+)
+"error.ml" 70 3321 3343 "error.ml" 70 3321 3346
+type(
+  string
+)
+ident(
+  def fid "error.ml" 71 3363 3369 "error.ml" 71 3363 3483
+)
+"error.ml" 70 3321 3347 "error.ml" 70 3321 3349
+type(
+  string
+)
+ident(
+  def id "error.ml" 71 3363 3369 "error.ml" 71 3363 3483
+)
+"error.ml" 70 3321 3350 "error.ml" 70 3321 3354
+type(
+  string
+)
+ident(
+  def fid' "error.ml" 71 3363 3369 "error.ml" 71 3363 3483
+)
+"error.ml" 70 3321 3355 "error.ml" 70 3321 3358
+type(
+  Location.t
+)
+ident(
+  def loc "error.ml" 71 3363 3369 "error.ml" 71 3363 3483
+)
+"error.ml" 70 3321 3327 "error.ml" 70 3321 3359
+type(
+  exn
+)
+"error.ml" 71 3363 3369 "error.ml" 71 3363 3380
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 71 3363 3382 "error.ml" 71 3363 3388
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 71 3363 3389 "error.ml" 71 3363 3392
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 70 3321 3355 "error.ml" 70 3321 3358
+)
+"error.ml" 71 3363 3381 "error.ml" 71 3363 3393
+type(
+  string
+)
+"error.ml" 71 3363 3394 "error.ml" 71 3363 3395
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 71 3363 3397 "error.ml" 71 3363 3411
+type(
+  (string -> string -> string -> string, unit, string) format ->
+  string -> string -> string -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 71 3363 3412 "error.ml" 71 3363 3469
+type(
+  (string -> string -> string -> string, unit, string) format
+)
+"error.ml" 71 3363 3470 "error.ml" 71 3363 3473
+type(
+  string
+)
+ident(
+  int_ref fid "error.ml" 70 3321 3343 "error.ml" 70 3321 3346
+)
+"error.ml" 71 3363 3474 "error.ml" 71 3363 3476
+type(
+  string
+)
+ident(
+  int_ref id "error.ml" 70 3321 3347 "error.ml" 70 3321 3349
+)
+"error.ml" 71 3363 3477 "error.ml" 71 3363 3481
+type(
+  string
+)
+ident(
+  int_ref fid' "error.ml" 70 3321 3350 "error.ml" 70 3321 3354
+)
+"error.ml" 71 3363 3396 "error.ml" 71 3363 3482
+type(
+  string
+)
+"error.ml" 71 3363 3380 "error.ml" 71 3363 3483
+type(
+  string
+)
+"error.ml" 71 3363 3369 "error.ml" 71 3363 3483
+type(
+  'a
+)
+"error.ml" 72 3484 3512 "error.ml" 72 3484 3515
+type(
+  string
+)
+ident(
+  def rid "error.ml" 73 3527 3528 "error.ml" 73 3527 3663
+)
+"error.ml" 72 3484 3516 "error.ml" 72 3484 3518
+type(
+  string
+)
+ident(
+  def id "error.ml" 73 3527 3528 "error.ml" 73 3527 3663
+)
+"error.ml" 72 3484 3519 "error.ml" 72 3484 3522
+type(
+  Location.t
+)
+ident(
+  def loc "error.ml" 73 3527 3528 "error.ml" 73 3527 3663
+)
+"error.ml" 72 3484 3490 "error.ml" 72 3484 3523
+type(
+  exn
+)
+"error.ml" 73 3527 3528 "error.ml" 73 3527 3539
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 73 3527 3541 "error.ml" 73 3527 3547
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 73 3527 3548 "error.ml" 73 3527 3551
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 72 3484 3519 "error.ml" 72 3484 3522
+)
+"error.ml" 73 3527 3540 "error.ml" 73 3527 3552
+type(
+  string
+)
+"error.ml" 73 3527 3553 "error.ml" 73 3527 3554
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 73 3527 3556 "error.ml" 73 3527 3570
+type(
+  (string -> string -> string, unit, string) format ->
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 73 3527 3571 "error.ml" 73 3527 3654
+type(
+  (string -> string -> string, unit, string) format
+)
+"error.ml" 73 3527 3655 "error.ml" 73 3527 3658
+type(
+  string
+)
+ident(
+  int_ref rid "error.ml" 72 3484 3512 "error.ml" 72 3484 3515
+)
+"error.ml" 73 3527 3659 "error.ml" 73 3527 3661
+type(
+  string
+)
+ident(
+  int_ref id "error.ml" 72 3484 3516 "error.ml" 72 3484 3518
+)
+"error.ml" 73 3527 3555 "error.ml" 73 3527 3662
+type(
+  string
+)
+"error.ml" 73 3527 3539 "error.ml" 73 3527 3663
+type(
+  string
+)
+"error.ml" 73 3527 3528 "error.ml" 73 3527 3663
+type(
+  'a
+)
+"error.ml" 74 3664 3695 "error.ml" 74 3664 3698
+type(
+  string
+)
+ident(
+  def rid "error.ml" 75 3707 3708 "error.ml" 75 3707 3791
+)
+"error.ml" 74 3664 3699 "error.ml" 74 3664 3702
+type(
+  Location.t
+)
+ident(
+  def loc "error.ml" 75 3707 3708 "error.ml" 75 3707 3791
+)
+"error.ml" 74 3664 3670 "error.ml" 74 3664 3703
+type(
+  exn
+)
+"error.ml" 75 3707 3708 "error.ml" 75 3707 3719
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 75 3707 3721 "error.ml" 75 3707 3727
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 75 3707 3728 "error.ml" 75 3707 3731
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 74 3664 3699 "error.ml" 74 3664 3702
+)
+"error.ml" 75 3707 3720 "error.ml" 75 3707 3732
+type(
+  string
+)
+"error.ml" 75 3707 3733 "error.ml" 75 3707 3734
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 75 3707 3736 "error.ml" 75 3707 3750
+type(
+  (string -> string, unit, string) format -> string -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 75 3707 3751 "error.ml" 75 3707 3785
+type(
+  (string -> string, unit, string) format
+)
+"error.ml" 75 3707 3786 "error.ml" 75 3707 3789
+type(
+  string
+)
+ident(
+  int_ref rid "error.ml" 74 3664 3695 "error.ml" 74 3664 3698
+)
+"error.ml" 75 3707 3735 "error.ml" 75 3707 3790
+type(
+  string
+)
+"error.ml" 75 3707 3719 "error.ml" 75 3707 3791
+type(
+  string
+)
+"error.ml" 75 3707 3708 "error.ml" 75 3707 3791
+type(
+  'a
+)
+"error.ml" 76 3792 3824 "error.ml" 76 3792 3826
+type(
+  string
+)
+ident(
+  def id "error.ml" 77 3844 3845 "error.ml" 77 3844 3958
+)
+"error.ml" 76 3792 3827 "error.ml" 76 3792 3830
+type(
+  string
+)
+ident(
+  def rid "error.ml" 77 3844 3845 "error.ml" 77 3844 3958
+)
+"error.ml" 76 3792 3831 "error.ml" 76 3792 3835
+type(
+  string
+)
+ident(
+  def rid' "error.ml" 77 3844 3845 "error.ml" 77 3844 3958
+)
+"error.ml" 76 3792 3836 "error.ml" 76 3792 3839
+type(
+  Location.t
+)
+ident(
+  def loc "error.ml" 77 3844 3845 "error.ml" 77 3844 3958
+)
+"error.ml" 76 3792 3798 "error.ml" 76 3792 3840
+type(
+  exn
+)
+"error.ml" 77 3844 3845 "error.ml" 77 3844 3856
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 77 3844 3858 "error.ml" 77 3844 3864
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 77 3844 3865 "error.ml" 77 3844 3868
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 76 3792 3836 "error.ml" 76 3792 3839
+)
+"error.ml" 77 3844 3857 "error.ml" 77 3844 3869
+type(
+  string
+)
+"error.ml" 77 3844 3870 "error.ml" 77 3844 3871
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 77 3844 3873 "error.ml" 77 3844 3887
+type(
+  (string -> string -> string -> string, unit, string) format ->
+  string -> string -> string -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 77 3844 3888 "error.ml" 77 3844 3944
+type(
+  (string -> string -> string -> string, unit, string) format
+)
+"error.ml" 77 3844 3945 "error.ml" 77 3844 3947
+type(
+  string
+)
+ident(
+  int_ref id "error.ml" 76 3792 3824 "error.ml" 76 3792 3826
+)
+"error.ml" 77 3844 3948 "error.ml" 77 3844 3951
+type(
+  string
+)
+ident(
+  int_ref rid "error.ml" 76 3792 3827 "error.ml" 76 3792 3830
+)
+"error.ml" 77 3844 3952 "error.ml" 77 3844 3956
+type(
+  string
+)
+ident(
+  int_ref rid' "error.ml" 76 3792 3831 "error.ml" 76 3792 3835
+)
+"error.ml" 77 3844 3872 "error.ml" 77 3844 3957
+type(
+  string
+)
+"error.ml" 77 3844 3856 "error.ml" 77 3844 3958
+type(
+  string
+)
+"error.ml" 77 3844 3845 "error.ml" 77 3844 3958
+type(
+  'a
+)
+"error.ml" 78 3959 3990 "error.ml" 78 3959 3992
+type(
+  string
+)
+ident(
+  def id "error.ml" 79 4010 4011 "error.ml" 79 4010 4137
+)
+"error.ml" 78 3959 3993 "error.ml" 78 3959 3996
+type(
+  string
+)
+ident(
+  def rid "error.ml" 79 4010 4011 "error.ml" 79 4010 4137
+)
+"error.ml" 78 3959 3997 "error.ml" 78 3959 4001
+type(
+  string
+)
+ident(
+  def rid' "error.ml" 79 4010 4011 "error.ml" 79 4010 4137
+)
+"error.ml" 78 3959 4002 "error.ml" 78 3959 4005
+type(
+  Location.t
+)
+ident(
+  def loc "error.ml" 79 4010 4011 "error.ml" 79 4010 4137
+)
+"error.ml" 78 3959 3965 "error.ml" 78 3959 4006
+type(
+  exn
+)
+"error.ml" 79 4010 4011 "error.ml" 79 4010 4022
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 79 4010 4024 "error.ml" 79 4010 4030
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 79 4010 4031 "error.ml" 79 4010 4034
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 78 3959 4002 "error.ml" 78 3959 4005
+)
+"error.ml" 79 4010 4023 "error.ml" 79 4010 4035
+type(
+  string
+)
+"error.ml" 79 4010 4036 "error.ml" 79 4010 4037
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 79 4010 4039 "error.ml" 79 4010 4053
+type(
+  (string -> string -> string -> string, unit, string) format ->
+  string -> string -> string -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 79 4010 4054 "error.ml" 79 4010 4123
+type(
+  (string -> string -> string -> string, unit, string) format
+)
+"error.ml" 79 4010 4124 "error.ml" 79 4010 4126
+type(
+  string
+)
+ident(
+  int_ref id "error.ml" 78 3959 3990 "error.ml" 78 3959 3992
+)
+"error.ml" 79 4010 4127 "error.ml" 79 4010 4130
+type(
+  string
+)
+ident(
+  int_ref rid "error.ml" 78 3959 3993 "error.ml" 78 3959 3996
+)
+"error.ml" 79 4010 4131 "error.ml" 79 4010 4135
+type(
+  string
+)
+ident(
+  int_ref rid' "error.ml" 78 3959 3997 "error.ml" 78 3959 4001
+)
+"error.ml" 79 4010 4038 "error.ml" 79 4010 4136
+type(
+  string
+)
+"error.ml" 79 4010 4022 "error.ml" 79 4010 4137
+type(
+  string
+)
+"error.ml" 79 4010 4011 "error.ml" 79 4010 4137
+type(
+  'a
+)
+"error.ml" 80 4138 4167 "error.ml" 80 4138 4170
+type(
+  string
+)
+ident(
+  def rid "error.ml" 81 4179 4180 "error.ml" 81 4179 4277
+)
+"error.ml" 80 4138 4171 "error.ml" 80 4138 4174
+type(
+  Location.t
+)
+ident(
+  def loc "error.ml" 81 4179 4180 "error.ml" 81 4179 4277
+)
+"error.ml" 80 4138 4144 "error.ml" 80 4138 4175
+type(
+  exn
+)
+"error.ml" 81 4179 4180 "error.ml" 81 4179 4191
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 81 4179 4193 "error.ml" 81 4179 4199
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 81 4179 4200 "error.ml" 81 4179 4203
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 80 4138 4171 "error.ml" 80 4138 4174
+)
+"error.ml" 81 4179 4192 "error.ml" 81 4179 4204
+type(
+  string
+)
+"error.ml" 81 4179 4205 "error.ml" 81 4179 4206
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 81 4179 4208 "error.ml" 81 4179 4222
+type(
+  (string -> string, unit, string) format -> string -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 81 4179 4223 "error.ml" 81 4179 4271
+type(
+  (string -> string, unit, string) format
+)
+"error.ml" 81 4179 4272 "error.ml" 81 4179 4275
+type(
+  string
+)
+ident(
+  int_ref rid "error.ml" 80 4138 4167 "error.ml" 80 4138 4170
+)
+"error.ml" 81 4179 4207 "error.ml" 81 4179 4276
+type(
+  string
+)
+"error.ml" 81 4179 4191 "error.ml" 81 4179 4277
+type(
+  string
+)
+"error.ml" 81 4179 4180 "error.ml" 81 4179 4277
+type(
+  'a
+)
+"error.ml" 82 4278 4306 "error.ml" 82 4278 4309
+type(
+  Location.t
+)
+ident(
+  def loc "error.ml" 83 4319 4320 "error.ml" 83 4319 4430
+)
+"error.ml" 82 4278 4310 "error.ml" 82 4278 4314
+type(
+  Location.t
+)
+ident(
+  def loc' "error.ml" 83 4319 4320 "error.ml" 83 4319 4430
+)
+"error.ml" 82 4278 4284 "error.ml" 82 4278 4315
+type(
+  exn
+)
+"error.ml" 83 4319 4320 "error.ml" 83 4319 4331
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 83 4319 4332 "error.ml" 83 4319 4336
+type(
+  string
+)
+"error.ml" 83 4319 4337 "error.ml" 83 4319 4338
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 83 4319 4340 "error.ml" 83 4319 4355
+type(
+  Location.t -> string
+)
+ident(
+  int_ref Location.sprint "location.ml" 20 578 582 "location.ml" 20 578 588
+)
+"error.ml" 83 4319 4356 "error.ml" 83 4319 4360
+type(
+  Location.t
+)
+ident(
+  int_ref loc' "error.ml" 82 4278 4310 "error.ml" 82 4278 4314
+)
+"error.ml" 83 4319 4339 "error.ml" 83 4319 4361
+type(
+  string
+)
+"error.ml" 83 4319 4362 "error.ml" 83 4319 4363
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 83 4319 4365 "error.ml" 83 4319 4380
+type(
+  Location.t -> string
+)
+ident(
+  int_ref Location.sprint "location.ml" 20 578 582 "location.ml" 20 578 588
+)
+"error.ml" 83 4319 4381 "error.ml" 83 4319 4384
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 82 4278 4306 "error.ml" 82 4278 4309
+)
+"error.ml" 83 4319 4364 "error.ml" 83 4319 4385
+type(
+  string
+)
+"error.ml" 83 4319 4386 "error.ml" 83 4319 4387
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 83 4319 4389 "error.ml" 83 4319 4403
+type(
+  (string, unit, string) format -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 83 4319 4404 "error.ml" 83 4319 4428
+type(
+  (string, unit, string) format
+)
+"error.ml" 83 4319 4388 "error.ml" 83 4319 4429
+type(
+  string
+)
+"error.ml" 83 4319 4364 "error.ml" 83 4319 4429
+type(
+  string
+)
+"error.ml" 83 4319 4339 "error.ml" 83 4319 4429
+type(
+  string
+)
+"error.ml" 83 4319 4331 "error.ml" 83 4319 4430
+type(
+  string
+)
+"error.ml" 83 4319 4320 "error.ml" 83 4319 4430
+type(
+  'a
+)
+"error.ml" 84 4431 4459 "error.ml" 84 4431 4462
+type(
+  Location.t
+)
+ident(
+  def loc "error.ml" 85 4472 4473 "error.ml" 85 4472 4583
+)
+"error.ml" 84 4431 4463 "error.ml" 84 4431 4467
+type(
+  Location.t
+)
+ident(
+  def loc' "error.ml" 85 4472 4473 "error.ml" 85 4472 4583
+)
+"error.ml" 84 4431 4437 "error.ml" 84 4431 4468
+type(
+  exn
+)
+"error.ml" 85 4472 4473 "error.ml" 85 4472 4484
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 85 4472 4485 "error.ml" 85 4472 4489
+type(
+  string
+)
+"error.ml" 85 4472 4490 "error.ml" 85 4472 4491
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 85 4472 4493 "error.ml" 85 4472 4508
+type(
+  Location.t -> string
+)
+ident(
+  int_ref Location.sprint "location.ml" 20 578 582 "location.ml" 20 578 588
+)
+"error.ml" 85 4472 4509 "error.ml" 85 4472 4513
+type(
+  Location.t
+)
+ident(
+  int_ref loc' "error.ml" 84 4431 4463 "error.ml" 84 4431 4467
+)
+"error.ml" 85 4472 4492 "error.ml" 85 4472 4514
+type(
+  string
+)
+"error.ml" 85 4472 4515 "error.ml" 85 4472 4516
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 85 4472 4518 "error.ml" 85 4472 4533
+type(
+  Location.t -> string
+)
+ident(
+  int_ref Location.sprint "location.ml" 20 578 582 "location.ml" 20 578 588
+)
+"error.ml" 85 4472 4534 "error.ml" 85 4472 4537
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 84 4431 4459 "error.ml" 84 4431 4462
+)
+"error.ml" 85 4472 4517 "error.ml" 85 4472 4538
+type(
+  string
+)
+"error.ml" 85 4472 4539 "error.ml" 85 4472 4540
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 85 4472 4542 "error.ml" 85 4472 4556
+type(
+  (string, unit, string) format -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 85 4472 4557 "error.ml" 85 4472 4581
+type(
+  (string, unit, string) format
+)
+"error.ml" 85 4472 4541 "error.ml" 85 4472 4582
+type(
+  string
+)
+"error.ml" 85 4472 4517 "error.ml" 85 4472 4582
+type(
+  string
+)
+"error.ml" 85 4472 4492 "error.ml" 85 4472 4582
+type(
+  string
+)
+"error.ml" 85 4472 4484 "error.ml" 85 4472 4583
+type(
+  string
+)
+"error.ml" 85 4472 4473 "error.ml" 85 4472 4583
+type(
+  'a
+)
+"error.ml" 86 4584 4615 "error.ml" 86 4584 4618
+ident(
+  def loc "error.ml" 87 4623 4624 "error.ml" 87 4623 4707
+)
+"error.ml" 86 4584 4614 "error.ml" 86 4584 4619
+type(
+  Location.t
+)
+"error.ml" 86 4584 4590 "error.ml" 86 4584 4619
+type(
+  exn
+)
+"error.ml" 87 4623 4624 "error.ml" 87 4623 4635
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 87 4623 4637 "error.ml" 87 4623 4643
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 87 4623 4644 "error.ml" 87 4623 4647
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 86 4584 4614 "error.ml" 86 4584 4619
+)
+"error.ml" 87 4623 4636 "error.ml" 87 4623 4648
+type(
+  string
+)
+"error.ml" 87 4623 4649 "error.ml" 87 4623 4650
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 87 4623 4652 "error.ml" 87 4623 4666
+type(
+  (string, unit, string) format -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 87 4623 4667 "error.ml" 87 4623 4705
+type(
+  (string, unit, string) format
+)
+"error.ml" 87 4623 4651 "error.ml" 87 4623 4706
+type(
+  string
+)
+"error.ml" 87 4623 4635 "error.ml" 87 4623 4707
+type(
+  string
+)
+"error.ml" 87 4623 4624 "error.ml" 87 4623 4707
+type(
+  'a
+)
+"error.ml" 88 4708 4732 "error.ml" 88 4708 4734
+type(
+  string
+)
+ident(
+  def id "error.ml" 89 4747 4748 "error.ml" 89 4747 4888
+)
+"error.ml" 88 4708 4735 "error.ml" 88 4708 4738
+type(
+  string
+)
+ident(
+  def fid "error.ml" 89 4747 4748 "error.ml" 89 4747 4888
+)
+"error.ml" 88 4708 4739 "error.ml" 88 4708 4742
+type(
+  Location.t
+)
+ident(
+  def loc "error.ml" 89 4747 4748 "error.ml" 89 4747 4888
+)
+"error.ml" 88 4708 4714 "error.ml" 88 4708 4743
+type(
+  exn
+)
+"error.ml" 89 4747 4748 "error.ml" 89 4747 4759
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 89 4747 4761 "error.ml" 89 4747 4767
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 89 4747 4768 "error.ml" 89 4747 4771
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 88 4708 4739 "error.ml" 88 4708 4742
+)
+"error.ml" 89 4747 4760 "error.ml" 89 4747 4772
+type(
+  string
+)
+"error.ml" 89 4747 4773 "error.ml" 89 4747 4774
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 89 4747 4776 "error.ml" 89 4747 4790
+type(
+  (string -> string -> string, unit, string) format ->
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 89 4747 4791 "error.ml" 89 4747 4879
+type(
+  (string -> string -> string, unit, string) format
+)
+"error.ml" 89 4747 4880 "error.ml" 89 4747 4882
+type(
+  string
+)
+ident(
+  int_ref id "error.ml" 88 4708 4732 "error.ml" 88 4708 4734
+)
+"error.ml" 89 4747 4883 "error.ml" 89 4747 4886
+type(
+  string
+)
+ident(
+  int_ref fid "error.ml" 88 4708 4735 "error.ml" 88 4708 4738
+)
+"error.ml" 89 4747 4775 "error.ml" 89 4747 4887
+type(
+  string
+)
+"error.ml" 89 4747 4759 "error.ml" 89 4747 4888
+type(
+  string
+)
+"error.ml" 89 4747 4748 "error.ml" 89 4747 4888
+type(
+  'a
+)
+"error.ml" 90 4889 4916 "error.ml" 90 4889 4918
+type(
+  string
+)
+ident(
+  def sx "error.ml" 91 4936 4937 "error.ml" 91 4936 5049
+)
+"error.ml" 90 4889 4919 "error.ml" 90 4889 4920
+type(
+  string
+)
+ident(
+  def x "error.ml" 91 4936 4937 "error.ml" 91 4936 5049
+)
+"error.ml" 90 4889 4921 "error.ml" 90 4889 4924
+type(
+  string
+)
+ident(
+  def sid "error.ml" 91 4936 4937 "error.ml" 91 4936 5049
+)
+"error.ml" 90 4889 4925 "error.ml" 90 4889 4927
+type(
+  string
+)
+ident(
+  def id "error.ml" 91 4936 4937 "error.ml" 91 4936 5049
+)
+"error.ml" 90 4889 4928 "error.ml" 90 4889 4931
+type(
+  Location.t
+)
+ident(
+  def loc "error.ml" 91 4936 4937 "error.ml" 91 4936 5049
+)
+"error.ml" 90 4889 4895 "error.ml" 90 4889 4932
+type(
+  exn
+)
+"error.ml" 91 4936 4937 "error.ml" 91 4936 4948
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 91 4936 4950 "error.ml" 91 4936 4956
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 91 4936 4957 "error.ml" 91 4936 4960
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 90 4889 4928 "error.ml" 90 4889 4931
+)
+"error.ml" 91 4936 4949 "error.ml" 91 4936 4961
+type(
+  string
+)
+"error.ml" 91 4936 4962 "error.ml" 91 4936 4963
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 91 4936 4965 "error.ml" 91 4936 4979
+type(
+  (string -> string -> string -> string -> string, unit, string) format ->
+  string -> string -> string -> string -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 91 4936 4980 "error.ml" 91 4936 5035
+type(
+  (string -> string -> string -> string -> string, unit, string) format
+)
+"error.ml" 91 4936 5036 "error.ml" 91 4936 5037
+type(
+  string
+)
+ident(
+  int_ref x "error.ml" 90 4889 4919 "error.ml" 90 4889 4920
+)
+"error.ml" 91 4936 5038 "error.ml" 91 4936 5040
+type(
+  string
+)
+ident(
+  int_ref sx "error.ml" 90 4889 4916 "error.ml" 90 4889 4918
+)
+"error.ml" 91 4936 5041 "error.ml" 91 4936 5044
+type(
+  string
+)
+ident(
+  int_ref sid "error.ml" 90 4889 4921 "error.ml" 90 4889 4924
+)
+"error.ml" 91 4936 5045 "error.ml" 91 4936 5047
+type(
+  string
+)
+ident(
+  int_ref id "error.ml" 90 4889 4925 "error.ml" 90 4889 4927
+)
+"error.ml" 91 4936 4964 "error.ml" 91 4936 5048
+type(
+  string
+)
+"error.ml" 91 4936 4948 "error.ml" 91 4936 5049
+type(
+  string
+)
+"error.ml" 91 4936 4937 "error.ml" 91 4936 5049
+type(
+  'a
+)
+"error.ml" 92 5050 5076 "error.ml" 92 5050 5077
+type(
+  string
+)
+ident(
+  def x "error.ml" 93 5090 5091 "error.ml" 93 5090 5211
+)
+"error.ml" 92 5050 5078 "error.ml" 92 5050 5081
+type(
+  string
+)
+ident(
+  def fid "error.ml" 93 5090 5091 "error.ml" 93 5090 5211
+)
+"error.ml" 92 5050 5082 "error.ml" 92 5050 5085
+type(
+  Location.t
+)
+ident(
+  def loc "error.ml" 93 5090 5091 "error.ml" 93 5090 5211
+)
+"error.ml" 92 5050 5056 "error.ml" 92 5050 5086
+type(
+  exn
+)
+"error.ml" 93 5090 5091 "error.ml" 93 5090 5102
+type(
+  string -> 'a
+)
+ident(
+  int_ref Stdlib.invalid_arg "stdlib.mli" 38 1822 1822 "stdlib.mli" 38 1822 1852
+)
+"error.ml" 93 5090 5104 "error.ml" 93 5090 5110
+type(
+  Location.t -> string
+)
+ident(
+  int_ref sprint "error.ml" 39 1635 1639 "error.ml" 39 1635 1645
+)
+"error.ml" 93 5090 5111 "error.ml" 93 5090 5114
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 92 5050 5082 "error.ml" 92 5050 5085
+)
+"error.ml" 93 5090 5103 "error.ml" 93 5090 5115
+type(
+  string
+)
+"error.ml" 93 5090 5116 "error.ml" 93 5090 5117
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"error.ml" 93 5090 5119 "error.ml" 93 5090 5133
+type(
+  (string -> string -> string, unit, string) format ->
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"error.ml" 93 5090 5134 "error.ml" 93 5090 5203
+type(
+  (string -> string -> string, unit, string) format
+)
+"error.ml" 93 5090 5204 "error.ml" 93 5090 5205
+type(
+  string
+)
+ident(
+  int_ref x "error.ml" 92 5050 5076 "error.ml" 92 5050 5077
+)
+"error.ml" 93 5090 5206 "error.ml" 93 5090 5209
+type(
+  string
+)
+ident(
+  int_ref fid "error.ml" 92 5050 5078 "error.ml" 92 5050 5081
+)
+"error.ml" 93 5090 5118 "error.ml" 93 5090 5210
+type(
+  string
+)
+"error.ml" 93 5090 5102 "error.ml" 93 5090 5211
+type(
+  string
+)
+"error.ml" 93 5090 5091 "error.ml" 93 5090 5211
+type(
+  'a
+)
+"error.ml" 95 5237 5260 "error.ml" 95 5237 5263
+type(
+  Symbtree.can_form
+)
+ident(
+  def cf1 "error.ml" 96 5278 5279 "error.ml" 97 5365 5382
+)
+"error.ml" 95 5237 5264 "error.ml" 95 5237 5267
+type(
+  Symbtree.can_form
+)
+ident(
+  def cf2 "error.ml" 96 5278 5279 "error.ml" 97 5365 5382
+)
+"error.ml" 95 5237 5268 "error.ml" 95 5237 5269
+type(
+  string
+)
+ident(
+  def s "error.ml" 96 5278 5279 "error.ml" 97 5365 5382
+)
+"error.ml" 95 5237 5270 "error.ml" 95 5237 5273
+type(
+  Location.t
+)
+ident(
+  def loc "error.ml" 96 5278 5279 "error.ml" 97 5365 5382
+)
+"error.ml" 95 5237 5243 "error.ml" 95 5237 5274
+type(
+  exn
+)
+"error.ml" 96 5278 5279 "error.ml" 96 5278 5284
+type(
+  Location.t ->
+  (string ->
+   (Format.formatter -> Symbtree.can_form * Symbtree.can_form -> unit) ->
+   Symbtree.can_form * Symbtree.can_form -> unit, Format.formatter, unit)
+  format ->
+  string ->
+  (Format.formatter -> Symbtree.can_form * Symbtree.can_form -> unit) ->
+  Symbtree.can_form * Symbtree.can_form -> unit
+)
+ident(
+  int_ref print "error.ml" 34 1534 1538 "error.ml" 34 1534 1543
+)
+"error.ml" 96 5278 5285 "error.ml" 96 5278 5288
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 95 5237 5270 "error.ml" 95 5237 5273
+)
+"error.ml" 96 5278 5289 "error.ml" 96 5278 5325
+type(
+  (string ->
+   (Format.formatter -> Symbtree.can_form * Symbtree.can_form -> unit) ->
+   Symbtree.can_form * Symbtree.can_form -> unit, Format.formatter, unit)
+  format
+)
+"error.ml" 96 5278 5326 "error.ml" 96 5278 5327
+type(
+  string
+)
+ident(
+  int_ref s "error.ml" 95 5237 5268 "error.ml" 95 5237 5269
+)
+"error.ml" 96 5278 5328 "error.ml" 96 5278 5353
+type(
+  Format.formatter -> Symbtree.can_form * Symbtree.can_form -> unit
+)
+ident(
+  int_ref Symbtree.pp_sp_entailment "symbtree.mli" 130 4317 4317 "symbtree.mli" 130 4317 4387
+)
+"error.ml" 96 5278 5355 "error.ml" 96 5278 5358
+type(
+  Symbtree.can_form
+)
+ident(
+  int_ref cf1 "error.ml" 95 5237 5260 "error.ml" 95 5237 5263
+)
+"error.ml" 96 5278 5359 "error.ml" 96 5278 5362
+type(
+  Symbtree.can_form
+)
+ident(
+  int_ref cf2 "error.ml" 95 5237 5264 "error.ml" 95 5237 5267
+)
+"error.ml" 96 5278 5354 "error.ml" 96 5278 5363
+type(
+  Symbtree.can_form * Symbtree.can_form
+)
+"error.ml" 96 5278 5279 "error.ml" 96 5278 5363
+type(
+  unit
+)
+"error.ml" 97 5365 5366 "error.ml" 97 5365 5380
+type(
+  unit -> 'a
+)
+ident(
+  int_ref nonfatal_thunk "error.ml" 41 1682 1695 "error.ml" 41 1682 1709
+)
+"error.ml" 97 5365 5380 "error.ml" 97 5365 5382
+type(
+  unit
+)
+"error.ml" 97 5365 5366 "error.ml" 97 5365 5382
+type(
+  'a
+)
+"error.ml" 96 5278 5279 "error.ml" 97 5365 5382
+type(
+  'a
+)
+"error.ml" 98 5383 5407 "error.ml" 98 5383 5410
+type(
+  Symbtree.can_form
+)
+ident(
+  def cf1 "error.ml" 99 5425 5426 "error.ml" 100 5511 5528
+)
+"error.ml" 98 5383 5411 "error.ml" 98 5383 5414
+type(
+  Symbtree.can_form
+)
+ident(
+  def cf2 "error.ml" 99 5425 5426 "error.ml" 100 5511 5528
+)
+"error.ml" 98 5383 5415 "error.ml" 98 5383 5416
+type(
+  string
+)
+ident(
+  def s "error.ml" 99 5425 5426 "error.ml" 100 5511 5528
+)
+"error.ml" 98 5383 5417 "error.ml" 98 5383 5420
+type(
+  Location.t
+)
+ident(
+  def loc "error.ml" 99 5425 5426 "error.ml" 100 5511 5528
+)
+"error.ml" 98 5383 5389 "error.ml" 98 5383 5421
+type(
+  exn
+)
+"error.ml" 99 5425 5426 "error.ml" 99 5425 5431
+type(
+  Location.t ->
+  (string ->
+   (Format.formatter -> Symbtree.can_form * Symbtree.can_form -> unit) ->
+   Symbtree.can_form * Symbtree.can_form -> unit, Format.formatter, unit)
+  format ->
+  string ->
+  (Format.formatter -> Symbtree.can_form * Symbtree.can_form -> unit) ->
+  Symbtree.can_form * Symbtree.can_form -> unit
+)
+ident(
+  int_ref print "error.ml" 34 1534 1538 "error.ml" 34 1534 1543
+)
+"error.ml" 99 5425 5432 "error.ml" 99 5425 5435
+type(
+  Location.t
+)
+ident(
+  int_ref loc "error.ml" 98 5383 5417 "error.ml" 98 5383 5420
+)
+"error.ml" 99 5425 5436 "error.ml" 99 5425 5471
+type(
+  (string ->
+   (Format.formatter -> Symbtree.can_form * Symbtree.can_form -> unit) ->
+   Symbtree.can_form * Symbtree.can_form -> unit, Format.formatter, unit)
+  format
+)
+"error.ml" 99 5425 5472 "error.ml" 99 5425 5473
+type(
+  string
+)
+ident(
+  int_ref s "error.ml" 98 5383 5415 "error.ml" 98 5383 5416
+)
+"error.ml" 99 5425 5474 "error.ml" 99 5425 5499
+type(
+  Format.formatter -> Symbtree.can_form * Symbtree.can_form -> unit
+)
+ident(
+  int_ref Symbtree.pp_sp_entailment "symbtree.mli" 130 4317 4317 "symbtree.mli" 130 4317 4387
+)
+"error.ml" 99 5425 5501 "error.ml" 99 5425 5504
+type(
+  Symbtree.can_form
+)
+ident(
+  int_ref cf1 "error.ml" 98 5383 5407 "error.ml" 98 5383 5410
+)
+"error.ml" 99 5425 5505 "error.ml" 99 5425 5508
+type(
+  Symbtree.can_form
+)
+ident(
+  int_ref cf2 "error.ml" 98 5383 5411 "error.ml" 98 5383 5414
+)
+"error.ml" 99 5425 5500 "error.ml" 99 5425 5509
+type(
+  Symbtree.can_form * Symbtree.can_form
+)
+"error.ml" 99 5425 5426 "error.ml" 99 5425 5509
+type(
+  unit
+)
+"error.ml" 100 5511 5512 "error.ml" 100 5511 5526
+type(
+  unit -> 'a
+)
+ident(
+  int_ref nonfatal_thunk "error.ml" 41 1682 1695 "error.ml" 41 1682 1709
+)
+"error.ml" 100 5511 5526 "error.ml" 100 5511 5528
+type(
+  unit
+)
+"error.ml" 100 5511 5512 "error.ml" 100 5511 5528
+type(
+  'a
+)
+"error.ml" 99 5425 5426 "error.ml" 100 5511 5528
+type(
+  'a
+)
+"error.ml" 101 5529 5535 "error.ml" 101 5529 5554
+type(
+  exn
+)
+"error.ml" 101 5529 5558 "error.ml" 101 5529 5572
+type(
+  unit -> 'a
+)
+ident(
+  int_ref nonfatal_thunk "error.ml" 41 1682 1695 "error.ml" 41 1682 1709
+)
+"error.ml" 101 5529 5572 "error.ml" 101 5529 5574
+type(
+  unit
+)
+"error.ml" 101 5529 5558 "error.ml" 101 5529 5574
+type(
+  'a
+)
+"error.ml" 42 1744 1746 "error.ml" 101 5529 5574
+type(
+  'a
+)

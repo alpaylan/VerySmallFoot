@@ -1,0 +1,774 @@
+"config.ml" 1 0 4 "config.ml" 1 0 13
+type(
+  Format.formatter ref
+)
+ident(
+  def formatter "config.ml" 2 41 41 "config.ml" 0 0 -1
+)
+"config.ml" 1 0 16 "config.ml" 1 0 19
+type(
+  Format.formatter -> Format.formatter ref
+)
+ident(
+  int_ref Stdlib.ref "stdlib.mli" 1162 44439 44439 "stdlib.mli" 1162 44439 44483
+)
+"config.ml" 1 0 20 "config.ml" 1 0 40
+type(
+  Format.formatter
+)
+ident(
+  int_ref Stdlib.Format.std_formatter "format.mli" 907 36023 36023 "format.mli" 907 36023 36052
+)
+"config.ml" 1 0 16 "config.ml" 1 0 40
+type(
+  Format.formatter ref
+)
+"config.ml" 2 41 45 "config.ml" 2 41 52
+type(
+  int ref
+)
+ident(
+  def columns "config.ml" 4 63 63 "config.ml" 0 0 -1
+)
+"config.ml" 2 41 55 "config.ml" 2 41 58
+type(
+  int -> int ref
+)
+ident(
+  int_ref Stdlib.ref "stdlib.mli" 1162 44439 44439 "stdlib.mli" 1162 44439 44483
+)
+"config.ml" 2 41 59 "config.ml" 2 41 61
+type(
+  int
+)
+"config.ml" 2 41 55 "config.ml" 2 41 61
+type(
+  int ref
+)
+"config.ml" 4 63 67 "config.ml" 4 63 81
+type(
+  bool
+)
+ident(
+  def print_gc_stats "config.ml" 6 91 91 "config.ml" 0 0 -1
+)
+"config.ml" 4 63 84 "config.ml" 4 63 89
+type(
+  bool
+)
+"config.ml" 6 91 95 "config.ml" 6 91 106
+type(
+  int ref
+)
+ident(
+  def repetitions "config.ml" 8 116 116 "config.ml" 0 0 -1
+)
+"config.ml" 6 91 109 "config.ml" 6 91 112
+type(
+  int -> int ref
+)
+ident(
+  int_ref Stdlib.ref "stdlib.mli" 1162 44439 44439 "stdlib.mli" 1162 44439 44483
+)
+"config.ml" 6 91 113 "config.ml" 6 91 114
+type(
+  int
+)
+"config.ml" 6 91 109 "config.ml" 6 91 114
+type(
+  int ref
+)
+"config.ml" 8 116 120 "config.ml" 8 116 128
+type(
+  bool ref
+)
+ident(
+  def verbose1 "config.ml" 9 141 141 "config.ml" 0 0 -1
+)
+"config.ml" 8 116 131 "config.ml" 8 116 134
+type(
+  bool -> bool ref
+)
+ident(
+  int_ref Stdlib.ref "stdlib.mli" 1162 44439 44439 "stdlib.mli" 1162 44439 44483
+)
+"config.ml" 8 116 135 "config.ml" 8 116 140
+type(
+  bool
+)
+"config.ml" 8 116 131 "config.ml" 8 116 140
+type(
+  bool ref
+)
+"config.ml" 9 141 145 "config.ml" 9 141 153
+type(
+  bool ref
+)
+ident(
+  def verbose2 "config.ml" 10 166 166 "config.ml" 0 0 -1
+)
+"config.ml" 9 141 156 "config.ml" 9 141 159
+type(
+  bool -> bool ref
+)
+ident(
+  int_ref Stdlib.ref "stdlib.mli" 1162 44439 44439 "stdlib.mli" 1162 44439 44483
+)
+"config.ml" 9 141 160 "config.ml" 9 141 165
+type(
+  bool
+)
+"config.ml" 9 141 156 "config.ml" 9 141 165
+type(
+  bool ref
+)
+"config.ml" 10 166 170 "config.ml" 10 166 180
+type(
+  bool ref
+)
+ident(
+  def all_states "config.ml" 11 193 193 "config.ml" 0 0 -1
+)
+"config.ml" 10 166 183 "config.ml" 10 166 186
+type(
+  bool -> bool ref
+)
+ident(
+  int_ref Stdlib.ref "stdlib.mli" 1162 44439 44439 "stdlib.mli" 1162 44439 44483
+)
+"config.ml" 10 166 187 "config.ml" 10 166 192
+type(
+  bool
+)
+"config.ml" 10 166 183 "config.ml" 10 166 192
+type(
+  bool ref
+)
+"config.ml" 11 193 197 "config.ml" 11 193 211
+type(
+  bool ref
+)
+ident(
+  def show_induction "config.ml" 13 225 225 "config.ml" 0 0 -1
+)
+"config.ml" 11 193 214 "config.ml" 11 193 217
+type(
+  bool -> bool ref
+)
+ident(
+  int_ref Stdlib.ref "stdlib.mli" 1162 44439 44439 "stdlib.mli" 1162 44439 44483
+)
+"config.ml" 11 193 218 "config.ml" 11 193 223
+type(
+  bool
+)
+"config.ml" 11 193 214 "config.ml" 11 193 223
+type(
+  bool ref
+)
+"config.ml" 13 225 229 "config.ml" 13 225 244
+type(
+  bool ref
+)
+ident(
+  def inductive_preds "config.ml" 16 287 287 "config.ml" 0 0 -1
+)
+"config.ml" 13 225 247 "config.ml" 13 225 250
+type(
+  bool -> bool ref
+)
+ident(
+  int_ref Stdlib.ref "stdlib.mli" 1162 44439 44439 "stdlib.mli" 1162 44439 44483
+)
+"config.ml" 13 225 251 "config.ml" 13 225 256
+type(
+  bool
+)
+"config.ml" 13 225 247 "config.ml" 13 225 256
+type(
+  bool ref
+)
+"config.ml" 16 287 291 "config.ml" 16 287 304
+type(
+  string
+)
+ident(
+  def list_data_tag "config.ml" 17 312 312 "config.ml" 0 0 -1
+)
+"config.ml" 16 287 307 "config.ml" 16 287 311
+type(
+  string
+)
+"config.ml" 17 312 316 "config.ml" 17 312 329
+type(
+  string
+)
+ident(
+  def list_link_tag "config.ml" 18 337 337 "config.ml" 0 0 -1
+)
+"config.ml" 17 312 332 "config.ml" 17 312 336
+type(
+  string
+)
+"config.ml" 18 337 341 "config.ml" 18 337 354
+type(
+  string
+)
+ident(
+  def tree_data_tag "config.ml" 19 361 361 "config.ml" 0 0 -1
+)
+"config.ml" 18 337 357 "config.ml" 18 337 360
+type(
+  string
+)
+"config.ml" 19 361 365 "config.ml" 19 361 379
+type(
+  string * string
+)
+ident(
+  def tree_link_tags "config.ml" 20 391 391 "config.ml" 0 0 -1
+)
+"config.ml" 19 361 382 "config.ml" 19 361 385
+type(
+  string
+)
+"config.ml" 19 361 387 "config.ml" 19 361 390
+type(
+  string
+)
+"config.ml" 19 361 382 "config.ml" 19 361 390
+type(
+  string * string
+)
+"config.ml" 20 391 395 "config.ml" 20 391 407
+type(
+  string
+)
+ident(
+  def dl_Llink_tag "config.ml" 23 498 498 "config.ml" 0 0 -1
+)
+"config.ml" 20 391 408 "config.ml" 20 391 420
+type(
+  string
+)
+ident(
+  def dl_Rlink_tag "config.ml" 23 498 498 "config.ml" 0 0 -1
+)
+"config.ml" 20 391 395 "config.ml" 20 391 420
+type(
+  string * string
+)
+"config.ml" 20 391 423 "config.ml" 20 391 437
+type(
+  string * string
+)
+ident(
+  int_ref tree_link_tags "config.ml" 19 361 365 "config.ml" 19 361 379
+)
+"config.ml" 23 498 502 "config.ml" 23 498 510
+type(
+  (string * Arg.spec * string) list
+)
+ident(
+  def speclist "config.ml" 39 1451 1451 "config.ml" 0 0 -1
+)
+"config.ml" 24 529 533 "config.ml" 24 529 547
+type(
+  string
+)
+"config.ml" 24 529 562 "config.ml" 24 529 563
+type(
+  int
+)
+ident(
+  def n "config.ml" 24 529 567 "config.ml" 24 529 583
+)
+"config.ml" 24 529 567 "config.ml" 24 529 578
+type(
+  int ref
+)
+ident(
+  int_ref repetitions "config.ml" 6 91 95 "config.ml" 6 91 106
+)
+"config.ml" 24 529 579 "config.ml" 24 529 581
+type(
+  int ref -> int -> unit
+)
+ident(
+  int_ref Stdlib.( := ) "stdlib.mli" 1171 44751 44751 "stdlib.mli" 1171 44751 44804
+)
+"config.ml" 24 529 582 "config.ml" 24 529 583
+type(
+  int
+)
+ident(
+  int_ref n "config.ml" 24 529 562 "config.ml" 24 529 563
+)
+"config.ml" 24 529 567 "config.ml" 24 529 583
+type(
+  unit
+)
+"config.ml" 24 529 557 "config.ml" 24 529 584
+type(
+  int -> unit
+)
+"config.ml" 24 529 549 "config.ml" 24 529 584
+type(
+  Arg.spec
+)
+"config.ml" 24 529 586 "config.ml" 24 529 627
+type(
+  string
+)
+"config.ml" 24 529 532 "config.ml" 24 529 628
+type(
+  string * Arg.spec * string
+)
+"config.ml" 25 630 634 "config.ml" 25 630 644
+type(
+  string
+)
+"config.ml" 25 630 659 "config.ml" 25 630 660
+type(
+  int
+)
+ident(
+  def n "config.ml" 25 630 664 "config.ml" 25 630 676
+)
+"config.ml" 25 630 664 "config.ml" 25 630 671
+type(
+  int ref
+)
+ident(
+  int_ref columns "config.ml" 2 41 45 "config.ml" 2 41 52
+)
+"config.ml" 25 630 672 "config.ml" 25 630 674
+type(
+  int ref -> int -> unit
+)
+ident(
+  int_ref Stdlib.( := ) "stdlib.mli" 1171 44751 44751 "stdlib.mli" 1171 44751 44804
+)
+"config.ml" 25 630 675 "config.ml" 25 630 676
+type(
+  int
+)
+ident(
+  int_ref n "config.ml" 25 630 659 "config.ml" 25 630 660
+)
+"config.ml" 25 630 664 "config.ml" 25 630 676
+type(
+  unit
+)
+"config.ml" 25 630 654 "config.ml" 25 630 677
+type(
+  int -> unit
+)
+"config.ml" 25 630 646 "config.ml" 25 630 677
+type(
+  Arg.spec
+)
+"config.ml" 25 630 679 "config.ml" 25 630 726
+type(
+  string
+)
+"config.ml" 25 630 633 "config.ml" 25 630 727
+type(
+  string * Arg.spec * string
+)
+"config.ml" 26 729 733 "config.ml" 26 729 743
+type(
+  string
+)
+"config.ml" 26 729 759 "config.ml" 26 729 761
+type(
+  unit
+)
+"config.ml" 27 765 791 "config.ml" 27 765 799
+type(
+  bool ref
+)
+ident(
+  int_ref verbose1 "config.ml" 8 116 120 "config.ml" 8 116 128
+)
+"config.ml" 27 765 800 "config.ml" 27 765 802
+type(
+  bool ref -> bool -> unit
+)
+ident(
+  int_ref Stdlib.( := ) "stdlib.mli" 1171 44751 44751 "stdlib.mli" 1171 44751 44804
+)
+"config.ml" 27 765 803 "config.ml" 27 765 807
+type(
+  bool
+)
+"config.ml" 27 765 791 "config.ml" 27 765 807
+type(
+  unit
+)
+"config.ml" 28 809 835 "config.ml" 28 809 843
+type(
+  bool ref
+)
+ident(
+  int_ref verbose2 "config.ml" 9 141 145 "config.ml" 9 141 153
+)
+"config.ml" 28 809 844 "config.ml" 28 809 846
+type(
+  bool ref -> bool -> unit
+)
+ident(
+  int_ref Stdlib.( := ) "stdlib.mli" 1171 44751 44751 "stdlib.mli" 1171 44751 44804
+)
+"config.ml" 28 809 847 "config.ml" 28 809 852
+type(
+  bool
+)
+"config.ml" 28 809 835 "config.ml" 28 809 852
+type(
+  unit
+)
+"config.ml" 29 854 859 "config.ml" 29 854 869
+type(
+  bool ref
+)
+ident(
+  int_ref all_states "config.ml" 10 166 170 "config.ml" 10 166 180
+)
+"config.ml" 29 854 870 "config.ml" 29 854 872
+type(
+  bool ref -> bool -> unit
+)
+ident(
+  int_ref Stdlib.( := ) "stdlib.mli" 1171 44751 44751 "stdlib.mli" 1171 44751 44804
+)
+"config.ml" 29 854 873 "config.ml" 29 854 878
+type(
+  bool
+)
+"config.ml" 29 854 859 "config.ml" 29 854 878
+type(
+  unit
+)
+"config.ml" 30 880 885 "config.ml" 30 880 899
+type(
+  bool ref
+)
+ident(
+  int_ref show_induction "config.ml" 11 193 197 "config.ml" 11 193 211
+)
+"config.ml" 30 880 900 "config.ml" 30 880 902
+type(
+  bool ref -> bool -> unit
+)
+ident(
+  int_ref Stdlib.( := ) "stdlib.mli" 1171 44751 44751 "stdlib.mli" 1171 44751 44804
+)
+"config.ml" 30 880 903 "config.ml" 30 880 908
+type(
+  bool
+)
+"config.ml" 30 880 885 "config.ml" 30 880 908
+type(
+  unit
+)
+"config.ml" 29 854 859 "config.ml" 30 880 908
+type(
+  unit
+)
+"config.ml" 28 809 835 "config.ml" 30 880 908
+type(
+  unit
+)
+"config.ml" 27 765 791 "config.ml" 30 880 908
+type(
+  unit
+)
+"config.ml" 26 729 754 "config.ml" 30 880 909
+type(
+  unit -> unit
+)
+"config.ml" 26 729 745 "config.ml" 30 880 909
+type(
+  Arg.spec
+)
+"config.ml" 30 880 911 "config.ml" 30 880 960
+type(
+  string
+)
+"config.ml" 26 729 732 "config.ml" 30 880 961
+type(
+  string * Arg.spec * string
+)
+"config.ml" 31 963 967 "config.ml" 31 963 980
+type(
+  string
+)
+"config.ml" 31 963 996 "config.ml" 31 963 998
+type(
+  unit
+)
+"config.ml" 31 963 1002 "config.ml" 31 963 1012
+type(
+  bool ref
+)
+ident(
+  int_ref all_states "config.ml" 10 166 170 "config.ml" 10 166 180
+)
+"config.ml" 31 963 1013 "config.ml" 31 963 1015
+type(
+  bool ref -> bool -> unit
+)
+ident(
+  int_ref Stdlib.( := ) "stdlib.mli" 1171 44751 44751 "stdlib.mli" 1171 44751 44804
+)
+"config.ml" 31 963 1016 "config.ml" 31 963 1020
+type(
+  bool
+)
+"config.ml" 31 963 1002 "config.ml" 31 963 1020
+type(
+  unit
+)
+"config.ml" 31 963 991 "config.ml" 31 963 1021
+type(
+  unit -> unit
+)
+"config.ml" 31 963 982 "config.ml" 31 963 1021
+type(
+  Arg.spec
+)
+"config.ml" 31 963 1023 "config.ml" 31 963 1057
+type(
+  string
+)
+"config.ml" 31 963 966 "config.ml" 31 963 1058
+type(
+  string * Arg.spec * string
+)
+"config.ml" 32 1060 1064 "config.ml" 32 1060 1081
+type(
+  string
+)
+"config.ml" 32 1060 1097 "config.ml" 32 1060 1099
+type(
+  unit
+)
+"config.ml" 32 1060 1103 "config.ml" 32 1060 1117
+type(
+  bool ref
+)
+ident(
+  int_ref show_induction "config.ml" 11 193 197 "config.ml" 11 193 211
+)
+"config.ml" 32 1060 1118 "config.ml" 32 1060 1120
+type(
+  bool ref -> bool -> unit
+)
+ident(
+  int_ref Stdlib.( := ) "stdlib.mli" 1171 44751 44751 "stdlib.mli" 1171 44751 44804
+)
+"config.ml" 32 1060 1121 "config.ml" 32 1060 1125
+type(
+  bool
+)
+"config.ml" 32 1060 1103 "config.ml" 32 1060 1125
+type(
+  unit
+)
+"config.ml" 32 1060 1092 "config.ml" 32 1060 1126
+type(
+  unit -> unit
+)
+"config.ml" 32 1060 1083 "config.ml" 32 1060 1126
+type(
+  Arg.spec
+)
+"config.ml" 32 1060 1128 "config.ml" 32 1060 1182
+type(
+  string
+)
+"config.ml" 32 1060 1063 "config.ml" 32 1060 1183
+type(
+  string * Arg.spec * string
+)
+"config.ml" 33 1185 1189 "config.ml" 33 1185 1204
+type(
+  string
+)
+"config.ml" 33 1185 1220 "config.ml" 33 1185 1222
+type(
+  unit
+)
+"config.ml" 34 1226 1254 "config.ml" 34 1226 1262
+type(
+  bool ref
+)
+ident(
+  int_ref verbose1 "config.ml" 8 116 120 "config.ml" 8 116 128
+)
+"config.ml" 34 1226 1263 "config.ml" 34 1226 1265
+type(
+  bool ref -> bool -> unit
+)
+ident(
+  int_ref Stdlib.( := ) "stdlib.mli" 1171 44751 44751 "stdlib.mli" 1171 44751 44804
+)
+"config.ml" 34 1226 1266 "config.ml" 34 1226 1270
+type(
+  bool
+)
+"config.ml" 34 1226 1254 "config.ml" 34 1226 1270
+type(
+  unit
+)
+"config.ml" 35 1272 1300 "config.ml" 35 1272 1308
+type(
+  bool ref
+)
+ident(
+  int_ref verbose2 "config.ml" 9 141 145 "config.ml" 9 141 153
+)
+"config.ml" 35 1272 1309 "config.ml" 35 1272 1311
+type(
+  bool ref -> bool -> unit
+)
+ident(
+  int_ref Stdlib.( := ) "stdlib.mli" 1171 44751 44751 "stdlib.mli" 1171 44751 44804
+)
+"config.ml" 35 1272 1312 "config.ml" 35 1272 1316
+type(
+  bool
+)
+"config.ml" 35 1272 1300 "config.ml" 35 1272 1316
+type(
+  unit
+)
+"config.ml" 36 1318 1325 "config.ml" 36 1318 1335
+type(
+  bool ref
+)
+ident(
+  int_ref all_states "config.ml" 10 166 170 "config.ml" 10 166 180
+)
+"config.ml" 36 1318 1336 "config.ml" 36 1318 1338
+type(
+  bool ref -> bool -> unit
+)
+ident(
+  int_ref Stdlib.( := ) "stdlib.mli" 1171 44751 44751 "stdlib.mli" 1171 44751 44804
+)
+"config.ml" 36 1318 1339 "config.ml" 36 1318 1343
+type(
+  bool
+)
+"config.ml" 36 1318 1325 "config.ml" 36 1318 1343
+type(
+  unit
+)
+"config.ml" 37 1345 1373 "config.ml" 37 1345 1387
+type(
+  bool ref
+)
+ident(
+  int_ref show_induction "config.ml" 11 193 197 "config.ml" 11 193 211
+)
+"config.ml" 37 1345 1388 "config.ml" 37 1345 1390
+type(
+  bool ref -> bool -> unit
+)
+ident(
+  int_ref Stdlib.( := ) "stdlib.mli" 1171 44751 44751 "stdlib.mli" 1171 44751 44804
+)
+"config.ml" 37 1345 1391 "config.ml" 37 1345 1395
+type(
+  bool
+)
+"config.ml" 37 1345 1373 "config.ml" 37 1345 1395
+type(
+  unit
+)
+"config.ml" 36 1318 1325 "config.ml" 37 1345 1395
+type(
+  unit
+)
+"config.ml" 35 1272 1300 "config.ml" 37 1345 1395
+type(
+  unit
+)
+"config.ml" 34 1226 1254 "config.ml" 37 1345 1395
+type(
+  unit
+)
+"config.ml" 33 1185 1215 "config.ml" 37 1345 1396
+type(
+  unit -> unit
+)
+"config.ml" 33 1185 1206 "config.ml" 37 1345 1396
+type(
+  Arg.spec
+)
+"config.ml" 37 1345 1398 "config.ml" 37 1345 1447
+type(
+  string
+)
+"config.ml" 33 1185 1188 "config.ml" 37 1345 1448
+type(
+  string * Arg.spec * string
+)
+"config.ml" 24 529 531 "config.ml" 37 1345 1449
+type(
+  (string * Arg.spec * string) list
+)
+"config.ml" 39 1451 1455 "config.ml" 39 1451 1464
+type(
+  string
+)
+ident(
+  def usage_msg "config.ml" 41 1496 1603 "config.ml" 0 0 -1
+)
+"config.ml" 40 1467 1469 "config.ml" 40 1467 1478
+type(
+  string
+)
+"config.ml" 40 1467 1479 "config.ml" 40 1467 1480
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"config.ml" 40 1467 1481 "config.ml" 40 1467 1489
+type(
+  string array
+)
+ident(
+  int_ref Stdlib.Sys.argv "sys.mli" 23 1238 1238 "sys.mli" 23 1238 1280
+)
+"config.ml" 40 1467 1491 "config.ml" 40 1467 1492
+type(
+  int
+)
+"config.ml" 40 1467 1481 "config.ml" 40 1467 1493
+type(
+  string
+)
+"config.ml" 40 1467 1494 "config.ml" 40 1467 1495
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Stdlib.( ^ ) "stdlib.mli" 664 25424 25424 "stdlib.mli" 664 25424 25462
+)
+"config.ml" 41 1496 1498 "config.ml" 41 1496 1603
+type(
+  string
+)
+"config.ml" 40 1467 1481 "config.ml" 41 1496 1603
+type(
+  string
+)
+"config.ml" 40 1467 1469 "config.ml" 41 1496 1603
+type(
+  string
+)

@@ -1,0 +1,439 @@
+"location.ml" 6 113 117 "location.ml" 6 113 121
+type(
+  t
+)
+ident(
+  def none "location.ml" 8 134 134 "location.ml" 0 0 -1
+)
+"location.ml" 6 113 128 "location.ml" 6 113 132
+type(
+  t
+)
+type(
+  t
+)
+"location.ml" 8 134 138 "location.ml" 8 134 143
+type(
+  Lexing.position -> Lexing.position -> t_record option
+)
+ident(
+  def mkloc "location.ml" 16 422 422 "location.ml" 0 0 -1
+)
+"location.ml" 8 134 144 "location.ml" 8 134 145
+type(
+  Lexing.position
+)
+ident(
+  def s "location.ml" 8 134 146 "location.ml" 12 282 323
+)
+"location.ml" 8 134 146 "location.ml" 8 134 147
+type(
+  Lexing.position
+)
+ident(
+  def e "location.ml" 9 150 152 "location.ml" 12 282 323
+)
+"location.ml" 9 150 164 "location.ml" 9 150 165
+type(
+  Lexing.position
+)
+ident(
+  int_ref e "location.ml" 8 134 146 "location.ml" 8 134 147
+)
+"location.ml" 9 150 164 "location.ml" 9 150 175
+type(
+  string
+)
+"location.ml" 10 212 226 "location.ml" 10 212 227
+type(
+  Lexing.position
+)
+ident(
+  int_ref s "location.ml" 8 134 144 "location.ml" 8 134 145
+)
+"location.ml" 10 212 226 "location.ml" 10 212 236
+type(
+  int
+)
+"location.ml" 11 238 258 "location.ml" 11 238 259
+type(
+  Lexing.position
+)
+ident(
+  int_ref s "location.ml" 8 134 144 "location.ml" 8 134 145
+)
+"location.ml" 11 238 258 "location.ml" 11 238 268
+type(
+  int
+)
+"location.ml" 11 238 269 "location.ml" 11 238 270
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( - ) "stdlib.mli" 346 13584 13584 "stdlib.mli" 346 13584 13630
+)
+"location.ml" 11 238 271 "location.ml" 11 238 272
+type(
+  Lexing.position
+)
+ident(
+  int_ref s "location.ml" 8 134 144 "location.ml" 8 134 145
+)
+"location.ml" 11 238 271 "location.ml" 11 238 280
+type(
+  int
+)
+"location.ml" 11 238 258 "location.ml" 11 238 280
+type(
+  int
+)
+"location.ml" 12 282 300 "location.ml" 12 282 301
+type(
+  Lexing.position
+)
+ident(
+  int_ref e "location.ml" 8 134 146 "location.ml" 8 134 147
+)
+"location.ml" 12 282 300 "location.ml" 12 282 310
+type(
+  int
+)
+"location.ml" 12 282 311 "location.ml" 12 282 312
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Stdlib.( - ) "stdlib.mli" 346 13584 13584 "stdlib.mli" 346 13584 13630
+)
+"location.ml" 12 282 313 "location.ml" 12 282 314
+type(
+  Lexing.position
+)
+ident(
+  int_ref s "location.ml" 8 134 144 "location.ml" 8 134 145
+)
+"location.ml" 12 282 313 "location.ml" 12 282 322
+type(
+  int
+)
+"location.ml" 12 282 300 "location.ml" 12 282 322
+type(
+  int
+)
+"location.ml" 9 150 156 "location.ml" 12 282 323
+type(
+  t_record
+)
+"location.ml" 9 150 152 "location.ml" 12 282 323
+type(
+  t_record option
+)
+"location.ml" 16 422 426 "location.ml" 16 422 436
+type(
+  unit -> t_record option
+)
+ident(
+  def symbol_loc "location.ml" 17 504 504 "location.ml" 0 0 -1
+)
+"location.ml" 16 422 437 "location.ml" 16 422 439
+type(
+  unit
+)
+"location.ml" 16 422 442 "location.ml" 16 422 447
+type(
+  Lexing.position -> Lexing.position -> t_record option
+)
+ident(
+  int_ref mkloc "location.ml" 8 134 138 "location.ml" 8 134 143
+)
+"location.ml" 16 422 449 "location.ml" 16 422 473
+type(
+  unit -> Lexing.position
+)
+ident(
+  int_ref Stdlib.Parsing.symbol_start_pos "parsing.mli" 38 1970 1970 "parsing.mli" 38 1970 2016
+)
+"location.ml" 16 422 473 "location.ml" 16 422 475
+type(
+  unit
+)
+"location.ml" 16 422 448 "location.ml" 16 422 476
+type(
+  Lexing.position
+)
+"location.ml" 16 422 478 "location.ml" 16 422 500
+type(
+  unit -> Lexing.position
+)
+ident(
+  int_ref Stdlib.Parsing.symbol_end_pos "parsing.mli" 41 2095 2095 "parsing.mli" 41 2095 2139
+)
+"location.ml" 16 422 500 "location.ml" 16 422 502
+type(
+  unit
+)
+"location.ml" 16 422 477 "location.ml" 16 422 503
+type(
+  Lexing.position
+)
+"location.ml" 16 422 442 "location.ml" 16 422 503
+type(
+  t_record option
+)
+"location.ml" 17 504 508 "location.ml" 17 504 515
+type(
+  int -> t_record option
+)
+ident(
+  def rhs_loc "location.ml" 20 578 578 "location.ml" 0 0 -1
+)
+"location.ml" 17 504 516 "location.ml" 17 504 517
+type(
+  int
+)
+ident(
+  def n "location.ml" 17 504 520 "location.ml" 17 504 575
+)
+"location.ml" 17 504 520 "location.ml" 17 504 525
+type(
+  Lexing.position -> Lexing.position -> t_record option
+)
+ident(
+  int_ref mkloc "location.ml" 8 134 138 "location.ml" 8 134 143
+)
+"location.ml" 17 504 527 "location.ml" 17 504 548
+type(
+  int -> Lexing.position
+)
+ident(
+  int_ref Stdlib.Parsing.rhs_start_pos "parsing.mli" 44 2216 2216 "parsing.mli" 44 2216 2258
+)
+"location.ml" 17 504 549 "location.ml" 17 504 550
+type(
+  int
+)
+ident(
+  int_ref n "location.ml" 17 504 516 "location.ml" 17 504 517
+)
+"location.ml" 17 504 526 "location.ml" 17 504 551
+type(
+  Lexing.position
+)
+"location.ml" 17 504 553 "location.ml" 17 504 572
+type(
+  int -> Lexing.position
+)
+ident(
+  int_ref Stdlib.Parsing.rhs_end_pos "parsing.mli" 47 2334 2334 "parsing.mli" 47 2334 2374
+)
+"location.ml" 17 504 573 "location.ml" 17 504 574
+type(
+  int
+)
+ident(
+  int_ref n "location.ml" 17 504 516 "location.ml" 17 504 517
+)
+"location.ml" 17 504 552 "location.ml" 17 504 575
+type(
+  Lexing.position
+)
+"location.ml" 17 504 520 "location.ml" 17 504 575
+type(
+  t_record option
+)
+"location.ml" 20 578 582 "location.ml" 20 578 588
+type(
+  t_record option -> string
+)
+ident(
+  def sprint "location.ml" 25 753 753 "location.ml" 0 0 -1
+)
+"location.ml" 20 578 589 "location.ml" 20 578 592
+type(
+  t_record option
+)
+ident(
+  def loc "location.ml" 20 578 595 "location.ml" 23 737 751
+)
+"location.ml" 20 578 601 "location.ml" 20 578 604
+type(
+  t_record option
+)
+ident(
+  int_ref loc "location.ml" 20 578 589 "location.ml" 20 578 592
+)
+"location.ml" 21 610 624 "location.ml" 21 610 625
+type(
+  string
+)
+ident(
+  def f "location.ml" 22 664 670 "location.ml" 22 664 736
+)
+"location.ml" 21 610 632 "location.ml" 21 610 633
+type(
+  int
+)
+ident(
+  def l "location.ml" 22 664 670 "location.ml" 22 664 736
+)
+"location.ml" 21 610 646 "location.ml" 21 610 647
+type(
+  int
+)
+ident(
+  def s "location.ml" 22 664 670 "location.ml" 22 664 736
+)
+"location.ml" 21 610 658 "location.ml" 21 610 659
+type(
+  int
+)
+ident(
+  def e "location.ml" 22 664 670 "location.ml" 22 664 736
+)
+"location.ml" 21 610 618 "location.ml" 21 610 660
+type(
+  t_record
+)
+"location.ml" 21 610 614 "location.ml" 21 610 660
+type(
+  t_record option
+)
+"location.ml" 22 664 670 "location.ml" 22 664 684
+type(
+  (string -> int -> int -> int -> string, unit, string) format ->
+  string -> int -> int -> int -> string
+)
+ident(
+  int_ref Stdlib.Format.sprintf "format.mli" 1181 46124 46124 "format.mli" 1181 46124 46169
+)
+"location.ml" 22 664 685 "location.ml" 22 664 728
+type(
+  (string -> int -> int -> int -> string, unit, string) format
+)
+"location.ml" 22 664 729 "location.ml" 22 664 730
+type(
+  string
+)
+ident(
+  int_ref f "location.ml" 21 610 624 "location.ml" 21 610 625
+)
+"location.ml" 22 664 731 "location.ml" 22 664 732
+type(
+  int
+)
+ident(
+  int_ref l "location.ml" 21 610 632 "location.ml" 21 610 633
+)
+"location.ml" 22 664 733 "location.ml" 22 664 734
+type(
+  int
+)
+ident(
+  int_ref s "location.ml" 21 610 646 "location.ml" 21 610 647
+)
+"location.ml" 22 664 735 "location.ml" 22 664 736
+type(
+  int
+)
+ident(
+  int_ref e "location.ml" 21 610 658 "location.ml" 21 610 659
+)
+"location.ml" 22 664 670 "location.ml" 22 664 736
+type(
+  string
+)
+"location.ml" 23 737 741 "location.ml" 23 737 745
+type(
+  t_record option
+)
+"location.ml" 23 737 749 "location.ml" 23 737 751
+type(
+  string
+)
+"location.ml" 20 578 595 "location.ml" 23 737 751
+type(
+  string
+)
+"location.ml" 25 753 757 "location.ml" 25 753 762
+type(
+  Format.formatter -> t_record option -> unit
+)
+ident(
+  def print "location.ml" 27 814 814 "location.ml" 0 0 -1
+)
+"location.ml" 25 753 763 "location.ml" 25 753 766
+type(
+  Format.formatter
+)
+ident(
+  def fmt "location.ml" 25 753 767 "location.ml" 25 753 812
+)
+"location.ml" 25 753 767 "location.ml" 25 753 770
+type(
+  t_record option
+)
+ident(
+  def loc "location.ml" 25 753 773 "location.ml" 25 753 812
+)
+"location.ml" 25 753 773 "location.ml" 25 753 795
+type(
+  Format.formatter -> string -> unit
+)
+ident(
+  int_ref Stdlib.Format.pp_print_string "format.mli" 216 8984 8984 "format.mli" 216 8984 9033
+)
+"location.ml" 25 753 796 "location.ml" 25 753 799
+type(
+  Format.formatter
+)
+ident(
+  int_ref fmt "location.ml" 25 753 763 "location.ml" 25 753 766
+)
+"location.ml" 25 753 801 "location.ml" 25 753 807
+type(
+  t_record option -> string
+)
+ident(
+  int_ref sprint "location.ml" 20 578 582 "location.ml" 20 578 588
+)
+"location.ml" 25 753 808 "location.ml" 25 753 811
+type(
+  t_record option
+)
+ident(
+  int_ref loc "location.ml" 25 753 767 "location.ml" 25 753 770
+)
+"location.ml" 25 753 800 "location.ml" 25 753 812
+type(
+  string
+)
+"location.ml" 25 753 773 "location.ml" 25 753 812
+type(
+  unit
+)
+"location.ml" 27 814 818 "location.ml" 27 814 824
+type(
+  Lexing.lexbuf option ref
+)
+ident(
+  def lexbuf "location.ml" 27 814 862 "location.ml" 0 0 -1
+)
+"location.ml" 27 814 854 "location.ml" 27 814 857
+type(
+  Lexing.lexbuf option -> Lexing.lexbuf option ref
+)
+ident(
+  int_ref Stdlib.ref "stdlib.mli" 1162 44439 44439 "stdlib.mli" 1162 44439 44483
+)
+"location.ml" 27 814 858 "location.ml" 27 814 862
+type(
+  Lexing.lexbuf option
+)
+"location.ml" 27 814 854 "location.ml" 27 814 862
+type(
+  Lexing.lexbuf option ref
+)
+type(
+  Lexing.lexbuf option ref
+)
