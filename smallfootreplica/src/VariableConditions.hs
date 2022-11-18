@@ -6,7 +6,9 @@ module VariableConditions
         modC,
         modF,
         reqC,
-        reqF
+        reqF,
+        Context,
+        getFunction,
     )
     where
         

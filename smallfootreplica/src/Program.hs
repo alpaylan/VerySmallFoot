@@ -105,6 +105,10 @@ instance Show BoolExpression where
     show (BoolEquals expr expr') = show expr ++ " == " ++ show expr'
     show (BoolNotEquals expr expr') = show expr ++ " != " ++ show expr'
 
+bNot :: BoolExpression -> BoolExpression
+bNot (BoolEquals expr expr') = BoolNotEquals expr expr'
+bNot (BoolNotEquals expr expr') = BoolEquals expr expr'
+
 data Expression =
     Variable VariableName
     | Nil
@@ -142,6 +146,11 @@ instance Show BooleanPredicate where
     show BooleanFalse = "false"
     show (Conjunction exprs) = showListDelimSeparated " /\\ " exprs
 
+extendBooleanPredicate :: BooleanPredicate -> BoolExpression -> BooleanPredicate
+extendBooleanPredicate BooleanTrue expr = Conjunction [expr]
+extendBooleanPredicate BooleanFalse expr = BooleanFalse
+extendBooleanPredicate (Conjunction exprs) expr = Conjunction (expr:exprs)
+
 data HeapletPredicate =
     PointsToHeap Expression Heap
     | HeapTree Expression
@@ -172,6 +181,15 @@ data Assertion =
     | AssertionConjunction BooleanPredicate HeapPredicate
     | AssertionIfThenElse BoolExpression Assertion Assertion
     deriving (Eq, Ord)
+
+
+extendAssertionBool :: Assertion -> BoolExpression -> Assertion
+extendAssertionBool (SingleBooleanPredicate b) b' = SingleBooleanPredicate (extendBooleanPredicate b b')
+extendAssertionBool (SingleHeapPredicate h) b' = AssertionConjunction (Conjunction [b']) h
+extendAssertionBool (AssertionConjunction b h) b' = AssertionConjunction (extendBooleanPredicate b b') h
+extendAssertionBool (AssertionIfThenElse b a a') b' = AssertionIfThenElse b (extendAssertionBool a b') (extendAssertionBool a' b')
+
+
 
 instance Show Assertion where
     show (SingleBooleanPredicate bp) = show bp
