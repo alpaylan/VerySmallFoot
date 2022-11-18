@@ -54,10 +54,10 @@ data FunctionHeader = FunctionHeader FunctionName [PassByReferenceArgument] [Pas
 instance Show FunctionHeader where
     show (FunctionHeader name [] []) =
         show name ++ "()"
-    show (FunctionHeader name passByReferenceArguments []) = 
-        show name ++ "(" ++ showListCommaSeparated passByReferenceArguments ++ ")"
-    show (FunctionHeader name [] passByValueArguments) =
-        show name ++ "(" ++ showListCommaSeparated passByValueArguments ++ ")"
+    -- show (FunctionHeader name passByReferenceArguments []) = 
+    --     show name ++ "(" ++ showListCommaSeparated passByReferenceArguments ++ ")"
+    -- show (FunctionHeader name [] passByValueArguments) =
+    --     show name ++ "(" ++ showListCommaSeparated passByValueArguments ++ ")"
     show (FunctionHeader name passByReferenceArguments passByValueArguments) = 
         show name ++ "(" ++ showListCommaSeparated passByReferenceArguments ++ "; " ++ showListCommaSeparated passByValueArguments ++ ")"
 
@@ -118,12 +118,15 @@ instance Show Expression where
     show (Xor expr expr') = show expr ++ " xor " ++ show expr'
 
 
-type ResourceGuard = BoolExpression
-type ResourceBody = Command
-data Resource = Resource ResourceName ResourceGuard ResourceBody
+type ResourceInvariant = Command
+data Resource = Resource    { 
+                            resourceName :: ResourceName 
+                            , resources  ::[VariableName] 
+                            , resourceInvariant :: ResourceInvariant
+                            }
     deriving (Eq, Ord)
 instance Show Resource where
-    show (Resource name guard body) = "resource " ++ show name ++ " (" ++ show guard ++ ") [\n" ++ show body ++ "\n]"
+    show (Resource name resources body) = "resource " ++ show name ++ " (" ++ showListCommaSeparated resources ++ ") [\n" ++ show body ++ "\n]"
 
 
 

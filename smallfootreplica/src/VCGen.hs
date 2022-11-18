@@ -4,7 +4,7 @@ import Data.Set (Set)
 import qualified Data.Set as Set
 
 import Program
-
+import VariableConditions
 
 
 newtype JsrInstruction = JsrInstruction FunctionHeader deriving (Eq, Ord)
