@@ -1,14 +1,41 @@
-module Program
-    (
-    exampleProgramBody,
-    exampleProgram
-    ) where
+module Program where
 
-data Ident = Id String
-instance Show Ident where
-    show (Id ident) = id ident
+
+import Data.Set (Set)
+import qualified Data.Set as Set
 
     
+-- Wrapper Types
+newtype Identifier = Id String deriving (Eq, Ord)
+instance Show Identifier where
+    show (Id ident) = ident
+    
+    
+data HeapRecord = HeapRecord FieldName Expression deriving (Eq, Ord)
+instance Show HeapRecord where
+    show (HeapRecord f e) = show f ++ ": " ++ show e
+
+newtype Heap = Heap [HeapRecord] deriving (Eq, Ord)
+instance Show Heap where
+    show (Heap fields) = "(" ++ showListCommaSeparated fields ++ ")"
+
+
+
+-- Type Aliases
+type VariableName = Identifier
+type ConstantName = Identifier
+type FunctionName = Identifier
+type FieldName = Identifier
+type PassByReferenceArgument = Identifier
+type PassByValueArgument = Identifier
+type ResourceName = Identifier
+
+type Precondition = Assertion
+type Postcondition = Assertion
+type Invariant = Assertion
+
+
+-- Custom Print Functions
 showListCommaSeparated :: (Show a) => [a] -> String
 showListCommaSeparated = showListDelimSeparated ", "
 
@@ -20,60 +47,85 @@ showListDelimSeparated _ [] = ""
 showListDelimSeparated _ [x] = show x
 showListDelimSeparated delim (x:x':xs) = show x ++ delim ++ showListDelimSeparated delim (x':xs)
 
+
+-- Data Types
+data FunctionHeader = FunctionHeader FunctionName [PassByReferenceArgument] [PassByValueArgument]
+    deriving (Eq, Ord)
+instance Show FunctionHeader where
+    show (FunctionHeader name [] []) =
+        show name ++ "()"
+    show (FunctionHeader name passByReferenceArguments []) = 
+        show name ++ "(" ++ showListCommaSeparated passByReferenceArguments ++ ")"
+    show (FunctionHeader name [] passByValueArguments) =
+        show name ++ "(" ++ showListCommaSeparated passByValueArguments ++ ")"
+    show (FunctionHeader name passByReferenceArguments passByValueArguments) = 
+        show name ++ "(" ++ showListCommaSeparated passByReferenceArguments ++ "; " ++ showListCommaSeparated passByValueArguments ++ ")"
+
 data Command = 
     Assignment Assignment
     | Sequence Command Command
     | IfThenElse BoolExpression Command Command
     | WhileDo BoolExpression Invariant Command
-    | FunctionCall Ident [PassByReferenceArgument] [PassByValueArgument]
-    -- | ConcurrentFunctionCall FunctionCall FunctionCall
-    | WithResourceWhen Resource BoolExpression Command
-    | LocalVariableDeclaration [Variable]
+    | FunctionCall FunctionHeader
+    | ConcurrentFunctionCall FunctionHeader FunctionHeader
+    | WithResourceWhen ResourceName BoolExpression Command
+    | LocalVariableDeclaration [VariableName]
+    deriving (Eq, Ord)
 instance Show Command where
     show (Assignment s) = show s
     show (Sequence c1 c2) = show c1 ++ ";\n" ++ show c2
     show (IfThenElse b c1 c2) = "if (" ++ show b ++ ") { \n" ++ show c1 ++ "\n" ++ "} else {\n" ++ show c2 ++ "\n}\n"
     show (WhileDo b i c) = "while (" ++ show b ++ ") {\n" ++ show i ++ "\n" ++ show c ++ "\n}"
-    show (FunctionCall ident passByReferenceArguments passByValueArguments) = show ident ++ "(" ++ showListCommaSeparated passByReferenceArguments ++ "; " ++ showListCommaSeparated passByValueArguments ++ ")"
-    -- show (ConcurrentFunctionCall f1 f2) = show f1 ++ "\n||\n" ++ show f2
+    show (FunctionCall f) = show f
+    show (ConcurrentFunctionCall f1 f2) = show f1 ++ "\n||\n" ++ show f2
     show (WithResourceWhen r b c) = "with " ++ show r ++ " when " ++ show b ++ " {\n" ++ show c ++ "\n}"
     show (LocalVariableDeclaration v) = "local " ++ showListCommaSeparated v
 
 
 
 data Assignment =
-    AssignExprToX Variable Expression
-    | AssignExprFieldToX Variable Expression Field
-    | AssignExpressionToExprField Expression Field Expression
-    | Allocate Variable
-    | Dispose Expression
+    VariableAssignment VariableName Expression
+    | HeapLookup VariableName Expression FieldName
+    | HeapMutation Expression FieldName Expression
+    | Allocation VariableName
+    | Deallocation Expression
+    deriving (Eq, Ord)
 instance Show Assignment where
-    show (AssignExprToX var expr) = show var ++ " = " ++ show expr
-    show (AssignExprFieldToX var expr field) = show var ++ " = " ++ show expr ++ " -> " ++ show field
-    show (AssignExpressionToExprField expr field expr') = show expr ++ " = " ++ show expr' ++ " -> " ++ show field
-    show (Allocate var) = show var ++ " = new()"
-    show (Dispose expr) = "dispose(" ++ show expr ++ ")"
+    show (VariableAssignment var expr) = show var ++ " = " ++ show expr
+    show (HeapLookup var expr field) = show var ++ " = " ++ show expr ++ " -> " ++ show field
+    show (HeapMutation expr field expr') = show expr ++ " = " ++ show expr' ++ " -> " ++ show field
+    show (Allocation var) = show var ++ " = new()"
+    show (Deallocation expr) = "dispose(" ++ show expr ++ ")"
 
 data BoolExpression =
     BoolEquals Expression Expression
     | BoolNotEquals Expression Expression
+    deriving (Eq, Ord)
 instance Show BoolExpression where
     show (BoolEquals expr expr') = show expr ++ " == " ++ show expr'
     show (BoolNotEquals expr expr') = show expr ++ " != " ++ show expr'
 
 data Expression =
-    Variable Variable
+    Variable VariableName
     | Nil
-    | Constant Constant
+    | Constant ConstantName
     | Xor Expression Expression
+    deriving (Eq, Ord)
 instance Show Expression where
     show (Variable var) = show var
     show Nil = "NULL"
     show (Constant c) = show c
     show (Xor expr expr') = show expr ++ " xor " ++ show expr'
 
-type Variable = Ident
-type Constant = Ident
+
+type ResourceGuard = BoolExpression
+type ResourceBody = Command
+data Resource = Resource ResourceName ResourceGuard ResourceBody
+    deriving (Eq, Ord)
+instance Show Resource where
+    show (Resource name guard body) = "resource " ++ show name ++ " (" ++ show guard ++ ") [\n" ++ show body ++ "\n]"
+
+
 
 -- Assertions 
 
@@ -81,48 +133,34 @@ data BooleanPredicate =
     BooleanTrue
     | BooleanFalse
     | Conjunction [BoolExpression]
+    deriving (Eq, Ord)
 instance Show BooleanPredicate where
     show BooleanTrue = "true"
     show BooleanFalse = "false"
-    show (Conjunction exprs) = case exprs of
-        [] -> ""
-        [expr] -> show expr
-        expr:expr':exprs' -> show expr ++ " /\\ " ++ show (Conjunction (expr':exprs'))
+    show (Conjunction exprs) = showListDelimSeparated " /\\ " exprs
 
 data HeapletPredicate =
     PointsToHeap Expression Heap
     | HeapTree Expression
     | HeapLinkedList Expression Expression
     | HeapXORList Expression Expression Expression Expression
+    deriving (Eq, Ord)
 instance Show HeapletPredicate where
     show (PointsToHeap expr heap) = show expr ++ " -> " ++ show heap
     show (HeapTree expr) = "tree(" ++ show expr ++ ")"
     show (HeapLinkedList expr expr') = "ls(" ++ show expr ++ ", " ++ show expr' ++ ")"
     show (HeapXORList expr expr' expr'' expr''') = "xlseg(" ++ show expr ++ ", " ++ show expr' ++ ", " ++ show expr'' ++ ", " ++ show expr''' ++ ")"
 
-data Heap = Heap [(Field, Expression)]
-instance Show Heap where
-    show (Heap fields) = 
-        "(" ++
-            (case fields of
-                [] -> ""
-                [(field, expr)] -> show field ++ ": " ++ show expr
-                (field, expr):(field', expr'):fields' -> show field ++ ": " ++ show expr ++ ", " ++ show (Heap ((field', expr'):fields')))
-        ++ ")"
-
-type Field = Ident
-
 data HeapPredicate =
     Emp
     | SinglePredicate HeapletPredicate
     | SeparatingConjunction [HeapletPredicate]
+    deriving (Eq, Ord)
 instance Show HeapPredicate where
     show Emp = "emp"
     show (SinglePredicate hp) = show hp
-    show (SeparatingConjunction heaplets) = case heaplets of
-        [] -> ""
-        [heaplet] -> show heaplet
-        heaplet:heaplet':heaplets' -> show heaplet ++ " * " ++ show (SeparatingConjunction (heaplet':heaplets'))
+    show (SeparatingConjunction heaplets) = showListDelimSeparated " * " heaplets
+
 
 
 data Assertion =
@@ -130,29 +168,41 @@ data Assertion =
     | SingleHeapPredicate HeapPredicate
     | AssertionConjunction BooleanPredicate HeapPredicate
     | AssertionIfThenElse BoolExpression Assertion Assertion
+    deriving (Eq, Ord)
+
 instance Show Assertion where
     show (SingleBooleanPredicate bp) = show bp
     show (SingleHeapPredicate hp) = show hp
     show (AssertionConjunction b h) = show b ++ " /\\ " ++ show h
     show (AssertionIfThenElse b a a') = "if (" ++ show b ++ ") {\n" ++ show a ++ "\n} else {\n" ++ show a' ++ "\n}"
 
-type Invariant = Assertion
 
-type PassByReferenceArgument = Variable
-type PassByValueArgument = Variable
-type Resource = Variable
+data ProgramDeclaration = 
+    FunctionDeclaration Function 
+    | ResourceDeclaration Resource
+    deriving (Eq, Ord)
+instance Show ProgramDeclaration where
+    show (FunctionDeclaration f) = show f
+    show (ResourceDeclaration r) = show r
 
-data Program = Program [Field] [FunctionDefinition]
+data Program = Program [FieldName] [ProgramDeclaration]
 instance Show Program where
-    show (Program fields functions) = showListCommaSeparated fields ++ ";\n\n\n" ++ showListNewlineSeparated functions
+    show (Program fields declarations) = showListCommaSeparated fields ++ ";\n\n\n" ++ showListNewlineSeparated declarations
 
-data FunctionDefinition = FunctionDefinition Ident [PassByReferenceArgument] [PassByValueArgument] Precondition Command Postcondition
-instance Show FunctionDefinition where
-    show (FunctionDefinition ident passByReferenceArguments passByValueArguments precondition command postcondition) = 
-        show ident ++ "(" ++ showListCommaSeparated passByReferenceArguments ++ "; " ++ showListCommaSeparated passByValueArguments ++ ") [" ++ show precondition ++ "] {\n" ++ show command ++ "}[" ++ show postcondition ++ "]"
 
-type Precondition = Assertion
-type Postcondition = Assertion
+data HoareTriple = HoareTriple  {
+                                precondition :: Precondition
+                                , command :: Command
+                                , postcondition :: Postcondition
+                                } deriving (Eq, Ord)
+
+data Function = Function FunctionHeader HoareTriple
+    deriving (Eq, Ord)
+instance Show Function where
+    show (Function functionHeader procedureBody) = 
+        show functionHeader ++ "[" ++ show (precondition procedureBody) ++ "] {\n" ++ show (command procedureBody) ++ "}[" ++ show (postcondition procedureBody) ++ "]"
+
+
 
 exampleProgramBody :: Command
 --  tree_copy(s;t) [tree(t)] {
@@ -171,22 +221,23 @@ exampleProgramBody :: Command
 exampleProgramBody = 
     LocalVariableDeclaration [Id "i", Id "j", Id "ii", Id "jj"] `Sequence`
     IfThenElse (BoolEquals (Variable (Id "t")) Nil)
-        (Assignment (AssignExprToX (Id "s") (Variable (Id "t"))))
-        (Assignment (AssignExprFieldToX (Id "i") (Variable (Id "t")) (Id "l")) `Sequence`
-        Assignment (AssignExprFieldToX (Id "j") (Variable (Id "t")) (Id "r")) `Sequence`
-        FunctionCall (Id "tree_copy") [Id "ii"] [Id "i"] `Sequence`
-        FunctionCall (Id "tree_copy") [Id "jj"] [Id "j"] `Sequence`
-        Assignment (Allocate (Id "s")) `Sequence`
-        Assignment (AssignExpressionToExprField (Variable (Id "s")) (Id "l") (Variable (Id "ii"))) `Sequence`
-        Assignment (AssignExpressionToExprField (Variable (Id "s")) (Id "r") (Variable (Id "jj"))))
+        (Assignment (VariableAssignment (Id "s") (Variable (Id "t"))))
+        (Assignment (HeapLookup (Id "i") (Variable (Id "t")) (Id "l")) `Sequence`
+        Assignment (HeapLookup (Id "j") (Variable (Id "t")) (Id "r")) `Sequence`
+        FunctionCall (FunctionHeader (Id "tree_copy") [Id "ii"] [Id "i"]) `Sequence`
+        FunctionCall (FunctionHeader (Id "tree_copy") [Id "jj"] [Id "j"]) `Sequence`
+        Assignment (Allocation (Id "s")) `Sequence`
+        Assignment (HeapMutation (Variable (Id "s")) (Id "l") (Variable (Id "ii"))) `Sequence`
+        Assignment (HeapMutation (Variable (Id "s")) (Id "r") (Variable (Id "jj"))))
 
 
 exampleProgram :: Program
 exampleProgram = Program 
         [Id "l", Id "r"] 
-        [FunctionDefinition (Id "tree_copy") [Id "s"] [Id "t"] 
-        (SingleHeapPredicate (SinglePredicate (HeapTree (Variable (Id "t")))))
-        exampleProgramBody 
-        (SingleHeapPredicate (SeparatingConjunction [HeapTree (Variable (Id "s")), HeapTree (Variable (Id "t"))]))]
-
+        [FunctionDeclaration (Function (FunctionHeader (Id "tree_copy") [Id "s"] [Id "t"])
+        HoareTriple{
+        precondition = (SingleHeapPredicate (SinglePredicate (HeapTree (Variable (Id "t")))))
+        , command = exampleProgramBody 
+        , postcondition = (SingleHeapPredicate (SeparatingConjunction [HeapTree (Variable (Id "s")), HeapTree (Variable (Id "t"))]))
+        })]
 
