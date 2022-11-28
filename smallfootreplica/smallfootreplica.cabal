@@ -39,6 +39,7 @@ library
   build-depends:
       base >=4.7 && <5
     , containers
+    , mtl
   default-language: Haskell2010
 
 executable smallfootreplica-exe
@@ -51,6 +52,7 @@ executable smallfootreplica-exe
   build-depends:
       base >=4.7 && <5
     , containers
+    , mtl
     , smallfootreplica
   default-language: Haskell2010
 
@@ -65,5 +67,6 @@ test-suite smallfootreplica-test
   build-depends:
       base >=4.7 && <5
     , containers
+    , mtl
     , smallfootreplica
   default-language: Haskell2010

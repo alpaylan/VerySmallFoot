@@ -74,7 +74,7 @@ fvc (Assignment assignment) = fv assignment
 fvc (IfThenElse b c1 c2) = fv b \/ fv c1 \/ fv c2
 fvc (WhileDo b i c) = fv b \/ fv i \/ fv c
 fvc (Sequence c1 c2) = fv c1 \/ fv c2
-fvc (FunctionCall (FunctionHeader f p v)) = Set.unions $ map fv (p ++ v)
+fvc (Call (FunctionCall f p v)) = Set.unions $ map fv p ++ map fv v
 
 
 
@@ -149,11 +149,11 @@ varC _ (Assignment (Deallocation expression)) = fv expression
 varC ctx (Sequence c1 c2) = varC ctx c1 \/ varC ctx c2
 varC ctx (IfThenElse b c1 c2) = fv b \/ varC ctx c1 \/ varC ctx c2
 varC ctx (WhileDo b i c) = (fv b `Set.intersection` fv i) \/ varC ctx c
-varC ctx (FunctionCall (FunctionHeader id p v)) = 
+varC ctx (Call (FunctionCall id p v)) =
     let f = getFunction ctx id in
         varF ctx f  \/ Set.fromList p \/ fv v
-varC ctx(ConcurrentFunctionCall function1 function2) =
-    varC ctx (FunctionCall function1) \/ varC ctx (FunctionCall function2)
+varC ctx (ConcurrentCall function1 function2) =
+    varC ctx (Call function1) \/ varC ctx (Call function2)
 varC ctx (WithResourceWhen resource b c) =
     let r = getResource ctx resource in
         ((fv b \/ varC ctx c) `Set.difference` fv c) \/ (modC ctx c `Set.difference` owned ctx resource)
@@ -175,11 +175,11 @@ modC _ (Assignment (Deallocation expression)) = fv expression
 modC ctx (Sequence c1 c2) = modC ctx c1 \/ modC ctx c2
 modC ctx (IfThenElse b c1 c2) = modC ctx c1 \/ modC ctx c2
 modC ctx (WhileDo b i c) = modC ctx c
-modC ctx (FunctionCall (FunctionHeader id p _)) =
+modC ctx (Call (FunctionCall id p _)) =
     let f = getFunction ctx id in
         modF ctx f \/ Set.fromList p
-modC ctx (ConcurrentFunctionCall function1 function2) =
-    modC ctx (FunctionCall function1) \/ modC ctx (FunctionCall function2)
+modC ctx (ConcurrentCall function1 function2) =
+    modC ctx (Call function1) \/ modC ctx (Call function2)
 modC ctx (WithResourceWhen resource b c) =
     modC ctx c `Set.difference` owned ctx resource
 
@@ -195,11 +195,11 @@ reqC ctx (Assignment s) = er ctx (modC ctx (Assignment s)) (varC ctx (Assignment
 reqC ctx (Sequence c1 c2) = reqC ctx c1 \/ reqC ctx c2
 reqC ctx (IfThenElse b c1 c2) = reqC ctx c1 \/ reqC ctx c2 \/ er ctx Set.empty (fv b)
 reqC ctx (WhileDo b i c) = reqC ctx c \/ er ctx Set.empty (fv b \/ fv i)
-reqC ctx (FunctionCall (FunctionHeader id p v)) = 
+reqC ctx (Call (FunctionCall id p v)) =
     let f = getFunction ctx id in
         reqF ctx f \/ er ctx (Set.fromList p) (fv v)
-reqC ctx (ConcurrentFunctionCall function1 function2) =
-    reqC ctx (FunctionCall function1) \/ reqC ctx (FunctionCall function2)
+reqC ctx (ConcurrentCall function1 function2) =
+    reqC ctx (Call function1) \/ reqC ctx (Call function2)
 reqC ctx (WithResourceWhen resource b c) = 
     (reqC ctx c \/ er ctx Set.empty (fv b)) `Set.difference` Set.singleton resource
 
