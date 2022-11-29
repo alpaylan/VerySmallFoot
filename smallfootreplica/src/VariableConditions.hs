@@ -40,13 +40,15 @@ fve Nil = Set.empty
 fvb :: BoolExpression -> Set VarName
 fvb (BoolEq e1 e2) = fv e1 \/ fv e2
 fvb (BoolNEq e1 e2) = fv e1 \/ fv e2
+fvb BoolTrue = Set.empty
+fvb BoolFalse = Set.empty
 
 fva :: Assertion -> Set VarName
 fva (AssertIfThenElse b a1 a2) = fv b \/ fv a1 \/ fv a2
-fva (AssertConj bs hs) = Set.unions $ map fv bs \/ Set.unions $ map fv hs
+fva (AssertConj bs hs) = Set.unions (map fv bs) \/ Set.unions (map fv hs)
 
 fvhp :: HeapPredicate -> Set VarName
-fvhp (PointsTo e h) = fv e \/ fv h
+fvhp (PointsTo e h) = fv e \/ Set.unions (map (fv . snd) h)
 fvhp (HeapTree e) = fv e
 fvhp (HeapLinkedList e1 e2) = fv e1 \/ fv e2
 fvhp (HeapXORList e1 e2 e3 e4) = fv e1 \/ fv e2 \/ fv e3 \/ fv e4
@@ -59,10 +61,10 @@ fvc (New x) = Set.singleton x
 fvc (Dispose e) = fv e
 fvc (IfThenElse b c1 c2) = fv b \/ fv c1 \/ fv c2
 fvc (While b i c) = fv b \/ fv i \/ fv c
-fvc (Block cs) = _
+fvc (Block cs) = Set.unions $ map fvc cs
 fvc (Call (_, xs, es)) = Set.fromList xs \/ fv es
 fvc (ConcurrentCall call1 call2) =
-  fvc (Call call2) \/ fvc (Call call2)
+  fvc (Call call1) \/ fvc (Call call2)
 fvc (WithRes _ b c) =
   fvb b \/ fvc c
 
