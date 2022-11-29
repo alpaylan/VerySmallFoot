@@ -60,9 +60,9 @@ fvc (Dispose e) = fv e
 fvc (IfThenElse b c1 c2) = fv b \/ fv c1 \/ fv c2
 fvc (While b i c) = fv b \/ fv i \/ fv c
 fvc (Block cs) = _
-fvc (Call _ xs es) = Set.fromList xs \/ fv es
-fvc (ConcurrentCall f1 p1 v1 f2 p2 v2) =
-  fvc (Call f1 p1 v1) \/ fvc (Call f2 p2 v2)
+fvc (Call (_, xs, es)) = Set.fromList xs \/ fv es
+fvc (ConcurrentCall call1 call2) =
+  fvc (Call call2) \/ fvc (Call call2)
 fvc (WithRes _ b c) =
   fvb b \/ fvc c
 
@@ -102,14 +102,14 @@ varC _ (HeapLookup v expression _) = Set.singleton v \/ fv expression
 varC _ (HeapAssign e _ f) = fv e \/ fv f
 varC _ (New x) = Set.singleton x
 varC _ (Dispose e) = fv e
-varC ctx (Block c1 c2) = varC ctx c1 \/ varC ctx c2
+varC ctx (Block cs) = Set.unions $ map (varC ctx) cs
 varC ctx (IfThenElse b c1 c2) = fv b \/ varC ctx c1 \/ varC ctx c2
 varC ctx (While b i c) = fv b \/ fv i \/ varC ctx c
-varC ctx (Call f ps es) =
+varC ctx (Call (f, ps, es)) =
   varF ctx fn \/ Set.fromList ps \/ fv es
   where fn = getFunction ctx f
-varC ctx (ConcurrentCall f1 r1 v1 f2 r2 v2) =
-  varC ctx (Call f1 r1 v1) \/ varC ctx (Call f2 r2 v2)
+varC ctx (ConcurrentCall call1 call2) =
+  varC ctx (Call call1) \/ varC ctx (Call call2)
 varC ctx (WithRes res b c) =
   ((fv b \/ varC ctx c) `Set.difference` fv inv) \/ (modC ctx c `Set.difference` owned ctx res)
   where Resource _ _ inv = getResource ctx res
@@ -128,14 +128,14 @@ modC _ (HeapLookup x _ _) = Set.singleton x
 modC _ (HeapAssign _ _ _) = Set.empty
 modC _ (New x) = Set.singleton x
 modC _ (Dispose _) = Set.empty
-modC ctx (Block c1 c2) = modC ctx c1 \/ modC ctx c2
+modC ctx (Block cs) = Set.unions $ map (modC ctx) cs
 modC ctx (IfThenElse _ c1 c2) = modC ctx c1 \/ modC ctx c2
 modC ctx (While _ _ c) = modC ctx c
-modC ctx (Call f ps _) =
+modC ctx (Call (f, ps, _)) =
   modF ctx fn \/ Set.fromList ps
   where fn = getFunction ctx f
-modC ctx (ConcurrentCall f1 r1 v1 f2 r2 v2 ) =
-  modC ctx (Call f1 r1 v1) \/ modC ctx (Call f2 r2 v2)
+modC ctx (ConcurrentCall call1 call2) =
+  modC ctx (Call call1) \/ modC ctx (Call call2)
 modC ctx (WithRes r _ c) =
   modC ctx c `Set.difference` owned ctx r
 
@@ -146,17 +146,17 @@ modF ctx (Function _ refs vals locals (_, c, _)) =
 
 
 reqC :: Context -> Command -> Set ResName
-reqC ctx (Assignment s) = er ctx (modC ctx (Assignment s)) (varC ctx (Assignment s))
-reqC ctx (Block c1 c2) = reqC ctx c1 \/ reqC ctx c2
+reqC ctx (Block cs) = Set.unions $ map (reqC ctx) cs
 reqC ctx (IfThenElse b c1 c2) = reqC ctx c1 \/ reqC ctx c2 \/ er ctx Set.empty (fv b)
 reqC ctx (While b i c) = reqC ctx c \/ er ctx Set.empty (fv b \/ fv i)
-reqC ctx (Call f xs es) =
+reqC ctx (Call (f, xs, es)) =
   reqF ctx fn \/ er ctx (Set.fromList xs) (fv es)
   where fn = getFunction ctx f
-reqC ctx (ConcurrentCall f1 r1 v1 f2 r2 v2) =
-  reqC ctx (Call f1 r1 v1) \/ reqC ctx (Call f2 r2 v2)
+reqC ctx (ConcurrentCall call1 call2) =
+  reqC ctx (Call call1) \/ reqC ctx (Call call2)
 reqC ctx (WithRes res b c) =
   Set.delete res (reqC ctx c \/ er ctx Set.empty (fv b))
+reqC ctx s = er ctx (modC ctx s) (varC ctx s)
 
 reqF :: Context -> Function -> Set ResName
 reqF ctx (Function _ refs vals locals (p, c, q)) =
