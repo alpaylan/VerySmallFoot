@@ -42,16 +42,14 @@ fve Nil = Set.empty
 fvb :: BoolExpression -> Set VarName
 fvb (BoolEq e1 e2) = fv e1 \/ fv e2
 fvb (BoolNEq e1 e2) = fv e1 \/ fv e2
-fvb BoolTrue = Set.empty
-fvb BoolFalse = Set.empty
+fvb (BoolNot be) = fv be
 
 fvp :: Prop -> Set VarName
 fvp (PropIfThenElse pp p1 p2) = fv pp \/ fv p1 \/ fv p2
 fvp (PropConj p h) = fv p \/ fv h
 
 fvpp :: PureProp -> Set VarName
-fvpp (PropEq e1 e2) = fv e1 \/ fv e2
-fvpp (PropNot e) = fv e
+fvpp (PropAssert be) = fv be
 fvpp (PropAnd p1 p2) = fv p1 \/ fv p2
 fvpp PropTrue = Set.empty
 

@@ -35,14 +35,11 @@ type ActualArgs = (FunName, [VarName], [Expression])
 data BoolExpression
   = BoolEq Expression Expression
   | BoolNEq Expression Expression
-  | BoolTrue
-  | BoolFalse
+  | BoolNot BoolExpression
 
-negateBE :: BoolExpression -> BoolExpression
-negateBE (BoolEq e1 e2) = BoolNEq e1 e2
-negateBE (BoolNEq e1 e2) = BoolEq e1 e2
-negateBE BoolTrue = BoolFalse
-negateBE BoolFalse = BoolTrue
+-- negateBE :: BoolExpression -> BoolExpression
+-- negateBE (BoolEq e1 e2) = BoolNEq e1 e2
+-- negateBE (BoolNEq e1 e2) = BoolEq e1 e2
 
 data Expression
   = Var VarName
@@ -65,14 +62,26 @@ data HeapProp
   | HeapEmp
 
 data PureProp
-  = PropEq Expression Expression
-  | PropNot Expression
+  = PropAssert BoolExpression
   | PropAnd PureProp PureProp
   | PropTrue
 
 data Prop
   = PropIfThenElse PureProp Prop Prop
   | PropConj PureProp HeapProp
+
+extendPropAnd :: Prop -> BoolExpression -> Prop
+extendPropAnd (PropIfThenElse pp pt pf) be = PropIfThenElse pp (extendPropAnd pt be) (extendPropAnd pf be)
+extendPropAnd (PropConj p h) be = PropConj (PropAnd p (PropAssert be)) h
+
+extendPropSep :: Prop -> HeapProp -> Prop
+extendPropSep (PropIfThenElse pp pt pf) hp = PropIfThenElse pp (extendPropSep pt hp) (extendPropSep pf hp)
+extendPropSep (PropConj p h) hp = PropConj p (HeapSep h hp)
+
+propSepConj :: Prop -> Prop -> Prop
+propSepConj (PropConj p1 h1) (PropConj p2 h2) = PropConj (PropAnd p1 p2) (HeapSep h1 h2)
+propSepConj (PropIfThenElse pp pt pf) p = PropIfThenElse pp (propSepConj pt p) (propSepConj pf p)
+propSepConj p (PropIfThenElse pp pt pf) = PropIfThenElse pp (propSepConj pt p) (propSepConj pf p)
 
 data Program = Program [FieldName] [Resource] [Function]
 
@@ -96,8 +105,7 @@ instance Subst Expression where
 instance Subst BoolExpression where
   subst m (BoolEq e1 e2) = BoolEq (subst m e1) (subst m e2)
   subst m (BoolNEq e1 e2) = BoolNEq (subst m e1) (subst m e2)
-  subst _ BoolTrue = BoolTrue
-  subst _ BoolFalse = BoolFalse
+  subst m (BoolNot be) = BoolNot (subst m be)
 
 instance Subst HeapProp where
   subst m (PointsTo e heap) = PointsTo (subst m e) (fmap (fmap (subst m)) heap)
@@ -108,8 +116,7 @@ instance Subst HeapProp where
   subst _ HeapEmp = HeapEmp
 
 instance Subst PureProp where
-  subst m (PropEq e1 e2) = PropEq (subst m e1) (subst m e2)
-  subst m (PropNot e) = PropNot (subst m e)
+  subst m (PropAssert be) = PropAssert (subst m be)
   subst m (PropAnd p1 p2) = PropAnd (subst m p1) (subst m p2)
   subst _ PropTrue = PropTrue
 
