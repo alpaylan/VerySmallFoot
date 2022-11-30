@@ -36,6 +36,7 @@ data BoolExpression
   = BoolEq Expression Expression
   | BoolNEq Expression Expression
   | BoolNot BoolExpression
+  | BoolTrue
 
 -- negateBE :: BoolExpression -> BoolExpression
 -- negateBE (BoolEq e1 e2) = BoolNEq e1 e2
@@ -56,7 +57,7 @@ data Function = Function FunName [VarName] [VarName] [VarName] HoareTriple
 data HeapProp
   = PointsTo Expression [(FieldName, Expression)]
   | HeapTree Expression
-  | HeapLinkedList Expression Expression
+  | HeapListSegment Expression Expression
   | HeapXORList Expression Expression Expression Expression
   | HeapSep HeapProp HeapProp
   | HeapEmp
@@ -110,7 +111,7 @@ instance Subst BoolExpression where
 instance Subst HeapProp where
   subst m (PointsTo e heap) = PointsTo (subst m e) (fmap (fmap (subst m)) heap)
   subst m (HeapTree e) = HeapTree (subst m e)
-  subst m (HeapLinkedList e e') = HeapLinkedList (subst m e) (subst m e')
+  subst m (HeapListSegment e e') = HeapListSegment (subst m e) (subst m e')
   subst m (HeapXORList e1 e2 e3 e4) = HeapXORList (subst m e1) (subst m e2) (subst m e3) (subst m e4)
   subst m (HeapSep hp1 hp2) = HeapSep (subst m hp1) (subst m hp2)
   subst _ HeapEmp = HeapEmp

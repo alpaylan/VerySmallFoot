@@ -56,7 +56,7 @@ fvpp PropTrue = Set.empty
 fvhp :: HeapProp -> Set VarName
 fvhp (PointsTo e h) = fv e \/ Set.unions (map (fv . snd) h)
 fvhp (HeapTree e) = fv e
-fvhp (HeapLinkedList e1 e2) = fv e1 \/ fv e2
+fvhp (HeapListSegment e1 e2) = fv e1 \/ fv e2
 fvhp (HeapXORList e1 e2 e3 e4) = fv e1 \/ fv e2 \/ fv e3 \/ fv e4
 fvhp (HeapSep h1 h2) = fv h1 \/ fv h2
 fvhp HeapEmp = Set.empty

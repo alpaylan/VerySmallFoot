@@ -14,8 +14,6 @@ import VariableConditions
 (/\) :: (Ord a) => Set a -> Set a -> Set a
 (/\) = Set.intersection
 
--- newtype JsrInstruction = JsrInstruction (Set VariableName) deriving (Eq, Ord)
-
 data SCommand
     = SAssign VarName Expression
     | SHeapLookup VarName Expression FieldName
