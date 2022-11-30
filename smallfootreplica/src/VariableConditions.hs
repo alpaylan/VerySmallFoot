@@ -6,6 +6,7 @@ module VariableConditions
         modF,
         reqC,
         reqF,
+        par,
         Context,
         mkContext,
         getFunction,
