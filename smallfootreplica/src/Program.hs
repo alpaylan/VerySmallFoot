@@ -11,9 +11,9 @@ type FunName = String
 type FieldName = String
 type ResName = String
 
-type Precondition = Assertion
-type Postcondition = Assertion
-type Invariant = Assertion
+type Precondition = Prop
+type Postcondition = Prop
+type Invariant = Prop
 
 
 -- Data Types
@@ -35,7 +35,14 @@ type ActualArgs = (FunName, [VarName], [Expression])
 data BoolExpression
   = BoolEq Expression Expression
   | BoolNEq Expression Expression
-  | BoolTrue | BoolFalse
+  | BoolTrue
+  | BoolFalse
+
+negateBE :: BoolExpression -> BoolExpression
+negateBE (BoolEq e1 e2) = BoolNEq e1 e2
+negateBE (BoolNEq e1 e2) = BoolEq e1 e2
+negateBE BoolTrue = BoolFalse
+negateBE BoolFalse = BoolTrue
 
 data Expression
   = Var VarName
@@ -48,17 +55,24 @@ data Function = Function FunName [VarName] [VarName] [VarName] HoareTriple
 -- name, pass-by-ref args, pass-by-value args, local vars, body
 
 
--- Assertions
-data HeapPredicate
+-- Props
+data HeapProp
   = PointsTo Expression [(FieldName, Expression)]
   | HeapTree Expression
   | HeapLinkedList Expression Expression
   | HeapXORList Expression Expression Expression Expression
+  | HeapSep HeapProp HeapProp
+  | HeapEmp
 
+data PureProp
+  = PropEq Expression Expression
+  | PropNot Expression
+  | PropAnd PureProp PureProp
+  | PropTrue
 
-data Assertion
-  = AssertIfThenElse BoolExpression Assertion Assertion
-  | AssertConj [BoolExpression] [HeapPredicate]
+data Prop
+  = PropIfThenElse PureProp Prop Prop
+  | PropConj PureProp HeapProp
 
 data Program = Program [FieldName] [Resource] [Function]
 
@@ -85,13 +99,20 @@ instance Subst BoolExpression where
   subst _ BoolTrue = BoolTrue
   subst _ BoolFalse = BoolFalse
 
-instance Subst HeapPredicate where
+instance Subst HeapProp where
   subst m (PointsTo e heap) = PointsTo (subst m e) (fmap (fmap (subst m)) heap)
   subst m (HeapTree e) = HeapTree (subst m e)
   subst m (HeapLinkedList e e') = HeapLinkedList (subst m e) (subst m e')
   subst m (HeapXORList e1 e2 e3 e4) = HeapXORList (subst m e1) (subst m e2) (subst m e3) (subst m e4)
+  subst m (HeapSep hp1 hp2) = HeapSep (subst m hp1) (subst m hp2)
+  subst _ HeapEmp = HeapEmp
 
-instance Subst Assertion where
-  subst m (AssertIfThenElse be a1 a2) = AssertIfThenElse (subst m be) (subst m a1) (subst m a2)
-  subst m (AssertConj bs hs) = AssertConj (map (subst m) bs) (map (subst m) hs)
+instance Subst PureProp where
+  subst m (PropEq e1 e2) = PropEq (subst m e1) (subst m e2)
+  subst m (PropNot e) = PropNot (subst m e)
+  subst m (PropAnd p1 p2) = PropAnd (subst m p1) (subst m p2)
+  subst _ PropTrue = PropTrue
 
+instance Subst Prop where
+  subst m (PropIfThenElse pp p1 p2) = PropIfThenElse (subst m pp) (subst m p1) (subst m p2)
+  subst m (PropConj p h) = PropConj (subst m p) (subst m h)

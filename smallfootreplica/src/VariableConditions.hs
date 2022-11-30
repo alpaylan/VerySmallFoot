@@ -45,15 +45,23 @@ fvb (BoolNEq e1 e2) = fv e1 \/ fv e2
 fvb BoolTrue = Set.empty
 fvb BoolFalse = Set.empty
 
-fva :: Assertion -> Set VarName
-fva (AssertIfThenElse b a1 a2) = fv b \/ fv a1 \/ fv a2
-fva (AssertConj bs hs) = Set.unions (map fv bs) \/ Set.unions (map fv hs)
+fvp :: Prop -> Set VarName
+fvp (PropIfThenElse pp p1 p2) = fv pp \/ fv p1 \/ fv p2
+fvp (PropConj p h) = fv p \/ fv h
 
-fvhp :: HeapPredicate -> Set VarName
+fvpp :: PureProp -> Set VarName
+fvpp (PropEq e1 e2) = fv e1 \/ fv e2
+fvpp (PropNot e) = fv e
+fvpp (PropAnd p1 p2) = fv p1 \/ fv p2
+fvpp PropTrue = Set.empty
+
+fvhp :: HeapProp -> Set VarName
 fvhp (PointsTo e h) = fv e \/ Set.unions (map (fv . snd) h)
 fvhp (HeapTree e) = fv e
 fvhp (HeapLinkedList e1 e2) = fv e1 \/ fv e2
 fvhp (HeapXORList e1 e2 e3 e4) = fv e1 \/ fv e2 \/ fv e3 \/ fv e4
+fvhp (HeapSep h1 h2) = fv h1 \/ fv h2
+fvhp HeapEmp = Set.empty
 
 fvc :: Command -> Set VarName
 fvc (Assign x e) = Set.singleton x \/ fv e
@@ -77,9 +85,11 @@ instance FV Expression where
     fv = fve
 instance FV BoolExpression where
     fv = fvb
-instance FV Assertion where
-    fv = fva
-instance FV HeapPredicate where
+instance FV Prop where
+    fv = fvp
+instance FV PureProp where
+    fv = fvpp
+instance FV HeapProp where
     fv = fvhp
 instance FV a => FV [a] where
     fv = Set.unions . map fv
