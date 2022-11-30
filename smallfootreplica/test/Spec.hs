@@ -7,9 +7,9 @@ import TestPrograms
 checkVarC :: Test
 checkVarC =
     TestCase $ assertEqual 
-                "All variables in the command should be in the set" 
-                (varC (mkContext treeCopy) treeCopyBlock) 
-                (Set.fromList ["i", "ii", "j", "jj", "s", "t"])
+    "All variables in the command should be in the set" 
+    (varC (mkContext treeCopy) treeCopyBlock) 
+    (Set.fromList ["i", "ii", "j", "jj", "s", "t"])
 
 checkModC :: Test
 checkModC =
