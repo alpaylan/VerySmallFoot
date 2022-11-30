@@ -11,9 +11,9 @@ type FunName = String
 type FieldName = String
 type ResName = String
 
-type Precondition = Assertion
-type Postcondition = Assertion
-type Invariant = Assertion
+type Precondition = Prop
+type Postcondition = Prop
+type Invariant = Prop
 
 
 -- Data Types
@@ -35,7 +35,12 @@ type ActualArgs = (FunName, [VarName], [Expression])
 data BoolExpression
   = BoolEq Expression Expression
   | BoolNEq Expression Expression
-  | BoolTrue | BoolFalse
+  | BoolNot BoolExpression
+  | BoolTrue
+
+-- negateBE :: BoolExpression -> BoolExpression
+-- negateBE (BoolEq e1 e2) = BoolNEq e1 e2
+-- negateBE (BoolNEq e1 e2) = BoolEq e1 e2
 
 data Expression
   = Var VarName
@@ -48,17 +53,36 @@ data Function = Function FunName [VarName] [VarName] [VarName] HoareTriple
 -- name, pass-by-ref args, pass-by-value args, local vars, body
 
 
--- Assertions
-data HeapPredicate
+-- Props
+data HeapProp
   = PointsTo Expression [(FieldName, Expression)]
   | HeapTree Expression
-  | HeapLinkedList Expression Expression
+  | HeapListSegment Expression Expression
   | HeapXORList Expression Expression Expression Expression
+  | HeapSep HeapProp HeapProp
+  | HeapEmp
 
+data PureProp
+  = PropAssert BoolExpression
+  | PropAnd PureProp PureProp
+  | PropTrue
 
-data Assertion
-  = AssertIfThenElse BoolExpression Assertion Assertion
-  | AssertConj [BoolExpression] [HeapPredicate]
+data Prop
+  = PropIfThenElse PureProp Prop Prop
+  | PropConj PureProp HeapProp
+
+extendPropAnd :: Prop -> BoolExpression -> Prop
+extendPropAnd (PropIfThenElse pp pt pf) be = PropIfThenElse pp (extendPropAnd pt be) (extendPropAnd pf be)
+extendPropAnd (PropConj p h) be = PropConj (PropAnd p (PropAssert be)) h
+
+extendPropSep :: Prop -> HeapProp -> Prop
+extendPropSep (PropIfThenElse pp pt pf) hp = PropIfThenElse pp (extendPropSep pt hp) (extendPropSep pf hp)
+extendPropSep (PropConj p h) hp = PropConj p (HeapSep h hp)
+
+propSepConj :: Prop -> Prop -> Prop
+propSepConj (PropConj p1 h1) (PropConj p2 h2) = PropConj (PropAnd p1 p2) (HeapSep h1 h2)
+propSepConj (PropIfThenElse pp pt pf) p = PropIfThenElse pp (propSepConj pt p) (propSepConj pf p)
+propSepConj p (PropIfThenElse pp pt pf) = PropIfThenElse pp (propSepConj pt p) (propSepConj pf p)
 
 data Program = Program [FieldName] [Resource] [Function]
 
@@ -82,58 +106,21 @@ instance Subst Expression where
 instance Subst BoolExpression where
   subst m (BoolEq e1 e2) = BoolEq (subst m e1) (subst m e2)
   subst m (BoolNEq e1 e2) = BoolNEq (subst m e1) (subst m e2)
-  subst _ BoolTrue = BoolTrue
-  subst _ BoolFalse = BoolFalse
+  subst m (BoolNot be) = BoolNot (subst m be)
 
-instance Subst HeapPredicate where
+instance Subst HeapProp where
   subst m (PointsTo e heap) = PointsTo (subst m e) (fmap (fmap (subst m)) heap)
   subst m (HeapTree e) = HeapTree (subst m e)
-  subst m (HeapLinkedList e e') = HeapLinkedList (subst m e) (subst m e')
+  subst m (HeapListSegment e e') = HeapListSegment (subst m e) (subst m e')
   subst m (HeapXORList e1 e2 e3 e4) = HeapXORList (subst m e1) (subst m e2) (subst m e3) (subst m e4)
+  subst m (HeapSep hp1 hp2) = HeapSep (subst m hp1) (subst m hp2)
+  subst _ HeapEmp = HeapEmp
 
-instance Subst Assertion where
-  subst m (AssertIfThenElse be a1 a2) = AssertIfThenElse (subst m be) (subst m a1) (subst m a2)
-  subst m (AssertConj bs hs) = AssertConj (map (subst m) bs) (map (subst m) hs)
+instance Subst PureProp where
+  subst m (PropAssert be) = PropAssert (subst m be)
+  subst m (PropAnd p1 p2) = PropAnd (subst m p1) (subst m p2)
+  subst _ PropTrue = PropTrue
 
-
-exampleProgramBody :: Command
---  tree_copy(s;t) [tree(t)] {
---   local i, j, ii, jj;
---   if(t == NULL) s = t;
---   else {
---     i = t->l;
---     j = t->r;
---     tree_copy(ii;i);
---     tree_copy(jj;j);
---     s = new();
---     s->l = ii;
---     s->r = jj;
---   }
--- } [tree(s) * tree(t)]
-exampleProgramBody =
-  IfThenElse (BoolEq (Var "t") Nil)
-    (Assign "s" (Var "t"))
-    (Block
-       [ HeapLookup "i" (Var "t") "l"
-       , HeapLookup "j" (Var "t") "r"
-       , Call ("tree_copy", ["ii"], [Var "i"])
-       , Call ("tree_copy", ["jj"], [Var "j"])
-       , New "s"
-       , HeapAssign (Var "s") "l" (Var "ii")
-       , HeapAssign (Var "s") "r" (Var "jj")
-       ])
-
-
--- name, pass-by-ref args, pass-by-value args, local vars, body
-exampleProgram :: Program
-exampleProgram =
-  Program
-    ["l", "r"]
-    []
-    [Function
-       "tree_copy" ["s"] ["t"]
-       ["i", "j", "ii", "jj"]
-       (AssertConj [] [HeapTree (Var "t")],
-        exampleProgramBody,
-        AssertConj [] [HeapTree (Var "s"), HeapTree (Var "t")])]
-
+instance Subst Prop where
+  subst m (PropIfThenElse pp p1 p2) = PropIfThenElse (subst m pp) (subst m p1) (subst m p2)
+  subst m (PropConj p h) = PropConj (subst m p) (subst m h)

@@ -6,7 +6,9 @@ module VariableConditions
         modF,
         reqC,
         reqF,
+        par,
         Context,
+        mkContext,
         getFunction,
         getResource,
         FV,
@@ -24,196 +26,280 @@ import qualified Data.Map.Strict as Map
 
 import Data.Maybe
 
-(\/) :: Set VariableName -> Set VariableName -> Set VariableName
+(\/) :: (Ord a) => Set a -> Set a -> Set a
 (\/) = Set.union
 
-(/\) :: Set VariableName -> Set VariableName -> Set VariableName
+(/\) :: (Ord a) => Set a-> Set a-> Set a
 (/\) = Set.intersection
 
 
-fve :: Expression -> Set VariableName
-fve (Variable v) = Set.singleton v
-fve (Constant _) = Set.empty
+fve :: Expression -> Set VarName
+fve (Var v) = Set.singleton v
+fve (Const _) = Set.empty
 fve (Xor e1 e2) = fv e1 \/ fv e2
 fve Nil = Set.empty
 
-fvb :: BoolExpression -> Set VariableName
-fvb (BoolEquals e1 e2) = fv e1 \/ fv e2
-fvb (BoolNotEquals e1 e2) = fv e1 \/ fv e2
+fvb :: BoolExpression -> Set VarName
+fvb (BoolEq e1 e2) = fv e1 \/ fv e2
+fvb (BoolNEq e1 e2) = fv e1 \/ fv e2
+fvb (BoolNot be) = fv be
 
-fvbp :: BooleanPredicate -> Set VariableName
-fvbp (Conjunction exprs) = Set.unions $ map fv exprs
-fvbp _ = Set.empty
+fvp :: Prop -> Set VarName
+fvp (PropIfThenElse pp p1 p2) = fv pp \/ fv p1 \/ fv p2
+fvp (PropConj p h) = fv p \/ fv h
 
-fva :: Assertion -> Set VariableName
-fva (SingleBooleanPredicate b) = fv b
-fva (SingleHeapPredicate h) = fv h
-fva (AssertionConjunction booleanPredicate heapPredicate) =
-  fv booleanPredicate \/ fv heapPredicate
-fva (AssertionIfThenElse b a1 a2) = fv b \/ fv a1 \/ fv a2
+fvpp :: PureProp -> Set VarName
+fvpp (PropAssert be) = fv be
+fvpp (PropAnd p1 p2) = fv p1 \/ fv p2
+fvpp PropTrue = Set.empty
 
-fvhp :: HeapPredicate -> Set VariableName
-fvhp Emp = Set.empty
-fvhp (SinglePredicate hp) = fv hp
-fvhp (SeparatingConjunction heaplets) = Set.unions $ map fv heaplets
+fvhp :: HeapProp -> Set VarName
+fvhp (PointsTo e h) = fv e \/ Set.unions (map (fv . snd) h)
+fvhp (HeapTree e) = fv e
+fvhp (HeapListSegment e1 e2) = fv e1 \/ fv e2
+fvhp (HeapXORList e1 e2 e3 e4) = fv e1 \/ fv e2 \/ fv e3 \/ fv e4
+fvhp (HeapSep h1 h2) = fv h1 \/ fv h2
+fvhp HeapEmp = Set.empty
 
-fvhlp :: HeapletPredicate -> Set VariableName
-fvhlp (PointsToHeap e h) = fv e \/ fv h
-fvhlp (HeapTree e) = fv e
-fvhlp (HeapLinkedList e1 e2) = fv e1 \/ fv e2
-fvhlp (HeapXORList e1 e2 e3 e4) = fv e1 \/ fv e2 \/ fv e3 \/ fv e4
-
-fvp :: Heap -> Set VariableName
-fvp (Heap h) = Set.unions $ map fv h
-
-fvhr :: HeapRecord -> Set VariableName
-fvhr (HeapRecord _ e) = fv e
-
-fvas :: Assignment -> Set VariableName
-fvas (VariableAssignment x e) = Set.singleton x \/ fv e
-fvas (HeapLookup x e _) = Set.singleton x \/ fv e
-fvas (HeapMutation e1 _ e2) = fv e1 \/ fv e2
-fvas (Allocation x) = Set.singleton x
-fvas (Deallocation e) = fv e
-
-fvc :: Command -> Set VariableName
-fvc (Assignment assignment) = fv assignment
+fvc :: Command -> Set VarName
+fvc (Assign x e) = Set.singleton x \/ fv e
+fvc (HeapLookup x e _) = Set.singleton x \/ fv e
+fvc (HeapAssign e1 _ e2) = fv e1 \/ fv e2
+fvc (New x) = Set.singleton x
+fvc (Dispose e) = fv e
 fvc (IfThenElse b c1 c2) = fv b \/ fv c1 \/ fv c2
-fvc (WhileDo b i c) = fv b \/ fv i \/ fv c
-fvc (Sequence c1 c2) = fv c1 \/ fv c2
-fvc (Call _ xs es) = Set.fromList xs \/ fv es
-fvc (ConcurrentCall f1 p1 v1 f2 p2 v2) =
-  fvc (Call f1 p1 v1) \/ fvc (Call f2 p2 v2)
-fvc (WithResourceWhen _ b c) =
+fvc (While b i c) = fv b \/ fv i \/ fv c
+fvc (Block cs) = Set.unions $ map fvc cs
+fvc (Call (_, xs, es)) = Set.fromList xs \/ fv es
+fvc (ConcurrentCall call1 call2) =
+  fvc (Call call1) \/ fvc (Call call2)
+fvc (WithRes _ b c) =
   fvb b \/ fvc c
 
 
-
-
 class FV a where
-    fv :: a -> Set VariableName
+    fv :: a -> Set VarName
 instance FV Expression where
     fv = fve
 instance FV BoolExpression where
     fv = fvb
-instance FV BooleanPredicate where
-    fv = fvbp
-instance FV Assertion where
-    fv = fva
-instance FV HeapPredicate where
-    fv = fvhp
-instance FV HeapletPredicate where
-    fv = fvhlp
-instance FV Heap where
+instance FV Prop where
     fv = fvp
-instance FV HeapRecord where
-    fv = fvhr
+instance FV PureProp where
+    fv = fvpp
+instance FV HeapProp where
+    fv = fvhp
 instance FV a => FV [a] where
     fv = Set.unions . map fv
 instance FV Command where
     fv = fvc
-instance FV Assignment where
-    fv = fvas
-
 
 
 -- (Gamma, Delta)
-type Context = (Map ResourceName Resource, Map FunctionName Function)
+type Context = (Map ResName Resource, Map FunName Function)
 
 
-getFunction :: Context -> FunctionName -> Function
+resName :: Resource -> ResName
+resName (Resource name _ _) = name
+
+funName :: Function -> FunName
+funName (Function name _ _ _ _) = name
+
+
+mkContext :: Program -> Context
+mkContext (Program _ rs fs) =
+    (Map.fromList $ map (\r -> (resName r, r)) rs,
+     Map.fromList $ map (\f -> (funName f, f)) fs)
+
+
+getFunction :: Context -> FunName -> Function
 getFunction (_, delta) fname =
   fromMaybe (error "Function not found") $ Map.lookup fname delta
 
-getResource :: Context -> ResourceName -> Resource
+getResource :: Context -> ResName -> Resource
 getResource (gamma, _) rname =
   fromMaybe (error "Resource not found") $ Map.lookup rname gamma
 
 
-varC :: Context -> Command -> Set VariableName
-varC _ (Assignment (VariableAssignment v expression)) = Set.singleton v \/ fv expression
-varC _ (Assignment (HeapLookup v expression _)) = Set.singleton v \/ fv expression
-varC _ (Assignment (HeapMutation e _ f)) = fv e \/ fv f
-varC _ (Assignment (Allocation x)) = Set.singleton x
-varC _ (Assignment (Deallocation e)) = fv e
-varC ctx (Sequence c1 c2) = varC ctx c1 \/ varC ctx c2
+getCalls :: Context -> FunName -> Set FunName
+getCalls ctx fname = getCallsF (getFunction ctx fname)
+  where
+    getCallsF :: Function -> Set FunName
+    getCallsF (Function _ _ _ _ (_, c, _)) = getCallsC c
+
+    getCallsC :: Command -> Set FunName
+    getCallsC (Assign _ _) = Set.empty
+    getCallsC (HeapLookup {}) = Set.empty
+    getCallsC (HeapAssign {}) = Set.empty
+    getCallsC (New _) = Set.empty
+    getCallsC (Dispose _) = Set.empty
+    getCallsC (IfThenElse _ c1 c2) = getCallsC c1 \/ getCallsC c2
+    getCallsC (While _ _ c) = getCallsC c
+    getCallsC (Call (f, _, _)) = Set.singleton f
+    getCallsC (ConcurrentCall (f1, _, _) (f2, _, _)) = Set.fromList [f1, f2]
+    getCallsC (WithRes _ _ c) = getCallsC c
+    getCallsC (Block cs) = Set.unions $ map getCallsC cs
+
+
+-- todo: make this efficient.
+getCalledFunctions :: Context -> FunName -> Set FunName
+getCalledFunctions ctx fname =
+  go ctx (Set.singleton fname) fname 
+  where
+    go :: Context -> Set FunName -> FunName -> Set FunName
+    go ctx visited fname  =
+      let
+        calls = getCalls ctx fname
+        unvisitedCalls = calls `Set.difference` visited
+        visited' = visited \/ unvisitedCalls
+      in
+        if Set.null unvisitedCalls
+        then visited
+        else Set.unions $ Set.map (go ctx visited') unvisitedCalls
+
+
+
+
+genericCalled :: (Context -> Function -> Set String) -> Context -> FunName -> Set String
+genericCalled f ctx fname =
+  let functions = getCalledFunctions ctx fname in
+  Set.unions $ map (f ctx . getFunction ctx) (Set.toList functions)
+
+
+varCalled :: Context -> FunName -> Set VarName
+varCalled = genericCalled varFNonRec
+
+modCalled :: Context -> FunName -> Set VarName
+modCalled = genericCalled modFNonRec
+
+reqCalled :: Context -> FunName -> Set ResName
+reqCalled = genericCalled reqFNonRec
+
+
+
+
+
+varC :: Context -> Command -> Set VarName
+varC _ (Assign v expression) = Set.singleton v \/ fv expression
+varC _ (HeapLookup v expression _) = Set.singleton v \/ fv expression
+varC _ (HeapAssign e _ f) = fv e \/ fv f
+varC _ (New x) = Set.singleton x
+varC _ (Dispose e) = fv e
+varC ctx (Block cs) = Set.unions $ map (varC ctx) cs
 varC ctx (IfThenElse b c1 c2) = fv b \/ varC ctx c1 \/ varC ctx c2
-varC ctx (WhileDo b i c) = fv b \/ fv i \/ varC ctx c
-varC ctx (Call f ps es) =
-  varF ctx fn \/ Set.fromList ps \/ fv es
-  where fn = getFunction ctx f
-varC ctx (ConcurrentCall f1 r1 v1 f2 r2 v2) =
-  varC ctx (Call f1 r1 v1) \/ varC ctx (Call f2 r2 v2)
-varC ctx (WithResourceWhen res b c) =
+varC ctx (While b i c) = fv b \/ fv i \/ varC ctx c
+varC _ (Call (_, ps, es)) = Set.fromList ps \/ fv es
+varC ctx (ConcurrentCall call1 call2) =
+  varC ctx (Call call1) \/ varC ctx (Call call2)
+varC ctx (WithRes res b c) =
   ((fv b \/ varC ctx c) `Set.difference` fv inv) \/ (modC ctx c `Set.difference` owned ctx res)
   where Resource _ _ inv = getResource ctx res
 
-varF :: Context -> Function -> Set VariableName
-varF ctx (Function _ refs vals locals (p, c, q)) =
+
+varFNonRec :: Context -> Function -> Set VarName
+varFNonRec ctx (Function fname refs vals locals (p, c, q)) =
   (varC ctx c \/ fv p \/ fv q) `Set.difference` Set.fromList (refs ++ vals ++ locals)
 
+varF :: Context -> Function -> Set VarName
+varF ctx (Function fname refs vals locals (p, c, q)) =
+  (varCalled ctx fname \/ varC ctx c \/ fv p \/ fv q) `Set.difference` Set.fromList (refs ++ vals ++ locals)
 
 
 
 
-modC :: Context -> Command -> Set VariableName
-modC _ (Assignment (VariableAssignment x _)) = Set.singleton x
-modC _ (Assignment (HeapLookup x _ _)) = Set.singleton x
-modC _ (Assignment (HeapMutation _ _ _)) = Set.empty
-modC _ (Assignment (Allocation x)) = Set.singleton x
-modC _ (Assignment (Deallocation _)) = Set.empty
-modC ctx (Sequence c1 c2) = modC ctx c1 \/ modC ctx c2
+
+modC :: Context -> Command -> Set VarName
+modC _ (Assign x _) = Set.singleton x
+modC _ (HeapLookup x _ _) = Set.singleton x
+modC _ (HeapAssign _ _ _) = Set.empty
+modC _ (New x) = Set.singleton x
+modC _ (Dispose _) = Set.empty
+modC ctx (Block cs) = Set.unions $ map (modC ctx) cs
 modC ctx (IfThenElse _ c1 c2) = modC ctx c1 \/ modC ctx c2
-modC ctx (WhileDo _ _ c) = modC ctx c
-modC ctx (Call f ps _) =
-  modF ctx fn \/ Set.fromList ps
-  where fn = getFunction ctx f
-modC ctx (ConcurrentCall f1 r1 v1 f2 r2 v2 ) =
-  modC ctx (Call f1 r1 v1) \/ modC ctx (Call f2 r2 v2)
-modC ctx (WithResourceWhen r _ c) =
+modC ctx (While _ _ c) = modC ctx c
+modC _ (Call (_, ps, _)) = Set.fromList ps
+modC ctx (ConcurrentCall call1 call2) =
+  modC ctx (Call call1) \/ modC ctx (Call call2)
+modC ctx (WithRes r _ c) =
   modC ctx c `Set.difference` owned ctx r
 
 
-modF :: Context -> Function -> Set VariableName
-modF ctx (Function _ refs vals locals (_, c, _)) =
+modFNonRec :: Context -> Function -> Set VarName
+modFNonRec ctx (Function fname refs vals locals (_, c, _)) =
     modC ctx c `Set.difference` Set.fromList (refs ++ vals ++ locals)
 
+modF :: Context -> Function -> Set VarName
+modF ctx (Function fname refs vals locals (_, c, _)) =
+    (modC ctx c \/ modCalled ctx fname) `Set.difference` Set.fromList (refs ++ vals ++ locals)
 
-reqC :: Context -> Command -> Set ResourceName
-reqC ctx (Assignment s) = er ctx (modC ctx (Assignment s)) (varC ctx (Assignment s))
-reqC ctx (Sequence c1 c2) = reqC ctx c1 \/ reqC ctx c2
+
+reqC :: Context -> Command -> Set ResName
+reqC ctx (Block cs) = Set.unions $ map (reqC ctx) cs
 reqC ctx (IfThenElse b c1 c2) = reqC ctx c1 \/ reqC ctx c2 \/ er ctx Set.empty (fv b)
-reqC ctx (WhileDo b i c) = reqC ctx c \/ er ctx Set.empty (fv b \/ fv i)
-reqC ctx (Call f xs es) =
-  reqF ctx fn \/ er ctx (Set.fromList xs) (fv es)
-  where fn = getFunction ctx f
-reqC ctx (ConcurrentCall f1 r1 v1 f2 r2 v2) =
-  reqC ctx (Call f1 r1 v1) \/ reqC ctx (Call f2 r2 v2)
-reqC ctx (WithResourceWhen res b c) =
+reqC ctx (While b i c) = reqC ctx c \/ er ctx Set.empty (fv b \/ fv i)
+reqC ctx (Call (_, xs, es)) =
+  er ctx (Set.fromList xs) (fv es)
+reqC ctx (ConcurrentCall call1 call2) =
+  reqC ctx (Call call1) \/ reqC ctx (Call call2)
+reqC ctx (WithRes res b c) =
   Set.delete res (reqC ctx c \/ er ctx Set.empty (fv b))
+reqC ctx s = er ctx (modC ctx s) (varC ctx s)
 
-reqF :: Context -> Function -> Set ResourceName
-reqF ctx (Function _ refs vals locals (p, c, q)) =
+
+reqFNonRec :: Context -> Function -> Set ResName
+reqFNonRec ctx (Function fname refs vals locals (p, c, q)) =
   reqC ctx c \/ er ctx Set.empty (fv p \/ fv q `Set.difference` Set.fromList (refs ++ vals ++ locals))
 
+reqF :: Context -> Function -> Set ResName
+reqF ctx (Function fname refs vals locals (p, c, q)) =
+  reqC ctx c \/ reqCalled ctx fname  \/ er ctx Set.empty (fv p \/ fv q `Set.difference` Set.fromList (refs ++ vals ++ locals))
 
-owned :: Context -> ResourceName -> Set VariableName
+
+owned :: Context -> ResName -> Set VarName
 owned ctx resourceName =
   Set.fromList resources
   where (Resource _ resources _) = getResource ctx resourceName
 
-var :: Context -> ResourceName -> Set VariableName
+var :: Context -> ResName -> Set VarName
 var ctx r =
   owned ctx r \/ fv inv
   where (Resource _ _ inv) = getResource ctx r
 
 
-type ModifiedVariables = Set VariableName
-type AccessedVariables = Set VariableName
-er :: Context -> ModifiedVariables -> AccessedVariables -> Set ResourceName
+type ModifiedVariables = Set VarName
+type AccessedVariables = Set VarName
+er :: Context -> ModifiedVariables -> AccessedVariables -> Set ResName
 er (gamma, _) m a =
   Set.fromList
     [r | (_, Resource r xs inv) <- Map.toList gamma,
          not (null (a /\ Set.fromList xs))
          ||
          not (null (m /\ Set.fromList xs \/ fv inv))]
+
+
+
+getConcurrentCalls :: Function -> Set (FunName, FunName)
+getConcurrentCalls (Function _ _ _ _ (_, c, _)) =
+  getConcurrentCallsC c
+  where
+    getConcurrentCallsC :: Command -> Set (FunName, FunName)
+    getConcurrentCallsC (ConcurrentCall (f1, _, _) (f2, _, _)) =
+      Set.singleton (f1, f2)
+    getConcurrentCallsC (Block cs) =
+      Set.unions $ map getConcurrentCallsC cs
+    getConcurrentCallsC (IfThenElse _ c1 c2) =
+      getConcurrentCallsC c1 \/ getConcurrentCallsC c2
+    getConcurrentCallsC (While _ _ c) =
+      getConcurrentCallsC c
+    getConcurrentCallsC (WithRes _ _ c) =
+      getConcurrentCallsC c
+    getConcurrentCallsC _ = Set.empty
+
+  
+par :: Context -> FunName -> Set FunName
+par ctx fname =
+  let functions = Map.elems $ snd ctx in
+  let allPairs = Set.unions $ Set.fromList (map getConcurrentCalls functions) in
+  let relevantPairs = Set.filter (\(f1, f2) -> f1 == fname || f2 == fname) allPairs in
+  let coCalledFunctions = Set.map (\(f1, f2) -> if f1 == fname then f2 else f1) relevantPairs in
+  Set.unions $ Set.map (getCalledFunctions ctx) coCalledFunctions

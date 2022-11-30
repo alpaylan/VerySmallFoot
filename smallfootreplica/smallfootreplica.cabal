@@ -60,12 +60,14 @@ test-suite smallfootreplica-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      TestPrograms
       Paths_smallfootreplica
   hs-source-dirs:
       test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      HUnit
+    , base >=4.7 && <5
     , containers
     , mtl
     , smallfootreplica

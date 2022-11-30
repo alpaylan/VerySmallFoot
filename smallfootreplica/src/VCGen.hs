@@ -1,7 +1,6 @@
 module VCGen (chop) where
 
 import Control.Monad.State
-import Data.Maybe
 
 import Data.Set (Set)
 import qualified Data.Set as Set
@@ -9,92 +8,129 @@ import qualified Data.Set as Set
 import Program
 import VariableConditions
 
+(\/) :: (Ord a) => Set a -> Set a -> Set a
+(\/) = Set.union
 
--- newtype JsrInstruction = JsrInstruction (Set VariableName) deriving (Eq, Ord)
+(/\) :: (Ord a) => Set a -> Set a -> Set a
+(/\) = Set.intersection
 
-data SymbolicInstruction
-    = Eps
-    | SymbolicAssignment Assignment
-    | SymbolicJump Precondition (Set VariableName) Postcondition
-    | SymbolicIfThenElse BoolExpression SymbolicInstruction SymbolicInstruction
-    | SymbolicSequence SymbolicInstruction SymbolicInstruction
-    deriving (Eq, Ord)
+data SCommand
+    = SAssign VarName Expression
+    | SHeapLookup VarName Expression FieldName
+    | SHeapAssign Expression FieldName Expression
+    | SNew VarName
+    | SDispose Expression
+    | SBlock [SCommand]
+    | SJump Precondition (Set VarName) Postcondition
+    | SIfThenElse BoolExpression SCommand SCommand
 
-data SymbolicHoareTriple = SymbolicHoareTriple
-    { sht_pre  :: Precondition
-    , sht_si   :: SymbolicInstruction
-    , sht_post :: Postcondition
-    } deriving (Eq, Ord)
+type SymbolicHoareTriple = (Precondition, SCommand, Postcondition)
 
-type FreshMonad = State [Identifier]
+type FreshVars = State [VarName]
 
-fvs :: String -> [Identifier]
+
+fvs :: String -> [VarName]
 fvs pre =
   fvs' 0
   where
-    fvs' :: Integer -> [Identifier]
-    fvs' n = Id (pre ++ show n) : fvs' (n + 1)
+    fvs' :: Integer -> [VarName]
+    fvs' n = (pre ++ show n) : fvs' (n + 1)
 
-fresh :: FreshMonad Identifier
+
+fresh :: FreshVars VarName
 fresh = do
   xs <- get
   put $ tail xs
   return $ head xs
 
-vcg :: Context -> FunctionName -> HoareTriple -> FreshMonad (Set SymbolicHoareTriple)
-vcg ctx g (HoareTriple p c q) = do
+vcg :: Context -> FunName -> HoareTriple -> FreshVars [SymbolicHoareTriple]
+vcg ctx g (p, c, q) = do
   (si, l) <- chop' ctx g c
-  return $ SymbolicHoareTriple p si q `Set.insert` l
+  return $ (p, si, q) : l
 
 
-chop' :: Context -> FunctionName -> Command -> FreshMonad (SymbolicInstruction, Set SymbolicHoareTriple)
-chop' _ _ (Assignment s) = return (SymbolicAssignment s, Set.empty)
-chop' ctx g (Sequence c1 c2) = do
-  (si1, l1) <- chop' ctx g c1
-  (si2, l2) <- chop' ctx g c2
-  return (SymbolicSequence si1 si2, l1 `Set.union` l2)
+varAsserts :: [VarName] -> [Expression] -> PureProp
+varAsserts vs es =
+  foldr (\(v, e) acc -> PropAnd (PropAssert (BoolEq (Var v) e)) acc)
+        PropTrue
+        (zip vs es)
+
+
+chop' :: Context -> FunName -> Command -> FreshVars (SCommand, [SymbolicHoareTriple])
+-- chop' _ _ (Assignment s) = return (SymbolicAssignment s, [])
+chop' _ _ (Assign x e) = return (SAssign x e, [])
+chop' _ _ (HeapLookup x e f) = return (SHeapLookup x e f, [])
+chop' _ _ (HeapAssign e1 f e2) = return (SHeapAssign e1 f e2, [])
+chop' _ _ (New x) = return (SNew x, [])
+chop' _ _ (Dispose e) = return (SDispose e, [])
+chop' ctx g (Block cs) = do
+  res <- mapM (chop' ctx g) cs
+  return (SBlock $ map fst res, concatMap snd res)
 chop' ctx g (IfThenElse b c1 c2) = do
   (si1, l1) <- chop' ctx g c1
   (si2, l2) <- chop' ctx g c2
-  return (SymbolicIfThenElse b si1 si2, l1 `Set.union` l2)
-chop' ctx g (WhileDo b i c) = do
-  l <- vcg ctx g (HoareTriple (extendAssertionBool i b) c i)
-  return (SymbolicJump
+  return (SIfThenElse b si1 si2, l1 ++ l2)
+chop' ctx g (While b i c) = do
+  l <- vcg ctx g (extendPropAnd i b, c, i)
+  return (SJump
           i
           (modC ctx c)
-          (extendAssertionBool i (bNot b)),
+          (extendPropAnd i (BoolNot b)),
           l)
-chop' ctx _ (Call (FunctionCall f xs es)) = do
+chop' ctx _ (Call (f, xs, es)) = do
   v' <- mapM (const fresh) es
   let m = zip p xs ++ zip v v'
   return
-    (SymbolicSequence
-     (SymbolicJump (SingleHeapPredicate Emp)
-                   Set.empty
-                   (AssertionConjunction (Conjunction (zipWith BoolEquals (map Variable v') es)) Emp))
-     (SymbolicJump (subst m fp)
-                   (Set.map (subst m) (modC ctx fc))
-                   (subst m fq)),
-     Set.empty)
+    (SBlock
+       [ SJump (PropConj PropTrue HeapEmp)
+               Set.empty
+               (PropConj (varAsserts v' es) HeapEmp)
+       , SJump (subst m fp)
+               (Set.map (substVar m) (modC ctx fc))
+               (subst m fq)
+       ],
+     [])
   where
-    Function (FunctionHeader _ p v) (HoareTriple {precondition = fp, command = fc, postcondition = fq}) = getFunction ctx f
-chop' ctx g (ConcurrentCall (FunctionCall f1 p1 v1) (FunctionCall f2 p2 v2)) =
-  return (Eps, Set.empty)
-chop' ctx g (WithResourceWhen res b c) = do
+    Function _ p v _ (fp, fc, fq) = getFunction ctx f
+chop' ctx _ (ConcurrentCall (f1, xs1, es1) (f2, xs2, es2)) = do
+  v1' <- mapM (const fresh) es1
+  v2' <- mapM (const fresh) es2
+  let m1 = zip p1 xs1 ++ zip v1 v1'
+      m2 = zip p2 xs2 ++ zip v2 v2'
+  return
+    (SBlock
+       [ SJump (PropConj PropTrue HeapEmp)
+               Set.empty
+               (PropConj (PropAnd (varAsserts v1' es1) (varAsserts v2' es2))
+                         HeapEmp)
+       , SJump (propSepConj (subst m1 fp1) (subst m2 fp2))
+               (Set.map (substVar m1) (modC ctx fc1) \/ Set.map (substVar m2) (modC ctx fc2))
+               (propSepConj (subst m1 fq1) (subst m2 fq2))
+       ],
+     [])
+  where
+    Function _ p1 v1 _ (fp1, fc1, fq1) = getFunction ctx f1
+    Function _ p2 v2 _ (fp2, fc2, fq2) = getFunction ctx f2
+chop' ctx g (WithRes res b c) = do
   (si, l) <- chop' ctx g c
-  return (_, l)
-chop' ctx g (LocalVariableDeclaration vars) =
-  return (Eps, Set.empty)
+  return
+    (SBlock
+       [ SJump (PropConj PropTrue HeapEmp)
+               Set.empty
+               (extendPropAnd r b)
+       , si
+       , SJump r
+               (Set.fromList xs \/ u)
+               (PropConj PropTrue HeapEmp)
+       ],
+     l)
+  where
+    Resource _ xs r = getResource ctx res
+    u = fv r /\ Set.unions (Set.map (modF ctx . getFunction ctx) (par ctx g))
+chop' _ _ _ = undefined
 
-chop :: Context -> FunctionName -> Command -> (SymbolicInstruction, Set SymbolicHoareTriple)
-chop ctx g c = evalState (chop' ctx g c) (fvs "x")
+-- par :: Context -> FunName -> Set FunName
+-- par = undefined
 
-
-    -- let function = getFunction ctx f in
-
-    --     (SymbolicSequence
-    --     (SymbolicJump (SingleHeapPredicate Emp) (JsrInstruction Set.empty) (AssertionConjunction (SingleBooleanPredicate (Conjunction [])) (SingleHeapPredicate Emp))
-    --     ()
-    --     , Set.empty)
-
-
+chop :: Context -> FunName -> Command -> (SCommand, [SymbolicHoareTriple])
+chop ctx g c = evalState (chop' ctx g c) (fvs "_fv")
