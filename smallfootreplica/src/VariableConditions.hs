@@ -7,6 +7,7 @@ module VariableConditions
         reqC,
         reqF,
         Context,
+        mkContext,
         getFunction,
         getResource,
         FV,
@@ -157,13 +158,13 @@ genericCalled f ctx fname =
 
 
 varCalled :: Context -> FunName -> Set VarName
-varCalled = genericCalled varF
+varCalled = genericCalled varFNonRec
 
 modCalled :: Context -> FunName -> Set VarName
-modCalled = genericCalled modF
+modCalled = genericCalled modFNonRec
 
 reqCalled :: Context -> FunName -> Set ResName
-reqCalled = genericCalled reqF
+reqCalled = genericCalled reqFNonRec
 
 
 
@@ -184,6 +185,11 @@ varC ctx (ConcurrentCall call1 call2) =
 varC ctx (WithRes res b c) =
   ((fv b \/ varC ctx c) `Set.difference` fv inv) \/ (modC ctx c `Set.difference` owned ctx res)
   where Resource _ _ inv = getResource ctx res
+
+
+varFNonRec :: Context -> Function -> Set VarName
+varFNonRec ctx (Function fname refs vals locals (p, c, q)) =
+  (varC ctx c \/ fv p \/ fv q) `Set.difference` Set.fromList (refs ++ vals ++ locals)
 
 varF :: Context -> Function -> Set VarName
 varF ctx (Function fname refs vals locals (p, c, q)) =
@@ -209,6 +215,10 @@ modC ctx (WithRes r _ c) =
   modC ctx c `Set.difference` owned ctx r
 
 
+modFNonRec :: Context -> Function -> Set VarName
+modFNonRec ctx (Function fname refs vals locals (_, c, _)) =
+    modC ctx c `Set.difference` Set.fromList (refs ++ vals ++ locals)
+
 modF :: Context -> Function -> Set VarName
 modF ctx (Function fname refs vals locals (_, c, _)) =
     (modC ctx c \/ modCalled ctx fname) `Set.difference` Set.fromList (refs ++ vals ++ locals)
@@ -225,6 +235,11 @@ reqC ctx (ConcurrentCall call1 call2) =
 reqC ctx (WithRes res b c) =
   Set.delete res (reqC ctx c \/ er ctx Set.empty (fv b))
 reqC ctx s = er ctx (modC ctx s) (varC ctx s)
+
+
+reqFNonRec :: Context -> Function -> Set ResName
+reqFNonRec ctx (Function fname refs vals locals (p, c, q)) =
+  reqC ctx c \/ er ctx Set.empty (fv p \/ fv q `Set.difference` Set.fromList (refs ++ vals ++ locals))
 
 reqF :: Context -> Function -> Set ResName
 reqF ctx (Function fname refs vals locals (p, c, q)) =
