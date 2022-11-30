@@ -83,9 +83,15 @@ program = do
     whitespace
     fields <- option [] (fieldSeq <* char ';')
     whitespace
-    decls <- many (resourceDecl <|> funDecl)
+    (funcs, reses) <- eitherToLists <$> many ((Right <$> resourceDecl) <|> (Left <$> funDecl))
     eof
-    return $ Program fields decls
+    return $ Program fields rses funcs
+
+eitherToLists :: [Either Function Resource] -> ([Function],[Resource])
+eitherToLists = foldr (\x (fs,rs) -> case x of
+    Left f -> (f:fs,rs)
+    Right r -> (fs,r:rs)) ([],[])
+
 
 fieldSeq :: Parser [FieldName]
 fieldSeq = identSeq
@@ -93,7 +99,7 @@ fieldSeq = identSeq
 --     includes the default fields of all the predicates, see below.
 
 -- resource_decl ::= "resource" ident "(" ident_seq ")" "[" formula "]"
-resourceDecl :: Parser ProgramDeclaration
+resourceDecl :: Parser Resource
 resourceDecl = do
     whitespace
     reserved "resource"
@@ -103,35 +109,35 @@ resourceDecl = do
     args <- parens identSeq
     whitespace
     formula <- brackets formula
-    return . ResourceDeclaration $ Resource name args formula
+    return $ Resource name args formula
 
 identSeq :: Parser [Identifier]
 identSeq = sepBy (Id <$> ident) (char ',' <* whitespace)
 -- fun_decl      ::= ident "(" formals ")" ("[" formula "]")?
 --                     "{" local_decl* statement* "}" ("[" formula "]")?
-funDecl :: Parser ProgramDeclaration
+funDecl :: Parser Function
 funDecl = do
     whitespace
     funcName <- Id <$> ident
     whitespace
     (refArgs, valArgs) <- parens formals
     whitespace
-    pre <- option (SingleBooleanPredicate BooleanTrue) (brackets formula)
+    pre <- option (AssertConj [] []) (brackets formula)
     whitespace
-    body <- braces $ do
+    (localVars, body) <- braces $ do
         whitespace
-        localDecls <- many localDecl
+        localVars <- join <$> many localDecl
         whitespace
         statements <- many statement
-        return (localDecls, statements)
+        return (localVars, statements)
     whitespace
-    post <- option (SingleBooleanPredicate BooleanTrue) (brackets formula)
-    return . FunctionDeclaration $ Function (FunctionHeader funcName refArgs valArgs) (HoareTriple pre body post)
+    post <- option (AssertConj [] []) (brackets formula)
+    return $ Function funcName refArgs valArgs localVars (HoareTriple pre (Block body) post)
 
 
 
 -- formals       ::= (ident_seq ";")? ident_seq
-formals :: Parser ([PassByReferenceArgument], [PassByValueArgument])
+formals :: Parser ([String], [String])
 formals = do
     whitespace
     refArgs <- option [] (identSeq <* char ';')
@@ -140,7 +146,7 @@ formals = do
     return (refArgs, valArgs)
 -- ident_seq     ::= /* empty */ | ident ("," ident)*
 -- local_decl    ::= "local" ident ("," ident)* ";"
-localDecl :: Parser Command
+localDecl :: Parser [String]
 localDecl = do
     whitespace
     reserved "local"
@@ -148,7 +154,7 @@ localDecl = do
     vars <- identSeq
     whitespace
     char ';'
-    return $ LocalVariableDeclaration vars
+    return vars
 --     The formals consist of the reference parameters (which are
 --     optional) followed by the value parameters.  If a function pre- or
 --     post-condition is omitted, it defaults to "emp".
@@ -170,19 +176,19 @@ statement = choice [assign, assignField, assignFieldExp, allocVar, dispose, stat
 assign :: Parser Command
 assign = do
     whitespace
-    var <- Id <$> ident
+    var <- ident
     whitespace
     char '='
     whitespace
     exp <- stmtExp
     whitespace
     char ';'
-    return . Assignment $ VariableAssignment var exp
+    return $ Assign var exp
 
 assignField :: Parser Command
 assignField = do
     whitespace
-    var <- Id <$> ident
+    var <- ident
     whitespace
     char '='
     whitespace
@@ -190,10 +196,10 @@ assignField = do
     whitespace
     string "->"
     whitespace
-    field <- Id <$> field
+    field <- field
     whitespace
     char ';'
-    return . Assignment $ HeapLookup var exp field
+    return $ HeapLookup var exp field
 
 assignFieldExp :: Parser Command
 assignFieldExp = do
@@ -202,19 +208,19 @@ assignFieldExp = do
     whitespace
     string "->"
     whitespace
-    field <- Id <$> field
+    field <- field
     whitespace
     char '='
     whitespace
     exp2 <- stmtExp
     whitespace
     char ';'
-    return . Assignment $ HeapMutation exp1 field exp2
+    return $ HeapAssign exp1 field exp2
 
 allocVar :: Parser Command
 allocVar = do
     whitespace
-    var <- Id <$> ident
+    var <- ident
     whitespace
     char '='
     whitespace
@@ -223,7 +229,7 @@ allocVar = do
     parens (return ())
     whitespace
     char ';'
-    return . Assignment $ Allocation var
+    return $ New var
 
 dispose :: Parser Command
 dispose = do
@@ -231,9 +237,9 @@ dispose = do
     reserved "dispose"
     whitespace
     exp <- stmtExp
-    whitespace
+    whitespace  
     char ';'
-    return . Assignment $ Deallocation exp
+    return $ Dispose exp
 
 statementBlock :: Parser Command
 statementBlock = do
