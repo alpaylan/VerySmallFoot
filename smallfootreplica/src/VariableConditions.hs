@@ -89,6 +89,19 @@ instance FV Command where
 type Context = (Map ResName Resource, Map FunName Function)
 
 
+resName :: Resource -> ResName
+resName (Resource name _ _) = name
+
+funName :: Function -> FunName
+funName (Function name _ _ _ _) = name
+
+
+mkContext :: Program -> Context
+mkContext (Program _ rs fs) =
+    (Map.fromList $ map (\r -> (resName r, r)) rs,
+     Map.fromList $ map (\f -> (funName f, f)) fs)
+
+
 getFunction :: Context -> FunName -> Function
 getFunction (_, delta) fname =
   fromMaybe (error "Function not found") $ Map.lookup fname delta
@@ -238,3 +251,31 @@ er (gamma, _) m a =
          not (null (a /\ Set.fromList xs))
          ||
          not (null (m /\ Set.fromList xs \/ fv inv))]
+
+
+
+getConcurrentCalls :: Function -> Set (FunName, FunName)
+getConcurrentCalls (Function _ _ _ _ (_, c, _)) =
+  getConcurrentCallsC c
+  where
+    getConcurrentCallsC :: Command -> Set (FunName, FunName)
+    getConcurrentCallsC (ConcurrentCall (f1, _, _) (f2, _, _)) =
+      Set.singleton (f1, f2)
+    getConcurrentCallsC (Block cs) =
+      Set.unions $ map getConcurrentCallsC cs
+    getConcurrentCallsC (IfThenElse _ c1 c2) =
+      getConcurrentCallsC c1 \/ getConcurrentCallsC c2
+    getConcurrentCallsC (While _ _ c) =
+      getConcurrentCallsC c
+    getConcurrentCallsC (WithRes _ _ c) =
+      getConcurrentCallsC c
+    getConcurrentCallsC _ = Set.empty
+
+  
+par :: Context -> FunName -> Set FunName
+par ctx fname =
+  let functions = Map.elems $ snd ctx in
+  let allPairs = Set.unions $ Set.fromList (map getConcurrentCalls functions) in
+  let relevantPairs = Set.filter (\(f1, f2) -> f1 == fname || f2 == fname) allPairs in
+  let coCalledFunctions = Set.map (\(f1, f2) -> if f1 == fname then f2 else f1) relevantPairs in
+  Set.unions $ Set.map (getCalledFunctions ctx) coCalledFunctions
