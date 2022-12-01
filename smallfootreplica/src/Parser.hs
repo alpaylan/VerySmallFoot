@@ -90,7 +90,7 @@ program = do
     whitespace
     fields <- option [] (fieldSeq <* char ';')
     whitespace
-    (funcs, reses) <- eitherToLists <$> many ((Right <$> resourceDecl) <|> (Left <$> funDecl))
+    (funcs, reses) <- eitherToLists <$> many ((Right <$> lexeme resourceDecl) <|> (Left <$> lexeme funDecl))
     eof
     return $ Program fields reses funcs
 
@@ -201,7 +201,7 @@ mallocs = "malloc1(i;) \n\
 formals :: Parser ([String], [String])
 formals = do
     whitespace
-    refArgs <- option [] (identSeq <* char ';')
+    refArgs <- option [] (try (identSeq <* char ';'))
     whitespace
     valArgs <- identSeq
     return (refArgs, valArgs)
@@ -390,7 +390,7 @@ stmtExp = chainl1 stmtTerm (lexeme (char '^') $> Xor)
 stmtTerm :: Parser Expression
 stmtTerm = whitespace >> choice [parens stmtExp, 
             Var <$> ident, 
-            Nil <$ reserved "nil",
+            Nil <$ reserved "NULL",
             Const . fromIntegral <$> number]
 
 -- stmt_exp_seq ::= /* empty */ | stmt_exp ("," stmt_exp)*
@@ -513,18 +513,19 @@ heapProp = chainl1 (choice [parens heapProp, pointsTo, heapTree, heapLS, heapLst
     heapLS = do
       whitespace
       reserved "lseg"
-      whitespace
+      lexeme (char '(') $> ()
       start <- stmtExp
       whitespace
-      HeapListSegment start <$> stmtExp
+      lexeme (string ",")
+      HeapListSegment start <$> (stmtExp <* (whitespace >> lexeme (char ')')))
     heapXORL = do
       whitespace
       reserved "xlseg"
       string "("
       whitespace
-      e1 <- stmtExp
+      e1 <- stmtExp <* (whitespace >> lexeme (string ","))
       whitespace
-      e2 <- stmtExp
+      e2 <- stmtExp <* (whitespace >> lexeme (string ","))
       whitespace
       e3 <- stmtExp
       string ")"

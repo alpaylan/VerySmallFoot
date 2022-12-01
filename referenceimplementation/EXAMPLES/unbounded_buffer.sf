@@ -5,9 +5,9 @@ tl;
 
 init() {
   last = new(); first = last; l = last; f = first;
-} [f==first * last|->]
+} [f==first ; last|->]
 
-resource buf (l) [l==last * lseg(f,l)]
+resource buf (l) [l==last ; lseg(f,l)]
 
 prepare_item_for_buffer() [last|->]{
  /* fill last->hd */ y = new(); last->tl = y;
@@ -35,6 +35,6 @@ consumer() [f==first] {
   consumer();
 } [false]
 
-main() [f==first * last|->] {
+main() [f==first ; last|->] {
   producer() || consumer();
 } 
