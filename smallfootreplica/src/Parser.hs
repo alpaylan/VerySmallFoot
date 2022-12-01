@@ -375,93 +375,106 @@ boolExp = choice [parens boolExp,
 --                 form_exp "," form_exp "," form_exp "," form_exp ")"
 --             | "tree" "(" (field ";" field ";")? form_exp ")"
 --             | "if" form_exp ("==" | "!=") form_exp "then" formula "else" formula
-formula :: Parser Assertion
-formula = choice [parens formula, reserved "false" $> SingleBooleanPredicate BooleanFalse, equalityFormula, inequalityFormula, empFormula, sepConjunctionFormula, heapFormula, listFormula, lsegFormula, dlsegFormula, treeFormula, ifThenElseFormula]
+
+prop :: Parser Prop
+prop = choice [parens prop, ifThenElseProp, conjProp]
   where
-    equalityFormula = do
-        whitespace
-        exp1 <- formExp
-        whitespace
-        reservedOp "=="
-        whitespace
-        exp2 <- formExp
-        return . SingleBooleanPredicate . Conjunction $ [BoolEquals exp1 exp2]
-    inequalityFormula = do
-        whitespace
-        exp1 <- formExp
-        whitespace
-        reservedOp "!="
-        whitespace
-        exp2 <- formExp
-        return . SingleBooleanPredicate . Conjunction $ [BoolNotEquals exp1 exp2]
-    empFormula = reserved "emp" $> SingleHeapPredicate Emp
-    sepConjunctionFormula = do
-        whitespace
-        exp1 <- formula
-        whitespace
-        reservedOp "*"
-        whitespace
-        exp2 <- formula
-        return . SingleHeapPredicate . SeparatingConjunction $ [SingleHeapPredicate exp1, exp2] 
-    heapFormula = do
-        whitespace
-        exp <- formExp
-        whitespace
-        string "|->" 
-        whitespace
-        heap <- many fieldColonExp
-        return . SingleHeapPredicate . SinglePredicate $ PointsToHeap exp (Heap heap)
-    fieldColonExp = do
-        whitespace
-        field <- Id <$> ident
-        whitespace
-        char ':'
-        whitespace
-        HeapRecord field <$> formExp
-    listFormula = do
-        whitespace
-        reserved "list"
-        whitespace
-        (field, exp) <- parens (option (Id "next", Null) (formExp `sepBy` char ';'))
-        return $ ListPredicate field exp
-    lsegFormula = do
-        whitespace
-        reserved "lseg"
-        whitespace
-        (field, exp1, exp2) <- parens (option (Id "next", Null, Null) (formExp `sepBy` char ';'))
-        return $ LsegPredicate field exp1 exp2
-    dlsegFormula = do
-        whitespace
-        reserved "dlseg"
-        whitespace
-        (field1, field2, exp1, exp2, exp3) <- parens (option (Id "next", Id "prev", Null, Null, Null) (formExp `sepBy` char ';'))
-        return $ DlsegPredicate field1 field2 exp1 exp2 exp3
-    treeFormula = do
-        whitespace
-        reserved "tree"
-        whitespace
-        (field1, field2, exp) <- parens (option (Id "left", Id "right", Null) (formExp `sepBy` char ';'))
-        return $ TreePredicate field1 field2 exp
-    ifThenElseFormula = do
+    ifThenElseProp = do
         whitespace
         reserved "if"
--- form_exp ::= "(" form_exp ")" | ident | number | form_exp "^" form_exp
-formExp :: Parser Expression
-formExp = choice [parens formExp, Variable . Id <$> ident, numberFormExp, prefixOpFormExp, infixOpFormExp]
+        whitespace
+        pProp <- pureProp 
+        whitespace
+        reserved "then"
+        whitespace
+        propT <- prop
+        whitespace
+        reserved "else"
+        whitespace
+        propF <- prop
+        whitespace
+        reserved "end"
+        return PropIfThenElse pProp propT propF
+    conjProp = do
+        whitespace
+        pProp <- pureProp
+        whitespace
+        string ";"
+        whitespace
+        PropConj pProp <$> heapProp
+
+pureProp :: Parser PureProp
+pureProp = choice [and, assert, true]
   where
-    numberFormExp = NumConst <$> number
-    prefixOpFormExp = do
-        whitespace
-        op <- prefixOp
-        whitespace
-        PrefixOp op <$> formExp
-    infixOpFormExp = do
-        whitespace
-        exp1 <- formExp
-        whitespace
-        op <- infixOp
-        whitespace
-        InfixOp op exp1 <$> formExp
+    and = do
+      whitespace
+      pure1 <- pureProp
+      whitespace
+      string "&&"
+      whitespace
+      PropAnd pure1 <$> pureProp
+    assert = PropAssert <$> boolExp
+    true = PropTrue <$ (whitespace >> string "true" >> whitespace)
+
+heapProp :: Parser HeapProp
+heapProp = choice [parens heapProp, pointsTo, heapTree, heapLS, heapLst heapXORL, heapSep, heapEmp]
+  where
+    pointsTo = do
+      whitespace
+      recd <- stmtExp
+      whitespace
+      string "|->"
+      whitespace
+      PointsTo recd <$> sepBy fieldExp (char ',')
+    fieldExp = do
+      whitespace
+      field <- ident
+      whitespace
+      string ":"
+      whitespace
+      exp <- stmtExp
+      return (field, exp)
+    heapTree = do
+      whitespace
+      reserved "tree"
+      whitespace
+      HeapTree <$> stmtExp
+    heapLS = do
+      whitespace
+      reserved "lseg"
+      whitespace
+      start <- stmtExp
+      whitespace
+      HeapListSegment start <$> stmtExp
+    heapXORL = do
+      whitespace
+      reserved "xlseg"
+      string "("
+      whitespace
+      e1 <- stmtExp
+      whitespace
+      e2 <- stmtExp
+      whitespace
+      e3 <- stmtExp
+      string ")"
+      whitespace
+      HeapXORList e1 e2 e3 <$> stmtExp
+    heapSep = do
+      whitespace
+      h1 <- heapProp
+      whitespace
+      reservedOp "*"
+      whitespace
+      HeapSep h1 <$> heapProp
+    heapLst = do
+      whitespace
+      reserved "list"
+      HeapList <$> parens (whitespace *> stmtExp <* whitespace)
+    heapEmp = HeapEmp <$ (whitespace >> reserved "emp" >> whitespace)
+
+       
+-- form_exp ::= "(" form_exp ")" | ident | number | form_exp "^" form_exp
+
 --     Here, unlike in the related papers, formulae are not composed of
 --     distinct boolean (pure) and heap (spatial) parts.  Instead "E==F"
 --     and "E!=F" are only satisfied by the empty heap, like "emp", and
