@@ -245,28 +245,29 @@ statementBlock :: Parser Command
 statementBlock = do
     whitespace
     statements <- braces (many statement)
-    return . foldr Sequence Skip $ statements
+    return . Block $ statements
 
 ifThenElseStmt :: Parser Command
 ifThenElseStmt = do
     whitespace
     reserved "if"
     whitespace
-    exp <- parens stmtExp
+    exp <- parens boolExp
     whitespace
     thenStmt <- statement
     whitespace
-    elseStmt <- option Skip (reserved "else" >> statement)
-    return $ IfThenElse exp thenStmt elseStmt
+    reserved "else"
+    whitespace
+    IfThenElse exp thenStmt <$> statement
 
 whileStmt :: Parser Command
 whileStmt = do
     whitespace
     reserved "while"
     whitespace
-    exp <- parens stmtExp
+    exp <- parens boolExp
     whitespace
-    inv <- option (SingleBooleanPredicate BooleanTrue) (brackets formula)
+    inv <- option (PropConj PropTrue HeapEmp) (brackets formula)
     whitespace
     WhileDo exp inv <$> statement
 
@@ -275,30 +276,30 @@ withStmt = do
     whitespace
     reserved "with"
     whitespace
-    var <- Id <$> ident
+    var <- ident
     whitespace
     reserved "when"
     whitespace
-    exp <- parens stmtExp
+    exp <- parens boolExp
     whitespace
-    WithResourceWhen var exp <$> statement
+    WithRes var exp <$> statement
 
 callStmt :: Parser Command
 callStmt = do
     whitespace
-    funcName <- Id <$> ident
+    funcName <- ident
     whitespace
     (refArgs, valArgs) <- parens actuals
     whitespace
     char ';'
-    return $ FunctionCall (FunctionHeader funcName refArgs valArgs)
+    return $ Call (funcName, refArgs, valArgs)
 
 
 -- actuals      ::= stmt_exp_seq (";" stmt_exp_seq)?
-actuals :: Parser ([Expression], [Expression])
+actuals :: Parser ([VarName], [Expression])
 actuals = do
     whitespace
-    refArgs <- stmtExpSeq
+    refArgs <- many ident
     whitespace
     valArgs <- option [] (char ';' >> stmtExpSeq)
     return (refArgs, valArgs)
@@ -306,55 +307,55 @@ actuals = do
 --             | ident | number | "true" | "false"
 --             | prefix_op stmt_exp | stmt_exp infix_op stmt_exp
 stmtExp :: Parser Expression
-stmtExp = choice [parens stmtExp, Variable . Id <$> ident, numberStmtExp, booleanStmtExp, prefixOpStmtExp, infixOpStmtExp]
+stmtExp = choice [parens stmtExp, 
+            Var <$> ident, 
+            Nil <$ reserved "nil",
+            Const <$> number, 
+            xorExp]
   where
-    numberStmtExp = NumConst <$> number
-    booleanStmtExp = choice [reserved "true" >> return (BoolConst True), reserved "false" >> return (BoolConst BooleanFalse)]
-    prefixOpStmtExp = do
+    xorExp = do
         whitespace
-        op <- prefixOp
+        exp1 <- stmtExpr
         whitespace
-        PrefixOp op <$> stmtExp
-    infixOpStmtExp = do
+        reservedOp "^"
         whitespace
-        exp1 <- stmtExp
-        whitespace
-        op <- infixOp
-        whitespace
-        InfixOp op exp1 <$> stmtExp
+        Xor exp1 <$> stmtExpr
 
 -- stmt_exp_seq ::= /* empty */ | stmt_exp ("," stmt_exp)*
 stmtExpSeq :: Parser [Expression]
 stmtExpSeq = sepBy stmtExp (char ',')
 -- infix_op     ::= "==" | "!=" | "^" | "&&" | "*" | "/" | "%" | "+" | "-" | "<" | "<=" | ">" | ">="
-infixOp :: Parser InfixOp
-infixOp = choice [
-    op "==" Equals,
-    op "!=" NotEquals,
-    op "^" Xor,
-    op "&&" And,
-    op "*" Multiply,
-    op "/" Divide,
-    op "%" Modulo,
-    op "+" Plus,
-    op "-" Minus,
-    op "<" LessThan,
-    op "<=" LessThanEquals,
-    op ">" GreaterThan,
-    op ">=" GreaterThanEquals
-  ]
-  where
-    op opStr opVal = reservedOp opStr $> opVal
 
+boolExp :: Parser BoolExpression
+boolExp = choice [parens boolExp, 
+            boolEq,
+            boolNeq,
+            boolNot,
+            BoolTrue <$ reserved "true",
+            BoolNot BoolTrue <$ reserved "false"
+            ]
+  where
+    boolEq = do
+        whitespace
+        exp1 <- stmtExp
+        whitespace
+        reservedOp "=="
+        whitespace
+        BoolEq exp1 <$> stmtExp
+    boolNeq = do
+        whitespace
+        exp1 <- stmtExp
+        whitespace
+        reservedOp "!="
+        whitespace
+        BoolNeq exp1 <$> stmtExp
+    boolNot = do
+        whitespace
+        reservedOp "!"
+        whitespace
+        BoolNot <$> boolExp
 
 -- prefix_op    ::= "+" | "-"
-prefixOp :: Parser PrefixOp
-prefixOp = choice [
-    op "+" Pos,
-    op "-" Negate
-  ]
-  where
-    op opStr opVal = reservedOp opStr $> opVal
 
 --     If a loop invariant is omitted, it defaults to "emp".  All of the
 --     infix_op's except equality "==", non-equality "!=", and

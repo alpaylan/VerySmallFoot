@@ -38,10 +38,6 @@ data BoolExpression
   | BoolNot BoolExpression
   | BoolTrue
 
--- negateBE :: BoolExpression -> BoolExpression
--- negateBE (BoolEq e1 e2) = BoolNEq e1 e2
--- negateBE (BoolNEq e1 e2) = BoolEq e1 e2
-
 data Expression
   = Var VarName
   | Nil
