@@ -190,10 +190,10 @@ mallocs = "malloc1(i;) \n\
 \    TOP = top; \n\
 \  else  \n\
 \    status = 0; \n\
-\} else {}\n\
+\} \n\
  \     } \n\
   \  } \n\
- \ else {} } \n\
+ \ } \n\
 \} \n\
 \[i |->]"
 
@@ -317,9 +317,9 @@ ifThenElseStmt = do
     whitespace
     thenStmt <- statement
     whitespace
-    reserved "else"
+    elseStmt <- option (Block []) (lexeme (reserved "else") >> statement)
     whitespace
-    IfThenElse exp thenStmt <$> statement
+    return $ IfThenElse exp thenStmt elseStmt
 
 whileStmt :: Parser Command
 whileStmt = do
