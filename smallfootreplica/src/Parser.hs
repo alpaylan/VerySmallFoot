@@ -1,11 +1,12 @@
 {-# LANGUAGE RankNTypes #-}
-module Parser () where 
-
-import Text.Parsec
+module Parser where 
+import Text.Parsec (alphaNum, eof, option, (<|>), try, string, char, sepBy, sepBy1, many, Parsec)
+import qualified Text.Parsec as P
 import Text.Parsec.Language
 import qualified Text.Parsec.Token as Token
 import Data.Functor.Identity (Identity)
 import Data.Functor
+import Control.Monad (join)
 import Program
 
 -- -- Input Language
@@ -17,13 +18,13 @@ smallfootStyle =
     javaStyle 
     { Token.commentLine = ""
     , Token.identLetter = alphaNum <|> char '_'
-    , Token.reservedNames = ["NULL", "dispose", "dlseg", "else", "emp", "false",
+    , Token.reservedNames = ["NULL", "nil", "dispose", "dlseg", "else", "emp", "false",
                         "if", "list", "lseg", "local", "new", "resource",
                         "then", "tree", "true", "when", "while", "with",
                         "xlseg"]
     , Token.reservedOpNames = ["==", "!=", "^",
                       "&&", "*", "/", "%", "+", "-", "<", "<=", ">", ">=",
-                      "+","-"]
+                      "+","-", "!", "|->"]
     }
 
 lexer :: Token.GenTokenParser String u Identity
@@ -48,12 +49,12 @@ whitespace = Token.whiteSpace lexer
 
 -- ident    ::= letter alphanum*
 ident :: Parser String
-ident = Token.identifier lexer
+ident = whitespace *> Token.identifier lexer <* whitespace
 -- field    ::= ident
 field :: Parser String
 field = ident
 -- number   ::= digit+
-number :: Parser Int
+number :: Parser Integer
 number = Token.integer lexer
 -- letter   ::= "A"--"Z" | "_" | "a"--"z"
 -- alphanum ::= digit | letter
@@ -74,6 +75,8 @@ reservedOp = Token.reservedOp lexer
 braces :: Parser a -> Parser a
 braces = Token.braces lexer
 
+choice = P.choice . fmap P.try 
+
 -- Grammar
 -- -------
 
@@ -85,7 +88,7 @@ program = do
     whitespace
     (funcs, reses) <- eitherToLists <$> many ((Right <$> resourceDecl) <|> (Left <$> funDecl))
     eof
-    return $ Program fields rses funcs
+    return $ Program fields reses funcs
 
 eitherToLists :: [Either Function Resource] -> ([Function],[Resource])
 eitherToLists = foldr (\x (fs,rs) -> case x of
@@ -104,35 +107,35 @@ resourceDecl = do
     whitespace
     reserved "resource"
     whitespace
-    name <- Id <$> ident
+    name <- ident
     whitespace
     args <- parens identSeq
     whitespace
-    formula <- brackets formula
-    return $ Resource name args formula
+    prop <- brackets prop
+    return $ Resource name args prop
 
-identSeq :: Parser [Identifier]
-identSeq = sepBy (Id <$> ident) (char ',' <* whitespace)
+identSeq :: Parser [String]
+identSeq = sepBy ident (char ',' <* whitespace)
 -- fun_decl      ::= ident "(" formals ")" ("[" formula "]")?
 --                     "{" local_decl* statement* "}" ("[" formula "]")?
 funDecl :: Parser Function
 funDecl = do
     whitespace
-    funcName <- Id <$> ident
+    funcName <- ident
     whitespace
     (refArgs, valArgs) <- parens formals
     whitespace
-    pre <- option (AssertConj [] []) (brackets formula)
+    pre <- option (PropConj PropTrue HeapEmp) (brackets prop)
     whitespace
     (localVars, body) <- braces $ do
         whitespace
-        localVars <- join <$> many localDecl
+        localVars <- Control.Monad.join <$> many localDecl
         whitespace
         statements <- many statement
         return (localVars, statements)
     whitespace
-    post <- option (AssertConj [] []) (brackets formula)
-    return $ Function funcName refArgs valArgs localVars (HoareTriple pre (Block body) post)
+    post <- option (PropConj PropTrue HeapEmp) (brackets prop)
+    return $ Function funcName refArgs valArgs localVars (pre, Block body, post)
 
 
 
@@ -171,7 +174,7 @@ localDecl = do
 --             | ident "(" actuals ")" ";"
 --             | ident "(" actuals ")" "||" ident "(" actuals ")" ";"
 statement :: Parser Command
-statement = choice [assign, assignField, assignFieldExp, allocVar, dispose, statementBlock, ifThenElseStmt, whileStmt, withStmt, callStmt, callOrStmt]
+statement = choice $ try <$> [assign, assignField, assignFieldExp, allocVar, dispose, statementBlock, ifThenElseStmt, whileStmt, withStmt, callStmt, concCallStmt]
 
 assign :: Parser Command
 assign = do
@@ -267,9 +270,9 @@ whileStmt = do
     whitespace
     exp <- parens boolExp
     whitespace
-    inv <- option (PropConj PropTrue HeapEmp) (brackets formula)
+    inv <- option (PropConj PropTrue HeapEmp) (brackets prop)
     whitespace
-    WhileDo exp inv <$> statement
+    While exp inv <$> statement
 
 withStmt :: Parser Command
 withStmt = do
@@ -294,12 +297,29 @@ callStmt = do
     char ';'
     return $ Call (funcName, refArgs, valArgs)
 
+concCallStmt :: Parser Command
+concCallStmt = do
+    whitespace
+    funcName1 <- ident
+    whitespace
+    (refArgs1, valArgs1) <- parens actuals
+    whitespace
+    string "||"
+    whitespace
+    funcName2 <- ident
+    whitespace
+    (refArgs2, valArgs2) <- parens actuals
+    whitespace
+    char ';'
+    return $ ConcurrentCall (funcName1, refArgs1, valArgs1) (funcName2, refArgs2, valArgs2)
+
+
 
 -- actuals      ::= stmt_exp_seq (";" stmt_exp_seq)?
 actuals :: Parser ([VarName], [Expression])
 actuals = do
     whitespace
-    refArgs <- many ident
+    refArgs <- sepBy ident (whitespace >> string "," >> whitespace)
     whitespace
     valArgs <- option [] (char ';' >> stmtExpSeq)
     return (refArgs, valArgs)
@@ -307,23 +327,22 @@ actuals = do
 --             | ident | number | "true" | "false"
 --             | prefix_op stmt_exp | stmt_exp infix_op stmt_exp
 stmtExp :: Parser Expression
-stmtExp = choice [parens stmtExp, 
+stmtExp = whitespace >> choice [xorExp, parens stmtExp, 
             Var <$> ident, 
             Nil <$ reserved "nil",
-            Const <$> number, 
-            xorExp]
+            Const . fromIntegral <$> number]
   where
     xorExp = do
         whitespace
-        exp1 <- stmtExpr
+        exp1 <- stmtExp
         whitespace
         reservedOp "^"
         whitespace
-        Xor exp1 <$> stmtExpr
+        Xor exp1 <$> stmtExp
 
 -- stmt_exp_seq ::= /* empty */ | stmt_exp ("," stmt_exp)*
 stmtExpSeq :: Parser [Expression]
-stmtExpSeq = sepBy stmtExp (char ',')
+stmtExpSeq = sepBy stmtExp (whitespace >> char ',' >> whitespace)
 -- infix_op     ::= "==" | "!=" | "^" | "&&" | "*" | "/" | "%" | "+" | "-" | "<" | "<=" | ">" | ">="
 
 boolExp :: Parser BoolExpression
@@ -348,7 +367,7 @@ boolExp = choice [parens boolExp,
         whitespace
         reservedOp "!="
         whitespace
-        BoolNeq exp1 <$> stmtExp
+        BoolNEq exp1 <$> stmtExp
     boolNot = do
         whitespace
         reservedOp "!"
@@ -394,7 +413,7 @@ prop = choice [parens prop, ifThenElseProp, conjProp]
         propF <- prop
         whitespace
         reserved "end"
-        return PropIfThenElse pProp propT propF
+        return $ PropIfThenElse pProp propT propF
     conjProp = do
         whitespace
         pProp <- pureProp
@@ -417,7 +436,7 @@ pureProp = choice [and, assert, true]
     true = PropTrue <$ (whitespace >> string "true" >> whitespace)
 
 heapProp :: Parser HeapProp
-heapProp = choice [parens heapProp, pointsTo, heapTree, heapLS, heapLst heapXORL, heapSep, heapEmp]
+heapProp = choice [parens heapProp, pointsTo, heapTree, heapLS, heapLst, heapXORL, heapSep, heapEmp]
   where
     pointsTo = do
       whitespace
@@ -469,7 +488,7 @@ heapProp = choice [parens heapProp, pointsTo, heapTree, heapLS, heapLst heapXORL
     heapLst = do
       whitespace
       reserved "list"
-      HeapList <$> parens (whitespace *> stmtExp <* whitespace)
+      HeapListSegment <$> parens (whitespace *> stmtExp <* whitespace) <*> pure Nil
     heapEmp = HeapEmp <$ (whitespace >> reserved "emp" >> whitespace)
 
        
