@@ -1,6 +1,6 @@
 {-# LANGUAGE RankNTypes #-}
 module Parser where 
-import Text.Parsec (alphaNum, eof, option, (<|>), try, string, char, sepBy, sepBy1, many, chainl1, Parsec)
+import Text.Parsec (getInput, many1, alphaNum, eof, option, (<|>), try, string, char, sepBy, lookAhead, sepBy1, many, chainl1, Parsec)
 import qualified Text.Parsec as P
 import Text.Parsec.Language
 import qualified Text.Parsec.Token as Token
@@ -131,17 +131,71 @@ funDecl = do
     whitespace
     pre <- option (PropConj PropTrue HeapEmp) (brackets prop)
     whitespace
+    lookAhead (char '{')
     (localVars, body) <- braces $ do
         whitespace
-        localVars <- Control.Monad.join <$> many localDecl
+        localVars <- join <$> many (lexeme localDecl)
         whitespace
-        statements <- many statement
+        statements <- many (lexeme statement)
         return (localVars, statements)
     whitespace
     post <- option (PropConj PropTrue HeapEmp) (brackets prop)
     return $ Function funcName refArgs valArgs localVars (pre, Block body, post)
 
+blah = 
+    "cas(status,location;original,old,nw) [location==original] { \n\
+    \    local x, y, z; \n\
+    \    if (location == old) { \n\
+	\        location = nw; \n\
+	\        status = 1; \n\
+    \    } else {\n\
+	\        status = 0;\n\
+    \    }\n\
+    \  } [if original==old then location == nw && status==1 else status==0 && location == original ]"
 
+blah' = "local x, y, z; \n\
+    \    if (location == old) { \n\
+	\        location = nw; \n\
+	\        status = 1; \n\
+    \    } else {\n\
+	\        status = 0;\n\
+    \    }\n"
+
+mallocs = "malloc1(i;) \n\
+\ [emp] \n\
+\{ \n\
+\  local n,status,top,next; \n\
+\  status=0; \n\
+\  while(status == 0) [(if status == 0 then emp else i |->)] { \n\
+\    with freelist1 when (true) { \n \
+\ i = TOP; \n\
+ \   } \n\
+ \ \n\
+ \   if(i!=nil) { \n\
+  \    with freelist1 when (true) { \n\
+\ if(TOP == i) { \n\
+\ n = i->tl; \n\
+\} else { \n\
+ \            /*  n = i->tl;   Can't read as don't have permission need emp read rule */ \n\
+\} \n\
+ \     } \n\
+\ \n\
+ \     with freelist1 when (true) { \n\
+\/* Couldn't be bothered to write a DCAS instruction, so hacked a CAS one. */ \n\
+\top = TOP; \n\
+\cas(status,top;top,i,n); \n\
+\if(status==1) { \n\
+ \ next = i->tl; \n\
+\  if(next == n) \n\
+\    TOP = top; \n\
+\  else  \n\
+\    status = 0; \n\
+\} else {}\n\
+ \     } \n\
+  \  } \n\
+ \ else {} } \n\
+\} \n\
+\[i |->]"
 
 -- formals       ::= (ident_seq ";")? ident_seq
 formals :: Parser ([String], [String])
@@ -251,7 +305,7 @@ dispose = do
 statementBlock :: Parser Command
 statementBlock = do
     whitespace
-    statements <- braces (many statement)
+    statements <- braces (many (lexeme statement))
     return . Block $ statements
 
 ifThenElseStmt :: Parser Command
@@ -395,7 +449,7 @@ boolExp = choice [parens boolExp,
 --             | "if" form_exp ("==" | "!=") form_exp "then" formula "else" formula
 
 prop :: Parser Prop
-prop = choice [parens prop, ifThenElseProp, conjProp]
+prop = choice [parens prop, ifThenElseProp, conjProp, pureProp', heapProp']
   where
     ifThenElseProp = do
         whitespace
@@ -411,15 +465,20 @@ prop = choice [parens prop, ifThenElseProp, conjProp]
         whitespace
         propF <- prop
         whitespace
-        reserved "end"
         return $ PropIfThenElse pProp propT propF
     conjProp = do
         whitespace
-        pProp <- pureProp
+        pProp <- option PropTrue pureProp
         whitespace
         string ";"
         whitespace
-        PropConj pProp <$> heapProp
+        PropConj pProp <$> option HeapEmp heapProp
+    pureProp' = do
+        whitespace
+        PropConj <$> pureProp <*> pure HeapEmp
+    heapProp' = do
+        whitespace
+        PropConj PropTrue <$> heapProp
 
 pureProp :: Parser PureProp
 pureProp = chainl1 (choice [assert, true]) and
