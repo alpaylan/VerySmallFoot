@@ -1,12 +1,13 @@
 {-# LANGUAGE RankNTypes #-}
 module Parser where 
-import Text.Parsec (alphaNum, eof, option, (<|>), try, string, char, sepBy, sepBy1, many, Parsec)
+import Text.Parsec (alphaNum, eof, option, (<|>), try, string, char, sepBy, sepBy1, many, chainl1, Parsec)
 import qualified Text.Parsec as P
 import Text.Parsec.Language
 import qualified Text.Parsec.Token as Token
 import Data.Functor.Identity (Identity)
 import Data.Functor
 import Control.Monad (join)
+import Debug.Trace (trace)
 import Program
 
 -- -- Input Language
@@ -76,6 +77,9 @@ braces :: Parser a -> Parser a
 braces = Token.braces lexer
 
 choice = P.choice . fmap P.try 
+
+lexeme :: Parser a -> Parser a
+lexeme = Token.lexeme lexer
 
 -- Grammar
 -- -------
@@ -327,18 +331,13 @@ actuals = do
 --             | ident | number | "true" | "false"
 --             | prefix_op stmt_exp | stmt_exp infix_op stmt_exp
 stmtExp :: Parser Expression
-stmtExp = whitespace >> choice [xorExp, parens stmtExp, 
+stmtExp = chainl1 stmtTerm (lexeme (char '^') $> Xor)
+
+stmtTerm :: Parser Expression
+stmtTerm = whitespace >> choice [parens stmtExp, 
             Var <$> ident, 
             Nil <$ reserved "nil",
             Const . fromIntegral <$> number]
-  where
-    xorExp = do
-        whitespace
-        exp1 <- stmtExp
-        whitespace
-        reservedOp "^"
-        whitespace
-        Xor exp1 <$> stmtExp
 
 -- stmt_exp_seq ::= /* empty */ | stmt_exp ("," stmt_exp)*
 stmtExpSeq :: Parser [Expression]
@@ -423,20 +422,14 @@ prop = choice [parens prop, ifThenElseProp, conjProp]
         PropConj pProp <$> heapProp
 
 pureProp :: Parser PureProp
-pureProp = choice [and, assert, true]
+pureProp = chainl1 (choice [assert, true]) and
   where
-    and = do
-      whitespace
-      pure1 <- pureProp
-      whitespace
-      string "&&"
-      whitespace
-      PropAnd pure1 <$> pureProp
+    and = lexeme (reservedOp "&&") $> PropAnd
     assert = PropAssert <$> boolExp
     true = PropTrue <$ (whitespace >> string "true" >> whitespace)
 
 heapProp :: Parser HeapProp
-heapProp = choice [parens heapProp, pointsTo, heapTree, heapLS, heapLst, heapXORL, heapSep, heapEmp]
+heapProp = chainl1 (choice [parens heapProp, pointsTo, heapTree, heapLS, heapLst, heapXORL, heapEmp]) heapSep
   where
     pointsTo = do
       whitespace
@@ -478,13 +471,7 @@ heapProp = choice [parens heapProp, pointsTo, heapTree, heapLS, heapLst, heapXOR
       string ")"
       whitespace
       HeapXORList e1 e2 e3 <$> stmtExp
-    heapSep = do
-      whitespace
-      h1 <- heapProp
-      whitespace
-      reservedOp "*"
-      whitespace
-      HeapSep h1 <$> heapProp
+    heapSep = lexeme (reservedOp "*") $> HeapSep
     heapLst = do
       whitespace
       reserved "list"
