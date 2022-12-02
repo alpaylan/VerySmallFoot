@@ -29,6 +29,7 @@ library
       Lib
       Parser
       Program
+      SymbolicExecution
       VariableConditions
       VCGen
   other-modules:
