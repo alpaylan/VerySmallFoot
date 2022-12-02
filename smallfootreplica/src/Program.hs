@@ -45,7 +45,7 @@ data Expression
   | Nil
   | Const Integer
   | Xor Expression Expression
-  deriving Show
+  deriving (Show, Eq)
 
 data Resource = Resource ResName [VarName] Invariant 
     deriving Show
