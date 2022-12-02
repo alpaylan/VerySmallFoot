@@ -29,6 +29,7 @@ data Command
   | Call ActualArgs
   | ConcurrentCall ActualArgs ActualArgs
   | WithRes ResName BoolExpression Command
+  deriving Show
 
 type ActualArgs = (FunName, [VarName], [Expression])
 
@@ -37,15 +38,20 @@ data BoolExpression
   | BoolNEq Expression Expression
   | BoolNot BoolExpression
   | BoolTrue
+  deriving Show
 
 data Expression
   = Var VarName
   | Nil
   | Const Integer
   | Xor Expression Expression
+  deriving Show
 
-data Resource = Resource ResName [VarName] Invariant
+data Resource = Resource ResName [VarName] Invariant 
+    deriving Show
+
 data Function = Function FunName [VarName] [VarName] [VarName] HoareTriple
+    deriving Show
 -- name, pass-by-ref args, pass-by-value args, local vars, body
 
 
@@ -57,15 +63,17 @@ data HeapProp
   | HeapXORList Expression Expression Expression Expression
   | HeapSep HeapProp HeapProp
   | HeapEmp
-
+  deriving Show
 data PureProp
   = PropAssert BoolExpression
   | PropAnd PureProp PureProp
   | PropTrue
+  deriving Show
 
 data Prop
   = PropIfThenElse PureProp Prop Prop
   | PropConj PureProp HeapProp
+  deriving Show
 
 extendPropAnd :: Prop -> BoolExpression -> Prop
 extendPropAnd (PropIfThenElse pp pt pf) be = PropIfThenElse pp (extendPropAnd pt be) (extendPropAnd pf be)
@@ -81,6 +89,7 @@ propSepConj (PropIfThenElse pp pt pf) p = PropIfThenElse pp (propSepConj pt p) (
 propSepConj p (PropIfThenElse pp pt pf) = PropIfThenElse pp (propSepConj pt p) (propSepConj pf p)
 
 data Program = Program [FieldName] [Resource] [Function]
+    deriving Show
 
 type HoareTriple = (Precondition, Command, Postcondition)
 

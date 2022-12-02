@@ -1,11 +1,13 @@
 {-# LANGUAGE RankNTypes #-}
-module Parser () where 
-
-import Text.Parsec
+module Parser where 
+import Text.Parsec (getInput, many1, alphaNum, eof, option, (<|>), try, string, char, sepBy, lookAhead, sepBy1, many, chainl1, Parsec)
+import qualified Text.Parsec as P
 import Text.Parsec.Language
 import qualified Text.Parsec.Token as Token
 import Data.Functor.Identity (Identity)
 import Data.Functor
+import Control.Monad (join)
+import Debug.Trace (trace)
 import Program
 
 -- -- Input Language
@@ -17,13 +19,13 @@ smallfootStyle =
     javaStyle 
     { Token.commentLine = ""
     , Token.identLetter = alphaNum <|> char '_'
-    , Token.reservedNames = ["NULL", "dispose", "dlseg", "else", "emp", "false",
+    , Token.reservedNames = ["NULL", "nil", "dispose", "dlseg", "else", "emp", "false",
                         "if", "list", "lseg", "local", "new", "resource",
                         "then", "tree", "true", "when", "while", "with",
                         "xlseg"]
     , Token.reservedOpNames = ["==", "!=", "^",
                       "&&", "*", "/", "%", "+", "-", "<", "<=", ">", ">=",
-                      "+","-"]
+                      "+","-", "!", "|->"]
     }
 
 lexer :: Token.GenTokenParser String u Identity
@@ -48,12 +50,12 @@ whitespace = Token.whiteSpace lexer
 
 -- ident    ::= letter alphanum*
 ident :: Parser String
-ident = Token.identifier lexer
+ident = whitespace *> Token.identifier lexer <* whitespace
 -- field    ::= ident
 field :: Parser String
 field = ident
 -- number   ::= digit+
-number :: Parser Int
+number :: Parser Integer
 number = Token.integer lexer
 -- letter   ::= "A"--"Z" | "_" | "a"--"z"
 -- alphanum ::= digit | letter
@@ -74,6 +76,11 @@ reservedOp = Token.reservedOp lexer
 braces :: Parser a -> Parser a
 braces = Token.braces lexer
 
+choice = P.choice . fmap P.try 
+
+lexeme :: Parser a -> Parser a
+lexeme = Token.lexeme lexer
+
 -- Grammar
 -- -------
 
@@ -83,9 +90,9 @@ program = do
     whitespace
     fields <- option [] (fieldSeq <* char ';')
     whitespace
-    (funcs, reses) <- eitherToLists <$> many ((Right <$> resourceDecl) <|> (Left <$> funDecl))
+    (funcs, reses) <- eitherToLists <$> many ((Right <$> lexeme resourceDecl) <|> (Left <$> lexeme funDecl))
     eof
-    return $ Program fields rses funcs
+    return $ Program fields reses funcs
 
 eitherToLists :: [Either Function Resource] -> ([Function],[Resource])
 eitherToLists = foldr (\x (fs,rs) -> case x of
@@ -104,43 +111,97 @@ resourceDecl = do
     whitespace
     reserved "resource"
     whitespace
-    name <- Id <$> ident
+    name <- ident
     whitespace
     args <- parens identSeq
     whitespace
-    formula <- brackets formula
-    return $ Resource name args formula
+    prop <- brackets prop
+    return $ Resource name args prop
 
-identSeq :: Parser [Identifier]
-identSeq = sepBy (Id <$> ident) (char ',' <* whitespace)
+identSeq :: Parser [String]
+identSeq = sepBy ident (char ',' <* whitespace)
 -- fun_decl      ::= ident "(" formals ")" ("[" formula "]")?
 --                     "{" local_decl* statement* "}" ("[" formula "]")?
 funDecl :: Parser Function
 funDecl = do
     whitespace
-    funcName <- Id <$> ident
+    funcName <- ident
     whitespace
     (refArgs, valArgs) <- parens formals
     whitespace
-    pre <- option (AssertConj [] []) (brackets formula)
+    pre <- option (PropConj PropTrue HeapEmp) (brackets prop)
     whitespace
+    lookAhead (char '{')
     (localVars, body) <- braces $ do
         whitespace
-        localVars <- join <$> many localDecl
+        localVars <- join <$> many (lexeme localDecl)
         whitespace
-        statements <- many statement
+        statements <- many (lexeme statement)
         return (localVars, statements)
     whitespace
-    post <- option (AssertConj [] []) (brackets formula)
-    return $ Function funcName refArgs valArgs localVars (HoareTriple pre (Block body) post)
+    post <- option (PropConj PropTrue HeapEmp) (brackets prop)
+    return $ Function funcName refArgs valArgs localVars (pre, Block body, post)
 
+blah = 
+    "cas(status,location;original,old,nw) [location==original] { \n\
+    \    local x, y, z; \n\
+    \    if (location == old) { \n\
+	\        location = nw; \n\
+	\        status = 1; \n\
+    \    } else {\n\
+	\        status = 0;\n\
+    \    }\n\
+    \  } [if original==old then location == nw && status==1 else status==0 && location == original ]"
 
+blah' = "local x, y, z; \n\
+    \    if (location == old) { \n\
+	\        location = nw; \n\
+	\        status = 1; \n\
+    \    } else {\n\
+	\        status = 0;\n\
+    \    }\n"
+
+mallocs = "malloc1(i;) \n\
+\ [emp] \n\
+\{ \n\
+\  local n,status,top,next; \n\
+\  status=0; \n\
+\  while(status == 0) [(if status == 0 then emp else i |->)] { \n\
+\    with freelist1 when (true) { \n \
+\ i = TOP; \n\
+ \   } \n\
+ \ \n\
+ \   if(i!=nil) { \n\
+  \    with freelist1 when (true) { \n\
+\ if(TOP == i) { \n\
+\ n = i->tl; \n\
+\} else { \n\
+ \            /*  n = i->tl;   Can't read as don't have permission need emp read rule */ \n\
+\} \n\
+ \     } \n\
+\ \n\
+ \     with freelist1 when (true) { \n\
+\/* Couldn't be bothered to write a DCAS instruction, so hacked a CAS one. */ \n\
+\top = TOP; \n\
+\cas(status,top;top,i,n); \n\
+\if(status==1) { \n\
+ \ next = i->tl; \n\
+\  if(next == n) \n\
+\    TOP = top; \n\
+\  else  \n\
+\    status = 0; \n\
+\} \n\
+ \     } \n\
+  \  } \n\
+ \ } \n\
+\} \n\
+\[i |->]"
 
 -- formals       ::= (ident_seq ";")? ident_seq
 formals :: Parser ([String], [String])
 formals = do
     whitespace
-    refArgs <- option [] (identSeq <* char ';')
+    refArgs <- option [] (try (identSeq <* char ';'))
     whitespace
     valArgs <- identSeq
     return (refArgs, valArgs)
@@ -171,7 +232,7 @@ localDecl = do
 --             | ident "(" actuals ")" ";"
 --             | ident "(" actuals ")" "||" ident "(" actuals ")" ";"
 statement :: Parser Command
-statement = choice [assign, assignField, assignFieldExp, allocVar, dispose, statementBlock, ifThenElseStmt, whileStmt, withStmt, callStmt, callOrStmt]
+statement = choice $ try <$> [assign, assignField, assignFieldExp, allocVar, dispose, statementBlock, ifThenElseStmt, whileStmt, withStmt, callStmt, concCallStmt]
 
 assign :: Parser Command
 assign = do
@@ -244,7 +305,7 @@ dispose = do
 statementBlock :: Parser Command
 statementBlock = do
     whitespace
-    statements <- braces (many statement)
+    statements <- braces (many (lexeme statement))
     return . Block $ statements
 
 ifThenElseStmt :: Parser Command
@@ -256,9 +317,9 @@ ifThenElseStmt = do
     whitespace
     thenStmt <- statement
     whitespace
-    reserved "else"
+    elseStmt <- option (Block []) (lexeme (reserved "else") >> statement)
     whitespace
-    IfThenElse exp thenStmt <$> statement
+    return $ IfThenElse exp thenStmt elseStmt
 
 whileStmt :: Parser Command
 whileStmt = do
@@ -267,9 +328,9 @@ whileStmt = do
     whitespace
     exp <- parens boolExp
     whitespace
-    inv <- option (PropConj PropTrue HeapEmp) (brackets formula)
+    inv <- option (PropConj PropTrue HeapEmp) (brackets prop)
     whitespace
-    WhileDo exp inv <$> statement
+    While exp inv <$> statement
 
 withStmt :: Parser Command
 withStmt = do
@@ -294,12 +355,29 @@ callStmt = do
     char ';'
     return $ Call (funcName, refArgs, valArgs)
 
+concCallStmt :: Parser Command
+concCallStmt = do
+    whitespace
+    funcName1 <- ident
+    whitespace
+    (refArgs1, valArgs1) <- parens actuals
+    whitespace
+    string "||"
+    whitespace
+    funcName2 <- ident
+    whitespace
+    (refArgs2, valArgs2) <- parens actuals
+    whitespace
+    char ';'
+    return $ ConcurrentCall (funcName1, refArgs1, valArgs1) (funcName2, refArgs2, valArgs2)
+
+
 
 -- actuals      ::= stmt_exp_seq (";" stmt_exp_seq)?
 actuals :: Parser ([VarName], [Expression])
 actuals = do
     whitespace
-    refArgs <- many ident
+    refArgs <- sepBy ident (whitespace >> string "," >> whitespace)
     whitespace
     valArgs <- option [] (char ';' >> stmtExpSeq)
     return (refArgs, valArgs)
@@ -307,23 +385,17 @@ actuals = do
 --             | ident | number | "true" | "false"
 --             | prefix_op stmt_exp | stmt_exp infix_op stmt_exp
 stmtExp :: Parser Expression
-stmtExp = choice [parens stmtExp, 
+stmtExp = chainl1 stmtTerm (lexeme (char '^') $> Xor)
+
+stmtTerm :: Parser Expression
+stmtTerm = whitespace >> choice [parens stmtExp, 
             Var <$> ident, 
-            Nil <$ reserved "nil",
-            Const <$> number, 
-            xorExp]
-  where
-    xorExp = do
-        whitespace
-        exp1 <- stmtExpr
-        whitespace
-        reservedOp "^"
-        whitespace
-        Xor exp1 <$> stmtExpr
+            Nil <$ reserved "NULL",
+            Const . fromIntegral <$> number]
 
 -- stmt_exp_seq ::= /* empty */ | stmt_exp ("," stmt_exp)*
 stmtExpSeq :: Parser [Expression]
-stmtExpSeq = sepBy stmtExp (char ',')
+stmtExpSeq = sepBy stmtExp (whitespace >> char ',' >> whitespace)
 -- infix_op     ::= "==" | "!=" | "^" | "&&" | "*" | "/" | "%" | "+" | "-" | "<" | "<=" | ">" | ">="
 
 boolExp :: Parser BoolExpression
@@ -348,7 +420,7 @@ boolExp = choice [parens boolExp,
         whitespace
         reservedOp "!="
         whitespace
-        BoolNeq exp1 <$> stmtExp
+        BoolNEq exp1 <$> stmtExp
     boolNot = do
         whitespace
         reservedOp "!"
@@ -375,93 +447,100 @@ boolExp = choice [parens boolExp,
 --                 form_exp "," form_exp "," form_exp "," form_exp ")"
 --             | "tree" "(" (field ";" field ";")? form_exp ")"
 --             | "if" form_exp ("==" | "!=") form_exp "then" formula "else" formula
-formula :: Parser Assertion
-formula = choice [parens formula, reserved "false" $> SingleBooleanPredicate BooleanFalse, equalityFormula, inequalityFormula, empFormula, sepConjunctionFormula, heapFormula, listFormula, lsegFormula, dlsegFormula, treeFormula, ifThenElseFormula]
+
+prop :: Parser Prop
+prop = choice [parens prop, ifThenElseProp, conjProp, pureProp', heapProp']
   where
-    equalityFormula = do
-        whitespace
-        exp1 <- formExp
-        whitespace
-        reservedOp "=="
-        whitespace
-        exp2 <- formExp
-        return . SingleBooleanPredicate . Conjunction $ [BoolEquals exp1 exp2]
-    inequalityFormula = do
-        whitespace
-        exp1 <- formExp
-        whitespace
-        reservedOp "!="
-        whitespace
-        exp2 <- formExp
-        return . SingleBooleanPredicate . Conjunction $ [BoolNotEquals exp1 exp2]
-    empFormula = reserved "emp" $> SingleHeapPredicate Emp
-    sepConjunctionFormula = do
-        whitespace
-        exp1 <- formula
-        whitespace
-        reservedOp "*"
-        whitespace
-        exp2 <- formula
-        return . SingleHeapPredicate . SeparatingConjunction $ [SingleHeapPredicate exp1, exp2] 
-    heapFormula = do
-        whitespace
-        exp <- formExp
-        whitespace
-        string "|->" 
-        whitespace
-        heap <- many fieldColonExp
-        return . SingleHeapPredicate . SinglePredicate $ PointsToHeap exp (Heap heap)
-    fieldColonExp = do
-        whitespace
-        field <- Id <$> ident
-        whitespace
-        char ':'
-        whitespace
-        HeapRecord field <$> formExp
-    listFormula = do
-        whitespace
-        reserved "list"
-        whitespace
-        (field, exp) <- parens (option (Id "next", Null) (formExp `sepBy` char ';'))
-        return $ ListPredicate field exp
-    lsegFormula = do
-        whitespace
-        reserved "lseg"
-        whitespace
-        (field, exp1, exp2) <- parens (option (Id "next", Null, Null) (formExp `sepBy` char ';'))
-        return $ LsegPredicate field exp1 exp2
-    dlsegFormula = do
-        whitespace
-        reserved "dlseg"
-        whitespace
-        (field1, field2, exp1, exp2, exp3) <- parens (option (Id "next", Id "prev", Null, Null, Null) (formExp `sepBy` char ';'))
-        return $ DlsegPredicate field1 field2 exp1 exp2 exp3
-    treeFormula = do
-        whitespace
-        reserved "tree"
-        whitespace
-        (field1, field2, exp) <- parens (option (Id "left", Id "right", Null) (formExp `sepBy` char ';'))
-        return $ TreePredicate field1 field2 exp
-    ifThenElseFormula = do
+    ifThenElseProp = do
         whitespace
         reserved "if"
--- form_exp ::= "(" form_exp ")" | ident | number | form_exp "^" form_exp
-formExp :: Parser Expression
-formExp = choice [parens formExp, Variable . Id <$> ident, numberFormExp, prefixOpFormExp, infixOpFormExp]
+        whitespace
+        pProp <- pureProp 
+        whitespace
+        reserved "then"
+        whitespace
+        propT <- prop
+        whitespace
+        reserved "else"
+        whitespace
+        propF <- prop
+        whitespace
+        return $ PropIfThenElse pProp propT propF
+    conjProp = do
+        whitespace
+        pProp <- option PropTrue pureProp
+        whitespace
+        string ";"
+        whitespace
+        PropConj pProp <$> option HeapEmp heapProp
+    pureProp' = do
+        whitespace
+        PropConj <$> pureProp <*> pure HeapEmp
+    heapProp' = do
+        whitespace
+        PropConj PropTrue <$> heapProp
+
+pureProp :: Parser PureProp
+pureProp = chainl1 (choice [assert, true]) and
   where
-    numberFormExp = NumConst <$> number
-    prefixOpFormExp = do
-        whitespace
-        op <- prefixOp
-        whitespace
-        PrefixOp op <$> formExp
-    infixOpFormExp = do
-        whitespace
-        exp1 <- formExp
-        whitespace
-        op <- infixOp
-        whitespace
-        InfixOp op exp1 <$> formExp
+    and = lexeme (reservedOp "&&") $> PropAnd
+    assert = PropAssert <$> boolExp
+    true = PropTrue <$ (whitespace >> string "true" >> whitespace)
+
+heapProp :: Parser HeapProp
+heapProp = chainl1 (choice [parens heapProp, pointsTo, heapTree, heapLS, heapLst, heapXORL, heapEmp]) heapSep
+  where
+    pointsTo = do
+      whitespace
+      recd <- stmtExp
+      whitespace
+      string "|->"
+      whitespace
+      PointsTo recd <$> sepBy fieldExp (char ',')
+    fieldExp = do
+      whitespace
+      field <- ident
+      whitespace
+      string ":"
+      whitespace
+      exp <- stmtExp
+      return (field, exp)
+    heapTree = do
+      whitespace
+      reserved "tree"
+      whitespace
+      HeapTree <$> stmtExp
+    heapLS = do
+      whitespace
+      reserved "lseg"
+      lexeme (char '(') $> ()
+      start <- stmtExp
+      whitespace
+      lexeme (string ",") $> ()
+      HeapListSegment start <$> (stmtExp <* (whitespace >> lexeme (char ')')))
+    heapXORL = do
+      whitespace
+      reserved "xlseg"
+      string "("
+      whitespace
+      e1 <- stmtExp <* (whitespace >> lexeme (string ","))
+      whitespace
+      e2 <- stmtExp <* (whitespace >> lexeme (string ","))
+      whitespace
+      e3 <- stmtExp
+      string ")"
+      whitespace
+      HeapXORList e1 e2 e3 <$> stmtExp
+    heapSep = lexeme (reservedOp "*") $> HeapSep
+    heapLst = do
+      whitespace
+      reserved "list"
+      HeapListSegment <$> parens (whitespace *> stmtExp <* whitespace) <*> pure Nil
+    heapEmp = HeapEmp <$ (whitespace >> reserved "emp" >> whitespace)
+
+       
+-- form_exp ::= "(" form_exp ")" | ident | number | form_exp "^" form_exp
+
 --     Here, unlike in the related papers, formulae are not composed of
 --     distinct boolean (pure) and heap (spatial) parts.  Instead "E==F"
 --     and "E!=F" are only satisfied by the empty heap, like "emp", and

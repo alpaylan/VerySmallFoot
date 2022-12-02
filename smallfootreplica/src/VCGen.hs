@@ -1,6 +1,7 @@
-module VCGen (chop) where
+module VCGen (chop, FreshVars) where
 
 import Control.Monad.State
+    ( MonadState(put, get), evalState, State )
 
 import Data.Set (Set)
 import qualified Data.Set as Set

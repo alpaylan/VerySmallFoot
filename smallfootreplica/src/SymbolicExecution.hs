@@ -9,7 +9,7 @@ import Data.Map.Strict (Map)
 import qualified Data.Map.Strict as Map
 
 import Program
-import VCGen
+import VCGen (FreshVars)
 import VariableConditions
 
 type HeapFields = [(FieldName, Expression)]

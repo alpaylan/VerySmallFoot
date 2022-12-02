@@ -29,6 +29,7 @@ library
       Lib
       Parser
       Program
+      SymbolicExecution
       VariableConditions
       VCGen
   other-modules:
@@ -40,6 +41,7 @@ library
       base >=4.7 && <5
     , containers
     , mtl
+    , parsec
   default-language: Haskell2010
 
 executable smallfootreplica-exe
@@ -53,6 +55,7 @@ executable smallfootreplica-exe
       base >=4.7 && <5
     , containers
     , mtl
+    , parsec
     , smallfootreplica
   default-language: Haskell2010
 
@@ -70,5 +73,6 @@ test-suite smallfootreplica-test
     , base >=4.7 && <5
     , containers
     , mtl
+    , parsec
     , smallfootreplica
   default-language: Haskell2010
