@@ -1,5 +1,5 @@
 {-# LANGUAGE RankNTypes #-}
-module Parser where 
+module Parser (parseFunction, parseProgram, parseResource, parseFunctionFile, parseProgramFile, parseResourceFile) where 
 import Text.Parsec (getInput, many1, alphaNum, eof, option, (<|>), try, string, char, sepBy, lookAhead, sepBy1, many, chainl1, Parsec)
 import qualified Text.Parsec as P
 import Text.Parsec.Language
@@ -9,6 +9,33 @@ import Data.Functor
 import Control.Monad (join)
 import Debug.Trace (trace)
 import Program
+
+
+-- -- Interface
+-- -- =========
+
+parseFromFile :: Parser a -> FilePath -> IO (Either P.ParseError a)
+parseFromFile p fname = do
+    input <- readFile fname
+    return (P.parse p fname input)
+
+parseFunction :: String -> Either P.ParseError Function
+parseFunction = P.parse funDecl ""
+
+parseProgram :: String -> Either P.ParseError Program
+parseProgram = P.parse program ""
+
+parseResource :: String -> Either P.ParseError Resource
+parseResource = P.parse resourceDecl ""
+
+parseFunctionFile :: FilePath -> IO (Either P.ParseError Function)
+parseFunctionFile = parseFromFile funDecl
+
+parseProgramFile :: FilePath -> IO (Either P.ParseError Program)
+parseProgramFile = parseFromFile program
+
+parseResourceFile :: FilePath -> IO (Either P.ParseError Resource)
+parseResourceFile = parseFromFile resourceDecl
 
 -- -- Input Language
 -- -- ==============
