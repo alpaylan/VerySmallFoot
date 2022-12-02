@@ -516,7 +516,7 @@ heapProp = chainl1 (choice [parens heapProp, pointsTo, heapTree, heapLS, heapLst
       lexeme (char '(') $> ()
       start <- stmtExp
       whitespace
-      lexeme (string ",")
+      lexeme (string ",") $> ()
       HeapListSegment start <$> (stmtExp <* (whitespace >> lexeme (char ')')))
     heapXORL = do
       whitespace
