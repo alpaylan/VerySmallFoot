@@ -1,7 +1,7 @@
 {-# LANGUAGE LambdaCase #-}
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 {-# HLINT ignore "Redundant if" #-}
-module SymbolicExecution () where
+module SymbolicExecution (Entailment) where
 
 import Control.Monad.State
 
@@ -19,6 +19,9 @@ import Data.Maybe (isJust, fromJust)
 import Program
 import VCGen
 import VariableConditions
+
+import Oracle
+
 
 type HeapFields = [(FieldName, Expression)]
 
@@ -217,7 +220,6 @@ applyRearRule' p e = undefined
 
 
 
-data Entailment = Entailment Prop Prop
 data Premise = 
     SymTriple SymbolicHoareTriple 
     | Ent Entailment
@@ -228,9 +230,6 @@ data Premise =
 
 incon :: Prop -> Bool
 incon p = oracle (Entailment p (PropConj (PropAssert (BoolNEq Nil Nil)) HeapEmp))
-
-oracle :: Entailment -> Bool
-oracle = undefined
 
 allocd :: Prop -> Expression -> Bool
 allocd p e =
