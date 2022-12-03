@@ -1,4 +1,4 @@
-module VCGen (chop, FreshVars) where
+module VCGen (chop, fvs, fresh, FreshVars, SymbolicHoareTriple, SCommand(..)) where
 
 import Control.Monad.State
     ( MonadState(put, get), evalState, State )
