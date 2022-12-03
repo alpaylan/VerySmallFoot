@@ -5,4 +5,7 @@ import Parser
 
 
 main :: IO ()
-main = Parser.parseProgramFile "test/business1.sf" >>= print
+main = do
+    program <-Parser.parseProgramFile "test/business1.sf" 
+    print program
+    
