@@ -137,15 +137,9 @@ opRuleApplicable (p, SBlock (x: xs), q) = opRuleApplicable (p, x, q)
 opRuleApplicable (_, SAssign {}, _) = True
 opRuleApplicable (_, SNew {}, _) = True
 opRuleApplicable (_, SIfThenElse {}, _) = True
-opRuleApplicable (p, SHeapLookup _ e _, _) = 
-    let (rho, p') = p `findAndRemoveEPointsToRho` e in
-    isJust rho
-opRuleApplicable (p, SHeapAssign e _ _, _) = 
-    let (rho, p') = p `findAndRemoveEPointsToRho` e in
-    isJust rho
-opRuleApplicable (p, SDispose e, _) = 
-    let (rho, p') = p `findAndRemoveEPointsToRho` e in
-    isJust rho
+opRuleApplicable (p, SHeapLookup _ e _, _) = isJust . fst $ p `findAndRemoveEPointsToRho` e 
+opRuleApplicable (p, SHeapAssign e _ _, _) = isJust . fst $ p `findAndRemoveEPointsToRho` e 
+opRuleApplicable (p, SDispose e, _) = isJust . fst $ p `findAndRemoveEPointsToRho` e 
 opRuleApplicable _ = False
 
 applyOpRule :: SymbolicHoareTriple -> OperationalRuleApplication
@@ -154,34 +148,34 @@ applyOpRule triple = evalState (applyOpRule' triple) (fvs "_op")
         applyOpRule' :: SymbolicHoareTriple -> FreshVars OperationalRuleApplication
         applyOpRule' (p, SBlock [], q) = 
             return $ OpRuleEmpty (Ent (Entailment p q))
-        applyOpRule' (p, SBlock ((SAssign x e): xs), q) = do
+        applyOpRule' (p, SBlock (SAssign x e: xs), q) = do
             x' <- fresh
             let p' = subst [(x, x')] p `extendPropAnd` BoolEq (Var x) (subst [(x, x')] e) ;
             return $ OpRuleExpression (SymTriple (p', SBlock xs, q))
-        applyOpRule' (p, SBlock ((SNew x): xs), q) = do
+        applyOpRule' (p, SBlock (SNew x: xs), q) = do
             x' <- fresh
             let p' = subst [(x, x')] p `extendPropSep` PointsTo (Var x) []
             return $ OpRuleExpression (SymTriple (p', SBlock xs, q))
-        applyOpRule' (p, SBlock ((SIfThenElse b c c'): xs), q) =
+        applyOpRule' (p, SBlock (SIfThenElse b c c': xs), q) =
             let (p1, p2) = (p `extendPropAnd` b, p `extendPropAnd` BoolNot b) in
             let (q1, q2) = (q, q) in
             let (c1, c2) = (c, c') in
             let (xs1, xs2) = (xs, xs) in
             return $ OpRuleConditional (SymTriple (p1, SBlock (c1: xs1), q1)) (SymTriple (p2, SBlock (c2: xs2), q2))
-        applyOpRule' (p, SBlock ((SHeapLookup x e f): xs), q) = do
+        applyOpRule' (p, SBlock (SHeapLookup x e f: xs), q) = do
             x' <- fresh
             let (rho, p') = p `findAndRemoveEPointsToRho` e 
             let justRho = fromJust rho
             let (rho', e') = SymbolicExecution.lookup justRho f 
-            let p'' = ([(x, x')] `subst` (p' `extendPropSep` PointsTo e' rho')) `extendPropAnd` (BoolEq (Var x) ([(x, x')] `subst` e'))
+            let p'' = ([(x, x')] `subst` (p' `extendPropSep` PointsTo e' rho')) `extendPropAnd` BoolEq (Var x) ([(x, x')] `subst` e')
             return $ OpRuleExpression (SymTriple (p'', SBlock xs, q))
-        applyOpRule' (p, SBlock ((SHeapAssign e f e'): xs), q) =
+        applyOpRule' (p, SBlock (SHeapAssign e f e' : xs), q) =
             let (rho, p') = p `findAndRemoveEPointsToRho` e in
             let justRho = fromJust rho in
             let rho' = mutate justRho f e' in
             let p'' = p' `extendPropSep` PointsTo e rho' in
             return $ OpRuleExpression (SymTriple (p'', SBlock xs, q))
-        applyOpRule' (p, SBlock ((SDispose e): xs), q) =
+        applyOpRule' (p, SBlock (SDispose e: xs), q) =
             let (rho, p') = p `findAndRemoveEPointsToRho` e in
             return $ OpRuleExpression (SymTriple (p', SBlock xs, q))
         applyOpRule' (p, SJump {}, q) = error "applyOpRule': SJump not implemented"
@@ -195,6 +189,11 @@ data RearrangementRuleApplication
     = Switch Premise
     | UnrollTree Premise
     | UnrollListSegment Premise
+
+getPremise :: RearrangementRuleApplication -> Premise
+getPremise (Switch p) = p
+getPremise (UnrollTree p) = p
+getPremise (UnrollListSegment p) = p
 
 gBeginsWithAofE :: SymbolicHoareTriple -> Bool
 gBeginsWithAofE (_, SHeapLookup {}, _) = True
@@ -257,18 +256,12 @@ check (SymTriple g)
             OpRuleExpression p -> check p
             OpRuleConditional p1 p2 -> check p1 && check p2
     -- Else if g begins with A(E)
-    | gBeginsWithAofE g =
+    | gBeginsWithAofE g && rearRuleApplicable g =
+        check . getPremise . applyRearRule $ g
+    | otherwise = 
         let e = getAofE g in
-        if rearRuleApplicable g then
-            let premise = applyRearRule g in
-            case premise of
-                Switch p -> check p
-                UnrollTree p -> check p
-                UnrollListSegment p -> check p
+        allocd (pre g) e && foldr ((&&) . check) True (exor g e)
     -- elseif allocd(pre(g), E)
-        else if allocd (pre g) e then 
-            foldr ((&&) . check) True (exor g e)
-        else False
 check (Ent entailment) = oracle entailment
 
 exor :: SymbolicHoareTriple -> Expression -> Set Premise
