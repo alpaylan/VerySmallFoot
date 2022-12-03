@@ -6,15 +6,8 @@ import VCGen
 import SymbolicExecution
 
 main :: IO ()
-main = do
-    program <- Parser.parseProgramFile "test/business1.sf" 
-    case program of
-        Left err -> print err
-        Right p ->
-            let symbolicProgram = concat $ generateSymbolicProgram p in
-            let verificationResults = map (\p -> SymbolicExecution.check (SymTriple p)) symbolicProgram in
-            print verificationResults
-            
-    -- let symbolicProgram = VCGen.generateSymbolicProgram program
-    -- print symbolicProgram
+main = parseProgramFile "test/business1.sf" >>= either print (print . checkProgram)
+    where checkProgram = map (check . SymTriple) . concat . generateSymbolicProgram
+
+
     
