@@ -13,6 +13,9 @@ import qualified Data.Map.Strict as Map
 
 import Data.List (find, partition)
 
+import Data.Maybe (isJust)
+
+
 import Program
 import VCGen
 import VariableConditions
@@ -88,14 +91,14 @@ eagerPartition ls f =
 
 
 
-findAndRemoveEPointsToRho :: Prop -> Expression -> (HeapFields, Prop)
-findAndRemoveEPointsToRho (PropIfThenElse _ _ _) _ = error "findAndRemoveEPointsToRho: if-then-else"
+findAndRemoveEPointsToRho :: Prop -> Expression -> (Maybe HeapFields, Prop)
+findAndRemoveEPointsToRho (PropIfThenElse b c1 c2) _ = (Nothing, PropIfThenElse b c1 c2)
 findAndRemoveEPointsToRho (PropConj pureProp heapProp) e =
     let flatProp = flat heapProp in
     let (ePointsToRho, prop) = eagerPartition flatProp (\case PointsTo e' _ -> e == e'; _ -> False) in
     case ePointsToRho of
-        Nothing -> error "findAndRemoveEPointsToRho: no rho found"
-        Just (PointsTo _ rho) -> (rho, PropConj pureProp (tree prop))
+        Nothing -> (Nothing, PropConj pureProp heapProp)
+        Just (PointsTo _ rho) -> (Just rho, PropConj pureProp (tree prop))
         _ -> error "findAndRemoveEPointsToRho: impossible"
     where
         flat :: HeapProp -> [HeapProp]
@@ -116,10 +119,45 @@ data OperationalRuleApplication
 
 
 opRuleApplicable :: SymbolicHoareTriple -> Bool
+opRuleApplicable (p, SBlock [], q) = True
+opRuleApplicable (p, SBlock (x: xs), q) = opRuleApplicable (p, x, q)
+opRuleApplicable (_, SAssign {}, _) = True
+opRuleApplicable (_, SNew {}, _) = True
+opRuleApplicable (_, SIfThenElse {}, _) = True
+opRuleApplicable (p, SHeapLookup _ e _, _) = 
+    let (rho, p') = p `findAndRemoveEPointsToRho` e in
+    isJust rho
+opRuleApplicable (p, SHeapAssign e _ _, _) = 
+    let (rho, p') = p `findAndRemoveEPointsToRho` e in
+    isJust rho
+opRuleApplicable (p, SDispose e, _) = 
+    let (rho, p') = p `findAndRemoveEPointsToRho` e in
+    isJust rho
 opRuleApplicable _ = False
 
+
 applyOpRule :: SymbolicHoareTriple -> OperationalRuleApplication
-applyOpRule _ = undefined
+applyOpRule (p, SBlock [], q) = OpRuleEmpty (Ent (Entailment p q))
+applyOpRule (p, SBlock ((SAssign x e): xs), q) = undefined
+applyOpRule (p, SBlock ((SNew x): xs), q) = do
+    x' <- fresh
+    let p' = (subst [(x, x')] p) `extendPropSep` PointsTo (Var x) [] in
+    return $ OpRuleExpression (SymTriple (p', SBlock xs, q))
+applyOpRule (p, SBlock ((SIfThenElse b c c'): xs), q) =
+    let (p1, p2) = (p `extendPropAnd` b, p `extendPropAnd` BoolNot b) in
+    let (q1, q2) = (q, q) in
+    let (c1, c2) = (c, c') in
+    let (xs1, xs2) = (xs, xs) in
+    OpRuleConditional (SymTriple (p1, SBlock (c1: xs1), q1)) (SymTriple (p2, SBlock (c2: xs2), q2))
+applyOpRule (p, SBlock ((SHeapLookup x e f): xs), q) = undefined
+applyOpRule (p, SBlock ((SHeapAssign e f e'): xs), q) = undefined
+applyOpRule (p, SBlock ((SDispose e): xs), q) = undefined
+applyOpRule (p, SJump {}, q) = error "applyOpRule: SJump not implemented"
+applyOpRule (p, c, q) = applyOpRule (p, SBlock [c], q)
+
+
+
+
 
 data RearrangementRuleApplication
     = Switch Premise
@@ -138,12 +176,18 @@ getAofE (_, SHeapAssign e f e', _) = e
 getAofE (_, SDispose e, _) = e
 getAofE _ = error "getAofE: not applicable"
 
+rearRuleApplicable :: SymbolicHoareTriple -> Bool
+rearRuleApplicable (p, SHeapLookup x e f, _) = undefined
+rearRuleApplicable (p, SHeapAssign e f e', _) = undefined
+rearRuleApplicable (p, SDispose e, _) = undefined
+rearRuleApplicable _ = False
 
 applyRearRule :: SymbolicHoareTriple -> RearrangementRuleApplication
-applyRearRule _ = undefined
+applyRearRule (p, SHeapLookup x e f, _) = undefined
+applyRearRule (p, SHeapAssign e f e', _) = undefined
+applyRearRule (p, SDispose e, _) = undefined
+applyRearRule _ = error "applyRearRule: not applicable"
 
-rearRuleApplicable :: SymbolicHoareTriple -> Bool
-rearRuleApplicable _ = False
 
 
 
