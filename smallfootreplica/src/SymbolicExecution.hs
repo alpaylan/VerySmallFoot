@@ -1,7 +1,7 @@
 {-# LANGUAGE LambdaCase #-}
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 {-# HLINT ignore "Redundant if" #-}
-module SymbolicExecution (Entailment) where
+module SymbolicExecution (Entailment, check, Premise(..)) where
 
 import Control.Monad.State
 

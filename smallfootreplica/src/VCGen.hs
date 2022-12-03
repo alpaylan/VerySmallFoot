@@ -1,10 +1,13 @@
-module VCGen (chop, fvs, fresh, FreshVars, SymbolicHoareTriple, SCommand(..)) where
+module VCGen (generateSymbolicProgram, fvs, fresh, FreshVars, SymbolicHoareTriple, SCommand(..)) where
 
 import Control.Monad.State
     ( MonadState(put, get), evalState, State )
 
 import Data.Set (Set)
 import qualified Data.Set as Set
+
+import Data.Map.Strict (Map)
+import qualified Data.Map.Strict as Map
 
 import Program
 import VariableConditions
@@ -24,6 +27,7 @@ data SCommand
     | SBlock [SCommand]
     | SJump Precondition (Set VarName) Postcondition
     | SIfThenElse BoolExpression SCommand SCommand
+    deriving Show
 
 type SymbolicHoareTriple = (Precondition, SCommand, Postcondition)
 
@@ -44,8 +48,8 @@ fresh = do
   put $ tail xs
   return $ head xs
 
-vcg :: Context -> FunName -> HoareTriple -> FreshVars [SymbolicHoareTriple]
-vcg ctx g (p, c, q) = do
+vcg' :: Context -> FunName -> HoareTriple -> FreshVars [SymbolicHoareTriple]
+vcg' ctx g (p, c, q) = do
   (si, l) <- chop' ctx g c
   return $ (p, si, q) : l
 
@@ -72,7 +76,7 @@ chop' ctx g (IfThenElse b c1 c2) = do
   (si2, l2) <- chop' ctx g c2
   return (SIfThenElse b si1 si2, l1 ++ l2)
 chop' ctx g (While b i c) = do
-  l <- vcg ctx g (extendPropAnd i b, c, i)
+  l <- vcg' ctx g (extendPropAnd i b, c, i)
   return (SJump
           i
           (modC ctx c)
@@ -135,3 +139,22 @@ chop' _ _ _ = undefined
 
 chop :: Context -> FunName -> Command -> (SCommand, [SymbolicHoareTriple])
 chop ctx g c = evalState (chop' ctx g c) (fvs "_fv")
+
+
+vcg :: Context -> Function -> [SymbolicHoareTriple]
+vcg ctx g = 
+  let Function fname p v _ (fp, fc, fq) = g in
+  let (si, l) = chop ctx fname fc in
+  (fp, si, fq) : l
+
+
+
+
+type SymbolicProgram = [SymbolicFunction]
+type SymbolicFunction = [SymbolicHoareTriple]
+
+generateSymbolicProgram :: Program -> SymbolicProgram
+generateSymbolicProgram program = 
+  let ctx = mkContext program in
+  let functions = Map.elems . snd $ ctx in
+  map (vcg ctx) functions
