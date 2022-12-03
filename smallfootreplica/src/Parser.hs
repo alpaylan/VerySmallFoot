@@ -2,13 +2,24 @@
 module Parser (parseFunction, parseProgram, parseResource, parseFunctionFile, parseProgramFile, parseResourceFile) where 
 import Text.Parsec (getInput, many1, alphaNum, eof, option, (<|>), try, string, char, sepBy, lookAhead, sepBy1, many, chainl1, Parsec)
 import qualified Text.Parsec as P
-import Text.Parsec.Language
+import Text.Parsec.Language ( javaStyle, LanguageDef )
 import qualified Text.Parsec.Token as Token
 import Data.Functor.Identity (Identity)
-import Data.Functor
+import Data.Functor ( ($>) )
 import Control.Monad (join)
 import Debug.Trace (trace)
 import Program
+    ( Function(..),
+      Program(..),
+      Resource(..),
+      Expression(..),
+      BoolExpression(..),
+      Command(..),
+      FieldName,
+      VarName,
+      Prop(..),
+      PureProp(..),
+      HeapProp(..) )
 
 
 -- -- Interface
