@@ -1,6 +1,8 @@
 module Main (main) where
 
 import Program
+import Parser
+
 
 main :: IO ()
-main = print "Smallfoot"
+main = Parser.parseProgramFile "test/business1.sf" >>= print
