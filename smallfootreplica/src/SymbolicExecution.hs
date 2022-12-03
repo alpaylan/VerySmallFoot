@@ -188,14 +188,6 @@ applyOpRule triple = evalState (applyOpRule' triple) (fvs "_op")
         applyOpRule' (p, c, q) = applyOpRule' (p, SBlock [c], q)
 
 
-
-
-
-data RearrangementRuleApplication
-    = Switch Premise
-    | UnrollTree Premise
-    | UnrollListSegment Premise
-
 gBeginsWithAofE :: SymbolicHoareTriple -> Bool
 gBeginsWithAofE (_, SHeapLookup {}, _) = True
 gBeginsWithAofE (_, SHeapAssign {}, _) = True
@@ -214,12 +206,14 @@ rearRuleApplicable (p, SHeapAssign e f e', _) = undefined
 rearRuleApplicable (p, SDispose e, _) = undefined
 rearRuleApplicable _ = False
 
-applyRearRule :: SymbolicHoareTriple -> RearrangementRuleApplication
-applyRearRule (p, SHeapLookup x e f, _) = undefined
-applyRearRule (p, SHeapAssign e f e', _) = undefined
-applyRearRule (p, SDispose e, _) = undefined
+applyRearRule :: SymbolicHoareTriple -> SymbolicHoareTriple
+applyRearRule (p, SHeapLookup x e f, q) = (applyRearRule' p e, SHeapLookup x e f, q)
+applyRearRule (p, SHeapAssign e f e', q) = (applyRearRule' p e, SHeapAssign e f e', q)
+applyRearRule (p, SDispose e, q) = (applyRearRule' p e, SDispose e, q)
 applyRearRule _ = error "applyRearRule: not applicable"
 
+applyRearRule' :: Precondition -> Expression -> Precondition
+applyRearRule' p e = undefined
 
 
 
@@ -261,10 +255,7 @@ check (SymTriple g)
         let e = getAofE g in
         if rearRuleApplicable g then
             let premise = applyRearRule g in
-            case premise of
-                Switch p -> check p
-                UnrollTree p -> check p
-                UnrollListSegment p -> check p
+            check (SymTriple premise)
     -- elseif allocd(pre(g), E)
         else if allocd (pre g) e then 
             foldr ((&&) . check) True (exor g e)
