@@ -132,7 +132,6 @@ chop' ctx g (WithRes res b c) = do
   where
     Resource _ xs r = getResource ctx res
     u = fv r /\ Set.unions (Set.map (modF ctx . getFunction ctx) (par ctx g))
-chop' _ _ _ = undefined
 
 -- par :: Context -> FunName -> Set FunName
 -- par = undefined
