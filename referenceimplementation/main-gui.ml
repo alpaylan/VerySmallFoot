@@ -7,9 +7,9 @@ let file_dialog ~title ~callback ?filename () =
     sel#cancel_button#connect#clicked ~callback:sel#destroy;
     sel#ok_button#connect#clicked ~callback:
       begin fun () ->
-	let name = sel#get_filename in
-	  sel#destroy ();
-	  callback name
+        let name = sel#get_filename in
+          sel#destroy ();
+          callback name
       end;
     sel#show ()
 
@@ -19,9 +19,9 @@ let font_dialog ~title ~callback () =
     sel#cancel_button#connect#clicked ~callback:sel#destroy;
     sel#ok_button#connect#clicked ~callback:
       begin fun () ->
-	let font = sel#selection#font in
-	  sel#destroy ();
-	  callback font
+        let font = sel#selection#font in
+          sel#destroy ();
+          callback font
       end;
     sel#show ()
 
@@ -49,17 +49,17 @@ class editor ?packing ?show () = object (self)
   method load_file name =
     try
       let ic = open_in name in
-	filename <- Some name;
-	text#freeze ();
-	text#delete_text ~start:0 ~stop:text#length;
-	let buf = String.create 1024 and len = ref 0 in
-	  while len := input ic buf 0 1024; !len > 0 do
-	    if !len = 1024 then text#insert buf
-	    else text#insert (String.sub buf ~pos:0 ~len:!len)
-	  done;
-	  text#set_point 0;
-	  text#thaw ();
-	  close_in ic
+        filename <- Some name;
+        text#freeze ();
+        text#delete_text ~start:0 ~stop:text#length;
+        let buf = String.create 1024 and len = ref 0 in
+          while len := input ic buf 0 1024; !len > 0 do
+            if !len = 1024 then text#insert buf
+            else text#insert (String.sub buf ~pos:0 ~len:!len)
+          done;
+          text#set_point 0;
+          text#thaw ();
+          close_in ic
     with _ -> ()
 
   method open_file () = file_dialog ~title:"Open" ~callback:self#load_file ()
@@ -70,16 +70,16 @@ class editor ?packing ?show () = object (self)
 
   method save_file () =
     match filename with
-	Some file -> self#output ~file
+        Some file -> self#output ~file
       | None -> self#save_dialog ()
 
   method output ~file =
     try
       if Sys.file_exists file then Sys.rename file (file ^ "~");
       let oc = open_out file in
-	output_string oc (text#get_chars ~start:0 ~stop:text#length);
-	close_out oc;
-	filename <- Some file
+        output_string oc (text#get_chars ~start:0 ~stop:text#length);
+        close_out oc;
+        filename <- Some file
     with _ -> prerr_endline "Save failed"
 end
 
@@ -108,12 +108,12 @@ let change_font = function
   | Some font ->
       let style = window#misc#style#copy
       in style#set_font font;
-	editor#text#freeze ();
-	editor#text#misc#set_style style;
-	editor#text#thaw ();
-	results#text#freeze ();
-	results#text#misc#set_style style;
-	results#text#thaw ();
+        editor#text#freeze ();
+        editor#text#misc#set_style style;
+        editor#text#thaw ();
+        results#text#freeze ();
+        results#text#misc#set_style style;
+        results#text#thaw ();
   | None -> ()
 
 let select_font () = font_dialog ~title:"Open" ~callback:change_font ()
@@ -136,20 +136,20 @@ let _ =
       factory#add_item "Paste" ~key:_V ~callback:editor#text#paste_clipboard;
       factory#add_separator ();
       factory#add_check_item "Word wrap" ~active:false
-	~callback:editor#text#set_word_wrap;
+        ~callback:editor#text#set_word_wrap;
       factory#add_check_item "Read only" ~active:false
-	~callback:(fun b -> editor#text#set_editable (not b));
+        ~callback:(fun b -> editor#text#set_editable (not b));
       window#add_accel_group accel_group;
       editor#text#event#add [`KEY_RELEASE];
       editor#text#event#connect#any
-	~callback:(fun ev -> counter#set editor#text#position; false);
+        ~callback:(fun ev -> counter#set editor#text#position; false);
       counter#connect#changed ~callback:(fun n -> lbl#set_text ("position: " ^ (string_of_int n)));
       editor#text#event#connect#button_press
-	~callback:(fun ev ->
-		     let button = GdkEvent.Button.button ev in
-		       if button = 3 then begin
-			 file_menu#popup ~button ~time:(GdkEvent.Button.time ev); true
-		       end else false);
+        ~callback:(fun ev ->
+                     let button = GdkEvent.Button.button ev in
+                       if button = 3 then begin
+                         file_menu#popup ~button ~time:(GdkEvent.Button.time ev); true
+                       end else false);
       editor#text#set_line_wrap false;
       editor#text#set_vadjustment vscrollbar1#adjustment;
       results#text#set_vadjustment vscrollbar2#adjustment;;

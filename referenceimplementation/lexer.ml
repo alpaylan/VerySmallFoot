@@ -1,6 +1,6 @@
 # 1 "lexer.mll"
   (* header *)
-  
+
 open Lexing
 open Parser
 
@@ -36,8 +36,8 @@ let update_loc lexbuf line absolute chars =
   let pos = lexbuf.lex_curr_p in
     lexbuf.lex_curr_p <-
       { pos with
-	  pos_lnum = if absolute then line else pos.pos_lnum + line;
-	  pos_bol = pos.pos_cnum - chars; }
+          pos_lnum = if absolute then line else pos.pos_lnum + line;
+          pos_bol = pos.pos_cnum - chars; }
 
 (* Initialize file name and starting position *)
 let init lexbuf file =
@@ -367,8 +367,8 @@ and __ocaml_lex_token_rec lexbuf __ocaml_lex_state =
   | 28 ->
 # 96 "lexer.mll"
       ( raise(Error.Illegal_character
-		(Lexing.lexeme_char lexbuf 0,
-		 Location.mkloc(lexbuf.lex_start_p) (lexbuf.lex_curr_p))) )
+                (Lexing.lexeme_char lexbuf 0,
+                 Location.mkloc(lexbuf.lex_start_p) (lexbuf.lex_curr_p))) )
 # 373 "lexer.ml"
 
   | __ocaml_lex_state -> lexbuf.Lexing.refill_buff lexbuf;
@@ -398,8 +398,8 @@ and __ocaml_lex_comment_rec lexbuf __ocaml_lex_state =
         ( match !comment_start_loc with
             | [] -> assert false
             | loc :: _ -> comment_start_loc := [];
-		raise(Error.Unterminated_comment
-			(Location.mkloc loc (lexbuf.lex_curr_p))) )
+                raise(Error.Unterminated_comment
+                        (Location.mkloc loc (lexbuf.lex_curr_p))) )
 # 404 "lexer.ml"
 
   | 3 ->

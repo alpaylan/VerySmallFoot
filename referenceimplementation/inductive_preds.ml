@@ -21,7 +21,7 @@ let pp_ip_description f = function
   | {id=p; id_arg=ia; cmp_arg=ca; guard=g; newids=ni; body=b} ->
       fprintf f "%s(%a;%a) = " p pp_idlist (List.map string_of_ident ia) pp_idlist ca;
       fprintf f "@[<2>if %a@ @[<2>then empty@]@ else E(%a). %a@]"
-	pp_can_atom g pp_idlist (List.map string_of_ident ni) (pp_listsep pp_can_spred " * " ".") b
+        pp_can_atom g pp_idlist (List.map string_of_ident ni) (pp_listsep pp_can_spred " * " ".") b
 
 (**** environment of inductive definitions ****)
 let ip_env = ref ([] : ip_description list)
@@ -47,9 +47,9 @@ let instance_ip (id,el,cl) =
   and sub' = mk_subst f_i' f_c
   in let (ca,vl,spl) = (sub_can_atom sub ip.guard, il', List.map (sub_can_spred sub') ip.body)
   in (* fprintf !Config.formatter "INDPRED INSTANCE (%a,%a,%a)@."
-	pp_can_atom ca (pp_listsep pp_can_exp " * " ".") vl pp_spatial_list spl; *)
+        pp_can_atom ca (pp_listsep pp_can_exp " * " ".") vl pp_spatial_list spl; *)
     (ca,vl,spl)
-	
+
 let _ =
   let list = "list"
   and x = create_ident "x"
@@ -62,7 +62,7 @@ let _ =
      guard = mk_EQ(ex, Ce_num 0);
      newids = [y];
      body = [Csp_pointsto (ex, [(tl,ey)]);
-	     Csp_indpred (list,[ey],[tl])]}
+             Csp_indpred (list,[ey],[tl])]}
   in add_ip_description list_ip
 
 (* let _ = pp_ip_environment !Config.formatter *)

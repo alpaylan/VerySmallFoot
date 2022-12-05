@@ -125,7 +125,7 @@ let normalize_can_spred = function
   | Csp_tree (c1,c2,e) -> Csp_tree (c1,c2,normalize_can_exp e)
   | Csp_indpred _ -> assert false
 
-let normalize_can_form (pl,sl) = 
+let normalize_can_form (pl,sl) =
   (List.map normalize_can_atom pl, List.map normalize_can_spred sl)
 
 
@@ -288,11 +288,11 @@ let kill_vars_eq eq kill =
   let rec f (eq_left,eq_gone) = function
     | [] -> (eq_left,eq_gone)
     | id::l ->
-	let (eq1,eq2) = List.partition (fun (x,_) -> x=id) eq_left
-	in match eq1 with
-	  | [] -> (eq_left,eq_gone)
-	  | [(_,e1)] -> f (mk_sub (id,e1) eq2, (id,e1)::(mk_sub (id,e1) eq_gone)) l
-	  | _ -> assert false in
+        let (eq1,eq2) = List.partition (fun (x,_) -> x=id) eq_left
+        in match eq1 with
+          | [] -> (eq_left,eq_gone)
+          | [(_,e1)] -> f (mk_sub (id,e1) eq2, (id,e1)::(mk_sub (id,e1) eq_gone)) l
+          | _ -> assert false in
   let (eq_left,eq_gone) = f (eq,empty_eq) kl
   in (eq_left, eq_to_sub eq_gone)
 
@@ -337,8 +337,8 @@ let simp_constr (pl,cs) =
     let cal2 = List.filter (fun ca1 -> not (is_uneq pl (un_NEQ ca1))) cal1
     in
       if (List.exists (fun ca -> let (e1,e2) = un_NEQ ca in e1=e2) cal2
-	  || is_uneq pl (un_NEQ ca)
-	  || List.mem ca cal2)
+          || is_uneq pl (un_NEQ ca)
+          || List.mem ca cal2)
       then None
       else if cal2=[] then (plr := add_ineq ca !plr; None)
       else Some (cal2,ca) in
@@ -380,11 +380,11 @@ let solve_constr (eq,pl,cs) =
       | _ -> ()) cs';
     if !cal<>[] then
       begin
-	let eq' = List.fold_left (fun eq ca -> eq_add eq (un_NEQ ca)) eq !cal in
-	let sub = eq_to_sub eq' in
-	let pl'' = remove_duplicates (List.map (sub_can_atom sub) pl') in
-	let cs'' = sub_constrs sub cs'
-	in f (eq',pl'',cs'')
+        let eq' = List.fold_left (fun eq ca -> eq_add eq (un_NEQ ca)) eq !cal in
+        let sub = eq_to_sub eq' in
+        let pl'' = remove_duplicates (List.map (sub_can_atom sub) pl') in
+        let cs'' = sub_constrs sub cs'
+        in f (eq',pl'',cs'')
       end
     else (eq,pl',cs') in
   let (eq1,pl1,cs1) = f (eq,pl,cs) in
@@ -457,7 +457,7 @@ let pp_can_spred f = function
   | Csp_pointsto (e1, cel) ->
       let pp f (c,e) = fprintf f "%s:%a" c pp_can_exp e
       in fprintf f "%a |-> %a"
-	   pp_can_exp e1 (pp_seq pp) cel
+           pp_can_exp e1 (pp_seq pp) cel
   | Csp_tree (t1,t2,e) ->
       fprintf f "tree(%s,%s;%a)" t1 t2 pp_can_exp e
   | Csp_indpred (id,el,cl) ->
@@ -524,8 +524,8 @@ let pp_sp_entailment f (cf1,cf2) =
 let pp_inst f inst =
   if !Config.verbose1 then
     if inst <> []
-    then fprintf f "Instantiations inferred: %a@." 
-	(pp_seq (fun f (x,e) -> fprintf f "%s=%a" (string_of_ident x) pp_can_exp e)) inst
+    then fprintf f "Instantiations inferred: %a@."
+        (pp_seq (fun f (x,e) -> fprintf f "%s=%a" (string_of_ident x) pp_can_exp e)) inst
 
 let pp_constraint f (cal,ca) =
   fprintf f "%a => %a@."  pp_pure_list cal pp_can_atom ca
@@ -575,12 +575,12 @@ let rec prop_to_can_atom ?(quiet=false) p  = match p with
   | Aprop_spred(Aspred_empty) -> mk_EQ (Ce_num 0,Ce_num 0)
   | Aprop_false -> mk_NEQ (Ce_num 0,Ce_num 0)
   | _ -> raise(Undef_prop_to_can_atom
-		 (let buf = Buffer.create 16 in
-		  let fmt = Format.formatter_of_buffer buf in
-		    pp_assert fmt p;
-		    Format.pp_print_flush fmt ();
-		    Buffer.contents buf))
-   
+                 (let buf = Buffer.create 16 in
+                  let fmt = Format.formatter_of_buffer buf in
+                    pp_assert fmt p;
+                    Format.pp_print_flush fmt ();
+                    Buffer.contents buf))
+
 let a_space_pred_to_can_spred = function
   | Aspred_list (t,e) ->
       if !Config.inductive_preds
@@ -607,10 +607,10 @@ let rec simpl_can_prop cp = match cp with
        Cp_ifthenelse (ca, simpl_can_prop cp1, simpl_can_prop cp2)
   |  Cp_star (cp1,cp2) ->
        (match (simpl_can_prop cp1, simpl_can_prop cp2) with
-	  | (Cp_base ([],[]), cp2') -> cp2'
-	  | (cp1', Cp_base ([],[])) -> cp1'
-	  | (Cp_base (pl1,sl1), Cp_base (pl2,sl2)) -> Cp_base (pl1@pl2, sl1@sl2)
-	  | (cp1',cp2') -> Cp_star (cp1',cp2'))
+          | (Cp_base ([],[]), cp2') -> cp2'
+          | (cp1', Cp_base ([],[])) -> cp1'
+          | (Cp_base (pl1,sl1), Cp_base (pl2,sl2)) -> Cp_base (pl1@pl2, sl1@sl2)
+          | (cp1',cp2') -> Cp_star (cp1',cp2'))
 
 let can_prop_star cp1 cp2 =
   simpl_can_prop (Cp_star (cp1,cp2))
@@ -664,7 +664,7 @@ let fv_keep_can_spred = function
 let fv_keep_can_prop cp =
   let rec f = function
     | Cp_base (pl,sl) ->
-	List.fold_left (fun s sp -> fv_keep_can_spred sp ++ s) IdSet.empty sl
+        List.fold_left (fun s sp -> fv_keep_can_spred sp ++ s) IdSet.empty sl
     | Cp_star (cp1,cp2) -> f cp1 ++ f cp2
     | Cp_ifthenelse(ca,cp1,cp2) -> fv_can_atom ca ++ f cp1 ++ f cp2
   in f cp
@@ -678,14 +678,14 @@ let fv_killable_vars cp =
 
 let kill_vars_can_prop cp kill =
   let rec f = function
-    | Cp_base (pl,sl) -> 
-	let pl1 = List.filter
-	  (fun ca -> IdSet.is_empty (IdSet.inter (fv_can_atom ca) kill)) pl in
-	let sl1 = List.map
-	  (function Csp_pointsto (e,cel) ->
-	     Csp_pointsto (e,List.filter (fun (c,e1) -> IdSet.is_empty (IdSet.inter (fv_can_exp e1) kill)) cel)
-	     | csp -> csp) sl
-	in Cp_base (pl1,sl1)
+    | Cp_base (pl,sl) ->
+        let pl1 = List.filter
+          (fun ca -> IdSet.is_empty (IdSet.inter (fv_can_atom ca) kill)) pl in
+        let sl1 = List.map
+          (function Csp_pointsto (e,cel) ->
+             Csp_pointsto (e,List.filter (fun (c,e1) -> IdSet.is_empty (IdSet.inter (fv_can_exp e1) kill)) cel)
+             | csp -> csp) sl
+        in Cp_base (pl1,sl1)
     | Cp_star (cp1,cp2) -> Cp_star(f cp1, f cp2)
     | Cp_ifthenelse(ca,cp1,cp2) -> Cp_ifthenelse(ca,f cp1, f cp2)
   in f cp
@@ -699,13 +699,13 @@ let kill_garbage_vars (eq,cp) =
   let (eq1,sub) = kill_vars_eq eq kill in
   let cp1 = kill_vars_can_prop (sub_can_prop sub cp) kill
   in
-  (* for debugging 
+  (* for debugging
     if not (IdSet.is_empty kill)
     then
       fprintf !Config.formatter "@.STATE %a@.%a@.KILLING VARS %a@.RETURNS %a@.%a@."
-	pp_eq eq pp_can_prop cp
-	(pp_listsep pp_ident " " "") (IdSet.elements kill)
-	pp_eq eq1 pp_can_prop cp1;
+        pp_eq eq pp_can_prop cp
+        (pp_listsep pp_ident " " "") (IdSet.elements kill)
+        pp_eq eq1 pp_can_prop cp1;
   *)
   (eq1,cp1)
 

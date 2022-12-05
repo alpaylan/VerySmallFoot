@@ -80,12 +80,12 @@ let parse_error _ =
   raise(
     Error.Parse_error(
       match !Location.lexbuf with
-	| None -> Location.symbol_loc()
-	| Some lexbuf ->
-	    (* t P l o u s w s
-	     * r a g r, s h w a t l f t c
-	     * p d *)
-	    Location.mkloc (Parsing.symbol_start_pos()) lexbuf.Lexing.lex_curr_p))
+        | None -> Location.symbol_loc()
+        | Some lexbuf ->
+            (* t P l o u s w s
+             * r a g r, s h w a t l f t c
+             * p d *)
+            Location.mkloc (Parsing.symbol_start_pos()) lexbuf.Lexing.lex_curr_p))
 
 # 91 "parser.ml"
 let yytransl_const = [|
@@ -471,9 +471,9 @@ let yyact = [|
     Obj.repr(
 # 115 "parser.mly"
       ( Pprogram ([Config.list_data_tag; Config.list_link_tag;
-		   Config.tree_data_tag;
-		   fst Config.tree_link_tags; snd Config.tree_link_tags],
-		  _1) )
+                   Config.tree_data_tag;
+                   fst Config.tree_link_tags; snd Config.tree_link_tags],
+                  _1) )
 # 478 "parser.ml"
                : Parsetree.p_program))
 ; (fun __caml_parser_env ->
@@ -995,7 +995,7 @@ let yyact = [|
     Obj.repr(
 # 265 "parser.mly"
           ( Aspred_tree(fst Config.tree_link_tags, snd Config.tree_link_tags,
-			_3) )
+                        _3) )
 # 1000 "parser.ml"
                : 'a_space_pred))
 ; (fun __caml_parser_env ->
@@ -1027,7 +1027,7 @@ let yyact = [|
     Obj.repr(
 # 274 "parser.mly"
           ( Aspred_pointsto(_1,[(fst Config.tree_link_tags, _3);
-				(snd Config.tree_link_tags, _5)]) )
+                                (snd Config.tree_link_tags, _5)]) )
 # 1032 "parser.ml"
                : 'a_space_pred))
 ; (fun __caml_parser_env ->

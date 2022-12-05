@@ -13,13 +13,13 @@ let verify_wp lex =
   and valid = ref true
   in try Error.report
       (fun () ->
-	 let (l,compl) = wp lex
-	 in let g p = valid := (Symbsimp.check_prop p compl) & !valid 
-	 in let f (id,provisos) =
-	     (Format.fprintf fmt "@.Function %s@." id;
-	      List.iter g provisos)
-	 in (for i=1 to !Config.repetitions do List.iter f l done;
-	     Format.fprintf fmt "@.%sValid@." (if !valid then "" else "NOT ")))
+         let (l,compl) = wp lex
+         in let g p = valid := (Symbsimp.check_prop p compl) & !valid
+         in let f (id,provisos) =
+             (Format.fprintf fmt "@.Function %s@." id;
+              List.iter g provisos)
+         in (for i=1 to !Config.repetitions do List.iter f l done;
+             Format.fprintf fmt "@.%sValid@." (if !valid then "" else "NOT ")))
     with Invalid_argument s -> Format.pp_print_string fmt s
 
 let verify_wp_string s =

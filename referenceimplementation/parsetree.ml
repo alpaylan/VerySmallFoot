@@ -7,7 +7,7 @@ and a_expression =
   | Aexp_num of int
   | Aexp_uminus of a_expression
   | Aexp_infix of string * a_expression * a_expression
-	  (* string is one of "+", "-", "*", "/", "%" *)
+          (* string is one of "+", "-", "*", "/", "%" *)
 
 type dlink_kind = DL | XL
 
@@ -21,7 +21,7 @@ type a_space_pred =
 
 type a_proposition =
   | Aprop_infix of string * a_expression * a_expression
-	  (* string is one of "<", "<=", ">", ">=" *)
+          (* string is one of "<", "<=", ">", ">=" *)
   | Aprop_equal of a_expression * a_expression
   | Aprop_not_equal of a_expression * a_expression
   | Aprop_false
@@ -84,13 +84,13 @@ let iter f =
   let rec loop = function
     | [] -> ()
     | {pstm_desc=stm; pstm_loc=loc} :: stms ->
-	f loc stm;
-	match stm with
-	  | Pstm_block(stm_l) -> loop (stm_l @ stms)
-	  | Pstm_if(_,s0,s1) -> loop (s0 :: s1 :: stms)
-	  | Pstm_while(_,_,s) -> loop (s :: stms)
-	  | Pstm_withres(_,_,s) -> loop (s :: stms)
-	  | _ -> loop stms
+        f loc stm;
+        match stm with
+          | Pstm_block(stm_l) -> loop (stm_l @ stms)
+          | Pstm_if(_,s0,s1) -> loop (s0 :: s1 :: stms)
+          | Pstm_while(_,_,s) -> loop (s :: stms)
+          | Pstm_withres(_,_,s) -> loop (s :: stms)
+          | _ -> loop stms
   in loop
 
 open Format
@@ -120,7 +120,7 @@ and pp_a_expression parent_prec parent_posn f =
     | Aexp_num n -> fprintf f "%d" n
     | Aexp_uminus e -> fprintf f "@[<hv 2>-%a@]" ppae e
     | Aexp_infix (o, e1, e2) ->
-	fprintf f "@[<hv 2>%a@ %s %a@]" ppae e1 o ppae e2
+        fprintf f "@[<hv 2>%a@ %s %a@]" ppae e1 o ppae e2
 
 let pp_string f s = fprintf f "%s" s
 
@@ -138,46 +138,46 @@ and pp_a_proposition pprc ppsn f =
   and ppac = pp_a_component
   and ppace parent_prec parent_posn f (c,e) =
     fprintf f "%a:%a" (pp_a_component parent_prec parent_posn) c
-      (pp_a_expression parent_prec parent_posn) e 
+      (pp_a_expression parent_prec parent_posn) e
   in function
     | Aprop_infix (o, e1, e2) ->
-	if cp 5 (-1)
-	then fprintf f "@[<hv 2>(%a@ %s %a)@]" (ppae 5 (-1)) e1 o (ppae 5 1) e2
-	else fprintf f "@[<hv 2>%a@ %s %a@]" (ppae 5 (-1)) e1 o (ppae 5 1) e2
+        if cp 5 (-1)
+        then fprintf f "@[<hv 2>(%a@ %s %a)@]" (ppae 5 (-1)) e1 o (ppae 5 1) e2
+        else fprintf f "@[<hv 2>%a@ %s %a@]" (ppae 5 (-1)) e1 o (ppae 5 1) e2
     | Aprop_equal (e1, e2) ->
-	if cp 5 (-1)
-	then fprintf f "@[<hv 2>(%a@ == %a)@]" (ppae 5 (-1)) e1 (ppae 5 1) e2
-	else fprintf f "@[<hv 2>%a@ == %a@]" (ppae 5 (-1)) e1 (ppae 5 1) e2
+        if cp 5 (-1)
+        then fprintf f "@[<hv 2>(%a@ == %a)@]" (ppae 5 (-1)) e1 (ppae 5 1) e2
+        else fprintf f "@[<hv 2>%a@ == %a@]" (ppae 5 (-1)) e1 (ppae 5 1) e2
     | Aprop_not_equal (e1, e2) ->
-	if cp 5 (-1)
-	then fprintf f "@[<hv 2>(%a@ != %a)@]" (ppae 5 (-1)) e1 (ppae 5 1) e2
-	else fprintf f "@[<hv 2>%a@ != %a@]" (ppae 5 (-1)) e1 (ppae 5 1) e2
+        if cp 5 (-1)
+        then fprintf f "@[<hv 2>(%a@ != %a)@]" (ppae 5 (-1)) e1 (ppae 5 1) e2
+        else fprintf f "@[<hv 2>%a@ != %a@]" (ppae 5 (-1)) e1 (ppae 5 1) e2
     | Aprop_false ->
-	fprintf f "ff"
+        fprintf f "ff"
     | Aprop_ifthenelse (p,p1,p2) ->
-	fprintf f "@[<hv 2>if %a@ then %a@ else %a]" (ppap 0 0) p (ppap 0 0) p1 (ppap 0 0) p2
+        fprintf f "@[<hv 2>if %a@ then %a@ else %a]" (ppap 0 0) p (ppap 0 0) p1 (ppap 0 0) p2
     | Aprop_star (p1, p2) ->
-	if cp 6 (-1)
-	then fprintf f "@[<hv 2>(%a@ * %a)@]" (ppap 6 (-1)) p1 (ppap 6 (-1)) p2
-	else fprintf f "@[<hv 2>%a@ * %a@]" (ppap 6 (-1)) p1 (ppap 6 (-1)) p2
+        if cp 6 (-1)
+        then fprintf f "@[<hv 2>(%a@ * %a)@]" (ppap 6 (-1)) p1 (ppap 6 (-1)) p2
+        else fprintf f "@[<hv 2>%a@ * %a@]" (ppap 6 (-1)) p1 (ppap 6 (-1)) p2
     | Aprop_spred (Aspred_list (c,e)) ->
-	fprintf f "@[<hv 2>list(%a;%a)@]"
-	(ppac 0 (-1)) c (ppae 0 1) e
+        fprintf f "@[<hv 2>list(%a;%a)@]"
+        (ppac 0 (-1)) c (ppae 0 1) e
     | Aprop_spred (Aspred_listseg (c,e1,e2)) ->
-	fprintf f "@[<hv 2>listseg(%a;@,%a,%a)@]" (ppac 0 0) c
-	(ppae 0 0) e1 (ppae 0 0) e2
+        fprintf f "@[<hv 2>listseg(%a;@,%a,%a)@]" (ppac 0 0) c
+        (ppae 0 0) e1 (ppae 0 0) e2
     | Aprop_spred (Aspred_dlseg (k,c1,e1,f1,c2,e2,f2)) ->
-	fprintf f "@[<hv 2>%s(%a,%a;@,%a,%a,%a,%a)@]"
-	 (if k=DL then "dlseg" else "xlseg")
-	 (ppac 0 0) c1 (ppac 0 0) c2
-	 (ppae 0 0) e1 (ppae 0 0) f1 (ppae 0 0) e2 (ppae 0 0) f2
+        fprintf f "@[<hv 2>%s(%a,%a;@,%a,%a,%a,%a)@]"
+         (if k=DL then "dlseg" else "xlseg")
+         (ppac 0 0) c1 (ppac 0 0) c2
+         (ppae 0 0) e1 (ppae 0 0) f1 (ppae 0 0) e2 (ppae 0 0) f2
     | Aprop_spred (Aspred_tree (c1,c2,e1)) ->
-	fprintf f "@[<hv 2>tree(%a,@,%a;%a)@]" (ppac 0 0) c1
-	(ppac 0 0) c2 (ppae 0 0) e1
+        fprintf f "@[<hv 2>tree(%a,@,%a;%a)@]" (ppac 0 0) c1
+        (ppac 0 0) c2 (ppae 0 0) e1
     | Aprop_spred (Aspred_empty) ->
-	fprintf f "empty"
+        fprintf f "empty"
     | Aprop_spred (Aspred_pointsto (e1, el)) ->
-	if cp 7 (-1)
+        if cp 7 (-1)
         then fprintf f "@[<hv 2>(%a@ |-> %a)@]" (ppae 7 (-1)) e1 (pp_listsep (ppace 7 1) ",") el
         else fprintf f "@[<hv 2>%a@ |-> %a@]" (ppae 7 (-1)) e1 (pp_listsep (ppace 7 1) ",") el
 
@@ -211,17 +211,17 @@ let rec a_exp_of_p_exp {pexp_desc = d; pexp_loc = l} =
      | Pexp_infix (">", _, _)
      | Pexp_infix (">=", _, _) -> raise (Undef_a_exp_of_p_exp l)
      | Pexp_infix ("+", e1, e2) ->
-	 Aexp_infix ("+", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
+         Aexp_infix ("+", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
      | Pexp_infix ("-", e1, e2) ->
-	 Aexp_infix ("-", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
+         Aexp_infix ("-", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
      | Pexp_infix ("*", e1, e2) ->
-	 Aexp_infix ("*", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
+         Aexp_infix ("*", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
      | Pexp_infix ("/", e1, e2) ->
-	 Aexp_infix ("/", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
+         Aexp_infix ("/", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
      | Pexp_infix ("%", e1, e2) ->
-	 Aexp_infix ("%", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
+         Aexp_infix ("%", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
      | Pexp_infix ("^", e1, e2) ->
-	 Aexp_infix ("^", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
+         Aexp_infix ("^", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
      | Pexp_infix _ -> assert false)
 
 (* raised when a_prop_of_p_exp is given an argument p_expression which does not
@@ -240,19 +240,19 @@ let rec a_prop_of_p_exp {pexp_desc = d; pexp_loc = l} =
      | Pexp_prefix _ -> assert false
 
      | Pexp_infix ("&&", e1, e2) ->
-	 Aprop_star (a_prop_of_p_exp e1, a_prop_of_p_exp e2)
+         Aprop_star (a_prop_of_p_exp e1, a_prop_of_p_exp e2)
      | Pexp_infix ("==", e1, e2) ->
-	 Aprop_equal (a_exp_of_p_exp e1, a_exp_of_p_exp e2)
+         Aprop_equal (a_exp_of_p_exp e1, a_exp_of_p_exp e2)
      | Pexp_infix ("!=", e1, e2) ->
-	 Aprop_not_equal (a_exp_of_p_exp e1, a_exp_of_p_exp e2)
+         Aprop_not_equal (a_exp_of_p_exp e1, a_exp_of_p_exp e2)
      | Pexp_infix ("<", e1, e2) ->
-	 Aprop_infix ("<", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
+         Aprop_infix ("<", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
      | Pexp_infix ("<=", e1, e2) ->
-	 Aprop_infix ("<=", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
+         Aprop_infix ("<=", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
      | Pexp_infix (">", e1, e2) ->
-	 Aprop_infix (">", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
+         Aprop_infix (">", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
      | Pexp_infix (">=", e1, e2) ->
-	 Aprop_infix (">=", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
+         Aprop_infix (">=", a_exp_of_p_exp e1, a_exp_of_p_exp e2)
      | Pexp_infix ("+", _, _)
      | Pexp_infix ("-", _, _)
      | Pexp_infix ("*", _, _)

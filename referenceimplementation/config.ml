@@ -26,14 +26,14 @@ let speclist = (* Arg.align *)
    ("-verbose", Arg.Unit (fun () ->
                           verbose1 := true;
                           verbose2 := false;
-			  all_states := false;
-			  show_induction := false), "        Display additional internal information");
+                          all_states := false;
+                          show_induction := false), "        Display additional internal information");
    ("-all_states", Arg.Unit (fun () -> all_states := true), "     Display intermediate states");
    ("-show_induction", Arg.Unit (fun () -> show_induction := true), " Indicate when induction is used during verification");
    ("-very_verbose", Arg.Unit (fun () ->
                             verbose1 := true;
                             verbose2 := true;
-			    all_states := true;
+                            all_states := true;
                             show_induction := true), "   Display more additional internal information")]
 
 let usage_msg =
