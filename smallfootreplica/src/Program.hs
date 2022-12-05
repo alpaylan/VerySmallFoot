@@ -24,11 +24,19 @@ module Program
   , substVar
   , FV
   , fv
+  , ppBoolExpression
+  , ppCommand
+  , ppExpression
+  , ppProp
+  , ppFunction
+  , ppResource
+  , ppProgram
   ) where
 
 import Data.Maybe
 import Data.Set (Set)
 import qualified Data.Set as Set
+import Text.PrettyPrint
 
 (\/) :: (Ord a) => Set a -> Set a -> Set a
 (\/) = Set.union
@@ -60,6 +68,19 @@ data Command
   | WithRes ResName BoolExpression Command
   deriving Show
 
+ppCommand :: Command -> Doc
+ppCommand (Assign var e) = text var <+> text "=" <+> ppExpression e <+> semi
+ppCommand (HeapLookup var e field) = text var <+> text "=" <+> ppExpression e <+> text "->" <+> text field <+> semi
+ppCommand (HeapAssign e field e') = ppExpression e <+> text "->" <+> text field <+> text "=" <+> ppExpression e' <+> semi
+ppCommand (New var) = text var <+> text "=" <+> text "new" <+> text "()" <+> semi
+ppCommand (Dispose e) = text "dispose" <+> parens (ppExpression e) <+> semi
+ppCommand (Block cs) = braces $ vcat $ map ppCommand cs
+ppCommand (IfThenElse be c1 c2) = text "if" <+> parens (ppBoolExpression be) <+> ppCommand c1 <+> text "else" <+> ppCommand c2
+ppCommand (While be inv c) = text "while" <+> parens (ppBoolExpression be) <+> ppCommand c
+ppCommand (Call (fun, args, args')) = text fun <+> parens (hsep $ punctuate comma $ map text args) <+> parens (hsep $ punctuate comma $ map ppExpression args') <+> semi
+ppCommand (ConcurrentCall (fun, args, args') (fun', args'', args''')) = text fun <+> parens (hsep $ punctuate comma $ map text args) <+> parens (hsep $ punctuate comma $ map ppExpression args') <+> text "||" <+> text fun' <+> parens (hsep $ punctuate comma $ map text args'') <+> parens (hsep $ punctuate comma $ map ppExpression args''') <+> semi
+ppCommand (WithRes res be c) = text "with" <+> text res <+> parens (ppBoolExpression be) <+> ppCommand c
+
 type ActualArgs = (FunName, [VarName], [Expression])
 
 data BoolExpression
@@ -69,6 +90,12 @@ data BoolExpression
   | BoolTrue
   deriving Show
 
+ppBoolExpression :: BoolExpression -> Doc
+ppBoolExpression (BoolEq e1 e2) = parens $ ppExpression e1 <+> text "==" <+> ppExpression e2
+ppBoolExpression (BoolNEq e1 e2) = parens $ ppExpression e1 <+> text "!=" <+> ppExpression e2
+ppBoolExpression (BoolNot be) = text "!" <+> ppBoolExpression be
+ppBoolExpression BoolTrue = text "true"
+
 data Expression
   = Var VarName
   | Nil
@@ -76,13 +103,28 @@ data Expression
   | Xor Expression Expression
   deriving (Show, Eq)
 
+ppExpression :: Expression -> Doc
+ppExpression (Var var) = text var
+ppExpression Nil = text "nil"
+ppExpression (Const i) = integer i
+ppExpression (Xor e1 e2) = parens $ ppExpression e1 <+> text "^" <+> ppExpression e2
+
 data Resource = Resource ResName [VarName] Invariant
   deriving Show
+
+ppResource :: Resource -> Doc
+ppResource (Resource name args inv) = text "resource" <+> text name <+> parens (hsep $ punctuate comma $ map text args) <+> ppProp inv
 
 data Function = Function FunName [VarName] [VarName] [VarName] HoareTriple
   deriving Show
 -- name, pass-by-ref args, pass-by-value args, local vars, body
-
+ppFunction :: Function -> Doc
+ppFunction (Function name args args' locals (pre, com, post)) = 
+  text name <+> parens (hsep (punctuate comma $ map text args) <+> semi 
+    <+> hsep (punctuate comma $ map text args')) 
+    <+> ppProp pre 
+    <+> brackets ((text "local" <+> hsep (punctuate comma $ map text locals) <+> semi) <+> ppCommand com) 
+    <+> ppProp post
 
 -- Props
 data HeapProp
@@ -104,6 +146,31 @@ data Prop
   | PropConj PureProp HeapProp
   deriving Show
 
+ppProp :: Prop -> Doc
+-- pretty prints a Prop in square brackets using helper ppProp' function.
+ppProp p = brackets $ ppProp' p
+  where
+    ppProp' :: Prop -> Doc
+    ppProp' (PropIfThenElse pp pt pf) = text "if" <+> ppPureProp pp <+> ppProp pt <+> text "else" <+> ppProp pf
+    ppProp' (PropConj pp hp) = ppPureProp pp <+> text "|" <+> ppHeapProp hp
+    ppPureProp :: PureProp -> Doc
+    ppPureProp (PropAssert be) = ppBoolExpression be
+    ppPureProp (PropAnd p1 p2) = ppPureProp p1 <+> text "&&" <+> ppPureProp p2
+    ppPureProp PropTrue = text "true"
+    ppHeapProp :: HeapProp -> Doc
+    ppHeapProp (PointsTo e fields) = ppExpression e <+> text "|->" <+> hsep (punctuate comma $ map ppField fields)
+      where
+        ppField :: (FieldName, Expression) -> Doc
+        ppField (field, e) = text field <+> text ":" <+> ppExpression e
+    ppHeapProp (HeapTree e) = text "tree" <+> parens (ppExpression e)
+    ppHeapProp (HeapListSegment e1 e2) = text "list" <+> parens (hsep (punctuate comma [ppExpression e1, ppExpression e2]))
+    ppHeapProp (HeapXORList e1 e2 e3 e4) = text "xorlist" <+> parens (hsep (punctuate comma [ppExpression e1, ppExpression e2, ppExpression e3, ppExpression e4]))
+    ppHeapProp (HeapSep hp1 hp2) = ppHeapProp hp1 <+> text "*" <+> ppHeapProp hp2
+    ppHeapProp HeapEmp = text "emp"
+  
+
+
+
 extendPropAnd :: Prop -> BoolExpression -> Prop
 extendPropAnd (PropIfThenElse pp pt pf) be = PropIfThenElse pp (extendPropAnd pt be) (extendPropAnd pf be)
 extendPropAnd (PropConj p h) be = PropConj (PropAnd p (PropAssert be)) h
@@ -119,6 +186,10 @@ propSepConj p (PropIfThenElse pp pt pf) = PropIfThenElse pp (propSepConj pt p) (
 
 data Program = Program [FieldName] [Resource] [Function]
     deriving Show
+  
+ppProgram :: Program -> Doc
+ppProgram (Program fields resources functions) = 
+  vcat $ [hsep (punctuate comma (map text fields))] ++ map ppResource resources ++ map ppFunction functions
 
 type HoareTriple = (Precondition, Command, Postcondition)
 

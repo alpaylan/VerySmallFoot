@@ -42,6 +42,7 @@ library
     , containers
     , mtl
     , parsec
+    , pretty
   default-language: Haskell2010
 
 executable smallfootreplica-exe
@@ -56,6 +57,7 @@ executable smallfootreplica-exe
     , containers
     , mtl
     , parsec
+    , pretty
     , smallfootreplica
   default-language: Haskell2010
 
@@ -74,5 +76,6 @@ test-suite smallfootreplica-test
     , containers
     , mtl
     , parsec
+    , pretty
     , smallfootreplica
   default-language: Haskell2010

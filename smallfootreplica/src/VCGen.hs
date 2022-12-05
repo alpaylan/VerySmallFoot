@@ -1,5 +1,5 @@
 module VCGen (
-  generateSymbolicProgram,
+  generateSymbolicProgram, ppSymbolicProgram,
   fvs, fresh, FreshVars, SymbolicHoareTriple, SCommand(..)
   ) where
 
@@ -14,6 +14,8 @@ import qualified Data.Map.Strict as Map
 
 import Data.Foldable
 import Data.Maybe
+
+import Text.PrettyPrint
 
 import Program
 
@@ -213,7 +215,24 @@ data SCommand
     | SIfThenElse BoolExpression SCommand SCommand
     deriving Show
 
+ppSCommand :: SCommand -> Doc
+ppSCommand (SAssign x e) = text x <+> text ":=" <+> ppExpression e
+ppSCommand (SHeapLookup x e f) = text x <+> text ":=" <+> ppExpression e <+> text "->" <+> text f
+ppSCommand (SHeapAssign e1 f e2) = ppExpression e1 <+> text "->" <+> text f <+> text ":=" <+> ppExpression e2
+ppSCommand (SNew x) = text "new" <+> text x <+> text "()"
+ppSCommand (SDispose e) = text "dispose" <+> ppExpression e
+ppSCommand (SBlock cs) = text "{" $$ nest 2 (vcat $ map ppSCommand cs) $$ text "}"
+ppSCommand (SJump pre xs post) = text "jsr" <+> ppProp pre <+> hsep (map text $ Set.toList xs) <+> ppProp post
+ppSCommand (SIfThenElse b c1 c2) = text "if" <+> ppBoolExpression b $$ nest 2 (ppSCommand c1) $$ text "else" $$ nest 2 (ppSCommand c2)
+
+
 type SymbolicHoareTriple = (Precondition, SCommand, Postcondition)
+
+ppSymbolicHoareTriple :: SymbolicHoareTriple -> Doc
+ppSymbolicHoareTriple (pre, c, post) = ppProp pre $$ nest 2 (ppSCommand c) $$ ppProp post
+
+ppSymbolicProgram :: [[SymbolicHoareTriple]] -> Doc
+ppSymbolicProgram = vcat . map (vcat . map ppSymbolicHoareTriple)
 
 type FreshVars = State [VarName]
 

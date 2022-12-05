@@ -24,6 +24,7 @@ dependencies:
 - containers
 - mtl
 - parsec
+- pretty
 
 ghc-options:
 - -Wall
