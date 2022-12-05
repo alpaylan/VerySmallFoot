@@ -1,8 +1,37 @@
-module Program where
+module Program
+  ( VarName
+  , FunName
+  , FieldName
+  , ResName
+  , Precondition
+  , Postcondition
+  , Invariant
+  , HoareTriple
+  , Command(..)
+  , BoolExpression(..)
+  , Expression(..)
+  , Resource(..)
+  , Function(..)
+  , HeapProp(..)
+  , PureProp(..)
+  , Prop(..)
+  , Program(..)
+  , extendPropAnd
+  , extendPropSep
+  , propSepConj
+  , Subst
+  , subst
+  , substVar
+  , FV
+  , fv
+  ) where
 
 import Data.Maybe
--- import Data.Set (Set)
--- import qualified Data.Set as Set
+import Data.Set (Set)
+import qualified Data.Set as Set
+
+(\/) :: (Ord a) => Set a -> Set a -> Set a
+(\/) = Set.union
 
 
 -- Type Aliases
@@ -47,11 +76,11 @@ data Expression
   | Xor Expression Expression
   deriving (Show, Eq)
 
-data Resource = Resource ResName [VarName] Invariant 
-    deriving Show
+data Resource = Resource ResName [VarName] Invariant
+  deriving Show
 
 data Function = Function FunName [VarName] [VarName] [VarName] HoareTriple
-    deriving Show
+  deriving Show
 -- name, pass-by-ref args, pass-by-value args, local vars, body
 
 
@@ -112,6 +141,7 @@ instance Subst BoolExpression where
   subst m (BoolEq e1 e2) = BoolEq (subst m e1) (subst m e2)
   subst m (BoolNEq e1 e2) = BoolNEq (subst m e1) (subst m e2)
   subst m (BoolNot be) = BoolNot (subst m be)
+  subst _ BoolTrue = BoolTrue
 
 instance Subst HeapProp where
   subst m (PointsTo e heap) = PointsTo (subst m e) (fmap (fmap (subst m)) heap)
@@ -129,3 +159,56 @@ instance Subst PureProp where
 instance Subst Prop where
   subst m (PropIfThenElse pp p1 p2) = PropIfThenElse (subst m pp) (subst m p1) (subst m p2)
   subst m (PropConj p h) = PropConj (subst m p) (subst m h)
+
+
+-- Free Variables
+class FV a where
+  fv :: a -> Set VarName
+
+
+instance FV Expression where
+  fv (Var v) = Set.singleton v
+  fv (Const _) = Set.empty
+  fv (Xor e1 e2) = fv e1 \/ fv e2
+  fv Nil = Set.empty
+
+instance FV BoolExpression where
+  fv (BoolEq e1 e2) = fv e1 \/ fv e2
+  fv (BoolNEq e1 e2) = fv e1 \/ fv e2
+  fv (BoolNot be) = fv be
+  fv BoolTrue = Set.empty
+
+instance FV Prop where
+  fv (PropIfThenElse pp p1 p2) = fv pp \/ fv p1 \/ fv p2
+  fv (PropConj p h) = fv p \/ fv h
+
+instance FV PureProp where
+  fv (PropAssert be) = fv be
+  fv (PropAnd p1 p2) = fv p1 \/ fv p2
+  fv PropTrue = Set.empty
+
+instance FV HeapProp where
+  fv (PointsTo e h) = fv e \/ Set.unions (map (fv . snd) h)
+  fv (HeapTree e) = fv e
+  fv (HeapListSegment e1 e2) = fv e1 \/ fv e2
+  fv (HeapXORList e1 e2 e3 e4) = fv e1 \/ fv e2 \/ fv e3 \/ fv e4
+  fv (HeapSep h1 h2) = fv h1 \/ fv h2
+  fv HeapEmp = Set.empty
+
+instance FV a => FV [a] where
+    fv = Set.unions . map fv
+
+instance FV Command where
+  fv (Assign x e) = Set.singleton x \/ fv e
+  fv (HeapLookup x e _) = Set.singleton x \/ fv e
+  fv (HeapAssign e1 _ e2) = fv e1 \/ fv e2
+  fv (New x) = Set.singleton x
+  fv (Dispose e) = fv e
+  fv (IfThenElse b c1 c2) = fv b \/ fv c1 \/ fv c2
+  fv (While b i c) = fv b \/ fv i \/ fv c
+  fv (Block cs) = Set.unions $ map fv cs
+  fv (Call (_, xs, es)) = Set.fromList xs \/ fv es
+  fv (ConcurrentCall call1 call2) =
+    fv (Call call1) \/ fv (Call call2)
+  fv (WithRes _ b c) =
+    fv b \/ fv c

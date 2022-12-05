@@ -31,7 +31,6 @@ library
       Parser
       Program
       SymbolicExecution
-      VariableConditions
       VCGen
   other-modules:
       Paths_smallfootreplica

@@ -18,7 +18,6 @@ import Data.Maybe (isJust, fromJust)
 
 import Program
 import VCGen
-import VariableConditions
 
 import Oracle
 
